@@ -1,0 +1,504 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_Yp9XiF": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_AhrY6J": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RJwcVz": {
+          "type": "heading",
+          "settings": {
+            "heading": "MUSICAL INSTRUMENT",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RJwcVz"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_Uiyh9E": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_dB9kMR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "professional-keyboard"
+          }
+        },
+        "featured_collection_6e63PC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "digital-piano"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_dB9kMR",
+        "featured_collection_6e63PC"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "KEYBOARD",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_yGeNC7": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_GJrmU7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-guitar"
+          }
+        },
+        "featured_collection_GXQW3K": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-guitar"
+          }
+        },
+        "featured_collection_hQ3EP3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-bass-guitar"
+          }
+        },
+        "featured_collection_jKLfVh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-bass-guitar"
+          }
+        },
+        "featured_collection_pbPcYm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "classic-guitar"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_GJrmU7",
+        "featured_collection_GXQW3K",
+        "featured_collection_hQ3EP3",
+        "featured_collection_jKLfVh",
+        "featured_collection_pbPcYm"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "GUITAR",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_akycAM": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_CHhybi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-drum"
+          }
+        },
+        "featured_collection_Ar87jU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-drum"
+          }
+        },
+        "featured_collection_cr7EMP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cymbal"
+          }
+        },
+        "featured_collection_39Gb8h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drum-hardware"
+          }
+        },
+        "featured_collection_GA9XUR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drum-microphone-package"
+          }
+        },
+        "featured_collection_cQJa99": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drum-shield"
+          }
+        },
+        "featured_collection_yXJtWM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drums-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_CHhybi",
+        "featured_collection_Ar87jU",
+        "featured_collection_cr7EMP",
+        "featured_collection_39Gb8h",
+        "featured_collection_GA9XUR",
+        "featured_collection_cQJa99",
+        "featured_collection_yXJtWM"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "DRUMS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_etf9wU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_ixztdR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-percussion"
+          }
+        },
+        "featured_collection_KgdE3d": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-percussion"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_ixztdR",
+        "featured_collection_KgdE3d"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "PERCUSSION",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_naUjVQ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_GHPGUn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bass-amplifier"
+          }
+        },
+        "featured_collection_Pwyrk6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-guitar-amplifier"
+          }
+        },
+        "featured_collection_C4VbMJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-guitar-amplifier"
+          }
+        },
+        "featured_collection_AKJtA3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "keyboard-amplifier"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_GHPGUn",
+        "featured_collection_Pwyrk6",
+        "featured_collection_C4VbMJ",
+        "featured_collection_AKJtA3"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "INSTRUMENT AMPLIFIER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_FfUThC": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_qgJdbV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-guitar-effector"
+          }
+        },
+        "featured_collection_EDhWqA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-guitar-effector"
+          }
+        },
+        "featured_collection_bikDHN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bass-guitar-effector"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_qgJdbV",
+        "featured_collection_EDhWqA",
+        "featured_collection_bikDHN"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "EFFECTOR",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_KhbWch": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_RXzngB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "electric-guitar-string"
+          }
+        },
+        "featured_collection_HURW8A": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-guitar-string"
+          }
+        },
+        "featured_collection_GaU3kD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "classic-guitar-string"
+          }
+        },
+        "featured_collection_H8A8r9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bass-guitar-string"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_RXzngB",
+        "featured_collection_HURW8A",
+        "featured_collection_GaU3kD",
+        "featured_collection_H8A8r9"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "STRING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_N8EyCQ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_PEiA8h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tuner-metronome"
+          }
+        },
+        "featured_collection_d3KKk6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "instrument-cable"
+          }
+        },
+        "featured_collection_xnAx4y": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "guitar-amplifier-stand"
+          }
+        },
+        "featured_collection_wMTwd7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bag-case-musical"
+          }
+        },
+        "featured_collection_XVXMGK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "di-box"
+          }
+        },
+        "featured_collection_78DNjf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "guitar-accessories"
+          }
+        },
+        "featured_collection_PYhQDE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bass-guitar-accessories"
+          }
+        },
+        "featured_collection_LKM7BV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "keyboard-accessories"
+          }
+        },
+        "featured_collection_qCJPha": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "brass-wind-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_PEiA8h",
+        "featured_collection_d3KKk6",
+        "featured_collection_xnAx4y",
+        "featured_collection_wMTwd7",
+        "featured_collection_XVXMGK",
+        "featured_collection_78DNjf",
+        "featured_collection_PYhQDE",
+        "featured_collection_LKM7BV",
+        "featured_collection_qCJPha"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "ACCESSORIES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "custom_liquid_Yp9XiF",
+    "rich_text_AhrY6J",
+    "collection_list_Uiyh9E",
+    "collection_list_yGeNC7",
+    "collection_list_akycAM",
+    "collection_list_etf9wU",
+    "collection_list_naUjVQ",
+    "collection_list_FfUThC",
+    "collection_list_KhbWch",
+    "collection_list_N8EyCQ"
+  ]
+}

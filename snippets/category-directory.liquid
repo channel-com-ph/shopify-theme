@@ -1,0 +1,88 @@
+{%- assign category_path = collection.metafields.custom.category_directory.value -%}
+{%- assign product_path = product.metafields.custom.category_directory.value -%}
+{%- if collection -%}
+  {%- if category_path -%}  
+    <div class="directory-path">
+      <small class="path-location">
+        <ul class="path-container">
+          {%- for path in category_path -%}  
+            {%- assign category_url = path.url -%}
+            <li class="path-list">
+              <a class="path-link" href="{{ category_url }}">{{ path.title }}</a>
+            </li>
+            
+              {%- unless forloop.last -%} 
+                <span class="path-svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span> 
+              {%- endunless -%}
+          {%- endfor -%}  
+        </ul>
+      </small>
+    </div>
+  {%- endif -%}  <!-- End of if check -->
+{%- endif -%}
+
+{%- if product -%}
+  {%- if product_path -%}  
+    <div class="directory-path">
+      <small class="path-location">
+        <ul class="path-container">
+          {%- for path in product_path -%}  
+            {%- assign product_url = path.url -%}
+            <li class="path-list">
+              <a class="path-link" href="{{ product_url }}">{{ path.title }}</a>
+            </li>
+              {%- unless forloop.last -%}
+              <span class="path-svg-wrapper">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span> <!-- Display the ">" symbol -->
+              {%- endunless -%}
+          {%- endfor -%}  
+        </ul>
+      </small>
+    </div>
+  {%- endif -%}  <!-- End of if check -->
+{%- endif -%}
+
+<style>
+  .directory_path {
+    margin: 0;
+  
+  }
+  .path-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+  }
+  .path-container .path-list {
+    /* margin: 5px; */
+    padding: 28px 10px;
+  }
+  .path-container .path-list:last-child {
+    padding: 28px 6px 28px 10px;
+  }
+  .path-link {
+    color: inherit;
+    text-decoration: none;
+  }
+  .path-link:hover {
+    color: #ddd;
+  }
+  .path-svg-wrapper {
+    width: 12px;
+    height: auto;
+    transform: rotate(-90deg);
+  }
+
+
+@media screen and (max-width: 749px) {
+  .path-container .path-list {
+    padding: 10px 6px; 
+    font-size: 10px;
+  }
+}
+</style>

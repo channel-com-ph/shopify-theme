@@ -1,0 +1,4427 @@
+<style>
+  /* Basic styling for the form elements for better visual separation */
+    .setRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .setCol {
+      flex: 1;
+      min-width: 280px;
+    }
+
+  /* Base styling for all field containers */
+  .form-input-container {
+    position: relative;
+    margin-top: 0.5rem; 
+  }
+
+  /* Consistent visual box for all general input types (text, date, tel, postal code span) */
+  .form-input-box {
+    display: flex; 
+    align-items: center;
+    width: 100%;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    height: 3rem; 
+    box-sizing: border-box;
+  }
+
+  /* Styling for inputs *inside* the .form-input-box */
+  .form-input-box input {
+    flex-grow: 1; 
+    border: none;
+    outline: none; 
+    background-color: transparent;
+    padding: 0 1.2rem;
+    font-size: 1.7rem;
+    height: 100%; 
+  }
+
+  /* Specific wrapper for password fields, also used for email for consistency */
+  .password-field-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      background-color: #f8fafc;
+      height: 3rem;
+      box-sizing: border-box;
+  }
+
+  /* Styling for inputs *inside* the .password-field-wrapper */
+  .password-field-wrapper input {
+      flex-grow: 1;
+      border: none;
+      padding: 0 1.2rem;
+      height: 100%; 
+      font-size: 1.7rem;
+      outline: none;
+      background-color: transparent;
+  }
+
+  .password-toggle {
+      position: absolute;
+      right: 12px;
+      cursor: pointer;
+      padding: 0 5px;
+  }
+
+  .password-toggle img {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+  }
+
+  /* Styling for the dropdown wrapper itself to make it look like a consistent input box */
+  .dropdown-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    height: 3rem;
+    box-sizing: border-box;
+  }
+
+  /* Styling for select element *inside* its .dropdown-wrapper container */
+  .dropdown-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0 1.2rem;
+    font-size: 1.7rem;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  /* Styling for the SVG wrapper inside .dropdown-wrapper */
+  .dropdown-wrapper .svg-wrapper {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+  }
+
+  button[type="submit"], button[type="button"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+
+  button[type="submit"]:hover, button[type="button"] :hover {
+    background-color: #0056b3;
+  }
+
+  button[disabled] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  /* Custom Message Box Styling */
+  .custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .custom-modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+  }
+
+  .custom-modal-content h3 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .custom-modal-content p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 25px;
+  }
+
+  .custom-modal-close-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .custom-modal-close-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .required-asterisk {
+    color: red;
+    margin-right: 4px; 
+    font-weight: bold;
+  }
+
+  .password-match-feedback {
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+      text-align: right;
+      min-height: 1.5rem; 
+  }
+
+  .password-match {
+      color: #27ae60; /* Green for match */
+  }
+
+  .password-mismatch {
+      color: #e74c3c; /* Red for mismatch */
+  }
+
+  .shipping-note {
+  background-color: #fceded; 
+  color: #812e2e; 
+  border-left: 5px solid #992b2b;
+  padding: 1rem; 
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.shipping-note p {
+  margin: 0; 
+}
+
+.shipping-note strong {
+  color: #8a2525; /*"Note"*/
+}
+
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!--<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">-->
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_red.css">
+
+
+{%- form 'create_customer', novalidate: 'novalidate', id: 'foreign-register-form' -%}
+  <script>
+    // This will be available globally after the snippet is included
+    window.locationData = {
+    "South Korea": {
+        "Seoul": {
+          "Gangnam-gu": ["06100", "06101", "06102", "06103", "06104", "06105"],
+          "Jongno-gu": ["03000", "03001", "03002", "03003", "03004", "03005"],
+          "Mapo-gu": ["04000", "04001", "04002", "04003", "04004", "04005"],
+          "Seocho-gu": ["06500", "06501", "06502", "06503", "06504", "06505"],
+          "Yongsan-gu": ["04300", "04301", "04302", "04303", "04304", "04305"]
+        },
+        "Busan": {
+          "Haeundae-gu": ["48000", "48001", "48002", "48003", "48004", "48005"],
+          "Jung-gu": ["48900", "48901", "48902", "48903", "48904", "48905"],
+          "Seo-gu": ["49200", "49201", "49202", "49203", "49204", "49205"],
+          "Suyeong-gu": ["48200", "48201", "48202", "48203", "48204", "48205"]
+        },
+        "Incheon": {
+          "Bupyeong-gu": ["21300", "21301", "21302", "21303", "21304", "21305"],
+          "Namdong-gu": ["21500", "21501", "21502", "21503", "21504", "21505"],
+          "Yeonsu-gu": ["21900", "21901", "21902", "21903", "21904", "21905"]
+        },
+        "Daegu": {
+          "Jung-gu": ["41900", "41901", "41902", "41903", "41904", "41905"],
+          "Suseong-gu": ["42000", "42001", "42002", "42003", "42004", "42005"]
+        },
+        "Daejeon": {
+          "Seo-gu": ["35200", "35201", "35202", "35203", "35204", "35205"],
+          "Yuseong-gu": ["34000", "34001", "34002", "34003", "34004", "34005"]
+        },
+        "Gwangju": {
+          "Buk-gu": ["50000", "50001", "50002", "50003", "50004", "50005"],
+          "Dong-gu": ["50100", "50101", "50102", "50103", "50104", "50105"]
+        },
+        "Ulsan": {
+          "Buk-gu": ["44000", "44001", "44002", "44003", "44004", "44005"],
+          "Nam-gu": ["44600", "44601", "44602", "44603", "44604", "44605"]
+        },
+        "Gyeonggi-do": {
+          "Suwon": ["16200", "16201", "16202", "16203", "16204", "16205"],
+          "Yongin": ["17000", "17001", "17002", "17003", "17004", "17005"],
+          "Goyang": ["10300", "10301", "10302", "10303", "10304", "10305"],
+          "Seongnam": ["13200", "13201", "13202", "13203", "13204", "13205"]
+        },
+        "Gangwon-do": {
+          "Chuncheon": ["24200", "24201", "24202", "24203", "24204", "24205"],
+          "Gangneung": ["25400", "25401", "25402", "25403", "25404", "25405"],
+          "Wonju": ["26400", "26401", "26402", "26403", "26404", "26405"]
+        },
+        "Chungcheongbuk-do": {
+          "Cheongju": ["28500", "28501", "28502", "28503", "28504", "28505"],
+          "Chungju": ["27400", "27401", "27402", "27403", "27404", "27405"]
+        },
+        "Chungcheongnam-do": {
+          "Asan": ["31500", "31501", "31502", "31503", "31504", "31505"],
+          "Cheonan": ["31000", "31001", "31002", "31003", "31004", "31005"],
+          "Dangjin": ["31700", "31701", "31702", "31703", "31704", "31705"]
+        },
+        "Jeollabuk-do": {
+          "Jeonju": ["54900", "54901", "54902", "54903", "54904", "54905"],
+          "Gunsan": ["54000", "54001", "54002", "54003", "54004", "54005"]
+        },
+        "Jeollanam-do": {
+          "Mokpo": ["53000", "53001", "530002", "530003", "530004", "530005"],
+          "Suncheon": ["57900", "57901", "57902", "57903", "57904", "57905"]
+        },
+        "Gyeongsangbuk-do": {
+          "Andong": ["36600", "36601", "36602", "36603", "36604", "36605"],
+          "Gyeongju": ["38100", "38101", "38102", "38103", "38104", "38105"],
+          "Pohang": ["37600", "37601", "37602", "37603", "37604", "37605"]
+        },
+        "Gyeongsangnam-do": {
+          "Changwon": ["51400", "51401", "51402", "51403", "51404", "51405"],
+          "Gimhae": ["50800", "50801", "50802", "50803", "50804", "50805"],
+          "Jinju": ["52600", "52601", "52602", "52603", "52604", "52605"]
+        },
+        "Jeju-do": {
+          "Jeju City": ["63100", "63101", "63102", "63103", "63104", "63105"],
+          "Seogwipo": ["63500", "63501", "63502", "63503", "63504", "63505"]
+        }
+      },
+
+      // Canada
+      'Canada': {
+        'Alberta': {
+          'Calgary': ['T1Y', 'T2A', 'T2B'],
+          'Edmonton': ['T5A', 'T5B', 'T5C'],
+          'Red Deer': ['T4N', 'T4P', 'T4R']
+        },
+        'British Columbia': {
+          'Vancouver': ['V5K', 'V5L', 'V5M'],
+          'Victoria': ['V8N', 'V8P', 'V8R'],
+          'Kelowna': ['V1P', 'V1V', 'V1W']
+        },
+        'Manitoba': {
+          'Winnipeg': ['R2C', 'R2E', 'R2G'],
+          'Brandon': ['R7A', 'R7B', 'R7C'],
+          'Steinbach': ['R5G', 'R5H', 'R5J']
+        },
+        'New Brunswick': {
+          'Saint John': ['E2H', 'E2J', 'E2K'],
+          'Moncton': ['E1A', 'E1B', 'E1C'],
+          'Fredericton': ['E3A', 'E3B', 'E3C']
+        },
+        'Newfoundland and Labrador': {
+          "St. John's": ['A1A', 'A1B', 'A1C'],
+          'Mount Pearl': ['A1N', 'A1K', 'A1L'],
+          'Corner Brook': ['A2H', 'A2A', 'A2B']
+        },
+        'Northwest Territories': {
+          'Yellowknife': ['X1A', 'X0E', 'X1A0E1'],
+          'Hay River': ['X0E', 'X0E0G0', 'X0E0G1'],
+          'Inuvik': ['X0E', 'X0E0T0', 'X0E0T1']
+        },
+        'Nova Scotia': {
+          'Halifax': ['B3H', 'B3J', 'B3K'],
+          'Dartmouth': ['B2W', 'B2X', 'B2Y'],
+          'Sydney': ['B1P', 'B1S', 'B1T']
+        },
+        'Nunavut': {
+          'Iqaluit': ['X0A', 'X0A0H0', 'X0A0H1'],
+          'Rankin Inlet': ['X0C', 'X0C0G0', 'X0C0G1'],
+          'Arviat': ['X0C', 'X0C0E0', 'X0C0E1']
+        },
+        'Ontario': {
+          'Toronto': ['M5V', 'M6K', 'M4W'],
+          'Ottawa': ['K1P', 'K2P', 'K1S'],
+          'Mississauga': ['L5A', 'L5B', 'L5C'],
+          'Hamilton': ['L8P', 'L8R', 'L8S'],
+          'London': ['N6A', 'N6B', 'N6C']
+        },
+        'Prince Edward Island': {
+          'Charlottetown': ['C1A', 'C1B', 'C1C'],
+          'Summerside': ['C1N', 'C1R', 'C1S'],
+          'Stratford': ['C1A', 'C1B', 'C1C']
+        },
+        'Quebec': {
+          'Montreal': ['H1A', 'H1B', 'H1C'],
+          'Quebec City': ['G1A', 'G1B', 'G1C'],
+          'Laval': ['H7A', 'H7B', 'H7C'],
+          'Gatineau': ['J8P', 'J8R', 'J8T'],
+          'Longueuil': ['J4G', 'J4H', 'J4J']
+        },
+        'Saskatchewan': {
+          'Saskatoon': ['S7H', 'S7J', 'S7K'],
+          'Regina': ['S4P', 'S4R', 'S4S'],
+          'Prince Albert': ['S6V', 'S6W', 'S6X']
+        },
+        'Yukon': {
+          'Whitehorse': ['Y1A', 'Y1B', 'Y1C'],
+          'Dawson City': ['Y0B', 'Y0B1G0', 'Y0B1H0'],
+          'Watson Lake': ['Y0A', 'Y0A1C0', 'Y0A1C1']
+        }
+      },
+
+      "Australia": {
+        "Australian Capital Territory": {
+          "Canberra": ["2600", "2601", "2602", "2603", "2604", "2605"]
+        },
+        "New South Wales": {
+          "Sydney": ["2000", "2001", "2002", "2004", "2005", "2006"],
+          "Newcastle": ["2300", "2301", "2302", "2303", "2304", "2305"],
+          "Wollongong": ["2500", "2501", "2502", "2505", "2506", "2508"],
+          "Central Coast": ["2250", "2251", "2256", "2257", "2258", "2259"],
+          "Blue Mountains": ["2780", "2782", "2783", "2784", "2785", "2786"]
+        },
+        "Northern Territory": {
+          "Darwin": ["0800", "0801", "0810", "0811", "0812", "0813"],
+          "Alice Springs": ["0870", "0871", "0872", "0873", "0874", "0875"],
+          "Palmerston": ["0830", "0831", "0832", "0833", "0834", "0835"]
+        },
+        "Queensland": {
+          "Brisbane": ["4000", "4001", "4002", "4003", "4004", "4005"],
+          "Gold Coast": ["4217", "4218", "4220", "4221", "4223", "4224"],
+          "Sunshine Coast": ["4551", "4552", "4553", "4554", "4555", "4556"],
+          "Townsville": ["4810", "4811", "4812", "4813", "4814", "4815"],
+          "Cairns": ["4870", "4871", "4872", "4873", "4874", "4875"]
+        },
+        "South Australia": {
+          "Adelaide": ["5000", "5001", "5002", "5003", "5004", "5005"],
+          "Mount Gambier": ["5290", "5291", "5292", "5293", "5294", "5295"],
+          "Whyalla": ["5600", "5601", "5602", "5603", "5604", "5605"],
+          "Gawler": ["5118", "5119", "5120", "5121", "5122", "5123"]
+        },
+        "Tasmania": {
+          "Hobart": ["7000", "7001", "7002", "7003", "7004", "7005"],
+          "Launceston": ["7250", "7251", "7252", "7253", "7254", "7255"],
+          "Devonport": ["7310", "7311", "7312", "7313", "7314", "7315"],
+          "Burnie": ["7320", "7321", "7322", "7323", "7324", "7325"]
+        },
+        "Victoria": {
+          "Melbourne": ["3000", "3001", "3002", "3003", "3004", "3005"],
+          "Geelong": ["3220", "3221", "3222", "3223", "3224", "3225"],
+          "Ballarat": ["3350", "3351", "3352", "3353", "3354", "3355"],
+          "Bendigo": ["3550", "3551", "3552", "3553", "3554", "3555"],
+          "Mildura": ["3500", "3501", "3502", "3503", "3504", "3505"]
+        },
+        "Western Australia": {
+          "Perth": ["6000", "6001", "6002", "6003", "6004", "6005"],
+          "Bunbury": ["6230", "6231", "6232", "6233", "6234", "6235"],
+          "Geraldton": ["6530", "6531", "6532", "6533", "6534", "6535"],
+          "Kalgoorlie": ["6430", "6431", "6432", "6433", "6434", "6435"]
+        }
+      },
+      "Japan": {
+        "Hokkaido": {
+          "Sapporo": ["060-0001", "060-0002", "060-0003", "060-0004", "060-0005", "060-0006"],
+          "Hakodate": ["040-0001", "040-0002", "040-0003", "040-0004", "040-0005", "040-0006"],
+          "Asahikawa": ["070-0001", "070-0002", "070-0003", "070-0004", "070-0005", "070-0006"]
+        },
+        "Tohoku": {
+          "Sendai": ["980-0001", "980-0002", "980-0003", "980-0004", "980-0005", "980-0006"],
+          "Aomori": ["030-0001", "030-0002", "030-0003", "030-0004", "030-0005", "030-0006"],
+          "Morioka": ["020-0001", "020-0002", "020-0003", "020-0004", "020-0005", "020-0006"]
+        },
+        "Kanto": {
+          "Tokyo": ["100-0001", "100-0002", "100-0003", "100-0004", "100-0005", "100-0006"],
+          "Yokohama": ["220-0001", "220-0002", "220-0003", "220-0004", "220-0005", "220-0006"],
+          "Chiba": ["260-0001", "260-0002", "260-0003", "260-0004", "260-0005", "260-0006"],
+          "Saitama": ["330-0001", "330-0002", "330-0003", "330-0004", "330-0005", "330-0006"],
+          "Kawasaki": ["210-0001", "210-0002", "210-0003", "210-0004", "210-0005", "210-0006"]
+        },
+        "Chubu": {
+          "Nagoya": ["460-0001", "460-0002", "460-0003", "460-0004", "460-0005", "460-0006"],
+          "Niigata": ["950-0001", "950-0002", "950-0003", "950-0004", "950-0005", "950-0006"],
+          "Shizuoka": ["420-0001", "420-0002", "420-0003", "420-0004", "420-0005", "420-0006"],
+          "Toyama": ["930-0001", "930-0002", "930-0003", "930-0004", "930-0005", "930-0006"]
+        },
+        "Kansai": {
+          "Osaka": ["530-0001", "530-0002", "530-0003", "530-0004", "530-0005", "530-0006"],
+          "Kyoto": ["600-0001", "600-0002", "600-0003", "600-0004", "600-0005", "600-0006"],
+          "Kobe": ["650-0001", "650-0002", "650-0003", "650-0004", "650-0005", "650-0006"],
+          "Nara": ["630-0001", "630-0002", "630-0003", "630-0004", "630-0005", "630-0006"],
+          "Wakayama": ["640-0001", "640-0002", "640-0003", "640-0004", "640-0005", "640-0006"]
+        },
+        "Chugoku": {
+          "Hiroshima": ["730-0001", "730-0002", "730-0003", "730-0004", "730-0005", "730-0006"],
+          "Okayama": ["700-0001", "700-0002", "700-0003", "700-0004", "700-0005", "700-0006"],
+          "Matsue": ["690-0001", "690-0002", "690-0003", "690-0004", "690-0005", "690-0006"]
+        },
+        "Shikoku": {
+          "Takamatsu": ["760-0001", "760-0002", "760-0003", "760-0004", "760-0005", "760-0006"],
+          "Matsuyama": ["790-0001", "790-0002", "790-0003", "790-0004", "790-0005", "790-0006"],
+          "Tokushima": ["770-0001", "770-0002", "770-0003", "770-0004", "770-0005", "770-0006"]
+        },
+        "Kyushu": {
+          "Fukuoka": ["810-0001", "810-0002", "810-0003", "810-0004", "810-0005", "810-0006"],
+          "Kumamoto": ["860-0001", "860-0002", "860-0003", "860-0004", "860-0005", "860-0006"],
+          "Nagasaki": ["850-0001", "850-0002", "850-0003", "850-0004", "850-0005", "850-0006"],
+          "Kagoshima": ["890-0001", "890-0002", "890-0003", "890-0004", "890-0005", "890-0006"]
+        },
+        "Okinawa": {
+          "Naha": ["900-0001", "900-0002", "900-0003", "900-0004", "900-0005", "900-0006"],
+          "Okinawa City": ["904-0001", "904-0002", "904-0003", "904-0004", "904-0005", "904-0006"],
+          "Urasoe": ["901-0001", "901-0002", "901-0003", "901-0004", "901-0005", "901-0006"]
+        }
+      },
+      "Singapore": {
+        "Central Singapore": {
+          "Singapore City": ["010001", "010002", "010003", "010004", "010005", "010006"],
+          "Marina Bay": ["018900", "018901", "018902", "018903", "018904", "018905"],
+          "Orchard Road": ["238801", "238802", "238803", "238804", "238805", "238806"]
+        },
+        "North East": {
+          "Ang Mo Kio": ["560001", "560002", "560003", "560004", "560005", "560006"],
+          "Hougang": ["530001", "530002", "530003", "530004", "530005", "530006"],
+          "Punggol": ["820001", "820002", "820003", "820004", "820005", "820006"],
+          "Sengkang": ["540001", "540002", "540003", "540004", "540005", "540006"]
+        },
+        "North West": {
+          "Bukit Batok": ["650001", "650002", "650003", "650004", "650005", "650006"],
+          "Choa Chu Kang": ["680001", "680002", "680003", "680004", "680005", "680006"],
+          "Woodlands": ["730001", "730002", "730003", "730004", "730005", "730006"],
+          "Yishun": ["760001", "760002", "760003", "760004", "760005", "760006"]
+        },
+        "South East": {
+          "Bedok": ["460001", "460002", "460003", "460004", "460005", "460006"],
+          "Tampines": ["520001", "520002", "520003", "520004", "520005", "520006"],
+          "Pasir Ris": ["510001", "510002", "510003", "510004", "510005", "510006"]
+        },
+        "South West": {
+          "Bukit Merah": ["150001", "150002", "150003", "150004", "150005", "150006"],
+          "Clementi": ["120001", "120002", "120003", "120004", "120005", "120006"],
+          "Jurong East": ["600001", "600002", "600003", "600004", "600005", "600006"],
+          "Queenstown": ["140001", "1400002", "140003", "140004", "140005", "140006"]
+        }
+      },
+
+      // USA
+      'United States': {
+        'Alabama': {
+          'Birmingham': ['35201', '35202', '35203'],
+          'Montgomery': ['36101', '36102', '36103'],
+          'Mobile': ['36601', '36602', '36603']
+        },
+        'Alaska': {
+          'Anchorage': ['99501', '99502', '99503'],
+          'Fairbanks': ['99701', '99702', '99703'],
+          'Juneau': ['99801', '99802', '99803']
+        },
+        'Arizona': {
+          'Phoenix': ['85001', '85002', '85003'],
+          'Tucson': ['85701', '85702', '85703'],
+          'Mesa': ['85201', '85202', '85203']
+        },
+        'Arkansas': {
+          'Little Rock': ['72201', '72202', '72203'],
+          'Fort Smith': ['72901', '72902', '72903'],
+          'Fayetteville': ['72701', '72702', '72703']
+        },
+        'California': {
+          'Los Angeles': ['90001', '90002', '90003'],
+          'San Francisco': ['94102', '94103', '94104'],
+          'San Diego': ['92101', '92102', '92103'],
+          'San Jose': ['95101', '95102', '95103'],
+          'Sacramento': ['95814', '95815', '95816']
+        },
+        'Colorado': {
+          'Denver': ['80201', '80202', '80203'],
+          'Colorado Springs': ['80901', '80902', '80903'],
+          'Aurora': ['80010', '80011', '80012']
+        },
+        'Connecticut': {
+          'Bridgeport': ['06601', '06602', '06603'],
+          'New Haven': ['06501', '06502', '06503'],
+          'Hartford': ['06101', '06102', '06103']
+        },
+        'Delaware': {
+          'Wilmington': ['19801', '19802', '19803'],
+          'Dover': ['19901', '19902', '19903'],
+          'Newark': ['19702', '19711', '19712']
+        },
+        'Florida': {
+          'Miami': ['33101', '33102', '33103'],
+          'Orlando': ['32801', '32802', '32803'],
+          'Tampa': ['33601', '33602', '33603'],
+          'Jacksonville': ['32201', '32202', '32203']
+        },
+        'Georgia': {
+          'Atlanta': ['30301', '30302', '30303'],
+          'Augusta': ['30901', '30902', '30903'],
+          'Savannah': ['31401', '31402', '31403']
+        },
+        'Hawaii': {
+          'Honolulu': ['96801', '96802', '96803'],
+          'Hilo': ['96720', '96721', '96722'],
+          'Kailua': ['96734', '96740', '96743']
+        },
+        'Idaho': {
+          'Boise': ['83701', '83702', '83703'],
+          'Meridian': ['83642', '83646', '83680'],
+          'Nampa': ['83651', '83652', '83653']
+        },
+        'Illinois': {
+          'Chicago': ['60601', '60602', '60603'],
+          'Springfield': ['62701', '62702', '62703'],
+          'Peoria': ['61601', '61602', '61603']
+        },
+        'Indiana': {
+          'Indianapolis': ['46201', '46202', '46203'],
+          'Fort Wayne': ['46801', '46802', '46803'],
+          'Evansville': ['47701', '47702', '47703']
+        },
+        'Iowa': {
+          'Des Moines': ['50301', '50302', '50303'],
+          'Cedar Rapids': ['52401', '52402', '52403'],
+          'Davenport': ['52801', '52802', '52803']
+        },
+        'Kansas': {
+          'Wichita': ['67201', '67202', '67203'],
+          'Overland Park': ['66204', '66207', '66210'],
+          'Kansas City': ['66101', '66102', '66103']
+        },
+        'Kentucky': {
+          'Louisville': ['40201', '40202', '40203'],
+          'Lexington': ['40501', '40502', '40503'],
+          'Bowling Green': ['42101', '42102', '42103']
+        },
+        'Louisiana': {
+          'New Orleans': ['70112', '70113', '70114'],
+          'Baton Rouge': ['70801', '70802', '70803'],
+          'Shreveport': ['71101', '71102', '71103']
+        },
+        'Maine': {
+          'Portland': ['04101', '04102', '04103'],
+          'Lewiston': ['04240', '04241', '04243'],
+          'Bangor': ['04401', '04402', '04403']
+        },
+        'Maryland': {
+          'Baltimore': ['21201', '21202', '21203'],
+          'Columbia': ['21044', '21045', '21046'],
+          'Germantown': ['20874', '20875', '20876']
+        },
+        'Massachusetts': {
+          'Boston': ['02101', '02102', '02103'],
+          'Worcester': ['01601', '01602', '01603'],
+          'Springfield': ['01101', '01102', '01103']
+        },
+        'Michigan': {
+          'Detroit': ['48201', '48202', '48203'],
+          'Grand Rapids': ['49501', '49502', '49503'],
+          'Warren': ['48088', '48089', '48090']
+        },
+        'Minnesota': {
+          'Minneapolis': ['55401', '55402', '55403'],
+          'Saint Paul': ['55101', '55102', '55103'],
+          'Rochester': ['55901', '55902', '55903']
+        },
+        'Mississippi': {
+          'Jackson': ['39201', '39202', '39203'],
+          'Gulfport': ['39501', '39502', '39503'],
+          'Southaven': ['38671', '38672', '38673']
+        },
+        'Missouri': {
+          'Kansas City': ['64101', '64102', '64103'],
+          'Saint Louis': ['63101', '63102', '63103'],
+          'Springfield': ['65801', '65802', '65803']
+        },
+        'Montana': {
+          'Billings': ['59101', '59102', '59103'],
+          'Missoula': ['59801', '59802', '59803'],
+          'Great Falls': ['59401', '59402', '59403']
+        },
+        'Nebraska': {
+          'Omaha': ['68101', '68102', '68103'],
+          'Lincoln': ['68501', '68502', '68503'],
+          'Bellevue': ['68005', '68123', '68147']
+        },
+        'Nevada': {
+          'Las Vegas': ['89101', '89102', '89103'],
+          'Henderson': ['89002', '89011', '89012'],
+          'Reno': ['89501', '89502', '89503']
+        },
+        'New Hampshire': {
+          'Manchester': ['03101', '03102', '03103'],
+          'Nashua': ['03060', '03061', '03062'],
+          'Concord': ['03301', '03302', '03303']
+        },
+        'New Jersey': {
+          'Newark': ['07101', '07102', '07103'],
+          'Jersey City': ['07301', '07302', '07303'],
+          'Paterson': ['07501', '07502', '07503']
+        },
+        'New Mexico': {
+          'Albuquerque': ['87101', '87102', '87103'],
+          'Las Cruces': ['88001', '88002', '88003'],
+          'Santa Fe': ['87501', '87502', '87503']
+        },
+        'New York': {
+          'New York City': ['10001', '10002', '10003'],
+          'Buffalo': ['14201', '14202', '14203'],
+          'Albany': ['12201', '12202', '12203'],
+          'Rochester': ['14602', '14603', '14604'],
+          'Syracuse': ['13201', '13202', '13203']
+        },
+        'North Carolina': {
+          'Charlotte': ['28201', '28202', '28203'],
+          'Raleigh': ['27601', '27602', '27603'],
+          'Greensboro': ['27401', '27402', '27403']
+        },
+        'North Dakota': {
+          'Fargo': ['58102', '58103', '58104'],
+          'Bismarck': ['58501', '58502', '58503'],
+          'Grand Forks': ['58201', '58202', '58203']
+        },
+        'Ohio': {
+          'Columbus': ['43201', '43202', '43203'],
+          'Cleveland': ['44101', '44102', '44103'],
+          'Cincinnati': ['45201', '45202', '45203']
+        },
+        'Oklahoma': {
+          'Oklahoma City': ['73101', '73102', '73103'],
+          'Tulsa': ['74101', '74102', '74103'],
+          'Norman': ['73069', '73070', '73071']
+        },
+        'Oregon': {
+          'Portland': ['97201', '97202', '97203'],
+          'Eugene': ['97401', '97402', '97403'],
+          'Salem': ['97301', '97302', '97303']
+        },
+        'Pennsylvania': {
+          'Philadelphia': ['19101', '19102', '19103'],
+          'Pittsburgh': ['15201', '15202', '15203'],
+          'Allentown': ['18101', '18102', '18103']
+        },
+        'Rhode Island': {
+          'Providence': ['02901', '02902', '02903'],
+          'Warwick': ['02886', '02888', '02889'],
+          'Cranston': ['02910', '02920', '02921']
+        },
+        'South Carolina': {
+          'Columbia': ['29201', '29202', '29203'],
+          'Charleston': ['29401', '29402', '29403'],
+          'North Charleston': ['29405', '29406', '29407']
+        },
+        'South Dakota': {
+          'Sioux Falls': ['57101', '57102', '57103'],
+          'Rapid City': ['57701', '57702', '57703'],
+          'Aberdeen': ['57401', '57402', '57403']
+        },
+        'Tennessee': {
+          'Nashville': ['37201', '37202', '37203'],
+          'Memphis': ['38101', '38102', '38103'],
+          'Knoxville': ['37901', '37902', '37903']
+        },
+        'Texas': {
+          'Houston': ['77001', '77002', '77003'],
+          'Austin': ['73301', '73344', '78701'],
+          'Dallas': ['75201', '75202', '75203'],
+          'San Antonio': ['78201', '78202', '78203'],
+          'Fort Worth': ['76101', '76102', '76103']
+        },
+        'Utah': {
+          'Salt Lake City': ['84101', '84102', '84103'],
+          'West Valley City': ['84119', '84120', '84128'],
+          'Provo': ['84601', '84602', '84603']
+        },
+        'Vermont': {
+          'Burlington': ['05401', '05402', '05403'],
+          'South Burlington': ['05403', '05407', '05408'],
+          'Rutland': ['05701', '05702', '05703']
+        },
+        'Virginia': {
+          'Virginia Beach': ['23450', '23451', '23452'],
+          'Norfolk': ['23501', '23502', '23503'],
+          'Chesapeake': ['23320', '23321', '23322']
+        },
+        'Washington': {
+          'Seattle': ['98101', '98102', '98103'],
+          'Spokane': ['99201', '99202', '99203'],
+          'Tacoma': ['98401', '98402', '98403']
+        },
+        'West Virginia': {
+          'Charleston': ['25301', '25302', '25303'],
+          'Huntington': ['25701', '25702', '25703'],
+          'Morgantown': ['26501', '26505', '26508']
+        },
+        'Wisconsin': {
+          'Milwaukee': ['53201', '53202', '53203'],
+          'Madison': ['53701', '53702', '53703'],
+          'Green Bay': ['54301', '54302', '54303']
+        },
+        'Wyoming': {
+          'Cheyenne': ['82001', '82002', '82003'],
+          'Casper': ['82601', '82602', '82603'],
+          'Laramie': ['82070', '82071', '82072']
+        }
+      },
+ 
+   // United Arab Emirates
+'United Arab Emirates': {
+    'Riyadh': {
+    },
+    'Makkah': {
+    },
+    'Medina': {
+    },
+    'Eastern Province': {
+    },
+    'Asir': {
+    },
+    'Tabuk': {
+    },
+    'Al Bahah': {
+    },
+    'Jazan': {
+    },
+    'Najran': {
+    },
+    'Hail': {
+    },
+    'Al-Jouf': {
+    },
+    'Northern Borders': {
+    },
+    'Al-Qassim': {
+    },
+  },
+
+     // Saudi Arabia
+'Saudi Arabia': {
+    'Abu Dhabi': {
+    },
+    'Ajman': {
+    },
+    'Dubai': {
+    },
+    'Fujairah': {
+    },
+    'Ras al-Khaimah': {
+    },
+    'Umm al-Quwain': {
+    },
+  },
+
+       // Jordan
+'Jordan': {
+    'Amman': {
+    },
+    'Irbid': {
+    },
+    'Zarqa': {
+    },
+    'Mafraq': {
+    },
+    'Ajloun': {
+    },
+    'Jerash': {
+    },
+    'Madaba': {
+    },
+    'Balqa': {
+    },
+    'Karak': {
+    },
+    'Tafileh': {
+    },
+    'Maan': {
+    },
+    'Aqaba': {
+    },
+  },
+// Egypt
+'Egypt': {
+  'Alexandria': {},
+  'Cairo': {},
+  'Aswan': {},
+  'Suez': {},
+  'Ismailia': {},
+  'Luxor': {},
+  'Qena': {},
+  'Marsa Matruh': {},
+  'North Sinai': {},
+  'South Sinai': {},
+  'Giza': {},
+  'Kafr El-Sheikh': {},
+  'Beni Suef': {},
+  'New Valley': {},
+  'Red Sea': {},
+  'Behira': {},
+  'Dakahlia': {},
+  'Sharkeya': {},
+  'Gharbeya': {},
+  'Fayoum': {},
+  'Qalyubia': {},
+  'Menoufia': {},
+  'Minya': {},
+  'Port Said': {},
+  'Damietta': {},
+  'Sohag': {},
+},
+
+// Yemen
+'Yemen': {
+  'Coastal Plain (Tihamah)': {},
+  'Western Highlands': {},
+  'Central Mountains (Yemen Highlands)': {},
+  'Eastern Highlands': {},
+  'Eastern and Northeastern Desert Regions': {},
+},
+
+// Lebanon
+'Lebanon': {
+  'Akkar': {},
+  'Baalbeck-Hermel': {},
+  'Beirut': {},
+  'Bekaa': {},
+  'Mount Lebanon': {},
+  'North Lebanon': {},
+  'Nabatiyeh': {},
+  'South Lebanon': {},
+},
+
+// Iran
+'Iran': {
+  'Alborz': {},
+  'Ardabil': {},
+  'East Azerbaijan': {},
+  'West Azerbaijan': {},
+  'Bushehr': {},
+  'Chaharmahal and Bakhtiari': {},
+  'Fars': {},
+  'Gilan': {},
+  'Golestan': {},
+  'Hamadan': {},
+  'Hormozgan': {},
+  'Ilam': {},
+  'Isfahan': {},
+  'Kerman': {},
+  'Kermanshah': {},
+  'Khuzestan': {},
+  'Kohgiluyeh and Boyer-Ahmad': {},
+  'Kurdistan': {},
+  'Lorestan': {},
+  'Markazi': {},
+  'Mazandaran': {},
+  'North Khorasan': {},
+  'Qazvin': {},
+  'Qom': {},
+  'Razavi Khorasan': {},
+  'Semnan': {},
+  'Sistan and Baluchestan': {},
+  'South Khorasan': {},
+  'Tehran': {},
+  'Yazd': {},
+  'Zanjan': {},
+},
+
+// Syria
+'Syria': {
+  'Al Hasakah': {},
+  'Al Ladhiqiyah': {},
+  'Al Qunaytirah': {},
+  'Ar-Raqqah': {},
+  'As Suwayda': {},
+  'Dara': {},
+  'Dayr az-Zwar': {},
+  'Dimashq (City)': {},
+  'Dimashq (Governorate)': {},
+  'Halab': {},
+  'Hamah': {},
+  'Hims': {},
+  'Idlib': {},
+  'Tartus': {},
+},
+
+// Iraq
+'Iraq': {
+  'Al-Anbar': {},
+  'Arbil (Erbil)': {},
+  'Babil (Babylon)': {},
+  'Baghdad': {},
+  'Basra': {},
+  'Diyala': {},
+  'Dohuk (Duhok)': {},
+  'Dhi Qar': {},
+  'Halabja': {},
+  'Karbala (Kerbala)': {},
+  'Kirkuk (At-Tamim)': {},
+  'Maysan (Missan)': {},
+  'Muthanna': {},
+  'Najaf': {},
+  'Nineveh': {},
+  'Qadisiyyah': {},
+  'Salah ad-Din': {},
+  'Sulaymaniyah': {},
+  'Wasit': {},
+},
+
+// Kuwait
+'Kuwait': {
+  'Al-Asima (Capital)': {},
+  'Hawalli': {},
+  'Farwaniya': {},
+  'Mubarak Al-Kabeer': {},
+  'Ahmadi': {},
+  'Al-Jahra': {},
+},
+
+// Qatar
+'Qatar': {
+  'Al Shamal': {},
+  'Al Khor': {},
+  'Al Daayen': {},
+  'Umm Salal': {},
+  'Al Rayyan': {},
+  'Doha': {},
+  'Al Wakrah': {},
+  'Madinat ash Shamal': {},
+},
+
+// Bahrain
+'Bahrain': {
+  'Al Muharraq': {},
+  'Al Asimah': {},
+  'Al Janubiyah': {},
+  'Ash Shamaliyah': {},
+},
+
+// Oman
+'Oman': {
+  'Muscat': {},
+  'Dhofar': {},
+  'Musandam': {},
+  'Al Buraimi': {},
+  'Ad Dakhiliyah': {},
+  'North Al Batinah': {},
+  'South Al Batinah': {},
+  'South Ash Sharqiyah': {},
+  'North Ash Sharqiyah': {},
+  'Adh Dhahirah': {},
+  'Al Wusta': {},
+},
+
+// Palestine State
+'Palestine State': {
+  'Jordan valley and Ghawr': {},
+  'Coastal and inner plains': {},
+  'Mountain and Hills': {},
+  'Southern Desert': {},
+},
+
+// Cyprus
+'Cyprus': {
+  'Nicosia': {},
+  'Paphos': {},
+  'Limassol': {},
+  'Larnaca': {},
+  'Famagusta': {},
+  'Kyrenia': {},
+},
+
+// Libya
+'Libya': {
+  'Tripolitania': {},
+  'Cyrenaica': {},
+  'Fezzan': {},
+},
+
+// Armenia
+'Armenia': {
+  'Aragatsotn': {},
+  'Ararat': {},
+  'Armavir': {},
+  'Gegharkunik': {},
+  'Kotayk': {},
+  'Lori': {},
+  'Shirak': {},
+  'Syunik': {},
+  'Vayots Dzor': {},
+  'Tavush': {},
+},
+
+// Afghanistan
+'Afghanistan': {
+  'Central Highlands': {},
+  'North Afghanistan': {},
+  'South Afghanistan': {},
+  'East Afghanistan': {},
+  'West Afghanistan': {},
+},
+
+// Pakistan
+'Pakistan': {
+  'Balochistan': {},
+  'Khyber Pakhtunkhwa': {},
+  'Punjab': {},
+  'Sindh': {},
+},
+
+// Sudan
+'Sudan': {
+  'Blue Nile': {},
+  'Central Darfur': {},
+  'East Darfur': {},
+  'Gedaref': {},
+  'al-Gezira': {},
+  'Kassala': {},
+  'Khartoum': {},
+  'Northern': {},
+  'North Darfur': {},
+  'North Kordofan': {},
+  'Red Sea': {},
+  'River Nile': {},
+  'Sennar': {},
+  'South Darfur': {},
+  'South Kordofan': {},
+  'West Darfur': {},
+  'West Kordofan': {},
+  'White Nile': {},
+},
+
+// Georgia
+'Georgia': {
+  'Appalachian Plateau': {},
+  'Ridge and Valley': {},
+  'Blue Ridge': {},
+  'Piedmont': {},
+  'Coastal Plain': {},
+},
+
+// Algeria
+'Algeria': {
+  'Adrar': {},
+  'Ain Defla': {},
+  'Ain Temouchent': {},
+  'Algiers (Alger)': {},
+  'Annaba': {},
+  'Batna': {},
+  'Bechar': {},
+  'Bejaia': {},
+  'Biskra': {},
+  'Blida': {},
+  'Bordj Bou Arreridj': {},
+  'Bouira': {},
+  'Boumerdes': {},
+  'Chlef': {},
+  'Constantine': {},
+  'Djelfa': {},
+  'El Bayadh': {},
+  'El Oued': {},
+  'El Tarf': {},
+  'Ghardaia': {},
+  'Guelma': {},
+  'Illizi': {},
+  'Jijel': {},
+  'Khenchela': {},
+  'Laghouat': {},
+  'Mascara': {},
+  'Medea': {},
+  'Mila': {},
+  'Mostaganem': {},
+  'M\'Sila': {},
+  'Naama': {},
+  'Oran': {},
+  'Ouargla': {},
+  'Oum el Bouaghi': {},
+  'Relizane': {},
+  'Saida': {},
+  'Setif': {},
+  'Sidi Bel Abbes': {},
+  'Skikda': {},
+  'Souk Ahras': {},
+  'Tamanrasset': {},
+  'Tebessa': {},
+  'Tiaret': {},
+  'Tindouf': {},
+  'Tipaza': {},
+  'Tissemsilt': {},
+  'Tizi Ouzou': {},
+  'Tlemcen': {},
+},
+
+// Morocco
+'Morocco': {
+  'Tanger-Tetouan-Al Hoceima': {},
+  'Oriental': {},
+  'Fès-Meknès': {},
+  'Rabat-Salé-Kénitra': {},
+  'Béni Mellal-Khenifra': {},
+  'Casablanca-Settat': {},
+  'Marrakesh-Safi': {},
+  'Drâa-Tafilalet': {},
+  'Souss-Massa': {},
+  'Guelmim-Oued Noun': {},
+  'Laâyoune-Sakia El Hamra': {},
+  'Dakhla-Oued Ed-Dahab': {},
+},
+
+// Tunisia
+'Tunisia': {
+  'Tunis': {},
+  'Ariana': {},
+  'Ben Arous': {},
+  'Mannouba': {},
+  'Bizerte': {},
+  'Nabeul': {},
+  'Béja': {},
+  'Jendouba': {},
+  'Zaghouan': {},
+  'Siliana': {},
+  'Le Kef': {},
+  'Sousse': {},
+  'Monastir': {},
+  'Mahdia': {},
+  'Kasserine': {},
+  'Sidi Bouzid': {},
+  'Kairouan': {},
+  'Gafsa': {},
+  'Sfax': {},
+  'Gabès': {},
+  'Médenine': {},
+  'Tozeur': {},
+  'Kebili': {},
+  'Tataouine': {},
+},
+
+// Turkmenistan
+'Turkmenistan': {
+  'Ahal': {},
+  'Balkan': {},
+  'Dashoguz': {},
+  'Lebap': {},
+  'Mary': {},
+},
+
+// Uzbekistan
+'Uzbekistan': {
+  'Andijan': {},
+  'Bukhara': {},
+  'Fergana': {},
+  'Jizzakh': {},
+  'Kashkadarya': {},
+  'Khorezm': {},
+  'Namangan': {},
+  'Navoi': {},
+  'Samarkand': {},
+  'Surkhandarya': {},
+  'Syrdarya': {},
+  'Tashkent': {},
+},
+
+// India
+'India': {
+  'Andhra Pradesh': {},
+  'Arunachal Pradesh': {},
+  'Assam': {},
+  'Bihar': {},
+  'Chhattisgarh': {},
+  'Goa': {},
+  'Gujarat': {},
+  'Haryana': {},
+  'Himachal Pradesh': {},
+  'Jharkhand': {},
+  'Karnataka': {},
+  'Kerala': {},
+  'Madhya Pradesh': {},
+  'Maharashtra': {},
+  'Manipur': {},
+  'Meghalaya': {},
+  'Mizoram': {},
+  'Nagaland': {},
+  'Odisha': {},
+  'Punjab': {},
+  'Rajasthan': {},
+  'Sikkim': {},
+  'Tamil Nadu': {},
+  'Telangana': {},
+  'Tripura': {},
+  'Uttar Pradesh': {},
+  'Uttarakhand': {},
+  'West Bengal': {},
+  'Andaman and Nicobar Islands': {},
+  'Chandigarh': {},
+  'Dadra and Nagar Haveli and Daman and Diu': {},
+  'Delhi (National Capital Territory)': {},
+  'Jammu and Kashmir': {},
+  'Ladakh': {},
+  'Lakshadweep': {},
+  'Puducherry': {},
+},
+
+// Ethiopia
+'Ethiopia': {
+  'Afar': {},
+  'Amhara': {},
+  'Benishangul-Gumuz': {},
+  'Central Ethiopia': {},
+  'Gambela': {},
+  'Harari': {},
+  'Oromia': {},
+  'Sidama': {},
+  'Somali': {},
+  'South Ethiopia': {},
+  'Southwest Ethiopia': {},
+  'Tigray': {},
+},
+
+// Kazakhstan
+'Kazakhstan': {
+  'Abai': {},
+  'Akmola': {},
+  'Aktobe': {},
+  'Almaty Region': {},
+  'Atyrau': {},
+  'East Kazakhstan': {},
+  'Jambyl': {},
+  'Jetisu': {},
+  'Karaganda': {},
+  'Kostanay': {},
+  'Kyzylorda': {},
+  'Mangystau': {},
+  'North Kazakhstan': {},
+  'Pavlodar': {},
+  'Turkistan': {},
+  'Ulytau': {},
+  'West Kazakhstan': {},
+},
+
+// Turkey
+'Turkey': {
+  'Marmara': {},
+  'Aegean': {},
+  'Mediterranean': {},
+  'Central Anatolia': {},
+  'Black Sea': {},
+  'Eastern Anatolia': {},
+  'Southeastern Anatolia': {},
+},
+
+// Djibouti
+'Djibouti': {
+  'Djibouti City': {},
+  'Obock': {},
+  'Tadjourah': {},
+  'Dikhil': {},
+  'Ali Sabieh': {},
+  'Arta': {},
+},
+
+// Somalia
+'Somalia': {
+  'Puntland': {},
+  'Hirshabelle': {},
+  'Jubaland': {},
+  'South West': {},
+  'Galmudug': {},
+  'Somaliland': {},
+},
+
+// Mauritania
+'Mauritania': {
+  'Adrar': {},
+  'Assaba': {},
+  'Brakna': {},
+  'Dakhlet Nouadhibou': {},
+  'Gorgol': {},
+  'Guidimaka': {},
+  'Hodh ech Chargui': {},
+  'Hodh El Gharbi': {},
+  'Inchiri': {},
+  'Nouakchott Nord': {},
+  'Nouakchott Ouest': {},
+  'Nouakchott Sud': {},
+  'Tagant': {},
+  'Tiris Zemmour': {},
+  'Trarza': {},
+},
+
+// Eritrea
+'Eritrea': {
+  'Anseba': {},
+  'Debub': {},
+  'Debubawi Keyih Bahri': {},
+  'Gash-Barka': {},
+  'Ma\'akel': {},
+  'Semenawi Keyih Bahri': {},
+},
+
+// Kyrgyzstan
+'Kyrgyzstan': {
+  'Batken': {},
+  'Chuy': {},
+  'Djalal-Abad': {},
+  'Issyk-Kul': {},
+  'Naryn': {},
+  'Osh': {},
+  'Talas': {},
+},
+
+  // United Kingdom (4 Countries: England, Scotland, Wales, Northern Ireland, further divided by postcode areas)
+  'United Kingdom': {
+    'England': {
+      'London': ['SW1A 0AA', 'EC1A 1BB', 'W1A 0AA', 'SE1 9SG', 'N1 9AA', 'E1 6PU', 'WC1A 1AA', 'NW1 7AA', 'SW3 2AA', 'SE11 5AA'], // Many specific postcodes
+      'Manchester': ['M1 1AE', 'M2 2AF', 'M3 3AG', 'M4 4AH', 'M5 5AJ'],
+      'Birmingham': ['B1 1BB', 'B2 2CC', 'B3 3DD', 'B4 4EE', 'B5 5FF'],
+      'Liverpool': ['L1 1AA', 'L2 2BB', 'L3 3CC', 'L4 4DD', 'L5 5EE'],
+      'Leeds': ['LS1 1AA', 'LS2 2BB', 'LS3 3CC'],
+      'Bristol': ['BS1 1AA', 'BS2 2BB', 'BS3 3CC'],
+      'Sheffield': ['S1 1AA', 'S2 2BB', 'S3 3CC'],
+      'Nottingham': ['NG1 1AA', 'NG2 2BB', 'NG3 3CC'],
+      'Newcastle upon Tyne': ['NE1 1AA', 'NE2 2BB', 'NE3 3CC'],
+      'Brighton': ['BN1 1AA', 'BN2 2BB', 'BN3 3CC']
+    },
+    'Scotland': {
+      'Edinburgh': ['EH1 1BB', 'EH2 2CC', 'EH3 3DD', 'EH4 4EE', 'EH5 5FF'],
+      'Glasgow': ['G1 1AA', 'G2 2BB', 'G3 3CC', 'G4 4DD', 'G5 5EE'],
+      'Aberdeen': ['AB10 1AA', 'AB11 1BB', 'AB12 1CC'],
+      'Dundee': ['DD1 1AA', 'DD2 2BB']
+    },
+    'Wales': {
+      'Cardiff': ['CF10 1AA', 'CF11 1BB', 'CF14 1CC', 'CF15 1DD', 'CF23 1EE'],
+      'Swansea': ['SA1 1AA', 'SA2 2BB', 'SA3 3CC']
+    },
+    'Northern Ireland': {
+      'Belfast': ['BT1 1AA', 'BT2 2BB', 'BT3 3CC', 'BT4 4DD', 'BT5 5EE'],
+      'Derry (Londonderry)': ['BT48 7AA', 'BT48 7BB']
+    }
+  }
+
+
+    };
+
+    // NEW: Phone Country Codes data
+    window.phoneCountryCodes = {
+        "United States": "+1",
+        "Canada": "+1",
+        "United Kingdom": "+44",
+        "Australia": "+61",
+        "Japan": "+81",
+        "South Korea": "+82",
+        "Philippines": "+63",
+        "Singapore": "+65",
+        "Afghanistan": "+93",
+        "Albania": "+355",
+        "Algeria": "+213",
+        "Andorra": "+376",
+        "Angola": "+244",
+        "Argentina": "+54",
+        "Armenia": "+374",
+        "Austria": "+43",
+        "Azerbaijan": "+994",
+        "Bahamas": "+1-242",
+        "Bahrain": "+973",
+        "Bangladesh": "+880",
+        "Barbados": "+1-246",
+        "Belarus": "+375",
+        "Belgium": "+32",
+        "Belize": "+501",
+        "Benin": "+229",
+        "Bhutan": "+975",
+        "Bolivia": "+591",
+        "Bosnia and Herzegovina": "+387",
+        "Botswana": "+267",
+        "Brazil": "+55",
+        "Brunei": "+673",
+        "Bulgaria": "+359",
+        "Burkina Faso": "+226",
+        "Burundi": "+257",
+        "Cabo Verde": "+238",
+        "Cambodia": "+855",
+        "Cameroon": "+237",
+        "Central African Republic": "+236",
+        "Chad": "+235",
+        "Chile": "+56",
+        "China": "+86",
+        "Colombia": "+57",
+        "Comoros": "+269",
+        "Congo (Congo-Brazzaville)": "+242",
+        "Costa Rica": "+506",
+        "Côte d'Ivoire": "+225",
+        "Croatia": "+385",
+        "Cuba": "+53",
+        "Cyprus": "+357",
+        "Czechia (Czech Republic)": "+420",
+        "Democratic Republic of the Congo": "+243",
+        "Denmark": "+45",
+        "Djibouti": "+253",
+        "Dominica": "+1-767",
+        "Dominican Republic": "+1-809, +1-829, +1-849",
+        "Ecuador": "+593",
+        "Egypt": "+20",
+        "El Salvador": "+503",
+        "Equatorial Guinea": "+240",
+        "Eritrea": "+291",
+        "Estonia": "+372",
+        "Ethiopia": "+251",
+        "Fiji": "+679",
+        "Finland": "+358",
+        "France": "+33",
+        "Gabon": "+241",
+        "Gambia": "+220",
+        "Georgia": "+995",
+        "Germany": "+49",
+        "Ghana": "+233",
+        "Greece": "+30",
+        "Grenada": "+1-473",
+        "Guatemala": "+502",
+        "Guinea": "+224",
+        "Guinea-Bissau": "+245",
+        "Guyana": "+592",
+        "Haiti": "+509",
+        "Holy See": "+379",
+        "Honduras": "+504",
+        "Hungary": "+36",
+        "Iceland": "+354",
+        "India": "+91",
+        "Indonesia": "+62",
+        "Iran": "+98",
+        "Iraq": "+964",
+        "Ireland": "+353",
+        "Israel": "+972",
+        "Italy": "+39",
+        "Jamaica": "+1-876",
+        "Jordan": "+962",
+        "Kazakhstan": "+7",
+        "Kenya": "+254",
+        "Kiribati": "+686",
+        "Kuwait": "+965",
+        "Kyrgyzstan": "+996",
+        "Laos": "+856",
+        "Latvia": "+371",
+        "Lebanon": "+961",
+        "Lesotho": "+266",
+        "Liberia": "+231",
+        "Libya": "+218",
+        "Liechtenstein": "+423",
+        "Lithuania": "+370",
+        "Luxembourg": "+352",
+        "Madagascar": "+261",
+        "Malawi": "+265",
+        "Malaysia": "+60",
+        "Maldives": "+960",
+        "Mali": "+223",
+        "Malta": "+356",
+        "Marshall Islands": "+692",
+        "Mauritania": "+222",
+        "Mauritius": "+230",
+        "Mexico": "+52",
+        "Micronesia": "+691",
+        "Moldova": "+373",
+        "Monaco": "+377",
+        "Mongolia": "+976",
+        "Montenegro": "+382",
+        "Morocco": "+212",
+        "Mozambique": "+258",
+        "Myanmar (formerly Burma)": "+95",
+        "Namibia": "+264",
+        "Nauru": "+674",
+        "Nepal": "+977",
+        "Netherlands": "+31",
+        "New Zealand": "+64",
+        "Nicaragua": "+505",
+        "Niger": "+227",
+        "Nigeria": "+234",
+        "North Korea": "+850",
+        "North Macedonia": "+389",
+        "Norway": "+47",
+        "Oman": "+968",
+        "Pakistan": "+92",
+        "Palau": "+680",
+        "Palestine State": "+970",
+        "Panama": "+507",
+        "Papua New Guinea": "+675",
+        "Paraguay": "+595",
+        "Peru": "+51",
+        "Poland": "+48",
+        "Portugal": "+351",
+        "Qatar": "+974",
+        "Romania": "+40",
+        "Russia": "+7",
+        "Rwanda": "+250",
+        "Saint Kitts and Nevis": "+1-869",
+        "Saint Lucia": "+1-758",
+        "Saint Vincent and the Grenadines": "+1-784",
+        "Samoa": "+685",
+        "San Marino": "+378",
+        "Sao Tome and Principe": "+239",
+        "Saudi Arabia": "+966",
+        "Senegal": "+221",
+        "Serbia": "+381",
+        "Seychelles": "+248",
+        "Sierra Leone": "+232",
+        "Singapore": "+65",
+        "Slovakia": "+421",
+        "Slovenia": "+386",
+        "Solomon Islands": "+677",
+        "Somalia": "+252",
+        "South Africa": "+27",
+        "South Korea": "+82",
+        "South Sudan": "+211",
+        "Spain": "+34",
+        "Sri Lanka": "+94",
+        "Sudan": "+249",
+        "Suriname": "+597",
+        "Sweden": "+46",
+        "Switzerland": "+41",
+        "Syria": "+963",
+        "Tajikistan": "+992",
+        "Tanzania": "+255",
+        "Thailand": "+66",
+        "Timor-Leste": "+670",
+        "Togo": "+228",
+        "Tonga": "+676",
+        "Trinidad and Tobago": "+1-868",
+        "Tunisia": "+216",
+        "Turkey": "+90",
+        "Turkmenistan": "+993",
+        "Tuvalu": "+688",
+        "Uganda": "+256",
+        "Ukraine": "+380",
+        "United Arab Emirates": "+971",
+        "Uruguay": "+598",
+        "Uzbekistan": "+998",
+        "Vanuatu": "+678",
+        "Venezuela": "+58",
+        "Vietnam": "+84",
+        "Yemen": "+967",
+        "Zambia": "+260",
+        "Zimbabwe": "+263"
+    };
+
+    // NEW: Phone Country Codes data
+    window.phoneCountryCodes = {
+        "United States": "+1",
+        "Canada": "+1",
+        "United Kingdom": "+44",
+        "Australia": "+61",
+        "Japan": "+81",
+        "South Korea": "+82",
+        "Philippines": "+63",
+        "Singapore": "+65",
+        "Afghanistan": "+93",
+        "Albania": "+355",
+        "Algeria": "+213",
+        "Andorra": "+376",
+        "Angola": "+244",
+        "Argentina": "+54",
+        "Armenia": "+374",
+        "Austria": "+43",
+        "Azerbaijan": "+994",
+        "Bahamas": "+1-242",
+        "Bahrain": "+973",
+        "Bangladesh": "+880",
+        "Barbados": "+1-246",
+        "Belarus": "+375",
+        "Belgium": "+32",
+        "Belize": "+501",
+        "Benin": "+229",
+        "Bhutan": "+975",
+        "Bolivia": "+591",
+        "Bosnia and Herzegovina": "+387",
+        "Botswana": "+267",
+        "Brazil": "+55",
+        "Brunei": "+673",
+        "Bulgaria": "+359",
+        "Burkina Faso": "+226",
+        "Burundi": "+257",
+        "Cabo Verde": "+238",
+        "Cambodia": "+855",
+        "Cameroon": "+237",
+        "Central African Republic": "+236",
+        "Chad": "+235",
+        "Chile": "+56",
+        "China": "+86",
+        "Colombia": "+57",
+        "Comoros": "+269",
+        "Congo (Congo-Brazzaville)": "+242",
+        "Costa Rica": "+506",
+        "Côte d'Ivoire": "+225",
+        "Croatia": "+385",
+        "Cuba": "+53",
+        "Cyprus": "+357",
+        "Czechia (Czech Republic)": "+420",
+        "Democratic Republic of the Congo": "+243",
+        "Denmark": "+45",
+        "Djibouti": "+253",
+        "Dominica": "+1-767",
+        "Dominican Republic": "+1-809, +1-829, +1-849",
+        "Ecuador": "+593",
+        "Egypt": "+20",
+        "El Salvador": "+503",
+        "Equatorial Guinea": "+240",
+        "Eritrea": "+291",
+        "Estonia": "+372",
+        "Ethiopia": "+251",
+        "Fiji": "+679",
+        "Finland": "+358",
+        "France": "+33",
+        "Gabon": "+241",
+        "Gambia": "+220",
+        "Georgia": "+995",
+        "Germany": "+49",
+        "Ghana": "+233",
+        "Greece": "+30",
+        "Grenada": "+1-473",
+        "Guatemala": "+502",
+        "Guinea": "+224",
+        "Guinea-Bissau": "+245",
+        "Guyana": "+592",
+        "Haiti": "+509",
+        "Holy See": "+379",
+        "Honduras": "+504",
+        "Hungary": "+36",
+        "Iceland": "+354",
+        "India": "+91",
+        "Indonesia": "+62",
+        "Iran": "+98",
+        "Iraq": "+964",
+        "Ireland": "+353",
+        "Israel": "+972",
+        "Italy": "+39",
+        "Jamaica": "+1-876",
+        "Jordan": "+962",
+        "Kazakhstan": "+7",
+        "Kenya": "+254",
+        "Kiribati": "+686",
+        "Kuwait": "+965",
+        "Kyrgyzstan": "+996",
+        "Laos": "+856",
+        "Latvia": "+371",
+        "Lebanon": "+961",
+        "Lesotho": "+266",
+        "Liberia": "+231",
+        "Libya": "+218",
+        "Liechtenstein": "+423",
+        "Lithuania": "+370",
+        "Luxembourg": "+352",
+        "Madagascar": "+261",
+        "Malawi": "+265",
+        "Malaysia": "+60",
+        "Maldives": "+960",
+        "Mali": "+223",
+        "Malta": "+356",
+        "Marshall Islands": "+692",
+        "Mauritania": "+222",
+        "Mauritius": "+230",
+        "Mexico": "+52",
+        "Micronesia": "+691",
+        "Moldova": "+373",
+        "Monaco": "+377",
+        "Mongolia": "+976",
+        "Montenegro": "+382",
+        "Morocco": "+212",
+        "Mozambique": "+258",
+        "Myanmar (formerly Burma)": "+95",
+        "Namibia": "+264",
+        "Nauru": "+674",
+        "Nepal": "+977",
+        "Netherlands": "+31",
+        "New Zealand": "+64",
+        "Nicaragua": "+505",
+        "Niger": "+227",
+        "Nigeria": "+234",
+        "North Korea": "+850",
+        "North Macedonia": "+389",
+        "Norway": "+47",
+        "Oman": "+968",
+        "Pakistan": "+92",
+        "Palau": "+680",
+        "Palestine State": "+970",
+        "Panama": "+507",
+        "Papua New Guinea": "+675",
+        "Paraguay": "+595",
+        "Peru": "+51",
+        "Poland": "+48",
+        "Portugal": "+351",
+        "Qatar": "+974",
+        "Romania": "+40",
+        "Russia": "+7",
+        "Rwanda": "+250",
+        "Saint Kitts and Nevis": "+1-869",
+        "Saint Lucia": "+1-758",
+        "Saint Vincent and the Grenadines": "+1-784",
+        "Samoa": "+685",
+        "San Marino": "+378",
+        "Sao Tome and Principe": "+239",
+        "Saudi Arabia": "+966",
+        "Senegal": "+221",
+        "Serbia": "+381",
+        "Seychelles": "+248",
+        "Sierra Leone": "+232",
+        "Singapore": "+65",
+        "Slovakia": "+421",
+        "Slovenia": "+386",
+        "Solomon Islands": "+677",
+        "Somalia": "+252",
+        "South Africa": "+27",
+        "South Korea": "+82",
+        "South Sudan": "+211",
+        "Spain": "+34",
+        "Sri Lanka": "+94",
+        "Sudan": "+249",
+        "Suriname": "+597",
+        "Sweden": "+46",
+        "Switzerland": "+41",
+        "Syria": "+963",
+        "Tajikistan": "+992",
+        "Tanzania": "+255",
+        "Thailand": "+66",
+        "Timor-Leste": "+670",
+        "Togo": "+228",
+        "Tonga": "+676",
+        "Trinidad and Tobago": "+1-868",
+        "Tunisia": "+216",
+        "Turkey": "+90",
+        "Turkmenistan": "+993",
+        "Tuvalu": "+688",
+        "Uganda": "+256",
+        "Ukraine": "+380",
+        "United Arab Emirates": "+971",
+        "Uruguay": "+598",
+        "Uzbekistan": "+998",
+        "Vanuatu": "+678",
+        "Venezuela": "+58",
+        "Vietnam": "+84",
+        "Yemen": "+967",
+        "Zambia": "+260",
+        "Zimbabwe": "+263"
+    };
+
+    // New data structure for industry-specific roles
+    window.industryRolesData = {
+        "AV Rental & Staging": [
+        "Audio Engineer",
+        "Audio Technician",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Business Development Manager",
+        "Camera Operator",
+        "Coordinator / Account Manager",
+        "Customer Service Representative",
+        "Equipment Testing & Maintenance / Cleaning",
+        "General Manager",
+        "Graphics/Playback Operator / Projectionist",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "LED Technician",
+        "Lighting Designer / Operator / Technician",
+        "Lighting Engineer / Director",
+        "Live Event Producer",
+        "Location Manager",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Officer",
+        "Operations Manager",
+        "Procurement / Purchasing Officer",
+        "Production Assistant",
+        "Production Coordinator",
+        "Project Manager",
+        "Rigging Specialist",
+        "Safety Officer",
+        "Security Personnel",
+        "Show / Technical Director",
+        "Social Media Manager",
+        "Stage Manager",
+        "Stagehand / Technical Crew Member",
+        "Video Engineer / Director",
+        "Video Technician",
+        "Warehouse Manager / Personel"
+    ],
+    "AV Integration": [
+        "Account Manager/Pre-Sales Engineer",
+        "Audio Engineer",
+        "Audio Technician",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Business Development Manager",
+        "Control System Programmer",
+        "Customer Service Representative",
+        "Design Engineer/System Designer",
+        "DSP Programmer",
+        "Estimator / System Consultant",
+        "General Manager",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Lighting Engineer",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Officer",
+        "Procurement / Purchasing Officer",
+        "Project Manager",
+        "Rack Builder Installer",
+        "Sales Manager/Consultant / Account Executive",
+        "Service Technician / Support / System Maintenance",
+        "Social Media Manager",
+        "Technician (Installer/Commissioning)",
+        "Video Engineer",
+        "Warehouse Manager / Personel"
+    ],
+    "Agriculture, Fishing, Forestry and Mining": [
+        "Account Manager",
+        "Agricultural Engineer",
+        "Agricultural Technician",
+        "Agronomist",
+        "Aquaculture Specialist",
+        "BI/Data Analyst",
+        "Biologist/Ecologist",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Business Development Manager",
+        "Cleaner/Maintenance Staff",
+        "Compliance Officer",
+        "Conservation Scientist",
+        "Crop Consultant",
+        "Data Scientist",
+        "Environmental Engineer",
+        "Environmental Technician",
+        "Farm Manager",
+        "Farm Worker/Laborer",
+        "Fish Hatchery Manager",
+        "Fisherman",
+        "Food Scientist",
+        "General Manager",
+        "Geologists",
+        "Heavy Equipment Operator",
+        "Horticulturist",
+        "Human Resources Manager",
+        "Hydrologist",
+        "IT/Systems Administrator/Network Engineer",
+        "Logistics / Driver / Truck Loader",
+        "Logger/Logging Equipment Operator",
+        "Machine Operators",
+        "Maintenance Technician",
+        "Miners",
+        "Operations Manager",
+        "Procurement / Purchasing Officer",
+        "Public Relations Specialist",
+        "R&D Scientist",
+        "Rancher",
+        "Safety Officer/Manager",
+        "Social Media Manager",
+        "Soil Scientist",
+        "Supply Chain Manager",
+        "Veterinarian"
+    ],
+    "Broadcast & Media Production": [
+        "Audio Engineer",
+        "Audio Technician",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Broadcaster / Reporter / Announcer / Host",
+        "Business Development Manager",
+        "Camera Operator",
+        "Casting Director",
+        "Coordinator / Account Manager",
+        "Customer Service Representative",
+        "Director",
+        "Equipment Testing & Maintenance / Cleaning",
+        "Field Techinician",
+        "Foley Artist",
+        "Gaffer/Grip",
+        "Graphics/Playback Operator / Projectionist / Animator",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Lighting Techinician",
+        "Logistics / Driver / Truck Loader",
+        "Makeup Artist/Hair Stylist",
+        "Marketing Officer",
+        "Master Control Operator",
+        "Music Director",
+        "News Director",
+        "On-Air Talent",
+        "Operations Manager",
+        "Procurement / Purchasing Officer",
+        "Producer",
+        "Production Assistant / Crew",
+        "Production Coordinator / Production Specialist",
+        "Program Director",
+        "Prompter/CG Operator",
+        "Public Relations Specialist",
+        "Quality Control Operator",
+        "Receptionist",
+        "Scriptwriter",
+        "Security Personnel",
+        "Set Designer",
+        "Show Caller/Stage Manager",
+        "Social Media Manager",
+        "Stagehand/Crew Member",
+        "Technical Director",
+        "Video Editor",
+        "Visual Effects (VFX) Artist",
+        "Warehouse Manager / Personel"
+    ],
+    "Construction Company": [
+        "Acoustical Engineer",
+        "Architect",
+        "BIM Manager",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Bricklayer",
+        "Building Engineer",
+        "Business Development Manager",
+        "CAD Designer",
+        "Carpenter",
+        "Civil Engineer",
+        "Construction Inspector",
+        "Construction Manager / Superintendent",
+        "Draftsperson",
+        "Electrician",
+        "Estimator / Consultant",
+        "Foreperson",
+        "General Contractor",
+        "General Manager",
+        "Geotechnical Engineer",
+        "Glazier",
+        "Heavy Equipment Operator",
+        "Human Resources Manager",
+        "Installation Technician",
+        "IT/Systems Administrator/Network Engineer",
+        "Laborer",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Specialist/Manager",
+        "Masons",
+        "Painter",
+        "Plumber",
+        "Procurement Specialist",
+        "Project Engineer",
+        "Project Manager",
+        "Quantity Surveyor",
+        "Roofer",
+        "Safety Officer",
+        "Scheduler",
+        "Site Supervisor",
+        "Structural Engineer",
+        "Surveyor",
+        "Warehouse Manager / Personel",
+        "Welder / Metal Fabricator"
+    ],
+    "Corporate, Legal, Real Estate": [
+        "Auditor",
+        "BI/Data Analyst",
+        "Banker",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Broker",
+        "Budget Analyst",
+        "Business Development Manager",
+        "Chief Financial Officer",
+        "Compliance Officer",
+        "Court Reporters",
+        "Customer Service Representative",
+        "Finance Advisor/ Manager / Controller",
+        "General Manager",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Investment Analyst",
+        "Judge",
+        "Leasing Manager",
+        "Legal Assistants/Secretaries",
+        "Legal Counsel",
+        "Loan Officer",
+        "Marketing Specialist/Manager",
+        "Property Manager",
+        "Purchasing Manager",
+        "Sales Agent / Coordinator",
+        "Social Media Manager",
+        "Tax Consultant",
+        "Wealth Manager"
+    ],
+    "Creative/Advertising/PR Agency": [
+        "Art Director",
+        "BI/Data Analyst",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Brand Strategist",
+        "Business Development Manager",
+        "Campaign/Advertising Manager",
+        "Copywriter/Content Creator / Editor",
+        "Creative Director",
+        "Digital Marketing Specialist",
+        "Finance Manager/Controller",
+        "General Manager",
+        "Graphic Designer",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Marketing Specialist/Manager",
+        "Media Planner",
+        "PR Specialist",
+        "Producer",
+        "Social Media Manager",
+        "Technical Director",
+        "UX/UI Designer",
+        "Videographer /Photographer",
+        "Web Developer/Designer"
+    ],
+    "Digital Signage & Interactive Display": [
+        "Account Manager/Pre-Sales Engineer",
+        "Audio Engineer",
+        "Audio Technician",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Business Development Manager",
+        "Control System Programmer",
+        "Customer Service Representative",
+        "Design Engineer/System Designer",
+        "DSP Programmer",
+        "Estimator / System Consultant",
+        "General Manager",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Lighting Engineer",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Officer",
+        "Procurement / Purchasing Officer",
+        "Project Manager",
+        "Rack Builder Installer",
+        "Sales Manager/Consultant / Account Executive",
+        "Service Technician / Support / System Maintenance",
+        "Social Media Manager",
+        "Technician (Installer/Commissioning)",
+        "Video Engineer",
+        "Warehouse Manager / Personel"
+    ],
+    "Distributor": [
+        "Account Manager",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Brand/Product Manager",
+        "Business Development Manager",
+        "Customer Service Representative",
+        "General Manager",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Inventory Manager",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Specialist/Manager",
+        "Operations/Distribution Manager",
+        "Purchasing Manager/Procurement Personel",
+        "Receiving Clerk",
+        "Sales Coordinator",
+        "Warehouse Manager / Personel"
+    ],
+    "Education": [
+        "Academic Advisor",
+        "Academic Coordinator",
+        "Academic Mentor",
+        "Admissions Officer",
+        "Athletic Director /Coach",
+        "AV Engineer",
+        "AV Technician",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Counselor",
+        "Curriculum Developer",
+        "Custodian",
+        "Dean of Students",
+        "Education Director",
+        "Facilities Manager",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Intervention Specialist",
+        "Laboratory Technician",
+        "Librarian",
+        "Medic or Nurse",
+        "Procurement / Purchasing Officer",
+        "Principal/School Administrator",
+        "Professor/Teachers /Tutor",
+        "Researcher",
+        "School Administrator",
+        "School Psychologist",
+        "Superintendent",
+        "Teacher's Aide",
+        "Web Developer/Designer"
+    ],
+    "Entertainment, Media and Arts , Youtuber": [
+        "Animator",
+        "Artist",
+        "Assistant Director",
+        "Audience Research Analyst",
+        "Audio Engineer",
+        "Audio Technician",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Broadcast/Technical Engineer",
+        "Camera Operator",
+        "Casting Director",
+        "Choreographer",
+        "Composer",
+        "Conductor",
+        "Content Creator",
+        "Costume Designer",
+        "Crew Member",
+        "Customer Service Representative",
+        "Dancer",
+        "Database Administrator",
+        "DevOps Engineer",
+        "Dialogue Editor",
+        "Digital Marketing Specialist",
+        "Editor/Video Editor",
+        "Event Technician",
+        "Executive Producer",
+        "Finance Manager/Controller",
+        "Foley Artist",
+        "Fundraiser/Development Officer",
+        "Gaffer/Grip",
+        "Gallery Owner",
+        "Graphic Designer",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Journalist",
+        "Lighting Designer/Technician",
+        "Logistics / Driver / Truck Loader",
+        "Makeup Artist",
+        "Marketing Specialist/Manager",
+        "Master Control Operator",
+        "Media Archivist/Librarian",
+        "Media Asset Manager Specialist",
+        "Media Planner",
+        "Media Systems Engineer",
+        "Musician",
+        "Office Manager",
+        "Operations Manager",
+        "Performer",
+        "Photographer",
+        "Procurement / Purchasing Officer",
+        "Producer",
+        "Production Assistant",
+        "Public Relations Specialist",
+        "Sales Manager",
+        "Scenic Designer/Builder",
+        "Set Decorator/Dresser",
+        "Sound Designer",
+        "Stage Manager/Show Caller",
+        "Studio Manager",
+        "Talent Agent/Manager",
+        "Technical Director",
+        "Teleprompter Operator",
+        "Training Specialist",
+        "Video Engineer",
+        "Visual Effects Artist",
+        "Writer/Scriptwriter"
+    ],
+    "Government": [
+        "AV Engineer / Technician",
+        "Barangay Officers",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Civil Servant/Government Employee",
+        "Command & Control AV Specialist",
+        "Compliance Officer",
+        "Cybersecurity Specialist/Analyst",
+        "Database Administrator",
+        "Defense Systems Engineer",
+        "DevOps Engineer",
+        "District Engineer",
+        "Economist",
+        "Governors",
+        "Health Official",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Installation Technician",
+        "Intelligence Analyst",
+        "LGU Officers",
+        "Legal Counsel",
+        "Logistics / Driver / Truck Loader",
+        "Military Personnel",
+        "National Government Official",
+        "Police Officer",
+        "Procurement / Purchasing Officer",
+        "SK Officer",
+        "Safety Officer",
+        "Social Worker",
+        "Software Developer/Engineer",
+        "Systems Administrator",
+        "Training Simulation Specialist",
+        "Unified Communications Specialist",
+        "Warehouse Manager / Personel"
+    ],
+    "Healthcare": [
+        "Anesthesiologist",
+        "BI/Data Analyst",
+        "Biomedical Engineer",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Clinical Simulation Specialist",
+        "Dentist",
+        "Dietitian/Nutritionist",
+        "Health Information Manager",
+        "Healthcare Administrator",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Lecture Capture Specialist",
+        "Medical Assistant",
+        "Medical Imaging Specialist",
+        "Medical Researcher",
+        "Medical/Lab Technologist",
+        "Media Production/Streaming Specialist",
+        "Nurse",
+        "Occupational Therapist",
+        "Operating Room/Surgical AV Technician",
+        "PACS Administrator",
+        "Paramedic/EMT",
+        "Patient Engagement Technology Specialist",
+        "Patient Transporter",
+        "Pharmacist Technician",
+        "Physical Therapist",
+        "Physician Assistant",
+        "Psychiatrist",
+        "Psychologist",
+        "Procurement / Purchasing Officer",
+        "Radiologic Technologist",
+        "Receptionist",
+        "Respiratory Therapist",
+        "Speech-Language Pathologist",
+        "Sterile Processing Technician",
+        "Surgeon",
+        "Technical Engineers",
+        "Telemedicine Technician",
+        "Unit Secretary/Ward Clerk"
+    ],
+    "Hospitality": [
+        "AV Engineer",
+        "BI/Data Analyst",
+        "Bartender",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Busser",
+        "Business Development Manager",
+        "Caregiver",
+        "Casino Host",
+        "Casino Operations Manager",
+        "Catering Assistant",
+        "Catering Manager",
+        "Chef",
+        "Concierge",
+        "Cruise Ship Crew/Attendant",
+        "Customer Service Representative",
+        "Dishwasher",
+        "Entertainment/Show Director",
+        "Event Planner/Coordinator",
+        "Event Technology Manager",
+        "Finance Manager/Controller",
+        "Fitness Instructor",
+        "Front Desk Agent/Reservationist",
+        "Gaming Systems Engineer",
+        "Host",
+        "Hotel Manager",
+        "Housekeeping Manager/Supervisor",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Kitchen Manager",
+        "Laundry Attendant",
+        "Line Cook",
+        "Logistics / Driver / Truck Loader",
+        "Maintenance/Cleaning Staff",
+        "Marketing Specialist/Manager",
+        "Operations Manager",
+        "Prep Cook",
+        "Procurement / Purchasing Officer",
+        "Restaurant/Cafe Manager",
+        "Room Attendant",
+        "Security Personnel",
+        "Security Systems Integrator/Technician",
+        "Server/Waiter",
+        "Sommelier",
+        "Spa Manager",
+        "Tour Guide",
+        "Travel Agent",
+        "Unified Communications (UC) Specialist",
+        "Valet/Bellhop"
+    ],
+    "Manufacturing": [
+        "Administration/Office Management",
+        "AV Engineer",
+        "AV Sales Manager",
+        "BI/Data Analyst",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Business Development Manager",
+        "CNC Machinists",
+        "Compliance Engineer",
+        "Customer Service Representative",
+        "Distribution Managers",
+        "Factory Workers",
+        "Finance Manager/Controller",
+        "Forklift Operators",
+        "General Manager",
+        "Help Desk Specialist/Tier 2/3 Support",
+        "Human Resources",
+        "IT/Systems Administrator/Network Engineer",
+        "Industrial Electricians",
+        "Logistics / Driver / Truck Loader",
+        "Machine Operators",
+        "Maintenance Technicians",
+        "Manufacturer Representative",
+        "Material Handlers",
+        "Mechanical Engineer",
+        "Operations Manager",
+        "Procurement / Purchasing Officer",
+        "Product Manager",
+        "Production Managers",
+        "Production Workers",
+        "Quality Control Officers",
+        "R&D Officers",
+        "Supply Chain Officers",
+        "Warehouse Manager / Personel"
+    ],
+    "Religious Organizations": [
+        "Audio Technician or Operator",
+        "AV Engineer",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Caretaker/Custodian",
+        "Church Administrator /Officers /Elders",
+        "Communications Coordinator",
+        "Community Outreach Coordinator",
+        "Counselor/Therapist",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Lighting Techician or Operator",
+        "Missionary",
+        "Musicians / Singers",
+        "Pastors",
+        "Religious Educator",
+        "Social Media Manager",
+        "Technical Director",
+        "Treasurer",
+        "Volunteers Coordinator",
+        "Worship Leader / Director"
+    ],
+    "Retail": [
+        "Account Manager",
+        "AV Engineer",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Brand Manager",
+        "Business Development Manager",
+        "Business Intelligence/Data Analyst",
+        "Customer Service Representative",
+        "Department Manager",
+        "E-commerce Specialist",
+        "General Manager",
+        "Human Resources Manager",
+        "IT/Systems Administrator/Network Engineer",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Officers",
+        "Merchandiser",
+        "Product Manager",
+        "Procurement / Purchasing Officer",
+        "Retail Operations Manager",
+        "Sales Manager",
+        "Service Techinician",
+        "Store Manager",
+        "Supply Chain Manager/Analyst",
+        "Unified Communications Specialist",
+        "Visual Merchandiser",
+        "Warehouse Manager / Personel"
+    ],
+        "Transportation and Telecommunication": [
+        "Account Manager",
+        "Bookkeeping / Accounting / Admin Officer / Finance",
+        "Customer Service Representative",
+        "Engineers",
+        "Fiber Optic Engineer/Technician",
+        "General Manager",
+        "Human Resources Manager",
+        "IT Consultant",
+        "IT/Systems Administrator/Network Engineer",
+        "Line Man Technician",
+        "Logistics / Driver / Truck Loader",
+        "Marketing Specialist/Manager",
+        "OSP Engineer",
+        "Procurement / Purchasing Officer",
+        "Project Coordinator/Manager",
+        "Safety Officer/Manager",
+        "Security Personnel",
+        "Service Crew",
+        "Service Technician",
+        "Signal Maintainer",
+        "Site Acquisition Officer/Team Leader",
+        "Telecom Technician"
+    ]
+    };
+  </script>
+
+  {%- comment -%}
+    This include is expected to define `addressObject` in JavaScript
+    or provide data that JavaScript can use to build it.
+  {%- endcomment -%}
+
+  {%- if form.errors -%}
+    <h2 class="form__message" tabindex="-1" autofocus style="font-size: 1.7rem;">
+      <span class="svg-wrapper">
+        {{- 'icon-error.svg' | inline_asset_content -}}
+      </span>
+      {{ 'templates.contact.form.error_heading' | t }}
+    </h2>
+    <ul style="font-size: 1.7rem;">
+      {%- for field in form.errors -%}
+        <li>
+          {%- if field == 'form' -%}
+            {{ form.errors.messages[field] }}
+          {%- else -%}
+            <a href="#Foreign-Register-{{ field }}">
+              {{ form.errors.translated_fields[field] | capitalize }}
+              {{ form.errors.messages[field] }}
+            </a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  <span style="display: flex; font-size: 1.9rem; font-weight:600; margin: 1.5rem 0 1rem; color: black;"
+    >Personal Information</span
+  >
+
+  <div class="setRow">
+    <div class="setCol">
+      <label for="ForeignForm-FirstName" style="font-size: 1.5rem"
+        ><span class="required-asterisk">*</span>{{ 'customer.register.first_name' | t -}}
+      </label>
+      <div class="firstname-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[first_name]"
+            id="ForeignForm-FirstName"
+            {% if form.first_name %}
+              value="{{ form.first_name }}"
+            {% endif %}
+            autocomplete="given-name"
+            required
+            minlength="2"
+            maxlength="25"
+          >
+        </div>
+      </div>
+    </div>
+    <div class="setCol">
+      <label for="ForeignForm-LastName" style="font-size: 1.5rem"
+        ><span class="required-asterisk">*</span>{{ 'customer.register.last_name' | t -}}
+      </label>
+      <div class="lastname-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[last_name]"
+            id="ForeignForm-LastName"
+            {% if form.last_name %}
+              value="{{ form.last_name }}"
+            {% endif %}
+            autocomplete="family-name"
+            required
+            minlength="2"
+            maxlength="25"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="setRow">
+    <div class="setCol">
+      <label for="ForeignForm-birthdate" style="font-size: 1.5rem;"
+        ><span class="required-asterisk">*</span>Birthdate</label
+      >
+      <div class="birthdate-field form-input-container" style="margin: 0; align-items: center;">
+        <div class="form-input-box">
+          <input
+            type="text" 
+            name="customer[note][Birthdate]"
+            id="ForeignForm-birthdate"
+            autocomplete="bday"
+            aria-required="true"
+            required
+            readonly 
+          >
+        </div>
+      </div>
+    </div>
+<div class="setCol" style="margin: 0;">
+  <label for="ForeignForm-contactN" style="font-size: 1.5rem; margin: 0;">
+    <span class="required-asterisk">*</span>Mobile Number
+  </label>
+  <div class="setRow" style="gap: 8px; align-items: flex-start;">
+    <div class="setCol" style="flex: 0 0 120px; max-width: 120px;">
+      <div class="country-code-field form-input-container dropdown-wrapper" style="margin: 0;">
+        <select id="foreignCountryCode" name="customer[note][CountryCode]" style="margin: 0; height: 100%;">
+          <option value="" disabled selected>Select Code</option>
+          <!-- Options populated by JS -->
+        </select>
+        <span class="svg-wrapper" style="margin-right: 10px;">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </div>
+    </div>
+    <div class="setCol" style="flex: 1;">
+      <div class="contact-n-field form-input-container" style="margin: 0;">
+        <div class="form-input-box" style="margin: 0;">
+          <input
+            type="tel"
+            name="customer[phone]"
+            id="ForeignForm-contactN"
+            aria-required="true"
+            {% if form.phone  %}
+            value="{{ form.phone  }}"
+            {% endif %}
+            autocomplete="tel"
+            required
+            style="width: 100%;"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <!-- New Section: Primary Country Information -->
+  <div>
+    <!--
+      <span style="display: flex; font-size: 1.9rem; font-weight:600; margin: 1.5rem 0 1rem; color: black;">
+        Primary Country Information
+      </span>
+    -->
+    <div class="setCol">
+      <label for="CustomerCountry" style="font-size: 1.5rem;">
+        <span class="required-asterisk">*</span>Country of Residence</label
+      >
+      <div class="address-country-field form-input-container dropdown-wrapper">
+        <select id="CustomerCountry" name="customer[note][PrimaryCountry]" required>
+          <option value="" disabled selected>Select Country</option>
+          <!-- Options will be populated by JS, excluding Philippines -->
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Albania">Albania</option>
+          <option value="Algeria">Algeria</option>
+          <option value="Andorra">Andorra</option>
+          <option value="Angola">Angola</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Armenia">Armenia</option>
+          <option value="Australia">Australia</option>
+          <option value="Austria">Austria</option>
+          <option value="Azerbaijan">Azerbaijan</Azerbaijan>
+          <option value="Bahamas">Bahamas</Bahamas>
+          <option value="Bahrain">Bahrain</Bahrain>
+          <option value="Bangladesh">Bangladesh</Bangladesh>
+          <option value="Barbados">Barbados</Barbados>
+          <option value="Belarus">Belarus</Belarus>
+          <option value="Belgium">Belgium</Belgium>
+          <option value="Belize">Belize</Belize>
+          <option value="Benin">Benin</Benin>
+          <option value="Bhutan">Bhutan</Bhutan>
+          <option value="Bolivia">Bolivia</Bolivia>
+          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</Bosnia and Herzegovina>
+          <option value="Botswana">Botswana</Botswana>
+          <option value="Brazil">Brazil</Brazil>
+          <option value="Brunei">Brunei</brunei>
+          <option value="Bulgaria">Bulgaria</Bulgaria>
+          <option value="Burkina Faso">Burkina Faso</Burkina Faso>
+          <option value="Burundi">Burundi</Burundi>
+          <option value="Cabo Verde">Cabo Verde</Cabo Verde>
+          <option value="Cambodia">Cambodia</Cambodia>
+          <option value="Cameroon">Cameroon</Cameroon>
+          <option value="Canada">Canada</Canada>
+          <option value="Central African Republic">Central African Republic</Central African Republic>
+          <option value="Chad">Chad</Chad>
+          <option value="Chile">Chile</Chile>
+          <option value="China">China</China>
+          <option value="Colombia">Colombia</Colombia>
+          <option value="Comoros">Comoros</Comoros>
+          <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</Congo>
+          <option value="Costa Rica">Costa Rica</Costa Rica>
+          <option value="Côte d'Ivoire">Côte d'Ivoire</Côte d'Ivoire>
+          <option value="Croatia">Croatia</Croatia>
+          <option value="Cuba">Cuba</Cuba>
+          <option value="Cyprus">Cyprus</Cyprus>
+          <option value="Czechia (Czech Republic)">Czechia (Czech Republic)</Czechia>
+          <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</Democratic Republic of the Congo>
+          <option value="Denmark">Denmark</Denmark>
+          <option value="Djibouti">Djibouti</Djibouti>
+          <option value="Dominica">Dominica</Dominica>
+          <option value="Dominican Republic">Dominican Republic</Dominican Republic>
+          <option value="Ecuador">Ecuador</Ecuador>
+          <option value="Egypt">Egypt</Egypt>
+          <option value="El Salvador">El Salvador</El Salvador>
+          <option value="Equatorial Guinea">Equatorial Guinea</Equatorial Guinea>
+          <option value="Eritrea">Eritrea</Eritrea>
+          <option value="Estonia">Estonia</Estonia>
+          <option value="Ethiopia">Ethiopia</Ethiopia>
+          <option value="Fiji">Fiji</Fiji>
+          <option value="Finland">Finland</Finland>
+          <option value="France">France</France>
+          <option value="Gabon">Gabon</Gabon>
+          <option value="Gambia">Gambia</Gambia>
+          <option value="Georgia">Georgia</Georgia>
+          <option value="Germany">Germany</Germany>
+          <option value="Ghana">Ghana</Ghana>
+          <option value="Greece">Greece</Greece>
+          <option value="Grenada">Grenada</Grenada>
+          <option value="Guatemala">Guatemala</Guatemala>
+          <option value="Guinea">Guinea</Guinea>
+          <option value="Guinea-Bissau">Guinea-Bissau</Guinea-Bissau>
+          <option value="Guyana">Guyana</Guyana>
+          <option value="Haiti">Haiti</Haiti>
+          <option value="Holy See">Holy See</Holy See>
+          <option value="Honduras">Honduras</Honduras>
+          <option value="Hungary">Hungary</Hungary>
+          <option value="Iceland">Iceland</Iceland>
+          <option value="India">India</India>
+          <option value="Indonesia">Indonesia</Indonesia>
+          <option value="Iran">Iran</Iran>
+          <option value="Iraq">Iraq</Iraq>
+          <option value="Ireland">Ireland</Ireland>
+          <option value="Israel">Israel</Israel>
+          <option value="Italy">Italy</Italy>
+          <option value="Jamaica">Jamaica</ Jamaica>
+          <option value="Japan">Japan</ Japan>
+          <option value="Jordan">Jordan</Jordan>
+          <option value="Kazakhstan">Kazakhstan</Kazakhstan>
+          <option value="Kenya">Kenya</Kenya>
+          <option value="Kiribati">Kiribati</Kiribati>
+          <option value="Kuwait">Kuwait</Kuwait>
+          <option value="Kyrgyzstan">Kyrgyzstan</Kyrgyzstan>
+          <option value="Laos">Laos</Laos>
+          <option value="Latvia">Latvia</Latvia>
+          <option value="Lebanon">Lebanon</Lebanon>
+          <option value="Lesotho">Lesotho</Lesotho>
+          <option value="Liberia">Liberia</Liberia>
+          <option value="Libya">Libya</Libya>
+          <option value="Liechtenstein">Liechtenstein</ Liechtenstein>
+          <option value="Lithuania">Lithuania</Lithuania>
+          <option value="Luxembourg">Luxembourg</Luxembourg>
+          <option value="Madagascar">Madagascar</Madagascar>
+          <option value="Malawi">Malawi</Malawi>
+          <option value="Malaysia">Malaysia</Malaysia>
+          <option value="Maldives">Maldives</Maldives>
+          <option value="Mali">Mali</Mali>
+          <option value="Malta">Malta</Malta>
+          <option value="Marshall Islands">Marshall Islands</Marshall Islands>
+          <option value="Mauritania">Mauritania</Mauritania>
+          <option value="Mauritius">Mauritius</Mauritius>
+          <option value="Mexico">Mexico</Mexico>
+          <option value="Micronesia">Micronesia</Micronesia>
+          <option value="Moldova">Moldova</Moldova>
+          <option value="Monaco">Monaco</Monaco>
+          <option value="Mongolia">Mongolia</Mongolia>
+          <option value="Montenegro">Montenegro</Montenegro>
+          <option value="Morocco">Morocco</Morocco>
+          <option value="Mozambique">Mozambique</Mozambique>
+          <option value="Myanmar (formerly Burma)">Myanmar (formerly Burma)</Myanmar>
+          <option value="Namibia">Namibia</Namibia>
+          <option value="Nauru">Nauru</Nauru>
+          <option value="Nepal">Nepal</Nepal>
+          <option value="Netherlands">Netherlands</Netherlands>
+          <option value="New Zealand">New Zealand</New Zealand>
+          <option value="Nicaragua">Nicaragua</Nicaragua>
+          <option value="Niger">Niger</Niger>
+          <option value="Nigeria">Nigeria</Nigeria>
+          <option value="North Korea">North Korea</North Korea>
+          <option value="North Macedonia">North Macedonia</North Macedonia>
+          <option value="Norway">Norway</Norway>
+          <option value="Oman">Oman</Oman>
+          <option value="Pakistan">Pakistan</Pakistan>
+          <option value="Palau">Palau</Palau>
+          <option value="Palestine State">Palestine State</Option>
+          <option value="Panama">Panama</Panama>
+          <option value="Papua New Guinea">Papua New Guinea</Papua New Guinea>
+          <option value="Paraguay">Paraguay</Paraguay>
+          <option value="Peru">Peru</Peru>
+       <!---  <option value="Philippines">Philippines</Philippines>---> 
+          <option value="Poland">Poland</Poland>
+          <option value="Portugal">Portugal</Portugal>
+          <option value="Qatar">Qatar</Qatar>
+          <option value="Romania">Romania</Romania>
+          <option value="Russia">Russia</Russia>
+          <option value="Rwanda">Rwanda</Rwanda>
+          <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</Saint Kitts and Nevis>
+          <option value="Saint Lucia">Saint Lucia</Saint Lucia>
+          <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</Saint Vincent and the Grenadines>
+          <option value="Samoa">Samoa</Samoa>
+          <option value="San Marino">San Marino</San Marino>
+          <option value="Sao Tome and Principe">Sao Tome and Principe</Sao Tome and Principe>
+          <option value="Saudi Arabia">Saudi Arabia</Saudi Arabia>
+          <option value="Senegal">Senegal</Senegal>
+          <option value="Serbia">Serbia</Serbia>
+          <option value="Seychelles">Seychelles</Seychelles>
+          <option value="Sierra Leone">Sierra Leone</Sierra Leone>
+          <option value="Singapore">Singapore</Singapore>
+          <option value="Slovakia">Slovakia</Slovakia>
+          <option value="Slovenia">Slovenia</Slovenia>
+          <option value="Solomon Islands">Solomon Islands</Solomon Islands>
+          <option value="Somalia">Somalia</Somalia>
+          <option value="South Africa">South Africa</South Africa>
+          <option value="South Korea">South Korea</South Korea>
+          <option value="South Sudan">South Sudan</South Sudan>
+          <option value="Spain">Spain</Spain>
+          <option value="Sri Lanka">Sri Lanka</Sri Lanka>
+          <option value="Sudan">Sudan</Sudan>
+          <option value="Suriname">Suriname</Suriname>
+          <option value="Sweden">Sweden</Sweden>
+          <option value="Switzerland">Switzerland</Switzerland>
+          <option value="Syria">Syria</Syria>
+          <option value="Tajikistan">Tajikistan</Tajikistan>
+          <option value="Tanzania">Tanzania</Tanzania>
+          <option value="Thailand">Thailand</Thailand>
+          <option value="Timor-Leste">Timor-Leste</Timor-Leste>
+          <option value="Togo">Togo</Togo>
+          <option value="Tonga">Tonga</Tonga>
+          <option value="Trinidad and Tobago">Trinidad and Tobago</Trinidad and Tobago>
+          <option value="Tunisia">Tunisia</Tunisia>
+          <option value="Turkey">Turkey</Turkey>
+          <option value="Turkmenistan">Turkmenistan</Turkmenistan>
+          <option value="Tuvalu">Tuvalu</Tuvalu>
+          <option value="Uganda">Uganda</Uganda>
+          <option value="Ukraine">Ukraine</Ukraine>
+          <option value="United Arab Emirates">United Arab Emirates</United Arab Emirates>
+          <option value="United Kingdom">United Kingdom</United Kingdom>
+          <option value="United States">United States</United States>
+          <option value="Uruguay">Uruguay</Uruguay>
+          <option value="Uzbekistan">Uzbekistan</Uzbekistan>
+          <option value="Vanuatu">Vanuatu</Vanuatu>
+          <option value="Venezuela">Venezuela</Venezuela>
+          <option value="Vietnam">Vietnam</Vietnam>
+          <option value="Yemen">Yemen</Yemen>
+          <option value="Zambia">Zambia</Zambia>
+          <option value="Zimbabwe">Zimbabwe</Zimbabwe>
+        </select>
+        <span class="svg-wrapper" style="margin-right: 10px;">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </div>
+    </div>
+
+    <!-- Primary Country Specific Address Fields (Non-PH) -->
+    <div id="primary-country-address-fields" style="display: none;">
+      <div class="setRow">
+        <div class="setCol">
+          <label for="PrimaryAddress1" style="font-size: 1.5rem;">
+            <span class="required-asterisk">*</span>Address 1
+          </label>
+          <div class="home-address-field form-input-container">
+            <div class="form-input-box">
+              <input
+                type="text"
+                name="customer[note][PrimaryAddress1]"
+                id="PrimaryAddress1"
+                  {% if form.address1 %}
+                  value="{{ form.address1 }}"
+                  {% endif %}
+                autocomplete="address-line1"
+                placeholder="Street address, P.O. Box"
+                minlength="5"
+                maxlength="100"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="setCol">
+          <label for="PrimaryAddress2" style="font-size: 1.5rem;">Address 2</label>
+          <div class="home-address-field form-input-container">
+            <div class="form-input-box">
+              <input
+                type="text"
+                name="customer[note][PrimaryAddress2]"
+                id="PrimaryAddress2"
+                {% if form.address2 %}
+                value="{{ form.address2 }}"
+                {% endif %}
+                autocomplete="address-line2"
+                placeholder="Apartment, suite, unit, building, floor, etc."
+                minlength="0"
+                maxlength="100"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="setRow">
+        <div class="setCol">
+          <label for="PrimaryNonPhProvinceInput" style="font-size:1.5rem;"
+            ><span class="required-asterisk">*</span>State/Province/Region/Territory</label
+          >
+          <div class="form-input-container dropdown-wrapper" id="primary-nonPhProvince-select-container" style="display: none;">
+            <select id="PrimaryNonPhProvinceSelect" name="customer[note][PrimaryProvince]">
+              <option value="" disabled selected>Select country first</option>
+            </select>
+            <span class="svg-wrapper" style="margin-right: 10px;">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </div>
+          <div class="form-input-container" id="primary-nonPhProvince-input-container">
+            <div class="form-input-box">
+              <input
+                type="text"
+                name="customer[note][PrimaryProvince]"
+                id="PrimaryNonPhProvinceInput"
+                placeholder="State/Province/Region/Territory"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="setCol">
+          <label for="PrimaryNonPhCityInput" style="font-size: 1.5rem;"
+            ><span class="required-asterisk">*</span>City</label
+          >
+          <!-- City is now always an input for non-PH primary addresses -->
+          <div class="form-input-container" id="primary-nonPhCity-input-container">
+            <div class="form-input-box">
+              <input
+                type="text"
+                name="customer[note][PrimaryCity]"
+                id="PrimaryNonPhCityInput"
+                  {% if form.city %}
+                  value="{{ form.city }}"
+                  {% endif %}
+                autocomplete="address-level2"
+                placeholder="City"
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="setRow">
+        <div class="setCol">
+          <label for="PrimaryNonPhZipInput" style="font-size: 1.5rem;"
+            ><span class="required-asterisk">*</span>ZIP/Postal Code</label
+          >
+          <div class="form-input-container" id="primary-nonPhZip-input-container">
+            <div class="form-input-box">
+              <input
+                type="text"
+                id="PrimaryNonPhZipInput"
+                name="customer[note][PrimaryZip]"
+                placeholder="ZIP/Postal Code"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="setCol"></div>
+      </div>
+    </div>
+  </div>
+
+   <!-- NOTE SHIPPING; NOT AVAILABLE -->
+  <div class="shipping-note">
+  <p>🇵🇭 <strong>Note:</strong> International Shipping is not yet available. We only ship to Philippine addresses.</p>
+</div>
+
+  <!-- Your Role / Industry Section -->
+  <div class="setCol" style="margin-top: 1.5rem;">
+    <span style="display: flex; font-size: 1.9rem; font-weight:600; margin: 1.5rem 0 1rem; color: black;">
+      <span class="required-asterisk">*</span>Industry</span
+    >
+
+    <div class="industry-field form-input-container dropdown-wrapper">
+      <select id="Foreign-Register-Industry" name="customer[note][Industry]" required>
+        <option value="" disabled selected>Select Your Industry</option>
+        <option value="AV Rental & Staging">AV Rental & Staging</option>
+        <option value="AV Integration">AV Integration</option>
+        <option value="Agriculture, Fishing, Forestry and Mining">Agriculture, Fishing, Forestry and Mining</option>
+        <option value="Broadcast & Media Production">Broadcast & Media Production</option>
+        <option value="Construction Company">Construction Company</option>
+        <option value="Corporate, Legal, Real Estate">Corporate, Legal, Real Estate</option>
+        <option value="Creative/Advertising/PR Agency">Creative/Advertising/PR Agency</option>
+        <option value="Digital Signage & Interactive Display">Digital Signage & Interactive Display</option>
+        <option value="Distributor">Distributor</option>
+        <option value="Entertainment, Media and Arts , Youtuber">Entertainment, Media and Arts , Youtuber</option>
+        <option value="Government">Government</option>
+        <option value="Healthcare">Healthcare</option>  
+        <option value="Hospitality">Hospitality </option>
+        <option value="Manufacturing">Manufacturing</option>
+        <option value="Religious Organizations">Religious Organizations </option>
+        <option value="Retail">Retail </option>
+        <option value="Transportation and Telecommunication">Transportation and Telecommunication</option>
+        <option value="Other Industry">Other Industry (please specify)</option>
+      </select>
+      <span class="svg-wrapper" style="margin-right: 10px;">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucid-caret-down"
+        >
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- New field for "Other Industry" -->
+  <div id="foreign-other-industry-text-field" class="setCol" style="margin-top: 1.5rem; display: none;">
+    <label for="Foreign-Register-OtherIndustryTextInput" style="font-size: 1.5rem;">Please specify your industry</label>
+    <div class="other-industry-input-field form-input-container">
+      <div class="form-input-box">
+        <input
+          type="text"
+          name="customer[note][OtherIndustryText]"
+          id="Foreign-Register-OtherIndustryTextInput"
+          minlength="3"
+          maxlength="100"
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- New Role Dropdown (initially hidden) -->
+  <div id="foreign-role-dropdown-container" class="setCol" style="margin-top: 1.5rem; display: none;">
+    <label for="Foreign-Register-Role" style="font-size: 1.5rem;"><span class="required-asterisk">*</span>Your Role</label>
+    <div class="role-field form-input-container dropdown-wrapper">
+      <select id="Foreign-Register-Role" name="customer[note][Role]">
+        <option value="" disabled selected>Select Your Role</option>
+        <!-- Options will be populated by JS based on Industry selection -->
+      </select>
+      <span class="svg-wrapper" style="margin-right: 10px;">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucid-caret-down"
+        >
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+
+  <!-- Conditional fields based on Role -->
+  <div id="foreign-employment-student-fields" style="display: none;">
+    <div class="setCol" style="margin-top: 1.5rem;">
+      <label for="Foreign-Register-SchoolName" style="font-size: 1.5rem;"> Institute Name (Optional)</label>
+      <div class="school-name-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[note][SchoolName]"
+            id="Foreign-Register-SchoolName"
+            minlength="3"
+            maxlength="100"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="foreign-employment-private-government-fields" style="display: none;">
+    <div class="setCol" style="margin-top: 1.5rem;">
+      <label for="Foreign-Register-CompanyName" style="font-size: 1.5rem;"> Company/Agency Name (Optional)</label>
+      <div class="form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[note][CompanyName]"
+            id="Foreign-Register-CompanyName"
+            {% if form.company %}
+              value="{{ form.company }}"
+            {% endif %}
+            autocomplete="organization"
+            minlength="3"
+            maxlength="100"
+          >
+        </div>
+      </div>
+    </div>
+    <!-- Removed Job Title dropdown as "Your Role" now serves this purpose -->
+  </div>
+
+  <div id="foreign-employment-selfemployed-fields" style="display: none;">
+    <div class="setCol" style="margin-top: 1.5rem;">
+      <label for="Foreign-Register-BusinessType" style="font-size: 1.5rem;"> Type of Business</label>
+      <div class="business-type-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[note][BusinessType]"
+            id="Foreign-Register-BusinessType"
+            minlength="3"
+            maxlength="100"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="foreign-employment-unemployed-fields" style="display: none;">
+    <div class="setCol" style="margin-top: 1.5rem;">
+      <label for="Foreign-Register-PreviousOccupation" style="font-size: 1.5rem;">Previous Occupation (Optional)</label>
+      <div class="previous-occupation-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[note][PreviousOccupation]"
+            id="Foreign-Register-PreviousOccupation"
+            minlength="2"
+            maxlength="50"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="foreign-employment-homemaker-fields" style="display: none;">
+    <!-- No specific fields for homemaker -->
+  </div>
+
+  <div id="foreign-employment-religious-fields" style="display: none;">
+    <div class="setCol" style="margin-top: 1.5rem;">
+      <label for="Foreign-Register-HouseOfWorship" style="font-size: 1.5rem;"> House of Worship (Optional)</label>
+      <div class="house-of-worship-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[note][HouseOfWorship]"
+            id="Foreign-Register-HouseOfWorship"
+            minlength="3"
+            maxlength="100"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="foreign-employment-other-fields" style="display: none;">
+    <div class="setCol" style="margin-top: 1.5rem;">
+      <label for="Foreign-Register-OtherEmployment" style="font-size: 1.5rem;"> Role</label>
+      <div class="other-employment-field form-input-container">
+        <div class="form-input-box">
+          <input
+            type="text"
+            name="customer[note][OtherEmploymentStatus]"
+            id="Foreign-Register-OtherEmployment"
+            minlength="3"
+            maxlength="100"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Information Section -->
+  <div>
+    <span style="display: flex; font-size: 1.9rem; font-weight:600; margin: 1.5rem 0 1rem; color: black;"
+      >Account Information</span
+    >
+
+    <!-- Email Field -->
+    <div class="setRow">
+      <div class="setCol">
+        <label for="foreign-email" style="font-size: 1.5rem;"
+          ><span class="required-asterisk">*</span>{{ 'customer.register.email' | t -}}
+        </label>
+        <div class="email-field password-field-wrapper">
+          <!-- Using password-field-wrapper for consistent styling -->
+          <input
+            type="email"
+            name="customer[email]"
+            id="foreign-email"
+            {% if form.email %}
+              value="{{ form.email }}"
+            {% endif %}
+            spellcheck="false"
+            autocapitalize="off"
+            autocomplete="email"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+            {% endif %}
+            minlength="5"
+            maxlength="35"
+            required
+          >
+        </div>
+      </div>
+      <div class="setCol">
+        <!-- Empty column for alignment if needed, or remove if not necessary for balance -->
+      </div>
+    </div>
+
+    <!-- Password and Confirm Password Fields side-by-side -->
+    <div class="setRow">
+      <div class="setCol">
+        <!-- Password Field -->
+        <label for="foreign-password" style="font-size: 1.5rem;"
+          ><span class="required-asterisk">*</span>{{ 'customer.register.password' | t -}}
+        </label>
+        <div class="password-field password-field-wrapper">
+          <input
+            type="password"
+            name="customer[password]"
+            id="foreign-password"
+            aria-required="true"
+            {% if form.errors contains 'password' %}
+              aria-invalid="true"
+            {% endif %}
+            minlength="8"
+            maxlength="20"
+            required
+            oninput="checkForeignPasswordStrength(this.value); checkForeignPasswordsMatch();"
+          >
+          <span class="password-toggle" id="toggle-foreign-password">
+            <img src="https://img.icons8.com/ios/50/closed-eye.png" alt="Hide password">
+          </span>
+        </div>
+      </div>
+      <div class="setCol">
+        <!-- Confirm Password Field -->
+        <label for="foreign-password-confirm" style="font-size: 1.5rem;"
+          ><span class="required-asterisk">*</span>Confirm Password</label
+        >
+        <div class="confirm-password-field password-field-wrapper">
+          <input
+            type="password"
+            name="customer[password_confirmation]"
+            id="foreign-password-confirm"
+            aria-required="true"
+            minlength="8"
+            maxlength="20"
+            required
+            oninput="checkForeignPasswordsMatch();"
+          >
+          <span class="password-toggle" id="toggle-foreign-password-confirm">
+            <img src="https://img.icons8.com/ios/50/closed-eye.png" alt="Hide password">
+          </span>
+        </div>
+        <p
+          id="foreign-password-match-feedback"
+          class="password-match-feedback"
+          style="
+            margin-top: 8px;
+            font-size: 0.9rem;
+            height: 18px;
+            transition: all 0.3s ease;
+          "
+        ></p>
+      </div>
+    </div>
+
+    <!-- Password requirements and strength below the password fields -->
+    <div class="setRow">
+      <div class="setCol">
+        <div
+          id="foreign-password-requirements"
+          style="margin-top: 1rem; font-size: 1.5rem; color: #555; background-color: #f8f8f8; padding: 1rem; border-radius: 6px; line-height: 1.6;"
+        >
+          <div style="font-weight: 600; margin-bottom: 0.6rem; font-size: 1.5rem;">Password must include:</div>
+          <ul style="margin: 0; padding-left: 1.5rem; font-size: 1.1rem;">
+            <li id="foreign-length-req" style="margin-bottom: 0.4rem;">✓ At least 9 characters (12+ recommended)</li>
+            <li id="foreign-upper-req" style="margin-bottom: 0.4rem;">✓ At least One uppercase letter (A-Z)</li>
+            <li id="foreign-lower-req" style="margin-bottom: 0.4rem;">✓ At least One number (0-9)</li>
+            <li id="foreign-special-req">✓ At least One special character (!@#$% etc.)</li>
+          </ul>
+        </div>
+
+        <div
+          id="foreign-password-strength"
+          style="margin-top: 1rem; font-size: 1.6rem; display: flex; align-items: center;"
+        >
+          <span style="margin-right: 0.5rem;">Password Strength:</span>
+          <span id="foreign-strength-meter" style="font-weight: 600;">None</span>
+        </div>
+      </div>
+      <div class="setCol">
+        <!-- Empty column for alignment if needed, or remove if not necessary for balance -->
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem; font-size: 1.1rem;">
+      <label
+        for="foreignMarketing"
+        style="display: flex; gap: 10px; align-items: flex-start; line-height: 1.4;"
+      >
+        <input
+          type="checkbox"
+          name="customer[accepts_marketing]"
+          value="true"
+          id="foreignMarketing"
+          checked
+          style=" background-color: red; margin-top: 0.2em; flex-shrink: 0;"
+        >
+        <span
+          >Subscribe to our newsletter and stay updated on the latest products, announcements, and exclusive offers.</span
+        >
+      </label>
+
+      <div style="margin-top: 1rem; text-align: center; line-height: 1.4; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25em; font-size: 1.1rem;">
+        <span>By creating an account, you agree to our</span>
+        <a href="/policies/terms-of-service" style="white-space: nowrap;">Terms</a>
+        <span>and have read and acknowledge the</span>
+        <a href="/policies/privacy-policy" style="white-space: nowrap;">Privacy Policy</a>.
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-md text-xl">
+        {{ 'customer.register.submit' | t }} AN ACCOUNT
+      </button>
+    </div>
+  </div>
+{%- endform -%}
+
+<!-- Custom Message Box HTML -->
+<div id="custom-message-box" class="custom-modal-overlay" style="display:none;">
+  <div class="custom-modal-content">
+    <h3>Alert</h3>
+    <p id="custom-message-text"></p>
+    <button id="custom-message-close" class="custom-modal-close-btn">OK</button>
+  </div>
+</div>
+
+<script>
+  // Custom Message Box functions to replace alert()
+  function showCustomMessage(message) {
+    document.getElementById('custom-message-text').textContent = message;
+    document.getElementById('custom-message-box').style.display = 'flex'; /* Use flex to center */
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('custom-message-close').addEventListener('click', function() {
+      document.getElementById('custom-message-box').style.display = 'none';
+    });
+  });
+
+// Password Strength Checker for Foreign Customers (stricter)
+function checkForeignPasswordStrength(password) {
+  const strengthMeter = document.getElementById('foreign-strength-meter');
+  const requirements = {
+    length: document.getElementById('foreign-length-req'),
+    upper: document.getElementById('foreign-upper-req'),
+    lower: document.getElementById('foreign-lower-req'),
+    number: document.getElementById('foreign-number-req'),
+    special: document.getElementById('foreign-special-req')
+  };
+
+  let allRequirementsMet = true;
+
+  const updateRequirement = (reqElement, condition) => {
+    if (reqElement) { // Check if element exists before manipulating
+      if (condition) {
+        reqElement.style.color = '#27ae60';
+        // Ensure "✓ " is only added if not already present
+        if (!reqElement.textContent.startsWith('✓ ')) {
+            reqElement.textContent = '✓ ' + reqElement.textContent.replace(/^[✓✗]\s/, '');
+        }
+      } else {
+        reqElement.style.color = '#e74c3c';
+        // Ensure "✗ " is only added if not already present
+        if (!reqElement.textContent.startsWith('✗ ')) {
+            reqElement.textContent = '✗ ' + reqElement.textContent.replace(/^[✓✗]\s/, '');
+        }
+      }
+    }
+    allRequirementsMet = allRequirementsMet && condition;
+  };
+
+  // Foreign customer requirements (stricter)
+  const hasLength = password.length >= 9; // Stricter length requirement
+  updateRequirement(requirements.length, hasLength);
+
+  const hasUpperCase = /[A-Z]/.test(password);
+  updateRequirement(requirements.upper, hasUpperCase);
+
+  const hasLowerCase = /[a-z]/.test(password);
+  updateRequirement(requirements.lower, hasLowerCase);
+
+  const hasNumber = /[0-9]/.test(password);
+  updateRequirement(requirements.number, hasNumber);
+
+  const hasSpecialChar = /[^A-Za-z0-9]/.test(password);
+  updateRequirement(requirements.special, hasSpecialChar);
+
+  // Strength level for UI
+  let strengthLevel = '';
+  let color = '#777'; // Default color
+
+  if (password.length > 0) {
+    if (password.length < 9) { // Weak if less than 9 characters
+      strengthLevel = 'Weak';
+      color = '#e74c3c';
+    } else if (!hasSpecialChar || !hasUpperCase || !hasNumber) { // Medium if length met but some other critera not
+      strengthLevel = 'Medium';
+      color = '#f39c12';
+    } else { // Strong if all criteria met including length
+      strengthLevel = 'Strong';
+      color = '#27ae60';
+    }
+  }
+
+  if (strengthMeter) {
+    strengthMeter.textContent = strengthLevel;
+    strengthMeter.style.color = color;
+  }
+
+  return allRequirementsMet;
+}
+
+// Password Match Checkers (separate for each form)
+// This function is for the foreign form, using its specific IDs
+function checkForeignPasswordsMatch() {
+  const passwordInput = document.getElementById('foreign-password');
+  const confirmPasswordInput = document.getElementById('foreign-password-confirm');
+  const feedbackElement = document.getElementById('foreign-password-match-feedback');
+  
+  if (!passwordInput || !confirmPasswordInput || !feedbackElement) return;
+  
+  const password = passwordInput.value;
+  const confirmPassword = confirmPasswordInput.value;
+  
+  if (confirmPassword.length === 0) {
+    feedbackElement.textContent = '';
+    feedbackElement.style.color = ''; // Clear color if no input
+    return;
+  }
+  
+  if (password === confirmPassword) {
+    feedbackElement.textContent = '✓ Passwords match';
+    feedbackElement.style.color = '#28a745'; // Green for match
+  } else {
+    feedbackElement.textContent = '✗ Passwords do not match';
+    feedbackElement.style.color = '#dc3545'; // Red for mismatch
+  }
+}
+  
+  // Function to toggle password visibility with images
+  function togglePasswordVisibility(inputId, toggleId) {
+      const input = document.getElementById(inputId);
+      const toggle = document.getElementById(toggleId);
+      const toggleImg = toggle.querySelector('img');
+
+      if (!input || !toggle || !toggleImg) {
+          console.error('Missing elements for password toggle:', { input, toggle, toggleImg });
+          return;
+      }
+
+      if (input.type === 'password') {
+          input.type = 'text';
+          // Using the specific show icon provided by the user
+          toggleImg.src = 'https://img.icons8.com/external-smashingstocks-hand-drawn-black-smashing-stocks/99/external-eye-password-security-cyber-attack-hacking-smashingstocks-hand-drawn-black-smashing-stocks.png';
+          toggleImg.alt = 'Show password';
+      } else {
+          input.type = 'password';
+          // Using the specific hide icon provided by the user
+          toggleImg.src = 'https://img.icons8.com/ios/50/closed-eye.png';
+          toggleImg.alt = 'Hide password';
+      }
+  }
+
+  // Format phone number inputs to accept only digits
+  document.getElementById('ForeignForm-contactN').addEventListener('input', function(e) {
+    this.value = this.value.replace(/[^0-9]+/g, '');
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded. Initializing form scripts.');
+
+        // Initialize Flatpickr for birthdate field
+    flatpickr("#ForeignForm-birthdate", {
+      dateFormat: "Y-m-d", // YYYY-MM-DD format for submission
+      maxDate: "today",    // Prevent selecting future dates
+      altInput: true,      // Show a human-friendly date in the input
+      altFormat: "F j, Y", // e.g., "July 26, 2025"
+      enableTime: false,   // Only date, no time
+      // Flatpickr's default UI already provides good navigation for years/months
+      // by clicking on the month/year in the header.
+    });
+    
+    // Attach toggle event listeners
+    document.getElementById('toggle-foreign-password').addEventListener('click', () => togglePasswordVisibility('foreign-password', 'toggle-foreign-password'));
+    document.getElementById('toggle-foreign-password-confirm').addEventListener('click', () => togglePasswordVisibility('foreign-password-confirm', 'toggle-foreign-password-confirm'));
+
+    // --- Global Elements ---
+    const form = document.getElementById('foreign-register-form');
+    // const shippingAddressContainer = document.getElementById('foreign-shipping-address-container'); // Removed
+
+    // --- Employment Status Elements ---
+    const industrySelect = document.getElementById('Foreign-Register-Industry'); // Renamed to industrySelect
+    const foreignOtherIndustryTextField = document.getElementById('foreign-other-industry-text-field'); // NEW: Other Industry text field container
+    const foreignOtherIndustryTextInput = document.getElementById('Foreign-Register-OtherIndustryTextInput'); // NEW: Other Industry text input
+
+    const roleDropdownContainer = document.getElementById('foreign-role-dropdown-container'); // New container for role dropdown
+    const roleSelect = document.getElementById('Foreign-Register-Role'); // New role select
+
+    const employmentStudentFields = document.getElementById('foreign-employment-student-fields');
+    const employmentPrivateGovernmentFields = document.getElementById('foreign-employment-private-government-fields');
+    const employmentSelfEmployedFields = document.getElementById('foreign-employment-selfemployed-fields');
+    const employmentUnemployedFields = document.getElementById('foreign-employment-unemployed-fields');
+    const employmentHomemakerFields = document.getElementById('foreign-employment-homemaker-fields'); // For Home User / Hobbyist
+    const employmentOtherFields = document.getElementById('foreign-employment-other-fields');
+    const employmentReligiousFields = document.getElementById('foreign-employment-religious-fields'); // NEW: Religious fields
+
+
+    const schoolNameInput = document.getElementById('Foreign-Register-SchoolName');
+    const companyNameInput = document.getElementById('Foreign-Register-CompanyName');
+    // const jobTitleSelect = document.getElementById('Foreign-Register-JobTitle'); // Removed
+    const businessTypeInput = document.getElementById('Foreign-Register-BusinessType');
+    const previousOccupationInput = document.getElementById('Foreign-Register-PreviousOccupation');
+    const otherEmploymentInput = document.getElementById('Foreign-Register-OtherEmployment');
+    const houseOfWorshipInput = document.getElementById('Foreign-Register-HouseOfWorship'); // NEW: Religious fields
+
+    // NEW: Company Address Dropdowns for Private/Government/Educator
+    // Note: These IDs don't seem to exist in the HTML provided, so they will be null.
+    // This part of the code might need review if these fields are meant to be used for company addresses.
+    const companyAddressPGProvinceSelect = document.getElementById('companyAddressPGProvince');
+    const companyAddressPGCitySelect = document.getElementById('companyAddressPGCity');
+    const companyAddressPGBarangaySelect = document.getElementById('companyAddressPGBarangay');
+    const companyPostalCodePGInput = document.getElementById('companyPostalCodePG'); // Now an input
+
+    // NEW: Company Address Dropdowns for Self-Employed/Freelancer/Musician
+    // Note: These IDs don't seem to exist in the HTML provided, so they will be null.
+    const companyAddressSEProvinceSelect = document.getElementById('companyAddressSEProvince');
+    const companyAddressSECitySelect = document.getElementById('companyAddressSECity');
+    const companyAddressSEBarangaySelect = document.getElementById('companyAddressSEBarangay');
+    const companyPostalCodeSEInput = document.getElementById('companyPostalCodeSE'); // Now an input
+
+
+    // --- Shipping Address Elements (Updated IDs) ---
+    // const provideShippingAddressRadios = document.querySelectorAll('input[name="provide_shipping_address"]'); // Removed
+    // const ForeignShippingAddressYesRadio = document.getElementById('ForeignShippingAddressYes'); // Removed
+    // const ForeignShippingAddressNoRadio = document.getElementById('ForeignShippingAddressNo'); // Removed
+
+    // const ForeignShippingCountrySelect = document.getElementById('ForeignShippingCountry'); // Removed
+    // const ForeignShippingAddress1Input = document.getElementById('ForeignShippingAddress1'); // Removed
+
+    // // PH Specific Shipping Fields (Updated IDs)
+    // const ForeignPhShippingFields = document.getElementById('foreign-ph-shipping-address-fields'); // Removed
+    // const ForeignPhShippingProvinceSelect = document.getElementById('ForeignPhShippingProvince'); // Removed
+    // const ForeignPhShippingCitySelect = document.getElementById('ForeignPhShippingCity'); // Removed
+    // const ForeignPhShippingBarangaySelect = document.getElementById('ForeignPhShippingBarangay'); // Removed
+    // const ForeignPhShippingPostalCodeInput = document.getElementById('ForeignPhShippingPostalCodeInput'); // Removed
+
+    // // Non-PH Specific Shipping Fields (Updated IDs)
+    // const ForeignNonPhShippingFields = document.getElementById('foreign-non-ph-shipping-address-fields'); // Removed
+    // const ForeignNonPhShippingProvinceSelectContainer = document.getElementById('foreign-nonPhShippingProvince-select-container'); // Removed
+    // const ForeignNonPhShippingProvinceInputContainer = document.getElementById('foreign-nonPhShippingProvince-input-container'); // Removed
+    // const ForeignNonPhShippingCitySelectContainer = document.getElementById('foreign-nonPhShippingCity-select-container'); // Removed
+    // const ForeignNonPhShippingCityInputContainer = document.getElementById('foreign-nonPhShippingCity-input-container'); // Removed
+    // const ForeignNonPhShippingZipSelectContainer = document.getElementById('foreign-nonPhShippingZip-select-container'); // Removed
+    // const ForeignNonPhShippingZipInputContainer = document.getElementById('foreign-nonPhShippingZip-input-container'); // Removed
+
+    // const ForeignNonPhShippingProvinceSelect = document.getElementById('ForeignNonPhShippingProvince'); // Removed
+    // const ForeignNonPhShippingProvinceInput = document.getElementById('ForeignNonPhShippingProvince-input'); // Removed
+    // const ForeignNonPhShippingCitySelect = document.getElementById('ForeignNonPhShippingCity'); // Removed
+    // const ForeignNonPhShippingCityInput = document.getElementById('ForeignNonPhShippingCity-input'); // Removed
+    // const ForeignNonPhShippingZipSelect = document.getElementById('ForeignNonPhShippingZip'); // Removed
+    // const ForeignNonPhShippingZipInput = document.getElementById('ForeignNonPhShippingZip-input'); // Removed
+
+    // --- New Primary Country Information Elements ---
+    const CustomerCountrySelect = document.getElementById('CustomerCountry');
+    const PrimaryCountryAddressFields = document.getElementById('primary-country-address-fields');
+    const PrimaryAddress1Input = document.getElementById('PrimaryAddress1'); // New Address1 field
+    const PrimaryAddress2Input = document.getElementById('PrimaryAddress2'); // New Address2 field
+
+    const PrimaryNonPhProvinceSelectContainer = document.getElementById('primary-nonPhProvince-select-container');
+    const PrimaryNonPhProvinceInputContainer = document.getElementById('primary-nonPhProvince-input-container');
+    // PrimaryNonPhCitySelectContainer and PrimaryNonPhCitySelect are no longer used for primary city
+    const PrimaryNonPhCityInputContainer = document.getElementById('primary-nonPhCity-input-container');
+    const PrimaryNonPhZipInputContainer = document.getElementById('primary-nonPhZip-input-container');
+
+    const PrimaryNonPhProvinceSelect = document.getElementById('PrimaryNonPhProvinceSelect');
+    const PrimaryNonPhProvinceInput = document.getElementById('PrimaryNonPhProvinceInput');
+    const PrimaryNonPhCityInput = document.getElementById('PrimaryNonPhCityInput'); // Always input for primary city
+    const PrimaryNonPhZipInput = document.getElementById('PrimaryNonPhZipInput'); // Always input for primary zip
+
+
+    const countryCodeSelect = document.getElementById('foreignCountryCode');
+
+    /**
+     * Populates the country code dropdown for mobile numbers.
+     */
+    function populateCountryCodes() {
+        console.log('Populating phone country codes.');
+        if (!countryCodeSelect || typeof window.phoneCountryCodes === 'undefined') {
+            console.warn("Country code select element or phoneCountryCodes data not found.");
+            return;
+        }
+
+        // Clear existing options except the default disabled one
+        countryCodeSelect.innerHTML = '<option value="" disabled selected>Select Code</option>';
+
+        // Sort countries alphabetically
+        const sortedCountries = Object.keys(window.phoneCountryCodes).sort();
+
+        sortedCountries.forEach(countryName => {
+            const code = window.phoneCountryCodes[countryName];
+            const option = document.createElement('option');
+            option.value = code;
+            option.textContent = `${countryName} (${code})`;
+            countryCodeSelect.appendChild(option);
+        });
+        console.log(`Populated ${sortedCountries.length} phone country codes.`);
+    }
+
+
+    /**
+     * Sets or unsets the 'required' attribute and clears the value for input/select elements
+     * within a given container.
+     * @param {HTMLElement} container The container element.
+     * @param {boolean} isRequired Whether the fields should be required.
+     */
+    function setFieldsRequiredAndClear(container, isRequired) {
+        if (!container) return;
+        const fields = container.querySelectorAll('input, select');
+        fields.forEach(field => {
+            // Skip hidden inputs like postalCodeInput as their 'required' state is managed by the logic
+            if (field.type === 'hidden') {
+                return;
+            }
+
+            field.required = isRequired;
+            if (!isRequired) {
+                // Clear value and reset dropdowns only if making them not required/hidden
+                if (field.tagName === 'SELECT') {
+                    field.value = ''; // Attempt to reset to empty
+                    if (field.querySelector('option[disabled][selected]')) {
+                        field.value = ''; // Ensure the disabled selected option is active
+                    }
+                } else if (field.type !== 'radio' && field.type !== 'checkbox') {
+                    field.value = ''; // Clear input field value
+                }
+            }
+        });
+    }
+
+    /**
+     * Get postal code from addressObject
+     * @param {string} region The selected region.
+     * @param {string} city The selected city.
+     * @param {string|null} barangay The selected barangay (optional).
+     * @returns {string} The postal code or an empty string if not found.
+     */
+    function getPostalCode(region, city, barangay = null) {
+        console.log('[getPostalCode] Called with:', { region, city, barangay });
+        if (typeof addressObject === 'undefined' || !addressObject.Philippines || !region || !city) {
+            console.warn("[getPostalCode] addressObject or essential address data missing.");
+            return '';
+        }
+
+        let cityData = null;
+        const regionContent = addressObject.Philippines[region];
+
+        if (regionContent) {
+            // Check if city is directly under the region
+            if (regionContent[city] && typeof regionContent[city] === 'object' && regionContent[city] !== null) {
+                cityData = regionContent[city];
+            } else {
+                // Check if city is nested under a province within the region
+                for (const provinceKey in regionContent) {
+                    if (regionContent.hasOwnProperty(provinceKey)) {
+                        const provinceContent = regionContent[provinceKey];
+                        if (typeof provinceContent === 'object' && provinceContent !== null && provinceContent[city] && typeof provinceContent[city] === 'object' && provinceContent[city] !== null) {
+                            cityData = provinceContent[city];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (cityData) {
+            if (barangay && typeof cityData[barangay] === 'string') {
+                const postal = cityData[barangay];
+                console.log(`[getPostalCode] Found specific postal code for barangay ${barangay}: ${postal}`);
+                return postal;
+            }
+            if (typeof cityData.postal_code === 'string') {
+                const postal = cityData.postal_code;
+                console.log(`[getPostalCode] Found city-level postal code: ${postal}`);
+                return postal;
+            }
+        }
+        console.log("[getPostalCode] No postal code found for the given selection.");
+        return '';
+    }
+
+    /**
+     * Resets a dropdown to its initial state (disabled with a default option).
+     * @param {HTMLSelectElement} dropdown The select element to reset.
+     * @param {string} defaultOptionText The text for the default disabled option.
+     */
+    function resetDropdown(dropdown, defaultOptionText) {
+        if (dropdown) {
+            dropdown.innerHTML = `<option value="" disabled selected>${defaultOptionText}</option>`;
+            dropdown.disabled = true;
+            console.log(`[resetDropdown] Dropdown reset: ${dropdown.id || 'N/A'}`);
+        }
+    }
+
+
+    /**
+     * Populates the Region/Province dropdown with Philippine Regions.
+     * @param {HTMLSelectElement} provinceDropdown The province select element to populate.
+     * @param {HTMLSelectElement} cityDropdown The city select element to clear and disable.
+     * @param {HTMLSelectElement} barangayDropdown The barangay select element to clear and disable.
+     * @param {HTMLInputElement} postalInput The postal code input to clear.
+     */
+    function populateRegions(provinceDropdown, cityDropdown, barangayDropdown, postalInput) {
+        console.log('[populateRegions] Called.');
+        if (!provinceDropdown || typeof addressObject === 'undefined' || !addressObject.Philippines) {
+            console.warn("addressObject or address data for regions not found during populateRegions.");
+            resetDropdown(provinceDropdown, '---');
+            return;
+        }
+
+        provinceDropdown.disabled = false;
+        resetDropdown(cityDropdown, 'Select City/Municipality'); // Reset with correct text
+        resetDropdown(barangayDropdown, 'Select Barangay/Sub-Municipality'); // Reset with correct text
+        if (postalInput) postalInput.value = ''; // Clear postal code input
+
+        provinceDropdown.innerHTML = '<option value="" disabled selected>Select Region/Province</option>'; // Corrected default text
+        const regions = Object.keys(addressObject.Philippines);
+        regions.forEach(region => {
+            const option = document.createElement('option');
+            option.value = region;
+            option.textContent = region;
+            provinceDropdown.appendChild(option);
+        });
+        console.log(`[populateRegions] Populated Philippine regions. Total: ${regions.length}`);
+    }
+
+    /**
+     * Populates the City/Municipality dropdown based on selected Region/Province.
+     * @param {HTMLSelectElement} provinceDropdown The province select element holding the selected region.
+     * @param {HTMLSelectElement} cityDropdown The city select element to populate.
+     * @param {HTMLSelectElement} barangayDropdown The barangay select element to clear and disable.
+     * @param {HTMLInputElement} postalInput The postal code input to clear.
+     */
+    function populateCities(provinceDropdown, cityDropdown, barangayDropdown, postalInput) {
+        const selectedRegion = provinceDropdown.value;
+        console.log(`[populateCities] Called for region: ${selectedRegion}`);
+        if (typeof addressObject === 'undefined' || !selectedRegion || !addressObject.Philippines[selectedRegion]) {
+            console.warn("addressObject or address data for selected region not found during populateCities.");
+            resetDropdown(cityDropdown, 'Select City/Municipality');
+            return;
+        }
+
+        cityDropdown.disabled = false;
+        resetDropdown(barangayDropdown, 'Select Barangay/Sub-Municipality');
+        if (postalInput) postalInput.value = '';
+
+        cityDropdown.innerHTML = '<option value="" disabled selected>Select City/Municipality</option>';
+        const regionContent = addressObject.Philippines[selectedRegion];
+        const citiesToAdd = new Set(); // Use a Set to avoid duplicate city names
+
+        // Iterate through direct children of the region (could be cities or provinces)
+        for (const key in regionContent) {
+            if (regionContent.hasOwnProperty(key)) {
+                const item = regionContent[key];
+                if (typeof item === 'object' && item !== null) {
+                    // If the item has a 'postal_code' or contains direct string values (barangays as strings), it's likely a city object
+                    if (item.postal_code || Object.keys(item).some(subKey => typeof item[subKey] === 'string' && subKey !== 'postal_code')) {
+                        citiesToAdd.add(key); // This 'key' is a city name
+                    } else {
+                        // Otherwise, it might be a province containing cities
+                        for (const cityKey in item) {
+                            if (item.hasOwnProperty(cityKey) && typeof item[cityKey] === 'object' && item[cityKey] !== null) {
+                                if (item[cityKey].postal_code || Object.keys(item[cityKey]).some(subKey => typeof item[cityKey][subKey] === 'string' && subKey !== 'postal_code')) {
+                                    citiesToAdd.add(cityKey); // This 'cityKey' is a city name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        const sortedCities = Array.from(citiesToAdd).sort();
+        sortedCities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            cityDropdown.appendChild(option);
+        });
+        console.log(`[populateCities] Populated Philippine cities for ${selectedRegion}. Total: ${sortedCities.length}`);
+        updatePostalCodeInput(provinceDropdown, cityDropdown, barangayDropdown, postalInput);
+    }
+
+    /**
+     * Populates the Barangay/Sub-Municipality dropdown.
+     * @param {HTMLSelectElement} provinceDropdown The province select element holding the selected region.
+     * @param {HTMLSelectElement} cityDropdown The city select element holding the selected city.
+     * @param {HTMLSelectElement} barangayDropdown The barangay select element to populate.
+     * @param {HTMLInputElement} postalInput The postal code input (now just cleared, not set).
+     */
+    function populateBarangays(provinceDropdown, cityDropdown, barangayDropdown, postalInput) {
+        const selectedRegion = provinceDropdown.value;
+        const selectedCity = cityDropdown.value;
+        console.log(`[populateBarangays] Called for region: ${selectedRegion}, city: ${selectedCity}`);
+
+        if (typeof addressObject === 'undefined' || !selectedRegion || !selectedCity || !addressObject.Philippines[selectedRegion]) {
+            console.warn("addressObject or address data for selected region/city not found during populateBarangays.");
+            resetDropdown(barangayDropdown, 'Select Barangay/Sub-Municipality');
+            if (postalInput) postalInput.value = '';
+            return;
+        }
+
+        barangayDropdown.disabled = false;
+        barangayDropdown.innerHTML = '<option value="" disabled selected>Select Barangay/Sub-Municipality</option>';
+
+        let targetCityData = null;
+        const regionContent = addressObject.Philippines[selectedRegion];
+
+        if (regionContent) {
+            // Check if city is directly under the region
+            if (regionContent[selectedCity] && typeof regionContent[selectedCity] === 'object' && regionContent[selectedCity] !== null) {
+                targetCityData = regionContent[selectedCity];
+            } else {
+                // Check if city is nested under a province within the region
+                for (const provinceKey in regionContent) {
+                    if (regionContent.hasOwnProperty(provinceKey)) {
+                        const provinceContent = regionContent[provinceKey];
+                        if (typeof provinceContent === 'object' && provinceContent !== null && provinceContent[selectedCity] && typeof provinceContent[selectedCity] === 'object' && provinceContent[selectedCity] !== null) {
+                            targetCityData = provinceContent[selectedCity];
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (targetCityData) {
+            // Filter out 'postal_code' and any other non-barangay properties (assuming barangays are strings)
+            const barangays = Object.keys(targetCityData).filter(key => typeof targetCityData[key] === 'string' && key !== 'postal_code');
+            barangays.sort(); // Sort barangays alphabetically
+            barangays.forEach(barangay => {
+                const option = document.createElement('option');
+                option.value = barangay;
+                option.textContent = barangay;
+                barangayDropdown.appendChild(option);
+            });
+            console.log(`[populateBarangays] Populated Philippine barangays for ${selectedCity}. Total: ${barangays.length}`);
+        } else {
+            console.warn(`[populateBarangays] No specific barangay data found for city: ${selectedCity} in region: ${selectedRegion}`);
+        }
+        // Always update postal code here, even if no barangay selected (it will use city's if available)
+        updatePostalCodeInput(provinceDropdown, cityDropdown, barangayDropdown, postalInput);
+    }
+
+
+    /**
+     * Updates the postal code input field based on the current dropdown selections.
+     * @param {HTMLSelectElement} provinceDropdown The province select element.
+     * @param {HTMLSelectElement} cityDropdown The city select element.
+     * @param {HTMLSelectElement} barangayDropdown The barangay select element.
+     * @param {HTMLInputElement} postalInput The postal code input element.
+     */
+    function updatePostalCodeInput(provinceDropdown, cityDropdown, barangayDropdown, postalInput) {
+        console.log('[updatePostalCodeInput] Called.');
+        const selectedRegion = provinceDropdown.value;
+        const selectedCity = cityDropdown.value;
+        const selectedBarangay = barangayDropdown ? barangayDropdown.value : null;
+
+        if (postalInput) {
+            const postalCode = getPostalCode(selectedRegion, selectedCity, selectedBarangay);
+            postalInput.value = postalCode;
+            console.log(`[updatePostalCodeInput] Postal code updated to: ${postalCode}`);
+        }
+    }
+
+    /**
+     * Sets or unsets the 'required' attribute and clears the value for all shipping fields.
+     * This function is specifically for the shipping address section.
+     * @param {boolean} isRequired Whether the shipping fields should be required.
+     */
+    function setShippingFieldsRequiredState(isRequired) {
+        console.log(`[setShippingFieldsRequiredState] Setting shipping fields required state to: ${isRequired}`);
+        // Main address line
+        // if (ForeignShippingAddress1Input) { ForeignShippingAddress1Input.required = isRequired; if (!isRequired) ForeignShippingAddress1Input.value = ''; } // Removed
+
+        // PH specific fields
+        // const phShippingFields = [ForeignPhShippingProvinceSelect, ForeignPhShippingCitySelect, ForeignPhShippingBarangaySelect]; // Removed
+        // phShippingFields.forEach(select => { // Removed
+        //     if (select) { // Removed
+        //         select.required = isRequired; // Removed
+        //         if (!isRequired) { // Removed
+        //             select.value = ''; // Removed
+        //             resetDropdown(select, select.options[0].textContent); // Reset dropdown to default text // Removed
+        //         } // Removed
+        //     } // Removed
+        // }); // Removed
+        // if (ForeignPhShippingPostalCodeInput) { ForeignPhShippingPostalCodeInput.required = isRequired; if (!isRequired) ForeignPhShippingPostalCodeInput.value = ''; } // Removed
+
+        // Hide all specific containers when not required // Removed
+        // if (!isRequired) { // Removed
+        //     if (shippingAddressContainer) shippingAddressContainer.style.display = 'none'; // Removed
+        //     if (ForeignPhShippingFields) ForeignPhShippingFields.style.display = 'none'; // Hide PH specific fields // Removed
+        //     // The barangay/zip fields are now part of ForeignPhShippingFields, so this might not be needed // Removed
+        //     // if (ForeignPhShippingBarangayZipFields) ForeignPhShippingBarangayZipFields.style.display = 'none'; // Removed
+        //     if (ForeignNonPhShippingFields) ForeignNonPhShippingFields.style.display = 'none'; // Ensure non-PH are hidden // Removed
+        // } // Removed
+    }
+
+
+    /**
+     * Validates all visible and required fields on the form.
+     * Temporarily disables 'required' for hidden fields to allow form submission.
+     */
+    function validateFormFields() { // Renamed from validatePageFields
+      console.log('[validateFormFields] Called.');
+      const allFormElements = form.querySelectorAll('input, select, textarea');
+      const hiddenRequiredFields = [];
+
+      allFormElements.forEach(field => {
+          const isHidden = field.offsetParent === null || field.offsetWidth === 0 || field.offsetHeight === 0 ||
+                                   field.style.display === 'none';
+          
+          if (field.type === 'hidden') {
+              return;
+          }
+
+          if (field.required && isHidden) {
+              field.setAttribute('data-temp-required', 'true');
+              field.required = false;
+              hiddenRequiredFields.push(field);
+              console.log(`[validateFormFields] Temporarily disabled required for hidden field: ${field.id}`);
+          }
+      });
+
+      let allValid = true;
+      const visibleRequiredInputs = form.querySelectorAll('[required]:not([type="hidden"])');
+
+      for (let i = 0; i < visibleRequiredInputs.length; i++) {
+          const input = visibleRequiredInputs[i];
+          // Ensure the element is visible and required before validating it
+          if (input.offsetParent === null || input.offsetWidth === 0 || input.offsetHeight === 0 || input.style.display === 'none') {
+              continue;
+          }
+          if (!input.checkValidity()) {
+              allValid = false;
+              input.reportValidity(); // Show native browser validation message
+              console.log(`[validateFormFields] Validation failed for field: ${input.id}`);
+              break;
+          }
+      }
+
+      // Check for password strength - THIS IS WHERE THE STRICT VALIDATION HAPPENS FOR SUBMISSION
+      const passwordInput = document.getElementById('foreign-password');
+      if (passwordInput && !checkForeignPasswordStrength(passwordInput.value)) { 
+          showCustomMessage('Your password does not meet all the required criteria. Please review the password requirements.');
+          allValid = false;
+          passwordInput.focus(); // Focus on password field to help user
+          console.log('[validateFormFields] Password strength validation failed.');
+          // Do not return here, let the loop finish to highlight other fields if any.
+      }
+
+
+      // Check for password match AFTER individual field validity and strength
+      const confirmPasswordInput = document.getElementById('foreign-password-confirm');
+      if (passwordInput && confirmPasswordInput && passwordInput.value !== confirmPasswordInput.value) { // Only validate if both fields exist
+          showCustomMessage('Passwords do not match. Please ensure both password fields are identical.');
+          allValid = false;
+          // Optionally, focus on the confirm password field to highlight the issue
+          confirmPasswordInput.focus();
+          console.log('[validateFormFields] Password match validation failed.');
+      }
+
+
+      // Restore original 'required' state for fields that were temporarily disabled
+      hiddenRequiredFields.forEach(field => {
+        field.required = true;
+        field.removeAttribute('data-temp-required');
+        console.log(`[validateFormFields] Restored required for field: ${field.id}`);
+      });
+
+      console.log(`[validateFormFields] Overall form validity: ${allValid}`);
+      return allValid;
+    }
+
+
+    /**
+     * Resets and hides all role-dependent fields.
+     */
+    function resetRoleDependentFields() {
+        console.log('[resetRoleDependentFields] Resetting all role-dependent fields.');
+        setFieldsRequiredAndClear(employmentStudentFields, false);
+        setFieldsRequiredAndClear(employmentPrivateGovernmentFields, false);
+        setFieldsRequiredAndClear(employmentSelfEmployedFields, false);
+        setFieldsRequiredAndClear(employmentUnemployedFields, false);
+        setFieldsRequiredAndClear(employmentHomemakerFields, false);
+        setFieldsRequiredAndClear(employmentOtherFields, false);
+        setFieldsRequiredAndClear(employmentReligiousFields, false); 
+
+        employmentStudentFields.style.display = 'none';
+        employmentPrivateGovernmentFields.style.display = 'none';
+        employmentSelfEmployedFields.style.display = 'none';
+        employmentUnemployedFields.style.display = 'none';
+        employmentHomemakerFields.style.display = 'none';
+        employmentOtherFields.style.display = 'none';
+        employmentReligiousFields.style.display = 'none'; 
+
+        if (schoolNameInput) schoolNameInput.required = false;
+        if (companyNameInput) companyNameInput.required = false;
+        // if (businessTypeInput) businessTypeInput.required = false; // Handled by setFieldsRequiredAndClea
+        if (previousOccupationInput) previousOccupationInput.required = false;
+        if (otherEmploymentInput) otherEmploymentInput.required = false;
+        if (houseOfWorshipInput) houseOfWorshipInput.required = false;
+    }
+
+    // --- Event Listener for Industry Dropdown ---
+    if (industrySelect) {
+      industrySelect.addEventListener('change', function() {
+          const selectedIndustry = this.value;
+          console.log(`[IndustrySelect] Industry changed to: ${selectedIndustry}`);
+
+          // Reset and hide all role-dependent fields
+          resetRoleDependentFields();
+
+          // Handle "Other Industry" text field visibility and required status
+          if (selectedIndustry === 'Other Industry') {
+              foreignOtherIndustryTextField.style.display = 'block';
+              if (foreignOtherIndustryTextInput) foreignOtherIndustryTextInput.required = true;
+          } else {
+              foreignOtherIndustryTextField.style.display = 'none';
+              if (foreignOtherIndustryTextInput) {
+                  foreignOtherIndustryTextInput.required = false;
+                  foreignOtherIndustryTextInput.value = ''; 
+              }
+          }
+
+          // Populate the role dropdown based on the selected industry
+          populateRoles(selectedIndustry);
+
+          // Show the role dropdown container if an industry is selected AND it's not "Other Industry"
+          if (selectedIndustry && selectedIndustry !== 'Other Industry') {
+              roleDropdownContainer.style.display = 'block';
+              roleSelect.disabled = false;
+              roleSelect.required = true; 
+          } else {
+              roleDropdownContainer.style.display = 'none';
+              roleSelect.required = false; 
+          }
+
+          // Update company/agency name label based on selected industry
+          const companyNameLabel = document.querySelector('label[for="Foreign-Register-CompanyName"]');
+          if (companyNameLabel) {
+              if (selectedIndustry.includes('Education') || selectedIndustry.includes('AV Education')) {
+                  companyNameLabel.textContent = 'Institute Name (Optional)';
+              } else if (selectedIndustry.includes('Religious Organizations')) {
+                  companyNameLabel.textContent = 'House of Worship (Optional)';
+              } else {
+                  companyNameLabel.textContent = 'Company/Agency Name (Optional)';
+              }
+          }
+      });
+    }
+
+    /**
+     * Populates the Role dropdown based on the selected industry.
+     * @param {string} industry The selected industry value.
+     */
+    function populateRoles(industry) {
+        console.log(`[populateRoles] Populating roles for industry: ${industry}`);
+        if (!roleSelect) return;
+
+        roleSelect.innerHTML = '<option value="" disabled selected>Select Your Role</option>';
+        const roles = window.industryRolesData[industry] || window.industryRolesData["Default Roles"]; // Fallback to default roles
+
+        roles.sort((a, b) => a.localeCompare(b)); // Sort roles alphabetically
+
+        roles.forEach(role => {
+            const option = document.createElement('option');
+            option.value = role;
+            option.textContent = role;
+            roleSelect.appendChild(option);
+        });
+
+        const otherRoleOption = document.createElement('option');
+        otherRoleOption.value = 'Other Role';
+        otherRoleOption.textContent = 'Other Role';
+        roleSelect.appendChild(otherRoleOption);
+
+
+        roleSelect.disabled = false;
+        console.log(`[populateRoles] Populated roles for ${industry}. Total: ${roles.length}`);
+    }
+
+    // --- Event Listener for Role Dropdown (NEW) ---
+    if (roleSelect) {
+        roleSelect.addEventListener('change', function() {
+            const selectedRole = this.value;
+            console.log(`[RoleSelect] Role changed to: ${selectedRole}`);
+
+            // Reset and hide all role-dependent fields before showing the relevant one
+            resetRoleDependentFields();
+
+            // Re-apply industry-based label (important for consistency)
+            const currentIndustry = industrySelect.value;
+            const companyNameLabel = document.querySelector('label[for="Foreign-Register-CompanyName"]');
+            if (companyNameLabel) {
+                if (currentIndustry.includes('Education') || currentIndustry.includes('AV Education')) {
+                    companyNameLabel.textContent = 'Institute Name (Optional)';
+                    employmentPrivateGovernmentFields.style.display = 'block'; 
+                } else if (currentIndustry.includes('Religious Organizations')) {
+                    companyNameLabel.textContent = 'House of Worship (Optional)';
+                    employmentReligiousFields.style.display = 'block'; 
+                } else {
+                    companyNameLabel.textContent = 'Company/Agency Name (Optional)';
+                    employmentPrivateGovernmentFields.style.display = 'block'; 
+                }
+            }
+
+            // Determine which category the selected role falls into
+            if (selectedRole.includes('Student')) {
+                employmentStudentFields.style.display = 'block';
+                
+            } else if (selectedRole.includes('Business Owner / Proprietor')) {
+                employmentSelfEmployedFields.style.display = 'block';
+                if (businessTypeInput) businessTypeInput.required = true; 
+            } else if (selectedRole.includes('Freelancer') || selectedRole.includes('Musician / Artist / Performer')) {
+                employmentSelfEmployedFields.style.display = 'block';
+                
+            } else if (selectedRole.includes('Unemployed')) {
+                employmentUnemployedFields.style.display = 'block';
+                
+            } else if (selectedRole.includes('Home User / Hobbyist')) {
+                employmentHomemakerFields.style.display = 'block'; 
+            } 
+              else if (selectedRole.includes('Religious Organization Representative')) {
+                employmentReligiousFields.style.display = 'block'; 
+                
+            }
+              else if (selectedRole.includes('Other Role')) {
+                employmentOtherFields.style.display = 'block';
+                if (otherEmploymentInput) otherEmploymentInput.required = false; 
+            }
+        });
+    }
+
+
+    // --- Initial Setup on Page Load ---
+    // 1. Populate phone country codes
+    populateCountryCodes();
+
+    // 2. Trigger initial industry logic to set default visibility and required states
+    if (industrySelect) {
+      industrySelect.dispatchEvent(new Event('change'));
+      console.log('[Initial Setup] Dispatched initial change event for industrySelect.');
+    }
+
+    // 3. Set initial state for shipping address based on the radio button state
+    // The HTML already sets display: none; for the container, so we don't need to dispatch
+    // a change event on load for the 'No' radio button.
+    // provideShippingAddressRadios.forEach(radio => { // Removed
+    //     radio.addEventListener('change', function() { // Removed
+    //         console.log(`[ShippingAddressRadio] Shipping address radio changed to: ${this.value}`); // Removed
+    //         if (this.value === 'yes') { // Removed
+    //             if (shippingAddressContainer) shippingAddressContainer.style.display = 'block'; // Removed
+    //             if (ForeignPhShippingFields) ForeignPhShippingFields.style.display = 'block'; // Changed to block for proper flow // Removed
+    //             if (ForeignNonPhShippingFields) ForeignNonPhShippingFields.style.display = 'none'; // Ensure non-PH are hidden // Removed
+    //             setShippingFieldsRequiredState(true); // This also makes fields required // Removed
+
+    //             // Populate PH address dropdowns // Removed
+    //             populateRegions(ForeignPhShippingProvinceSelect, ForeignPhShippingCitySelect, ForeignPhShippingBarangaySelect, ForeignPhShippingPostalCodeInput); // Removed
+    //             if (ForeignPhShippingProvinceSelect && ForeignPhShippingProvinceSelect.value) { // Removed
+    //                 ForeignPhShippingProvinceSelect.dispatchEvent(new Event('change')); // Removed
+    //             } // Removed
+
+    //         } else { // value === 'no' // Removed
+    //             setShippingFieldsRequiredState(false); // Clears fields and sets to not required // Removed
+    //         } // Removed
+    //     }); // Removed
+    // }); // Removed
+
+    // Listeners for PH address dropdowns (ensure they are attached to the correct IDs)
+    // if (ForeignPhShippingProvinceSelect) { // Removed
+    //   ForeignPhShippingProvinceSelect.addEventListener('change', () => { // Removed
+    //     console.log('[ForeignPhShippingProvinceSelect] PH Province changed.'); // Removed
+    //     populateCities(ForeignPhShippingProvinceSelect, ForeignPhShippingCitySelect, ForeignPhShippingBarangaySelect, ForeignPhShippingPostalCodeInput); // Removed
+    //   }); // Removed
+    // } // Removed
+    // if (ForeignPhShippingCitySelect) { // Removed
+    //   ForeignPhShippingCitySelect.addEventListener('change', () => { // Removed
+    //     console.log('[ForeignPhShippingCitySelect] PH City changed.'); // Removed
+    //     populateBarangays(ForeignPhShippingProvinceSelect, ForeignPhShippingCitySelect, ForeignPhShippingBarangaySelect, ForeignPhShippingPostalCodeInput); // Removed
+    //   }); // Removed
+    // } // Removed
+    // if (ForeignPhShippingBarangaySelect) { // Removed
+    //   ForeignPhShippingBarangaySelect.addEventListener('change', () => { // Removed
+    //     console.log('[ForeignPhShippingBarangaySelect] PH Barangay changed.'); // Removed
+    //     updatePostalCodeInput(ForeignPhShippingProvinceSelect, ForeignPhShippingCitySelect, ForeignPhShippingBarangaySelect, ForeignPhShippingPostalCodeInput); // Removed
+    //   }); // Removed
+    // } // Removed
+
+    // --- Event Listeners for new Primary Country Information ---
+    if (CustomerCountrySelect) {
+        CustomerCountrySelect.addEventListener('change', function() {
+            const selectedCountry = this.value;
+            console.log(`[CustomerCountrySelect] CustomerCountry changed to: ${selectedCountry}`);
+            togglePrimaryAddressFields(selectedCountry); // Updated call
+        });
+    }
+    if (PrimaryNonPhProvinceSelect) {
+        PrimaryNonPhProvinceSelect.addEventListener('change', function() {
+            console.log('[PrimaryNonPhProvinceSelect] Primary Non-PH Province changed.');
+            // City and Zip are now inputs, so no need to populate select dropdowns
+            if (PrimaryNonPhCityInput) PrimaryNonPhCityInput.value = '';
+            if (PrimaryNonPhZipInput) PrimaryNonPhZipInput.value = '';
+        });
+    }
+    // No need for PrimaryNonPhCitySelect listener as it's now an input
+    // No need for PrimaryNonPhZipSelect listener as it's always an input
+
+    // --- NEW: Functions for Primary Country's dynamic address fields ---
+    function togglePrimaryAddressFields(selectedCountry) {
+      console.log(`[togglePrimaryAddressFields] Called for country: ${selectedCountry}`);
+      
+      if (!PrimaryCountryAddressFields) {
+          console.error(`[togglePrimaryAddressFields] Primary country address fields container not found.`);
+          return;
+      }
+      
+      // Hide all dynamic address field containers first
+      PrimaryCountryAddressFields.style.display = 'none';
+      if (PrimaryNonPhProvinceSelectContainer) PrimaryNonPhProvinceSelectContainer.style.display = 'none';
+      if (PrimaryNonPhProvinceInputContainer) PrimaryNonPhProvinceInputContainer.style.display = 'none';
+      if (PrimaryNonPhCityInputContainer) PrimaryNonPhCityInputContainer.style.display = 'none'; // Always input for city
+      if (PrimaryNonPhZipInputContainer) PrimaryNonPhZipInputContainer.style.display = 'none'; // Always input for primary zip
+
+      // Reset required state for all primary address fields AND clear their values
+      [PrimaryAddress1Input, PrimaryAddress2Input, PrimaryNonPhProvinceSelect, PrimaryNonPhProvinceInput, PrimaryNonPhCityInput, PrimaryNonPhZipInput].forEach(el => {
+          if (el) {
+              el.required = false;
+              el.value = '';
+              if (el.tagName === 'SELECT') {
+                  el.innerHTML = `<option value="" disabled selected>${el.options[0].textContent}</option>`;
+                  el.disabled = true;
+              }
+          }
+      });
+
+      if (!selectedCountry) { // No country selected yet or cleared
+          PrimaryCountryAddressFields.style.display = 'none'; // Hide the whole section
+          return;
+      }
+
+      // Show the main primary address fields container
+      PrimaryCountryAddressFields.style.display = 'block';
+
+      // Address 1 is always required for any selected country
+      if (PrimaryAddress1Input) PrimaryAddress1Input.required = true;
+      // Address 2 is always optional
+      if (PrimaryAddress2Input) PrimaryAddress2Input.required = false;
+
+      if (selectedCountry === 'Philippines') {
+          // Primary address for Philippines is not collected in this section,
+          // it's assumed to be handled by the shipping address or not needed here.
+          // So, these fields remain empty for 'Philippines' in the Primary Country section.
+          PrimaryCountryAddressFields.style.display = 'none';
+          console.log('[togglePrimaryAddressFields] Primary country is Philippines. Hiding primary-country-address-fields.');
+      } else if (selectedCountry === 'Other') {
+          console.log('[togglePrimaryAddressFields] Primary country is "Other". Showing input fields.');
+          if (PrimaryNonPhProvinceInputContainer) PrimaryNonPhProvinceInputContainer.style.display = 'block';
+          if (PrimaryNonPhProvinceInput) PrimaryNonPhProvinceInput.required = true;
+          if (PrimaryNonPhCityInputContainer) PrimaryNonPhCityInputContainer.style.display = 'block';
+          if (PrimaryNonPhCityInput) PrimaryNonPhCityInput.required = true;
+          if (PrimaryNonPhZipInputContainer) PrimaryNonPhZipInputContainer.style.display = 'block'; // Always input for ZIP
+          if (PrimaryNonPhZipInput) PrimaryNonPhZipInput.required = true;
+
+      } else if (window.locationData[selectedCountry]) { // Country is in locationData, use dropdowns for province/city
+          console.log(`[togglePrimaryAddressFields] Primary country (${selectedCountry}) is in locationData. Showing select fields for province/city.`);
+          if (PrimaryNonPhProvinceSelectContainer) PrimaryNonPhProvinceSelectContainer.style.display = 'block';
+          if (PrimaryNonPhProvinceSelect) {
+              PrimaryNonPhProvinceSelect.required = true;
+              PrimaryNonPhProvinceSelect.disabled = false; // Enable province select
+              populatePrimaryProvinces('CustomerCountry', 'PrimaryNonPhProvinceSelect', 'PrimaryNonPhCityInput', 'PrimaryNonPhZipInput'); // Populate dropdown
+          }
+          if (PrimaryNonPhCityInputContainer) PrimaryNonPhCityInputContainer.style.display = 'block'; // City is now an input
+          if (PrimaryNonPhCityInput) {
+              PrimaryNonPhCityInput.required = true;
+          }
+          if (PrimaryNonPhZipInputContainer) PrimaryNonPhZipInputContainer.style.display = 'block'; // Always input for ZIP
+          if (PrimaryNonPhZipInput) PrimaryNonPhZipInput.required = true;
+
+      } else { // Country not in locationData and not "Other", default to text inputs
+          console.log(`[togglePrimaryAddressFields] Primary country (${selectedCountry}) is NOT in locationData and not "Other". Showing input fields.`);
+          if (PrimaryNonPhProvinceInputContainer) PrimaryNonPhProvinceInputContainer.style.display = 'block';
+          if (PrimaryNonPhProvinceInput) PrimaryNonPhProvinceInput.required = true;
+          if (PrimaryNonPhCityInputContainer) PrimaryNonPhCityInputContainer.style.display = 'block';
+          if (PrimaryNonPhCityInput) PrimaryNonPhCityInput.required = true;
+          if (PrimaryNonPhZipInputContainer) PrimaryNonPhZipInputContainer.style.display = 'block'; // Always input for ZIP
+          if (PrimaryNonPhZipInput) PrimaryNonPhZipInput.required = true;
+      }
+    }
+
+    function populatePrimaryProvinces(countrySelectId, provinceSelectId, cityInputId, zipInputId) { // Changed citySelectId to cityInputId, zipSelectId to zipInputId
+      console.log(`[populatePrimaryProvinces] Called for primary with countrySelectId: ${countrySelectId}`);
+      const countrySelect = document.getElementById(countrySelectId);
+      const provinceSelect = document.getElementById(provinceSelectId);
+      const cityInput = document.getElementById(cityInputId); // Get the input element for city
+      const zipInput = document.getElementById(zipInputId); // Get the input element for zip
+      const selectedCountry = countrySelect ? countrySelect.value : '';
+
+      if (provinceSelect) provinceSelect.innerHTML = '<option value="" disabled selected>Select state/province</option>';
+      if (cityInput) cityInput.value = ''; // Clear the city input
+      if (zipInput) zipInput.value = ''; // Clear the zip input
+
+      if (window.locationData && window.locationData[selectedCountry] && provinceSelect) {
+        Object.keys(window.locationData[selectedCountry]).forEach(province => {
+          const option = document.createElement('option');
+          option.value = province;
+          option.textContent = province;
+          provinceSelect.appendChild(option);
+        });
+        provinceSelect.disabled = false;
+        console.log(`[populatePrimaryProvinces] Populated primary provinces for ${selectedCountry}. Total: ${Object.keys(window.locationData[selectedCountry]).length}`);
+      } else {
+          if (provinceSelect) provinceSelect.disabled = true;
+          console.warn(`[populatePrimaryProvinces] No primary province data found for country: ${selectedCountry}`);
+      }
+    }
+
+    // Removed populatePrimaryCities and populatePrimaryZipCodes as city and zip are now inputs for primary address.
+
+
+      // Gather all form data from visible/relevant fields
+      const formData = {
+        first_name: document.getElementById('ForeignForm-FirstName').value,
+        last_name: document.getElementById('ForeignForm-LastName').value,
+        birthdate: document.getElementById('ForeignForm-birthdate').value,
+        phone_country_code: document.getElementById('foreignCountryCode').value,
+        phone: document.getElementById('ForeignForm-contactN').value,
+        
+        // Primary Country Information
+        primary_country: CustomerCountrySelect ? CustomerCountrySelect.value : '',
+        primary_address1: '', // New field
+        primary_address2: '', // New field
+        primary_province: '',
+        primary_city: '',
+        primary_zip: '',
+
+        // Employment Status and related fields
+        industry: industrySelect ? industrySelect.value : '', // Renamed to industry
+        role_title: roleSelect && roleSelect.style.display !== 'none' ? roleSelect.value : '', // Now directly maps to role/job title
+        // Added checks for element existence before accessing value or style
+        school_name: employmentStudentFields && employmentStudentFields.style.display !== 'none' && schoolNameInput ? schoolNameInput.value : '',
+        company_agency_name: employmentPrivateGovernmentFields && employmentPrivateGovernmentFields.style.display !== 'none' && companyNameInput ? companyNameInput.value : '',
+        // business_type: employmentSelfEmployedFields && employmentSelfEmployedFields.style.display !== 'none' && businessTypeInput ? businessTypeInput.value : '', // Business Type for Business Owner
+        previous_occupation: employmentUnemployedFields && employmentUnemployedFields.style.display !== 'none' && previousOccupationInput ? previousOccupationInput.value : '', 
+        house_of_worship: employmentReligiousFields && employmentReligiousFields.style.display !== 'none' && houseOfWorshipInput ? houseOfWorshipInput.value : '', // NEW: Capture House of Worship
+        other_employment_status: employmentOtherFields && employmentOtherFields.style.display !== 'none' && otherEmploymentInput ? otherEmploymentInput.value : '',
+        foreign_other_industry_text: foreignOtherIndustryTextField && foreignOtherIndustryTextField.style.display !== 'none' && foreignOtherIndustryTextInput ? foreignOtherIndustryTextInput.value : '', // NEW: Capture Other Industry text
+
+
+        // Shipping Address Data (only if provided) // Removed
+        // shipping_provided: document.getElementById('ForeignShippingAddressYes').checked ? 'Yes' : 'No', // Removed
+        // shipping_address_line1: '', // Removed
+        // // shipping_address_line2: '', // Not present in the current shipping section HTML // Removed
+        // shipping_country: '', // Removed
+        // shipping_province: '', // Removed
+        // shipping_city: '', // Removed
+        // shipping_barangay: '', // Removed
+        // shipping_postal_code: '' // Removed
+      };
+
+      // Populate primary country address fields in formData
+      if (CustomerCountrySelect && CustomerCountrySelect.value) {
+          formData.primary_address1 = PrimaryAddress1Input ? PrimaryAddress1Input.value : ''; // New
+          formData.primary_address2 = PrimaryAddress2Input ? PrimaryAddress2Input.value : ''; // New
+          const selectedPrimaryCountry = CustomerCountrySelect.value;
+          if (selectedPrimaryCountry === 'Philippines') {
+              // Primary address for Philippines is not collected in this section,
+              // it's assumed to be handled by the shipping address or not needed here.
+              // So, these fields remain empty for 'Philippines' in the Primary Country section.
+          } else if (selectedPrimaryCountry === 'Other') {
+              formData.primary_province = PrimaryNonPhProvinceInput ? PrimaryNonPhProvinceInput.value : '';
+              formData.primary_city = PrimaryNonPhCityInput ? PrimaryNonPhCityInput.value : '';
+              formData.primary_zip = PrimaryNonPhZipInput ? PrimaryNonPhZipInput.value : '';
+          } else { // Country is in window.locationData
+              formData.primary_province = PrimaryNonPhProvinceSelect ? PrimaryNonPhProvinceSelect.value : '';
+              formData.primary_city = PrimaryNonPhCityInput ? PrimaryNonPhCityInput.value : ''; // Always input for city
+              formData.primary_zip = PrimaryNonPhZipInput ? PrimaryNonPhZipInput.value : ''; // Always input for zip
+          }
+      }
+
+
+      // if (document.getElementById('ForeignShippingAddressYes').checked) { // Removed
+      //   formData.shipping_address_line1 = ForeignShippingAddress1Input ? ForeignShippingAddress1Input.value : ''; // Removed
+      //   formData.shipping_country = 'Philippines'; // Always Philippines if "Yes" is selected for shipping // Removed
+      //   // formData.shipping_address_line2 is not present in the current shipping section HTML // Removed
+        
+      //   formData.shipping_province = ForeignPhShippingProvinceSelect ? ForeignPhShippingProvinceSelect.value : ''; // Removed
+      //   formData.shipping_city = ForeignPhShippingCitySelect ? ForeignPhShippingCitySelect.value : ''; // Removed
+      //   formData.shipping_barangay = ForeignPhShippingBarangaySelect ? ForeignPhShippingBarangaySelect.value : ''; // Removed
+      //   formData.shipping_postal_code = ForeignPhShippingPostalCodeInput ? ForeignPhShippingPostalCodeInput.value : ''; // Removed
+      // } // Removed
+
+      formData.email = document.getElementById('foreign-email').value; // Updated ID
+      formData.accepts_marketing = document.getElementById('foreignMarketing').checked ? 'Yes' : 'No';
+      formData.timestamp = new Date().toISOString();
+
+
+      // --- Form Submission Logic ---
+      form.addEventListener('submit', function(e) {
+        console.log('[Form Submission] Form submission attempted.');
+        // Perform final validation for the entire form, considering hidden fields
+        if (!validateFormFields()) { // Changed to validateFormFields
+          e.preventDefault(); 
+          showCustomMessage('Please fill in all required fields correctly.');
+          return;
+        }
+
+        e.preventDefault();
+
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        if (submitBtn) {
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+            console.log('[Form Submission] Submit button disabled and text changed to "Processing...".');
+        }
+
+        // Send to Google Sheets
+        fetch('https://script.google.com/macros/s/AKfycbwPtyuHiXwlw2gCA-LCa69zrfpR2UHB4_tbi4Z8SRATG6aBNKmzuDomJ7DqJnJfUuI2/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log('[Form Submission] Data successfully sent to Google Sheets. Submitting form to Shopify.');
+            form.submit();
+          } else {
+            console.error('[Form Submission] Failed to save data to Google Sheets. Status:', response.status);
+            showCustomMessage('Failed to save data to Google Sheets. Attempting to register account anyway.');
+            form.submit();
+          }
+        })
+        .catch(error => {
+          console.error('[Form Submission] An error occurred during fetch to Google Sheets:', error);
+          showCustomMessage('An error occurred during data submission. Attempting to register account anyway.');
+          form.submit(); 
+        })
+        .finally(() => {
+          if (submitBtn) {
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              console.log('[Form Submission] Submit button re-enabled and text restored.');
+          }
+        });
+      });
+  });
+</script>

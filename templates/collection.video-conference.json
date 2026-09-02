@@ -1,0 +1,308 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_ANcUiB": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_bwPEgA": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gfgjAA": {
+          "type": "heading",
+          "settings": {
+            "heading": "VIDEO CONFERENCE SYSTEM",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gfgjAA"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_XhLqrk": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_J4QhtU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-vidconference"
+          }
+        },
+        "featured_collection_PhXxzB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microphone-vidconference"
+          }
+        },
+        "featured_collection_JCGL4w": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "speaker-phone"
+          }
+        },
+        "featured_collection_Jixgye": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "extra-speaker"
+          }
+        },
+        "featured_collection_KVeJDB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-conference-sysyem-controller"
+          }
+        },
+        "featured_collection_xRaLAk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-bar"
+          }
+        },
+        "featured_collection_ymRq9V": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "computing-appliance"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_J4QhtU",
+        "featured_collection_PhXxzB",
+        "featured_collection_JCGL4w",
+        "featured_collection_Jixgye",
+        "featured_collection_KVeJDB",
+        "featured_collection_xRaLAk",
+        "featured_collection_ymRq9V"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_rjd94d": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_mMTBR6": {
+          "type": "heading",
+          "settings": {
+            "heading": "VIDEO CONFERENCE ACCESSORIES",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mMTBR6"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    },
+    "collection_list_meghwB": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_gRMemM": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "speaker-phone"
+          }
+        },
+        "featured_collection_PUhadL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cable-video-conference"
+          }
+        },
+        "featured_collection_c4yLHR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mounting-kit-video-conference"
+          }
+        },
+        "featured_collection_6hzzDD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "power-supply"
+          }
+        },
+        "featured_collection_qJbm7h": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "computing-appliance"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_gRMemM",
+        "featured_collection_PUhadL",
+        "featured_collection_c4yLHR",
+        "featured_collection_6hzzDD",
+        "featured_collection_qJbm7h"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_kebVGT": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_aYJ7Ji": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-vidconference"
+          }
+        },
+        "featured_collection_A8Cwg9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microphone-vidconference"
+          }
+        },
+        "featured_collection_JCVm3z": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-conference-sysyem-controller"
+          }
+        },
+        "featured_collection_GtKfKL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-bar"
+          }
+        },
+        "featured_collection_MgWYzK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "speaker-phone"
+          }
+        },
+        "featured_collection_NYG3D9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-conference-accessories"
+          }
+        },
+        "featured_collection_RpKwF9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "computing-appliance"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_aYJ7Ji",
+        "featured_collection_A8Cwg9",
+        "featured_collection_JCVm3z",
+        "featured_collection_GtKfKL",
+        "featured_collection_MgWYzK",
+        "featured_collection_NYG3D9",
+        "featured_collection_RpKwF9"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "custom_liquid_ANcUiB",
+    "rich_text_bwPEgA",
+    "collection_list_XhLqrk",
+    "rich_text_rjd94d",
+    "collection_list_meghwB",
+    "collection_list_kebVGT"
+  ]
+}

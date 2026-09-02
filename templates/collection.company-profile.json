@@ -1,0 +1,170 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_tmXL9L": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_YjQwAG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Channel International Enterprises",
+            "heading_size": "h1"
+          }
+        },
+        "text_YNbEVH": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YjQwAG",
+        "text_YNbEVH"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/BANNER_ec10bda7-7c61-41d0-a0fa-79157881d595.png",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich_text_LBVjkY": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_jrWHK3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Humble Beginnings",
+            "heading_size": "h1"
+          }
+        },
+        "text_gPmPmK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Channel International Enterprises took its first step in the year 2009, under its primary appellation Channel International Audio Supply. Principal address #380 Jacinto Quezon Avenue Quezon City. After a year, the company transferred from a very little elbow room of 40 sq. m. to its present post of 250 sq. m. located at 43 Don Alejandro Roces Avenue, Brgy. Paligsahan, Quezon City (across Amoranto Sports Complex, in the same building as the biggest recording studio in the Philippines - Asiatec Pinknoise). Toiling away and ploughing the ground were four individuals who gradually worked their way up with one vision.</p><p>The number of employees has trebled at a rate of knots as it has successfully become a complete source for multi-media equipment needs as well as the Philippines’ first and only online store under its trade name channel.com.ph. From a handful of products, Channel expanded beyond 4,000 commendable merchandise, 100 outstanding brands, and 250 categories in sound, video, broadcast, lights, CCTV, and Power &tools.</p><p>Channel supplies products and services not only to online shoppers and offline consumers but also to churches, universities, schools, hospitals, rental companies, broadcasting companies, and government agencies. Its services include installation, rental, studio recording, mixing, mastering, and shooting.</p><p><br/>With its extensive experience in a broadcast facility, Channel is always ready to provide people with the necessary equipment, services, and access to better and more reliable information, helping them stay up-to-date with the demands of the time.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jrWHK3",
+        "text_gPmPmK"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {text-align: center;}",
+        "p {text-align: justify;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_Tm9KGB": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_wtKade": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Name",
+            "heading_size": "h1"
+          }
+        },
+        "text_XhjWG7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Befittingly, the dictionary describes the word <strong>channel</strong> as “<em>a way of making a product, information, etc. available; a passage for water or other liquids to flow along; a part of a river or other area of water that is deep and wide enough to provide a route for ships to travel along; and to direct something into a particular place or situation.</em>”</p><p>Expressly, we are steadfast in living up to our name, making Channel International Enterprises a company that would be exactly as what it denotes - a conduit for technologies and multi-media industries, making all the products readily available and easily accessible.</p><p></p><p>We are not only set on providing outstanding products and services to our clients, above all, to a simple yet huge commitment of becoming a <strong>CHANNEL OF BLESSING</strong> to everyone and every place we are linked up. We set our hearts to it, hence our name – <strong>CHANNEL</strong>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wtKade",
+        "text_XhjWG7"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {text-align: center;}",
+        "p {text-align: justify;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 100
+      }
+    },
+    "page_iUm6Wm": {
+      "type": "page",
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "company-profile",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "image_banner_tmXL9L",
+    "rich_text_LBVjkY",
+    "rich_text_Tm9KGB",
+    "page_iUm6Wm"
+  ]
+}

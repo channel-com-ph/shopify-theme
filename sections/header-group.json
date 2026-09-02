@@ -1,0 +1,82 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Welcome to our Store!",
+            "link": ""
+          }
+        },
+        "announcement_bzAK4D": {
+          "type": "announcement",
+          "settings": {
+            "text": "Operational Hours: Monday - Friday at 8AM - 6PM  |  Saturday at 8AM - 5PM",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0",
+        "announcement_bzAK4D"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_position": "middle-left",
+        "mobile_logo_position": "center",
+        "menu": "main-navigation",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "none",
+        "show_line_separator": true,
+        "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+        "menu_color_scheme": "scheme-2",
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "margin_bottom": 0,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "custom_liquid_Gf6RRR": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div class=\"category-nav-wrapper\">\n  <div class=\"page-width\" style=\"padding: 0 3.8rem;\">\n    <div id=\"MainNav\" style=\"padding: 0; margin: 0;\"></div>\n  </div>\n</div>",
+        "color_scheme": "scheme-70cdbec4-4589-49c7-8ac0-d75485072be1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "custom_liquid_Gf6RRR"
+  ]
+}

@@ -1,0 +1,151 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-3"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-3",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_tTpDCU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_QK3Ewe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "handheld-microphone-set"
+          }
+        },
+        "featured_collection_BAmUdC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavalier-microphone-set"
+          }
+        },
+        "featured_collection_HMK7Aw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headworn-microphone-set"
+          }
+        },
+        "featured_collection_eJDkMr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "instrument-microphone"
+          }
+        },
+        "featured_collection_MbYGLL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gooseneck-microphone-set"
+          }
+        },
+        "featured_collection_gMKPPA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "in-ear-wireless-set"
+          }
+        },
+        "featured_collection_Y9pANk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-wireless-set"
+          }
+        },
+        "featured_collection_q4h6wE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "transmitter"
+          }
+        },
+        "featured_collection_8TtbDT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "receiver"
+          }
+        },
+        "featured_collection_dwqW44": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-antenna-system"
+          }
+        },
+        "featured_collection_4Mhkbc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-microphone-accessories"
+          }
+        },
+        "featured_collection_FGwtpG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-wireless-system"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_QK3Ewe",
+        "featured_collection_BAmUdC",
+        "featured_collection_HMK7Aw",
+        "featured_collection_eJDkMr",
+        "featured_collection_MbYGLL",
+        "featured_collection_gMKPPA",
+        "featured_collection_Y9pANk",
+        "featured_collection_q4h6wE",
+        "featured_collection_8TtbDT",
+        "featured_collection_dwqW44",
+        "featured_collection_4Mhkbc",
+        "featured_collection_FGwtpG"
+      ],
+      "settings": {
+        "title": "WIRELESS MICROPHONE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_list_tTpDCU"
+  ]
+}

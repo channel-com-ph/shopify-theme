@@ -1,0 +1,408 @@
+{%- liquid
+  assign screen_md = 768
+  assign base_rounded = 'rounded-lg'
+  assign columns = 2
+  assign notlayered = 38
+  if section.settings.content_position == 'top-left'
+    assign columns = 1
+    assign notlayered = 0
+  endif
+  if settings.lang_direction contains request.locale.iso_code
+    assign is_rtl = true
+  else
+    assign is_rtl = false
+  endif
+-%}
+{%- style -%}
+  section#shopify-section-{{ section.id }} .otsb__root {
+    {% if section.settings.text_link_color.alpha != 0 %}
+    --colors-text-link: {{ section.settings.text_link_color.red }}, {{ section.settings.text_link_color.green }}, {{ section.settings.text_link_color.blue }};
+    {% else %}
+    --colors-text-link: var(--color-link);
+    {% endif %}
+  }
+  section#shopify-section-{{ section.id }} .otsb__root .otsb-map__content {
+    color: rgb(var(--colors-text));
+    background-color: rgb(var(--color-background));
+    {% if section.settings.text_color_map.alpha != 0 %}
+      --colors-text: {{ section.settings.text_color_map.red }}, {{ section.settings.text_color_map.green }}, {{ section.settings.text_color_map.blue }};
+    {% endif %}
+    {% if section.settings.heading_color.alpha != 0.0 %}
+      --colors-heading: {{ section.settings.heading_color.red }}, {{ section.settings.heading_color.green }}, {{ section.settings.heading_color.blue }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .otsb-bg-section-map.otsb-map__bg .otsb-map__content,
+  #shopify-section-{{ section.id }} .otsb-bg-section-map.otsb-map__bg .otsb-map__content > .otsb-xmap-content {
+    {% unless section.settings.bg_color_map.alpha == 0.0 %}
+      --color-background: {{ section.settings.bg_color_map.red }}, {{ section.settings.bg_color_map.green }}, {{ section.settings.bg_color_map.blue }};
+    {% endunless %}
+    background: rgb(var(--color-background));
+  }
+
+  #shopify-section-{{ section.id }} .otsb__root .scrollbar::-webkit-scrollbar-thumb {
+    background: {{ section.settings.text_color_map }};
+  }
+  .otsb__root .page-width {
+    max-width: var(--page-width, 1200px);
+  }
+  #shopify-section-{{ section.id }} .otsb__root .otsb-map {
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    @media (min-width: {{ screen_md }}px) {
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-top: {{ section.settings.padding_top }}px;
+    }
+  }
+  #shopify-section-{{ section.id }} .otsb-map .otsb-map__bg {
+    height: {{ section.settings.mobile_height }};
+    @media (min-width: {{ screen_md }}px) {
+      {% liquid
+        assign height = 'auto'
+        unless section.settings.content_position == 'top-left'
+          assign height = section.settings.desktop_height | append: '!important'
+        endunless
+      %}
+      height: {{ height }};
+    }
+  }
+  .otsb__root .page-width.otsb-full_width,
+  .otsb__root .otsb-map__bg.page-width,
+  .otsb-map .otsb-map__bg.page-width.layered {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media (max-width: {{ screen_md | minus: 1 }}px) {
+    .otsb__root .page-width.otsb-mobile-full_width {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  {% if section.settings.content_position == 'top-left' %}
+  @media (min-width: {{ screen_md }}px) {
+    #shopify-section-{{ section.id }} .otsb-map .otsb-map__bg .otsb-map__map {
+      height: {{ section.settings.desktop_height }}
+    }
+  }
+  #shopify-section-{{ section.id }} .otsb-map .otsb-map__bg.page-width.otsb-full_width {
+    max-width: unset;
+  }
+  {% endif %}
+{%- endstyle -%}
+{% liquid
+  assign otsb_map_mobile_classes = 'pl-6 pr-6'
+  assign otsb_map_desk_classes = 'page-width md:pl-20 md:pr-20'
+  if section.settings.full_width_mobile
+    assign otsb_map_mobile_classes = 'pl-0 pr-0 otsb-mobile-full_width'
+  endif
+  if section.settings.full_width
+    assign otsb_map_desk_classes = 'md:pr-0 md:pl-0'
+  endif
+
+  assign otsb_map_bg_classes = ""
+  if is_rtl
+    assign otsb_map_bg_classes = otsb_map_bg_classes | append: 'otsb-ltr'
+  endif
+  case section.settings.content_position
+    when 'left'
+      assign otsb_map_bg_classes = otsb_map_bg_classes | append: ' ' | append: 'flex-col-reverse md:flex-row-reverse'
+    when 'top-left'
+    assign otsb_map_bg_classes = otsb_map_bg_classes | append: ' ' | append: 'md:items-center layered'
+  endcase
+  if section.settings.rounded_corner_image
+    assign otsb_map_bg_classes = otsb_map_bg_classes | append: ' ' | append:  base_rounded
+  endif
+  if section.settings.full_width
+    assign otsb_map_bg_classes = otsb_map_bg_classes | append: ' otsb-full_width'
+  endif
+  if section.settings.full_width_mobile
+    assign otsb_map_bg_classes = otsb_map_bg_classes | append: ' otsb-mobile-full_width'
+  endif
+
+  assign otsb_map_map_classes = ""
+  if section.settings.content_position == "top-left"
+    assign otsb_map_map_classes = otsb_map_map_classes | append: 'w-full'
+  else
+    assign otsb_map_map_classes = otsb_map_map_classes | append: 'md:w-1/2 lg:max-w-[61.25%]'
+  endif
+  if section.settings.rounded_corner_image
+    assign otsb_map_map_classes = otsb_map_map_classes | append: ' ' | append:  base_rounded
+  endif
+%}
+
+{% if request.design_mode %}
+  <style>
+    .otsb_nope {
+      display: none !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      opacity: 0 !important;
+    }
+    ._otsb_warning {
+      position: relative;
+      box-shadow: 0rem 0.1875rem 0.0625rem -0.0625rem rgba(26, 26, 26, 0.07);
+      border-radius: 1rem;
+    }
+    ._otsb_warning::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      box-shadow: 0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, -0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, 0rem -0.0625rem 0rem 0rem rgba(0, 0, 0, 0.17) inset, 0rem 0.0625rem 0rem 0rem rgba(204, 204, 204, 0.5) inset;
+      border-radius: 1rem;
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+    }
+    .otsb_warning_root {
+      margin-top:36px;
+      margin-bottom:36px;
+    }
+    .otsb_warning_root ._otsb_warning_1 {border-top-left-radius:1rem;border-top-right-radius:1rem;border:1px solid #fcaf0a;background:#fcb827;padding:1rem}
+    .otsb_warning_root ._otsb_warning_2 {align-items:center;gap:8px;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-between}
+    .otsb_warning_root ._otsb_warning_3 {display:flex;gap:4px;flex-direction:row;flex-wrap:nowrap;justify-content:space-between}
+    .otsb_warning_root ._otsb_warning ._otsb_warning__icon {display:block;height:20px;width:20px;max-height:100%;max-width:100%;margin:auto}
+    .otsb_warning_root h2 {overflow-wrap:anywhere;word-break:normal;font-size:100%;font-weight:650;line-height:1.25;color:rgb(37,26,0)}
+    .otsb_warning_root * {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body-family);
+      line-height: 1.375;
+    }
+    .otsb_warning_root ul {
+      list-style-type: disc;
+    }
+    .otsb_warning_root a {
+      color: rgb(0, 0, 238);
+      text-decoration: underline;
+    }
+    .otsb_warning_root .otsb_warning_message_container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding:1rem;
+      color:rgb(37,26,0);
+    }
+    .otsb_warning_root .otsb_warning_message_container ul {
+      padding-inline-start:3rem;
+    }
+  </style>
+  <div x-data="otsb_script_require" class="page-width otsb_warning_root">
+    <div class="_otsb_warning">
+      <div class="_otsb_warning_1">
+        <div class="_otsb_warning_2">
+          <div class="_otsb_warning_3">
+            <span class="_otsb_warning__icon">
+              <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true"><path d="M10 6.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 1 1-1.5 0v-3.5a.75.75 0 0 1 .75-.75Z"></path><path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path><path fill-rule="evenodd" d="M10 3.5c-1.045 0-1.784.702-2.152 1.447a449.26 449.26 0 0 1-2.005 3.847l-.028.052a403.426 403.426 0 0 0-2.008 3.856c-.372.752-.478 1.75.093 2.614.57.863 1.542 1.184 2.464 1.184h7.272c.922 0 1.895-.32 2.464-1.184.57-.864.465-1.862.093-2.614-.21-.424-1.113-2.147-2.004-3.847l-.032-.061a429.497 429.497 0 0 1-2.005-3.847c-.368-.745-1.107-1.447-2.152-1.447Zm-.808 2.112c.404-.816 1.212-.816 1.616 0 .202.409 1.112 2.145 2.022 3.88a418.904 418.904 0 0 1 2.018 3.875c.404.817 0 1.633-1.212 1.633h-7.272c-1.212 0-1.617-.816-1.212-1.633.202-.408 1.113-2.147 2.023-3.883a421.932 421.932 0 0 0 2.017-3.872Z"></path></svg>
+            </span>
+            <h2>App Embeds Are Disabled</h2>
+          </div>
+        </div>
+      </div>
+      <div class="otsb_warning_message_container">
+        <p>To use this section, the app embeds of OT: Theme Sections must be enabled in the theme editor. Please follow these steps to activate them:</p>
+        <ul>
+          <li>In the left panel, click the last icon that says <b>“App embeds”</b>.</li>
+          <li>Enter <b>“OT”</b> on the search bar to quickly find and embed the apps from OT: Theme Sections.</li>
+          <li>Turn on the Toggle buttons of "Section Builder Script" and "Section Builder Style", then click <b>Save</b>.</li>
+        </ul>
+        <p>Please refer to the User Guide <a href="https://support.omnithemes.com/blogs/ot-theme-sections-get-started/1-embed-app-to-shopify-theme" target="_blank">here</a></p>
+        <p>For further support: feel free to contact us at <a href="mailto:support@omnithemes.com">support@omnithemes.com</a>!</p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<div class="otsb__root otsb_nope" x-data="otsb_script_1">
+<div class="otsb-map {{ otsb_map_mobile_classes | append: ' ' | append: otsb_map_desk_classes }}">
+  <div class="otsb-bg-section-map otsb-map__bg page-width relative flex flex-col md:flex-row {{ otsb_map_bg_classes }}">
+    <div class="otsb-map__map relative flex-1 {{ otsb_map_map_classes }}">
+      {% liquid
+        assign rounded_corner_classes = ''
+        if section.settings.rounded_corner_image
+          assign rounded_corner_classes = base_rounded
+        endif
+      %}
+      {%- if section.settings.image != blank -%}
+        <parallax-image class="otsb-xmap block h-full w-full absolute top-0 left-0 overflow-hidden {{ rounded_corner_classes }}" x-data="" {%- if section.settings.full_width == true -%}x-init="Alpine.store('otsb:utils').otsbXmapRefreshMapPosition('#shopify-section-{{ section.id }} .otsb-map__map .otsb-xmap', {{ screen_md }}, '{{ section.settings.content_position }}', false)" @resize.window="Alpine.store('otsb:utils').otsbXmapRefreshMapPosition('#shopify-section-{{ section.id }} .otsb-map__map .otsb-xmap', {{ screen_md }}, '{{ section.settings.content_position }}', false)"{%- endif -%}>
+          <parallax-movement x-data="xParallax" x-intersect.once.margin.200px="load({{ settings.disable_parallax_effect }})">
+            {%- capture sizes -%}
+              (min-width: {{ settings.page_width }}px) {% if section.settings.full_width %} calc((100vw - {{ notlayered }}vw)) {% else -%} calc({{ settings.page_width }}px - {{ settings.page_width | times: notlayered | divided_by: 100 }}px  ) {%- endif -%}, 
+              (min-width: 768px) calc(100vw / {{ columns }}), 
+              100vw
+            {%- endcapture -%}
+            {{ section.settings.image | image_url: width: 3000 | image_tag: loading: 'lazy', sizes: sizes, widths: '375, 450, 750, 900, 1100, 1500, 1780, 2000, 3000, 3840', class: 'h-full w-full object-cover z-0 absolute inset-0' }} 
+          </parallax-movement>
+        </parallax-image>
+      {%- elsif section.settings.store_address != blank -%}
+        <div x-data="xMap('{{ section.settings.store_address | escape }}')" {% if section.settings.full_width == true %}x-init="Alpine.store('otsb:utils').otsbXmapRefreshMapPosition('#shopify-section-{{ section.id }} .otsb-map__map .otsb-xmap', {{ screen_md }}, '{{ section.settings.content_position }}', false)" @resize.window="Alpine.store('otsb:utils').otsbXmapRefreshMapPosition('#shopify-section-{{ section.id }} .otsb-map__map .otsb-xmap', {{ screen_md }}, '{{ section.settings.content_position }}', false)" {% endif %} class="otsb-xmap h-full w-full absolute top-0 left-0 {{ rounded_corner_classes }}" x-intersect.once.margin.250px="load()">
+          <iframe src="" class="w-full h-full {{ rounded_corner_classes }}" title="Map"></iframe>
+        </div>
+      {%- else -%}
+        <div class="flex items-center justify-center w-full h-full">
+          {% render 'otsb-icon-placeholder', icon: 'icon-location-map', class: 'w-20 h-20 md:h-auto md:w-auto' %}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if section.blocks.size > 0 -%}
+      {% liquid
+        assign otsb_map_content_classes = ''
+        if is_rtl
+          assign otsb_map_content_classes = otsb_map_content_classes | append: 'otsb-rtl'
+        endif
+        if section.settings.content_position == "left"
+          assign otsb_map_content_classes = otsb_map_content_classes | append: ' lg:pr-[3.75rem] md:w-1/2 lg:w-[38.75%] relative'
+        elsif section.settings.content_position == 'top-left'
+          assign otsb_map_content_classes = otsb_map_content_classes | append: ' md:max-w-[370px] md:w-full md:px-[30px] md:pt-8 md:pb-10 md:absolute md:right-[8%] md:translate-x-0 md:shadow transition-opacity duration-200'
+          if request.design_mode == false
+            assign otsb_map_content_classes = otsb_map_content_classes | append: ' pointer-events-none'
+          endif
+        else
+          assign otsb_map_content_classes = otsb_map_content_classes | append: ' lg:pl-[3.75rem] md:w-1/2 lg:w-[38.75%] relative'
+        endif
+      %}
+      <div class="otsb-map__content text-map-{{ section.id }} max-h-[50%] md:max-h-full pt-7 otsb-bg-section-map pb-6 md:pt-8 md:pb-8 z-1 {{ otsb_map_content_classes}}" style="text-align: {{ section.settings.content_alignment }}">
+        <div x-data="" {% if section.settings.full_width == true %}x-init="Alpine.store('otsb:utils').otsbXmapRefreshMapPosition('#shopify-section-{{ section.id }} .otsb-map__content .otsb-xmap-content', {{ screen_md }}, '{{ section.settings.content_position }}')" @resize.window="Alpine.store('otsb:utils').otsbXmapRefreshMapPosition('#shopify-section-{{ section.id }} .otsb-map__content .otsb-xmap-content', {{ screen_md }}, '{{section.settings.content_position}}')"{% endif %} class="otsb-xmap-content h-full absolute top-0 left-0 w-0 {{ rounded_corner_classes }}"></div>
+        {% liquid
+          assign otsb_map_content_text_classes = ''
+          if section.settings.content_position != "top-left"
+            assign otsb_map_content_text_classes = 'lg:left-1/2 lg:transform lg:-translate-x-1/2'
+          endif
+          unless section.settings.content_position == "top-left"
+            assign otsb_map_content_text_classes = otsb_map_content_text_classes | append: ' flex flex-col h-full lg:h-[calc(100%-10rem)] lg:my-12 lg:mt w-full lg:max-w-[270px] lg:pl-0 lg:pr-0 lg:absolute'
+          endunless
+        %}
+        <div class="otsb-map__content_text pl-5 pr-5 selection:bg-[rgba(var(--colors-text,82,81,81),0.2)] {{ otsb_map_content_text_classes }}">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'heading' -%}
+                {%- if block.settings.heading != blank -%}
+                  {% liquid
+                    if settings.heading_base_size != blank
+                      assign heading_base_size =  settings.heading_base_size | times: 0.0225
+                    else
+                      assign heading_base_size =  180 | times: 0.0225
+                    endif
+                    assign heading_size =  block.settings.heading_size | times: 0.01 | times: heading_base_size
+                    assign heading_size_mobile = heading_size | times: 0.6
+                  %}
+                  {%- style -%}
+                    .otsb__root .heading--{{ block.id }} {
+                      font-size: {{ heading_size_mobile }}rem;
+                    }
+                    @media (min-width: 768px) {
+                      .otsb__root .heading--{{ block.id }}{ 
+                        font-size: {{ heading_size }}rem;
+                      }
+                    }
+                  {%- endstyle -%}
+                  <{{ block.settings.heading_tag }} class="heading--{{ block.id }} block{% if forloop.index != 1 %} mt-2 md:mt-5{% endif %}" {{ block.shopify_attributes }}>
+                    {{ block.settings.heading | escape }}
+                  </{{ block.settings.heading_tag }}>
+                {%- endif -%}
+              {%- when 'richtext' -%}
+                {%- if block.settings.text != blank -%}
+                  {% liquid
+                    if settings.text_base_size != blank
+                      assign text_base_size =  settings.text_base_size | times: 0.00875
+                    else
+                      assign text_base_size =  160 | times: 0.00875
+                    endif
+                    assign text_size = block.settings.text_size | times : text_base_size | times: 0.01
+                    assign text_size_mobile = text_size | times: 0.9
+                  %}
+                  {%- style -%} 
+                    .otsb__root .description--{{ block.id }}{ 
+                      font-size: {{ text_size_mobile }}rem;
+                    }
+                    @media (min-width: 768px) {
+                      .otsb__root .description--{{ block.id }}{ 
+                        font-size: {{ text_size }}rem;
+                      }
+                    }
+                  {%- endstyle -%}
+                  <div
+                    class="description--{{ block.id }} text-color-{{ section.id }}{% if forloop.index != 1 %} mt-2 md:mt-4{% endif %} max-h-full{% if section.settings.desktop_height == "500px" and section.settings.content_position == "top-left" %} md:max-h-40{% endif %} overflow-y-auto scrollbar-body pointer-events-auto"
+                    {{ block.shopify_attributes }}
+                  >
+                    <div class="md:pr-2 pr-1 otsb-rte otsb-p-break-words{% if section.settings.content_position == "top-left" %} md:pr-0{% endif %}">
+                      {% if block.settings.text != blank %}
+                        {{ block.settings.text }}
+                      {% endif %}
+                      </div>
+                  </div>
+                {%- endif -%}
+              {%- when 'button' -%}
+                {%- if section.settings.store_address != blank -%}
+                  {%- style -%}
+                    .otsb__root .button-{{ block.id }}, .otsb__root .button-{{ block.id }} *:before {
+                      {% if block.settings.button_color_mobile != "hover" %}
+                        --color-button-mobile: var(--color-button);
+                        --color-button-text-mobile: rgb(var(--color-button-text));
+                      {% else %}
+                        --color-button-mobile: var(--colors-button-hover);
+                        --color-button-text-mobile: rgb(var(--colors-button-text-hover));
+                      {% endif %}
+
+                    {% if block.settings.primary_button.alpha != 0.0 %}
+                      --color-button: {{ block.settings.primary_button.red }}, {{ block.settings.primary_button.green }}, {{ block.settings.primary_button.blue }};
+                    {% endif %}
+                    {% if block.settings.primary_button_text.alpha != 0.0 %}
+                      --color-button-text: {{ block.settings.primary_button_text.red }}, {{ block.settings.primary_button_text.green }}, {{ block.settings.primary_button_text.blue }};
+                    {% endif %}
+                    {% if block.settings.primary_button_hover.alpha != 0.0 %}
+                      --colors-button-hover: {{ block.settings.primary_button_hover.red }}, {{ block.settings.primary_button_hover.green }}, {{ block.settings.primary_button_hover.blue }};
+                    {% endif %}
+                    {% if block.settings.primary_button_text_hover.alpha != 0.0 %}
+                      --colors-button-text-hover: {{ block.settings.primary_button_text_hover.red }}, {{ block.settings.primary_button_text_hover.green }}, {{ block.settings.primary_button_text_hover.blue }};
+                    {% endif %}
+                    {% if block.settings.secondary_button_text.alpha != 0.0 %}
+                      --colors-secondary-button: {{ block.settings.secondary_button_text.red }}, {{ block.settings.secondary_button_text.green }}, {{ block.settings.secondary_button_text.blue }};
+                      --colors-line-secondary-button: {{ block.settings.secondary_button_text.red }}, {{ block.settings.secondary_button_text.green }}, {{ block.settings.secondary_button_text.blue }};
+                      --background-secondary-button: transparent;
+                    {% endif %}
+                    {% if block.settings.secondary_button.alpha != 0.0 %}
+                      --background-secondary-button: {{ block.settings.secondary_button.red }}, {{ block.settings.secondary_button.green }}, {{ block.settings.secondary_button.blue }};
+                      --colors-line-secondary-button: {{ block.settings.secondary_button.red }}, {{ block.settings.secondary_button.green }}, {{ block.settings.secondary_button.blue }};
+                    {% endif %}
+                  }
+                  {%- endstyle -%}
+                  <div {% if forloop.index != 1 %} class="x-button-{{ block.id }} button-{{ block.id }} mt-5 md:mt-7 mb-4 md:mb-0 w-full text-center"{% endif %} {{ block.shopify_attributes }} >
+                    {% liquid
+                      assign main_button_classes = ''
+                      if block.settings.button_primary
+                        assign main_button_classes = main_button_classes | append: ' otsb-btn__solid'
+                      else
+                        assign main_button_classes = main_button_classes | append: ' otsb-button-outline'
+                      endif
+                      assign main_button_classes = main_button_classes | append: ' otsb-btn-' | append: block.settings.button_type
+                      assign main_button_classes = main_button_classes | append: ' otsb-btn__' | append: block.settings.button_animation
+                      if section.settings.content_position == 'top-left'
+                        assign main_button_classes = main_button_classes | append: ' md:w-full'
+                      endif
+                    %}
+                    <a
+                      class="otsb-button otsb-btn leading-normal w-full pl-6 pr-6 pt-2.5 pb-2.5 md:pt-3 md:pb-3 cursor-pointer inline-flex text-center justify-center items-center empty:otsb-hidden pointer-events-auto {{ main_button_classes }}"
+                      href="https://www.google.com/maps/place/{{ section.settings.store_address }}"
+                      target="_blank"
+                    >
+                      {%- if block.settings.button_label != blank -%}
+                        {% assign button_label = block.settings.button_label %}
+                      {% else %}
+                        {% assign button_label = 'Get Directions' %}
+                      {% endif -%}
+                      {% render 'otsb-button-label', button_animation: block.settings.button_animation, button_label: button_label, show_button_primary: block.settings.button_primary, custom_icon_button: block.settings.custom_icon_button %}
+                    </a>
+                  </div>
+                {%- endif -%}
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+</div>
+<script data-src="../../section-scripts/inline-js/x-map-refresh-position">(()=>{var d=(s,r,n,i=!0)=>{let t=document.querySelector(s);if(!t){console.error("OT: Map initialized failed.");return}let c=document.documentElement.clientWidth<r;if(n==="top-left"||c){t.style.width="100%",i&&(t.style.display="none");return}let l=t.parentNode.getBoundingClientRect(),a=l.right,e=document.documentElement.clientWidth-a;n===(i?"left":"right")&&(e=l.left,t.style.left=`-${e}px`);let o="100%";e>0&&(o=`calc(100% + ${e}px)`),t.style.width=o,i&&(e>0?t.style.display="block":t.style.display="none")};document.addEventListener("alpine:init",()=>Alpine.store("otsb:utils",{...Alpine.store("otsb:utils")||{},otsbXmapRefreshMapPosition:d}));})();</script>

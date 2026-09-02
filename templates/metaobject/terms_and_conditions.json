@@ -1,0 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "terms_content_PARDVx": {
+      "type": "terms-content",
+      "blocks": {
+        "article_yQARM7": {
+          "type": "article",
+          "settings": {
+            "title": "",
+            "content": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_yQARM7"
+      ],
+      "name": "Default Terms Content",
+      "settings": {
+        "show_toc": true
+      }
+    },
+    "page_jUF3p6": {
+      "type": "page",
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "privacy-policy",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "terms_content_PARDVx",
+    "page_jUF3p6"
+  ]
+}

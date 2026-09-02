@@ -1,0 +1,580 @@
+{% render 'otsb-email-signup-base' %}
+{% schema %}
+{
+  "name": "OT: Email signup #2",
+  "tag": "section",
+  "class": "section-newsletter x-section otsb-signup2 otsb__root otsb-v2 otsb-v3",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "For recommended image sizes, check our [user guide](https:\/\/support.omnithemes.com\/blogs\/faqs\/can-you-recommend-image-sizes-for-the-different-image-layouts-of-different-section)."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image",
+      "info": "For recommended image sizes, check our [user guide](https:\/\/support.omnithemes.com\/blogs\/faqs\/can-you-recommend-image-sizes-for-the-different-image-layouts-of-different-section)."
+    },
+    {
+      "type": "select",
+      "id": "position_image", 
+      "options": [
+        {
+          "value": "image_left",
+          "label": "Image left"
+        },
+        {
+          "value": "image_right",
+          "label": "Image right"
+        },
+        {
+          "value": "image_background",
+          "label": "Image background"
+        },
+        {
+          "value": "image_none",
+          "label": "Not use image"
+        }
+      ],
+      "default": "image_background",
+      "label": "Image position"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "options": [
+        {
+          "value": "450px",
+          "label": "450px"
+        },
+        {
+          "value": "550px",
+          "label": "550px"
+        },
+        {
+          "value": "650px",
+          "label": "650px"
+        },
+        {
+          "value": "750px",
+          "label": "750px"
+        },
+        {
+          "value": "natural",
+          "label": "Adapt to first image"
+        },
+        {
+          "value": "95vh",
+          "label": "Fullscreen"
+        }
+      ],
+      "default": "450px",
+      "label": "Image height"
+    },
+    {
+      "type": "select",
+      "id": "image_alignment",
+      "label": "Image position - mobile",
+      "info": "Applied only with desktop position options: image left or image right",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "Image first"
+        },
+        {
+          "value": "image_second",
+          "label": "Image second"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "options": [
+        {
+          "value": "250px",
+          "label": "250px"
+        },
+        {
+          "value": "300px",
+          "label": "300px"
+        },
+        {
+          "value": "400px",
+          "label": "400px"
+        },
+        {
+          "value": "500px",
+          "label": "500px"
+        },
+        {
+          "value": "natural",
+          "label": "Adapt to first image"
+        },
+        {
+          "value": "94vh",
+          "label": "Fullscreen"
+        }
+      ],
+      "default": "300px",
+      "label": "Image height - mobile",
+      "info": "Applied only with image background"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "colors_overlay",
+      "default": "#000",
+      "label": "Overlay"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "styles_heading", 
+      "options": [
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "default",
+          "label": "Default"
+        }
+      ],
+      "default": "capitalize",
+      "label": "Heading text transform"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "heading",
+      "label": "Heading",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_link",
+      "label": "Text link",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "input_background",
+      "label": "Input background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "button",
+      "label": "Primary button",
+      "default": "#686646"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Primary button text",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover",
+      "label": "Primary button hover",
+      "default": "#686646"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover",
+      "label": "Primary button hover text",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "line_border",
+      "label": "Line and border",
+      "default": "#F2F2F2"
+    },
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Make section full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "Show section divider"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 28,
+      "label": "Top padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 28,
+      "label": "Bottom padding"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider_mobile",
+      "default": false,
+      "label": "Show section divider"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 20,
+      "label": "Top padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 20,
+      "label": "Bottom padding"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Subscribe to our emails",
+          "label": "Heading"
+        },
+        {
+          "type": "range",
+          "id": "heading_size_desktop",
+          "min": 2,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Heading size",
+          "default": 49
+        },
+        {
+          "type": "range",
+          "id": "heading_size_mobile",
+          "min": 2,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Heading size - mobile",
+          "default": 39
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "default": "h2",
+          "label": "Heading tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Be the first to know about new collections and exclusive offers.</p>",
+          "label": "Description"
+        },
+        {
+          "type": "range",
+          "id": "description_size_desktop",
+          "min": 2,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Description size",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "description_size_mobile",
+          "min": 2,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Description size - mobile",
+          "default": 16
+        }
+      ]
+    },
+    {
+      "type": "email_form",
+      "name": "Email form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "form_placeholder",
+          "label": "Form placeholder",
+          "default": "Enter Your email"
+        },
+        {
+          "type": "select",
+          "id": "form_width",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "large",
+          "label": "Form width"
+        },
+        {
+          "type": "range",
+          "id": "padding_top_bottom",
+          "label": "Padding top/bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 2
+        },
+        {
+          "type": "range",
+          "id": "padding_left_right",
+          "label": "Padding left/right",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 2
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Subscribe",
+          "label": "Button label"
+        },
+        {
+          "type": "select",
+          "id": "styles_button",
+          "options": [
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "rounded",
+              "label": "Rounded"
+            },
+            {
+              "value": "rounded_corners",
+              "label": "Rounded corners"
+            }
+          ],
+          "default": "rounded",
+          "label": "Button and input style"
+        },
+        {
+          "type": "range",
+          "id": "button_corner_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "default": 6,
+          "visible_if": "{{ block.settings.styles_button == 'rounded_corners' }}"
+        },
+        {
+          "type": "range",
+          "id": "border_thickness",
+          "label": "Border thickness",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "unit": "px",
+          "default": 1
+        },
+        {
+          "type": "select",
+          "id": "button_color_mobile",
+          "options": [
+            {
+              "value": "hover",
+              "label": "Use button hover color"
+            },
+            {
+              "value": "color",
+              "label": "Use button color"
+            }
+          ],
+          "label": "Mobile primary button style",
+          "default": "color"
+        },
+        {
+          "type": "select",
+          "id": "button_animation",
+          "options": [
+            {
+              "value": "slide",
+              "label": "Slide"
+            },
+            {
+              "value": "fill_up",
+              "label": "Fill up"
+            },
+            {
+              "value": "sliced",
+              "label": "Sliced with icon"
+            },
+            {
+              "value": "underline",
+              "label": "Underline"
+            }
+          ],
+          "label": "Primary button hover animation",
+          "default": "fill_up"
+        },
+        {
+          "type": "html",
+          "id": "custom_icon_button",
+          "label": "Custom icon (SVG code)",
+          "info": "Applies to 'Sliced with icon' animation type. Suggest size 20x20 (px). For assistance with custom SVG code or fixing issues that arise from custom SVG code, please [contact our support](https://omnithemes.com/contact/)."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "OT: Email signup #2",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "paragraph"
+        },
+        {
+          "type": "email_form"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

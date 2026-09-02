@@ -1,0 +1,239 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_63CTte": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_U4JnLG": {
+          "type": "heading",
+          "settings": {
+            "heading": "COMPANY DIRECTORY",
+            "heading_size": "h1"
+          }
+        },
+        "text_4jWDrT": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "buttons_8rwiNm": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_U4JnLG",
+        "text_4jWDrT",
+        "buttons_8rwiNm"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/BANNER_ec10bda7-7c61-41d0-a0fa-79157881d595.png",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": true
+      }
+    },
+    "page_Eyd3cF": {
+      "type": "page",
+      "disabled": true,
+      "custom_css": [
+        ".map-container {max-width: 1200px; width: 100%; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);}",
+        ".map-container iframe {width: 120% !important; height: 500px !important; border: none;}",
+        "@media (max-width: 768px) {.map-container {padding-bottom: 70%; } .map-container iframe {height: 300px !important; }}"
+      ],
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "store-locator",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_G33Ddh": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_QTVLw6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Store Locator",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QTVLw6"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 24
+      }
+    },
+    "otsb_map_3_fnmyjw": {
+      "type": "otsb-map-3",
+      "blocks": {
+        "heading_EbR6Yb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Channel International Enterprises",
+            "heading_size": 50,
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_GR7Wtq": {
+          "type": "richtext",
+          "settings": {
+            "text": "<p>43 1103 Don A. Roces Ave, Diliman, Quezon City, Metro Manila</p><p>Mon - Fri, 8:00am - 6:00pm,<br/>Saturday, 8:00am - 5:00pm</p>",
+            "text_size": 100
+          }
+        },
+        "button_9cqend": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Get Directions",
+            "button_primary": true,
+            "button_type": "rounded_corners",
+            "button_color_mobile": "color",
+            "button_animation": "fill_up",
+            "custom_icon_button": "",
+            "primary_button": "#ededed",
+            "primary_button_text": "#000000",
+            "primary_button_hover": "#931704",
+            "primary_button_text_hover": "#ffffff",
+            "secondary_button": "rgba(0,0,0,0)",
+            "secondary_button_text": "#931704"
+          }
+        }
+      },
+      "block_order": [
+        "heading_EbR6Yb",
+        "richtext_GR7Wtq",
+        "button_9cqend"
+      ],
+      "custom_css": [],
+      "name": "OT: Map #3",
+      "settings": {
+        "store_address": "Channel International Enterprises",
+        "desktop_height": "500px",
+        "mobile_height": "600px",
+        "rounded_corner_image": false,
+        "content_position": "top-left",
+        "content_alignment": "left",
+        "bg_color_map": "#f6f6f6",
+        "text_color_map": "#444444",
+        "heading_color": "#121212",
+        "text_link_color": "#fd8e16",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "full_width_mobile": true,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "rich_text_NgVHCz": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Na43Mb": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Contact Information",
+            "heading_size": "h1"
+          }
+        },
+        "text_AyzUeH": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>Tel.: +632 7738 2844 | Smart: +63 998 983 4535 | Globe: +63 915 339 7985<br/>Email: info@channel.com.ph / sales@channel.com.ph</h4>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Na43Mb",
+        "text_AyzUeH"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 28,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "image_banner_63CTte",
+    "page_Eyd3cF",
+    "rich_text_G33Ddh",
+    "otsb_map_3_fnmyjw",
+    "rich_text_NgVHCz"
+  ]
+}

@@ -1,0 +1,215 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "products_per_page": 20,
+        "columns_desktop": 1,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "1",
+        "padding_top": 60,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_yLMEwQ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_bcF6UV": {
+          "type": "heading",
+          "settings": {
+            "heading": "WIRELESS MICROPHONES",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bcF6UV"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "collection_list_nb9cxg": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_tnFRkm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "handheld-microphone-set"
+          }
+        },
+        "featured_collection_CFzytj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavalier-microphone-set"
+          }
+        },
+        "featured_collection_4J4hDj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headworn-microphone-set"
+          }
+        },
+        "featured_collection_A4rr7d": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-mic-combo"
+          }
+        },
+        "featured_collection_dqTc89": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "instrument-microphone"
+          }
+        },
+        "featured_collection_KQUMiW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gooseneck-microphone-set"
+          }
+        },
+        "featured_collection_xFiFQP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-wireless-set"
+          }
+        },
+        "featured_collection_DP7w4j": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "transmitter"
+          }
+        },
+        "featured_collection_gjVpLT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "receiver"
+          }
+        },
+        "featured_collection_pAe3tD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-microphone-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_tnFRkm",
+        "featured_collection_CFzytj",
+        "featured_collection_4J4hDj",
+        "featured_collection_A4rr7d",
+        "featured_collection_dqTc89",
+        "featured_collection_KQUMiW",
+        "featured_collection_xFiFQP",
+        "featured_collection_DP7w4j",
+        "featured_collection_gjVpLT",
+        "featured_collection_pAe3tD"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_TtMqhY": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_mQBkcW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "monolights"
+          }
+        },
+        "featured_collection_RhWMLx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "power-packs-heads"
+          }
+        },
+        "featured_collection_BmtkMK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "on-camera-flashes"
+          }
+        },
+        "featured_collection_VBADpJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "remote-trigger-strobes"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_mQBkcW",
+        "featured_collection_RhWMLx",
+        "featured_collection_BmtkMK",
+        "featured_collection_VBADpJ"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "STROBE LIGHTING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "rich_text_yLMEwQ",
+    "collection_list_nb9cxg",
+    "collection_list_TtMqhY"
+  ]
+}

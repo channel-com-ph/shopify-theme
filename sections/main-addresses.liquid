@@ -1,0 +1,719 @@
+{{ 'customer.aio.min.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'customer.js' | asset_url }}" defer></script>
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* Main container for the customer addresses page */
+  .customer-addresses-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    border-radius: 1rem;
+  }
+
+  /* Main page title styling (centered above the columns) */
+  .main-page-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.04em;
+  }
+
+  /* Return link styling */
+  .return-link {
+    color: #4b5563;
+    text-decoration: underline;
+    margin-bottom: 3.5rem;
+    display: block;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  .return-link:hover {
+    text-decoration: underline;
+    color: black;
+  }
+
+  /* Two-column layout for medium and larger screens */
+  .customer-addresses-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .customer-addresses-grid {
+      flex-direction: row;
+    }
+    .customer-addresses-left-column {
+      width: 50%;
+      flex-shrink: 0;
+    }
+    .customer-addresses-right-column {
+      width: 50%;
+    }
+  }
+
+  /* General typography styles for sub-titles */
+  .title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  /* Address card styles */
+  .address-card {
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Default address title styling (made more prominent) */
+  .address-card h2.default-address-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: black;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 4px solid grey;
+    padding-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  .address-card-content {
+    color: #374151;
+    line-height: 1.8;
+    font-size: 1.50rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .address-actions {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  /* Button base styles */
+  .button-base {
+    font-weight: 600;
+    padding: 1.125rem 2.25rem;
+    border-radius: 0.75rem;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-duration: 300ms;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.125rem;
+  }
+
+  .button-full-width {
+    width: 100%;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Primary action button (Add New, Update) */
+  .button-primary {
+    color: #ffffff;
+  }
+  .button-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+  }
+  .button-primary.add-button {
+    background-color: #8a1a1a;
+  }
+  .button-primary.add-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+  }
+
+  /* Edit button */
+  .button-edit {
+    color: white;
+    padding: 0.875rem 1.5rem;
+    font-size: 1.05rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+  .button-edit:hover {
+    background-color: #8a1a1a;
+    transform: translateY(-2px);
+  }
+
+  /* Delete button */
+  .button-delete {
+    color: #ffffff;
+    padding: 0.875rem 1.5rem;
+    font-size: 1.05rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+  .button-delete:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Cancel button */
+  .button-cancel {
+    background-color: #e5e7eb;
+    color:rgb(255, 255, 255);
+  }
+  .button-cancel:hover {
+    background-color: #d1d5db;
+    transform: translateY(-2px);
+  }
+
+  /* Form field styles */
+  .form-field {
+    margin-bottom: 1.75rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 1.125rem;
+    font-size: 1.50rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.625rem;
+    outline: none;
+  }
+  .form-input:focus {
+    outline: 3px solid #3b82f6;
+    border-color: transparent;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 1.15rem;
+    color: #4b5563;
+    margin-bottom: 0.625rem;
+  }
+
+  .required-asterisk {
+    color: red;
+  }
+
+  .form-select {
+    display: block;
+    appearance: none;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    color: #374151;
+    padding: 1.125rem 1.5rem;
+    padding-right: 3rem;
+    border-radius: 0.625rem;
+    line-height: 1.6;
+    font-size: 1.60rem;
+    outline: none;
+  }
+  .form-select:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: #3b82f6;
+  }
+
+  .select-wrapper {
+    position: relative;
+  }
+  .select-wrapper .svg-caret {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-end: 0;
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
+    color: #374151;
+    pointer-events: none;
+    height: 100%;
+  }
+
+  /* Checkbox styling */
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+  .checkbox-label {
+    font-size: 1.25rem;
+    color: #374151;
+  }
+
+  /* Form button group */
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin-top: 2.25rem;
+  }
+  .form-actions .button-base {
+    flex-grow: 1;
+    min-width: 140px;
+  }
+
+  /* Pagination styles */
+  .pagination {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .pagination ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pagination li a,
+  .pagination li span {
+    display: block;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    transition-property: background-color, border-color;
+    transition-duration: 200ms;
+    text-decoration: none;
+    color: #374151;
+    font-size: 2rem;
+  }
+  .pagination li a:hover {
+    background-color: #f3f4f6;
+  }
+
+  .pagination li span[aria-current="page"] {
+    border-color: #3b82f6;
+    background-color: #3b82f6;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .pagination li span.cursor-not-allowed {
+    background-color: #e5e7eb;
+    cursor: not-allowed;
+  }
+
+  /* SVG icon rotations for pagination arrows */
+  .svg-arrow-prev {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
+  .svg-arrow-next {
+    display: inline-block;
+    transform: rotate(-90deg);
+  }
+
+  /* Utility for hiding forms */
+  .hidden-form-container {
+    display: none;
+  }
+
+  /* Styling for the right edit pane when active */
+  #active-edit-form-content {
+    min-height: 300px;
+    padding: 2.5rem;
+    background-color: #f9fafb;
+    border-radius: 1rem;
+    border: 1px dashed #d1d5db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+  #active-edit-form-content.has-content {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+    display: block;
+  }
+{%- endstyle -%}
+
+{%- paginate customer.addresses by 5 -%}
+  <div class="customer-addresses-container section-{{ section.id }}-padding">
+    <h1 class="main-page-title">{{ 'customer.addresses.title' | t }}</h1>
+    <a href="{{ routes.account_url }}" class="return-link">
+      {{ 'customer.account.return' | t }}
+    </a>
+
+    <div class="customer-addresses-grid">
+      <div class="customer-addresses-left-column">
+        <ul role="list">
+          {%- for address in customer.addresses -%}
+            <li data-address class="address-card">
+              {%- if address == customer.default_address -%}
+                <h2 class="default-address-title">{{ 'customer.addresses.default' | t }}</h2>
+              {%- endif -%}
+              <div class="address-card-content">{{ address | format_address }}</div>
+              <div class="address-actions">
+                <button
+                  type="button"
+                  id="EditFormButton_{{ address.id }}"
+                  aria-label="{{ 'customer.addresses.edit_address' | t }} {{ forloop.index }}"
+                  aria-controls="active-edit-form-content"
+                  aria-expanded="false"
+                  data-address-id="{{ address.id }}"
+                  class="button-base button-edit"
+                >
+                  {{ 'customer.addresses.edit' | t }}
+                </button>
+                <button
+                  type="button"
+                  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+                  data-target="{{ address.url }}"
+                  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+                  class="button-base button-delete"
+                >
+                  {{ 'customer.addresses.delete' | t }}
+                </button>
+              </div>
+
+              <div
+                id="EditAddress_{{ address.id }}"
+                class="hidden-form-container"
+              >
+                <h2 class="title" tabindex="-1">{{ 'customer.addresses.edit_address' | t }}</h2>
+                {%- form 'customer_address', address, class: 'form-content-wrapper' -%}
+            <!-----     
+                  <div class="form-field">
+                    <input type="text" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" class="form-input" >
+                    <label for="AddressFirstName_{{ form.id }}" class="form-label">{{- 'customer.addresses.first_name' | t -}}</label>
+                  </div>
+                  <div class="form-field">
+                    <input type="text" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" class="form-input">
+                    <label for="AddressLastName_{{ form.id }}" class="form-label">{{- 'customer.addresses.last_name' | t -}}</label>
+                  </div>
+                  ---->    
+                  <div class="form-field">
+                    <input type="text" id="RegisterForm-companyName{{ form.id }}" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}" class="form-input">
+                    <label for="RegisterForm-companyName{{ form.id }}" class="form-label">{{- 'customer.addresses.company' | t -}}</label>
+                  </div>
+                  <div class="form-field">
+                    <input type="text" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" class="form-input">
+                    <label for="AddressAddress1_{{ form.id }}" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.address1' | t -}}</label>
+                  </div>
+                  <div class="form-field">
+                    <input type="text" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" class="form-input">
+                    <label for="AddressAddress2_{{ form.id }}" class="form-label">{{- 'customer.addresses.address2' | t -}}</label>
+                  </div>
+                  <div class="form-field">
+                    <input type="text" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" class="form-input">
+                    <label for="AddressCity_{{ form.id }}" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.city' | t -}}</label>
+                  </div>
+                  <div class="form-field">
+                    <label for="AddressCountry_{{ form.id }}" class="form-label"><span class="required-asterisk">*</span> {{ 'customer.addresses.country' | t }}</label>
+                    <div class="select-wrapper">
+                      <select id="AddressCountry_{{ form.id }}" name="address[country]" data-address-country-select data-default="{{ form.country }}" data-form-id="{{ form.id }}" autocomplete="country" class="form-select" >
+                        {{ all_country_option_tags }}
+                      </select>
+                      <span class="svg-caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+                    </div>
+                  </div>
+                  <div id="AddressProvinceContainer_{{ form.id }}" class="form-field hidden-form-container">
+                    <label for="AddressProvince_{{ form.id }}" class="form-label">{{ 'customer.addresses.province' | t }}</label>
+                    <div class="select-wrapper">
+                      <select id="AddressProvince_{{ form.id }}" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1" class="form-select"></select>
+                      <span class="svg-caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+                    </div>
+                  </div>
+                  <div class="form-field">
+                    <input type="text" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" class="form-input">
+                    <label for="AddressZip_{{ form.id }}" class="form-label">{{- 'customer.addresses.zip' | t -}}</label>
+                  </div>
+                  <div class="form-field">
+                    <input type="tel" id="AddressPhone_{{ form.id }}" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" class="form-input">
+                    <label for="AddressPhone_{{ form.id }}" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.phone' | t -}}</label>
+                  </div>
+                  <div class="checkbox-wrapper">
+                    {{ form.set_as_default_checkbox }}
+                    <label for="address_default_address_{{ form.id }}" class="checkbox-label">{{ 'customer.addresses.set_default' | t }}</label>
+                  </div>
+                  <div class="form-actions">
+                    <button class="button-base button-primary">{{ 'customer.addresses.update' | t }}</button>
+                    <button type="reset" class="button-base button-cancel" data-action="cancel-edit-form">{{ 'customer.addresses.cancel' | t }}</button>
+                  </div>
+                {%- endform -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+
+        {%- if paginate.pages > 1 -%}
+          {%- if paginate.parts.size > 0 -%}
+            <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+              <ul>
+                {%- if paginate.previous -%}<li><a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}"><span class="svg-arrow-prev"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span></a></li>{%- endif -%}
+                {%- for part in paginate.parts -%}<li>{%- if part.is_link -%}<a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{- part.title -}}</a>{%- else -%}{%- if part.title == paginate.current_page -%}<span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{- part.title -}}</span>{%- else -%}<span class="cursor-not-allowed">{{- part.title -}}</span>{%- endif -%}{%- endif -%}</li>{%- endfor -%}
+                {%- if paginate.next -%}<li><a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}"><span class="svg-arrow-next"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span></a></li>{%- endif -%}
+              </ul>
+            </nav>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+      <div class="customer-addresses-right-column">
+        
+
+        <div class="address-card">
+          <button
+            type="button"
+            id="AddNewAddressButton"
+            aria-expanded="false"
+            aria-controls="AddNewAddressFormContainer"
+            class="button-base button-primary button-full-width"
+          >
+            {{ 'customer.addresses.add_new' | t }}
+          </button>
+
+          <div id="AddNewAddressFormContainer" class="hidden-form-container">
+            <h2 class="title" tabindex="-1">{{ 'customer.addresses.add_new' | t }}</h2>
+            {%- form 'customer_address', customer.new_address, aria_labelledBy: 'AddressNewHeading', class: 'form-content-wrapper' -%}
+
+              {%- comment -%} TO DISPLAY ERRORS {%- endcomment -%}
+              {{ form.errors | default_errors }}
+<!----
+              <div class="form-field">
+                <input type="text" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name" placeholder="{{ 'customer.addresses.first_name' | t }}" class="form-input">
+                <label for="AddressFirstNameNew" class="form-label">{{- 'customer.addresses.first_name' | t -}}</label>
+              </div>
+              <div class="form-field">
+                <input type="text" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name" placeholder="{{ 'customer.addresses.last_name' | t }}" class="form-input">
+                <label for="AddressLastNameNew" class="form-label">{{- 'customer.addresses.last_name' | t -}}</label>
+              </div>
+              --->
+              <div class="form-field">
+                <input type="text" id="AddressCompanyNew" name="address[company]" value="{{ form.company }}" autocomplete="organization" placeholder="{{ 'customer.addresses.company' | t }}" class="form-input">
+                <label for="AddressCompanyNew" class="form-label">{{- 'customer.addresses.company' | t -}}</label>
+              </div>
+              <div class="form-field">
+                <input type="text" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1" placeholder="{{ 'customer.addresses.address1' | t }}" class="form-input">
+                <label for="AddressAddress1New" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.address1' | t -}}</label>
+              </div>
+              <div class="form-field">
+                <input type="text" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2" placeholder="{{ 'customer.addresses.address2' | t }}" class="form-input">
+                <label for="AddressAddress2New" class="form-label">{{- 'customer.addresses.address2' | t -}}</label>
+              </div>
+              <div class="form-field">
+                <input type="text" id="AddressCityNew" name="address[city]" value="{{ form.city }}" autocomplete="address-level2" placeholder="{{ 'customer.addresses.city' | t }}" class="form-input">
+                <label for="AddressCityNew" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.city' | t -}}</label>
+              </div>
+              <div class="form-field">
+                <label for="AddressCountryNew" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.country' | t -}}</label>
+                <div class="select-wrapper">
+                  <select id="AddressCountryNew" name="address[country]" data-default="{{ form.country }}" autocomplete="country" class="form-select">
+                    {{ all_country_option_tags }}
+                  </select>
+                  <span class="svg-caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+                </div>
+              </div>
+              <div id="AddressProvinceContainerNew" class="form-field hidden-form-container">
+                <label for="AddressProvinceNew" class="form-label">{{- 'customer.addresses.province' | t -}}</label>
+                <div class="select-wrapper">
+                  <select id="AddressProvinceNew" name="address[province]" data-default="{{ form.province }}" autocomplete="address-level1" class="form-select"></select>
+                  <span class="svg-caret"><svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg></span>
+                </div>
+              </div>
+              <div class="form-field">
+                <input type="text" id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters" autocomplete="postal-code" placeholder="{{ 'customer.addresses.zip' | t }}" class="form-input">
+                <label for="AddressZipNew" class="form-label">{{- 'customer.addresses.zip' | t -}}</label>
+              </div>
+              <div class="form-field">
+                <input type="tel" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}" autocomplete="tel" placeholder="{{ 'customer.addresses.phone' | t }}" class="form-input">
+                <label for="AddressPhoneNew" class="form-label"><span class="required-asterisk">*</span> {{- 'customer.addresses.phone' | t -}}</label>
+              </div>
+              <div class="checkbox-wrapper">
+                {{ form.set_as_default_checkbox }}
+                <label for="address_default_address_new" class="checkbox-label">{{- 'customer.addresses.set_default' | t -}}</label>
+              </div>
+              <div class="form-actions">
+                <button class="button-base button-primary add-button">{{ 'customer.addresses.add' | t }}</button>
+                <button type="reset" class="button-base button-cancel" data-action="cancel-add-form">{{ 'customer.addresses.cancel' | t }}</button>
+              </div>
+            {%- endform -%}
+          </div>
+        </div>
+
+        <div id="active-edit-form-content" class="address-card mt-8">
+          <p class="text-gray-500 italic">Select an address to edit or add a new one.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endpaginate -%}
+
+
+<script>
+  window.addEventListener('load', () => {
+    // --- Standard setup for Shopify's country/province selector ---
+    if (typeof CustomerAddresses === 'undefined') {
+      console.warn("CustomerAddresses class not found. Country/province selectors may not work dynamically.");
+    } else {
+      new CustomerAddresses();
+    }
+
+    // --- Get references to all the key elements on the page ---
+    const addNewAddressButton = document.getElementById('AddNewAddressButton');
+    const addNewAddressFormContainer = document.getElementById('AddNewAddressFormContainer');
+    const activeEditFormContent = document.getElementById('active-edit-form-content');
+    const allEditButtons = document.querySelectorAll('.button-edit');
+    const allDeleteButtons = document.querySelectorAll('.button-delete');
+
+    // --- Function to reset the right-hand panel to its default state ---
+    function resetRightPane() {
+      activeEditFormContent.innerHTML = '<p class="text-gray-500 italic">Select an address to edit or add a new one.</p>';
+      activeEditFormContent.classList.remove('has-content');
+    }
+
+    // --- Logic for the "Add New Address" button ---
+    if (addNewAddressButton && addNewAddressFormContainer && activeEditFormContent) {
+      addNewAddressButton.addEventListener('click', () => {
+        resetRightPane();
+        const clonedAddForm = addNewAddressFormContainer.cloneNode(true);
+        clonedAddForm.removeAttribute('id');
+        clonedAddForm.classList.remove('hidden-form-container');
+        activeEditFormContent.innerHTML = '';
+        activeEditFormContent.appendChild(clonedAddForm);
+        activeEditFormContent.classList.add('has-content');
+        addNewAddressButton.setAttribute('aria-expanded', 'true');
+        
+        const formTitle = activeEditFormContent.querySelector('.title');
+        if (formTitle) formTitle.focus({ preventScroll: true });
+
+        const clonedAddFormCancelButton = activeEditFormContent.querySelector('[data-action="cancel-add-form"]');
+        if (clonedAddFormCancelButton) {
+          clonedAddFormCancelButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            resetRightPane();
+            addNewAddressButton.setAttribute('aria-expanded', 'false');
+          });
+        }
+      });
+    }
+
+    // --- Logic for all "Edit" buttons ---
+    allEditButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const addressId = event.currentTarget.dataset.addressId;
+        const originalEditFormContainer = document.getElementById(`EditAddress_${addressId}`);
+        if (originalEditFormContainer && activeEditFormContent) {
+          if (addNewAddressButton) {
+            addNewAddressButton.setAttribute('aria-expanded', 'false');
+          }
+          resetRightPane();
+          const clonedEditForm = originalEditFormContainer.cloneNode(true);
+          clonedEditForm.removeAttribute('id');
+          clonedEditForm.classList.remove('hidden-form-container');
+          activeEditFormContent.innerHTML = '';
+          activeEditFormContent.appendChild(clonedEditForm);
+          activeEditFormContent.classList.add('has-content');
+          
+          const formTitle = activeEditFormContent.querySelector('.title');
+          if (formTitle) formTitle.focus({ preventScroll: true });
+
+          const clonedEditFormCancelButton = activeEditFormContent.querySelector('[data-action="cancel-edit-form"]');
+          if (clonedEditFormCancelButton) {
+            clonedEditFormCancelButton.addEventListener('click', (e) => {
+              e.preventDefault();
+              resetRightPane();
+            });
+          }
+        }
+      });
+    });
+
+    // --- Logic for all "Delete" buttons ---
+    allDeleteButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const confirmMessage = event.currentTarget.dataset.confirmMessage;
+        if (window.confirm(confirmMessage || 'Are you sure you wish to delete this address?')) {
+          const targetUrl = event.currentTarget.dataset.target;
+          if (targetUrl) {
+            const form = document.createElement('form');
+            form.method = 'post';
+            form.action = targetUrl;
+            const methodInput = document.createElement('input');
+            methodInput.type = 'hidden';
+            methodInput.name = '_method';
+            methodInput.value = 'delete';
+            form.appendChild(methodInput);
+            document.body.appendChild(form);
+            form.submit();
+          }
+        }
+      });
+    });
+    
+    // --- Initial page setup ---
+    if (addNewAddressFormContainer) {
+      addNewAddressFormContainer.classList.add('hidden-form-container');
+      if (addNewAddressButton) {
+        addNewAddressButton.setAttribute('aria-expanded', 'false');
+      }
+    }
+    resetRightPane();
+
+    const errorElement = document.querySelector('#AddNewAddressFormContainer .form__message, #AddNewAddressFormContainer .errors');
+    
+    // If an error message exists, we now safely click the button.
+    if (errorElement && addNewAddressButton) {
+      addNewAddressButton.click();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-addresses.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

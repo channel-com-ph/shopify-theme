@@ -1,0 +1,536 @@
+{%- liquid
+  assign imageUrlMobile = section.settings.image
+  if section.settings.image_mobile != blank
+    assign imageUrlMobile = section.settings.image_mobile 
+  endif
+
+  if section.settings.content_alignment == 'left'
+    assign content_alignment = 'flex-start'
+  elsif section.settings.content_alignment == 'center'
+    assign content_alignment = 'center'
+  else
+    assign content_alignment = 'flex-end'
+  endif
+%}
+{%- capture styles -%}
+  {% style %}
+    .otsb-rte h1, .otsb-rte h2,
+    .otsb-rte h3, .otsb-rte h4,
+    .otsb-rte h5, .otsb-rte h6, .otsb-rte p {
+      display: inline;
+      line-height: inherit;
+      word-break: break-word;
+    }
+    #shopify-section-{{ section.id }} .input:focus~.input_focus\:text-xs,
+    #shopify-section-{{ section.id }} .input:not(:placeholder-shown)~.input_not_empty\:text-xs  {
+      font-size: .75rem;
+      line-height: 1rem;
+    }
+    #shopify-section-{{ section.id }} .button:before,
+    #shopify-section-{{ section.id }} .button:after {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .button.button-solid,
+    #shopify-section-{{ section.id }} .button.button-solid:hover {
+      --border-offset: 0;
+      --border-opacity: 0;
+    }
+    #shopify-section-{{ section.id }} .roundend_corner {
+      border-radius: 6px;
+    }
+    #shopify-section-{{ section.id }} .rounded_radi {
+      border-radius: 40px;
+    }
+    #shopify-section-{{ section.id }} .input:focus~.input_focus\:top-2,
+    #shopify-section-{{ section.id }} .input:not(:placeholder-shown)~.input_not_empty\:top-2 {
+      top: .5rem;
+    }
+    #shopify-section-{{ section.id }} .otsb-custom-bg {
+      background: {{ section.settings.background_color }};
+    }
+    #shopify-section-{{ section.id }}, #shopify-section-{{ section.id }} *:before {
+      {% if section.settings.text.alpha != 0.0 %}
+        color: {{ section.settings.text }};
+        --colors-text: {{ section.settings.text.red }}, {{ section.settings.text.green }}, {{ section.settings.text.blue }};
+      {% endif %}
+      {% if section.settings.heading.alpha != 0.0 %}
+        --colors-heading: {{ section.settings.heading.red }}, {{ section.settings.heading.green }}, {{ section.settings.heading.blue }};
+      {% else %}
+        --colors-heading: var(--color-foreground);
+      {% endif %}
+
+    }
+    #shopify-section-{{ section.id }} a {
+      {% if section.settings.text_link.alpha != 0.0 %}
+        --colors-link: {{ section.settings.text_link.red }}, {{ section.settings.text_link.green }}, {{ section.settings.text_link.blue }};
+        color:rgb(var(--colors-link));
+        background: linear-gradient(to right, #0000, #0000), linear-gradient(to right, rgba(var(--colors-link), 1), rgba(var(--colors-link), 1), rgba(var(--colors-link), 1));
+      {% else %}
+        color: rgb(var(--color-secondary-button-text));
+        background: linear-gradient(to right, #0000, #0000), linear-gradient(to right, rgba(var(--color-secondary-button-text), 1), rgba(var(--color-secondary-button-text), 1), rgba(var(--color-secondary-button-text), 1));
+      {% endif %}
+        background-size: 100% .1em, 0 .1em;
+        background-position: 100% 100%, 100% 100%;
+        background-repeat: no-repeat;
+        transition: background-size .25s;
+    }
+    #shopify-section-{{ section.id }} a:hover {
+      background-size: 0 0.1em, 100% 0.1em;
+      background-position: 100% 100%, 0% 100%;
+    }
+    .otsb__root .button--{{ section.id }},
+    .otsb__root .button--{{ section.id }}:before,
+    .otsb__root .button--{{ section.id }}.otsb-button.otsb-button-outline {
+    {%- unless section.settings.button.alpha == 0.0 -%}
+      --color-button: {{ section.settings.button.red }}, {{ section.settings.button.green }}, {{ section.settings.button.blue }};
+    {%- endunless -%}
+    {%- unless section.settings.button_text.alpha == 0.0 -%}
+      --color-button-text: {{ section.settings.button_text.red }}, {{ section.settings.button_text.green }}, {{ section.settings.button_text.blue }};
+    {%- endunless -%}
+    {%- unless section.settings.button_hover.alpha == 0.0 -%}
+      --colors-button-hover: {{ section.settings.button_hover.red }}, {{ section.settings.button_hover.green }}, {{ section.settings.button_hover.blue }};
+    {%- endunless -%}
+    {%- unless section.settings.button_text_hover.alpha == 0.0 -%}
+      --colors-button-text-hover: {{ section.settings.button_text_hover.red }}, {{ section.settings.button_text_hover.green }}, {{ section.settings.button_text_hover.blue }};
+    {%- endunless -%}
+    }
+     #shopify-section-{{ section.id }} .divider {
+      {% if section.settings.line_border.alpha != 0.0 %}
+        border-color: rgb({{ section.settings.line_border.red }}, {{ section.settings.line_border.green }}, {{ section.settings.line_border.blue }});
+      {% else %}
+        border-top: 1px solid rgba(var(--color-foreground), var(--inputs-border-opacity));
+      {% endif %}
+     }
+    #shopify-section-{{ section.id }} .border.border-solid {
+      {% if section.settings.line_border.alpha != 0.0 %}
+        border-color: rgb({{ section.settings.line_border.red }}, {{ section.settings.line_border.green }}, {{ section.settings.line_border.blue }});
+      {% else %}
+        border: 1px solid rgba(var(--color-foreground), var(--inputs-border-opacity));
+      {% endif %}
+    }
+    {% if section.settings.colors_overlay.alpha != 0.0 %}
+      #shopify-section-{{ section.id }} .image-treatment-overlay {
+        background: rgba( {{ section.settings.colors_overlay.red }}, {{ section.settings.colors_overlay.green }}, {{ section.settings.colors_overlay.blue }});
+      }
+    {% endif %}
+    {%- if imageUrlMobile != blank -%}
+      .image-{{ section.id }} {
+        object-position: {{ imageUrlMobile.presentation.focal_point }}
+      }
+      .mobile-{{ section.id }}-natural {
+        padding-bottom: {{ 1 | divided_by: imageUrlMobile.aspect_ratio | times: 100 }}%;
+      }
+    {%- endif -%}
+    #shopify-section-{{ section.id }} .otsb-email-signup__wrapper-{{ section.id }} {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: {{ content_alignment }};
+      z-index: 10;
+    }
+    #shopify-section-{{ section.id }} .otsb-email-signup__layout-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    @media (max-width: 1024px) {
+      #shopify-section-{{ section.id }} .otsb-btn__sliced .otsb-button-text {
+        transform: translate(0px);
+      }
+      #shopify-section-{{ section.id }} .otsb-btn__sliced .otsb-button-icon {
+        display: none;
+      }
+    }
+    @media (min-width: 768px) {
+      {% if section.settings.image != blank %}
+        .desktop-{{ section.id }}-natural {
+          padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        }
+        .image-{{ section.id }} {
+          object-position: {{ section.settings.image.presentation.focal_point }}
+        }
+      {%- endif -%}
+      #shopify-section-{{ section.id }} .otsb-email-signup__layout-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+    @media (max-width: 749px) {
+      #shopify-section-{{ section.id }} .section.otsb-section-layout__customs {
+        display: block;
+      }
+      #shopify-section-{{ section.id }} .page-width.otsb-section-layout__customs {
+        padding-inline: 0;
+        max-width: 100%;
+      }
+    }
+  {% endstyle %}
+{%- endcapture -%}
+{% comment %} {%- assign before =  styles.size -%} {% endcomment %}
+{%- assign styles =  styles | strip_newlines | split: " " | join: " " | split: "*/" -%}
+{%- assign minified_style = "" -%}
+{%- for word in styles -%}
+	{%- assign new_word = word | split: "/*" | first | strip | replace: "; ", ";" | replace: "} ", "}" | replace: "{ ", "{" | replace: " {", "{" -%}
+    {%- assign minified_style = minified_style | append: new_word -%}
+{%- endfor -%}
+{% comment %} /* CSS minifed: {{ before }} --> {{ minified_style.size }} */ {% endcomment %}
+{{- minified_style  }}
+{% comment %}template app-embed-warning.liquid{% endcomment %}
+{% if request.design_mode %}
+  <style>
+    .otsb_nope {
+      display: none !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      opacity: 0 !important;
+    }
+    ._otsb_warning {
+      position: relative;
+      box-shadow: 0rem 0.1875rem 0.0625rem -0.0625rem rgba(26, 26, 26, 0.07);
+      border-radius: 1rem;
+    }
+    ._otsb_warning::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      box-shadow: 0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset,
+      -0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset, 0rem -0.0625rem 0rem 0rem rgba(0, 0, 0, 0.17) inset,
+      0rem 0.0625rem 0rem 0rem rgba(204, 204, 204, 0.5) inset;
+      border-radius: 1rem;
+      pointer-events: none;
+      mix-blend-mode: luminosity;
+    }
+  </style>
+  <div x-data="otsb_script_require" class="page-width" style="margin-top:36px;margin-bottom:36px">
+    <div class="_otsb_warning">
+      <div style="border-top-left-radius:1rem;border-top-right-radius:1rem;border:1px solid #fcaf0a;background:#fcb827;padding:1rem">
+        <div style="align-items:center;gap:8px;display:flex;flex-direction:row;flex-wrap:nowrap;justify-content:space-between">
+          <div style="display:flex;gap:4px;flex-direction:row;flex-wrap:nowrap;justify-content:space-between">
+            <span style="display:block;height:20px;width:20px;max-height:100%;max-width:100%;margin:auto">
+              <svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
+                <path d="M10 6.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 1 1-1.5 0v-3.5a.75.75 0 0 1 .75-.75Z"></path><path d="M11 13.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path><path fill-rule="evenodd" d="M10 3.5c-1.045 0-1.784.702-2.152 1.447a449.26 449.26 0 0 1-2.005 3.847l-.028.052a403.426 403.426 0 0 0-2.008 3.856c-.372.752-.478 1.75.093 2.614.57.863 1.542 1.184 2.464 1.184h7.272c.922 0 1.895-.32 2.464-1.184.57-.864.465-1.862.093-2.614-.21-.424-1.113-2.147-2.004-3.847l-.032-.061a429.497 429.497 0 0 1-2.005-3.847c-.368-.745-1.107-1.447-2.152-1.447Zm-.808 2.112c.404-.816 1.212-.816 1.616 0 .202.409 1.112 2.145 2.022 3.88a418.904 418.904 0 0 1 2.018 3.875c.404.817 0 1.633-1.212 1.633h-7.272c-1.212 0-1.617-.816-1.212-1.633.202-.408 1.113-2.147 2.023-3.883a421.932 421.932 0 0 0 2.017-3.872Z"></path>
+              </svg>
+            </span>
+            <h2 style="overflow-wrap:anywhere;word-break:normal;font-size:100%;font-weight:650;line-height:1.25;color:rgb(37,26,0)">
+              App Embeds Are Disabled
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1rem;color:rgb(37,26,0)">
+        <p>
+          To use this section, the app embeds of OT: Theme Sections must be enabled in the theme editor. Please follow
+          these steps to activate them:
+        </p>
+        <ul>
+          <li>In the left panel, click the last icon that says <b>“App embeds”</b>.</li>
+          <li>Enter <b>“OT”</b> on the search bar to quickly find and embed the apps from OT: Theme Sections.</li>
+          <li>
+            Turn on the Toggle buttons of "Section Builder Script" and "Section Builder Style", then click <b>Save</b>.
+          </li>
+        </ul>
+        <p>
+          Please refer to the User Guide
+          <a
+            href="https://support.omnithemes.com/blogs/ot-theme-sections-get-started/1-embed-app-to-shopify-theme"
+            target="_blank"
+          >here</a
+          >
+        </p>
+        <p>
+          For further support: feel free to contact us at
+          <a href="mailto:support@omnithemes.com">support@omnithemes.com</a>!
+        </p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% comment %}endtemplate{% endcomment %}
+<style>#shopify-section-{{section.id}} .otsb_trademark_root {user-select:none;color:#999;font-size:.75em;text-align:right;margin-top:2.5rem}#shopify-section-{{section.id}} .otsb_trademark_root a {color:#999;background:none;text-decoration: none;}</style>
+
+<div class="otsb_nope otsb-custom-bg" x-data="otsb_script_1">
+  {% render 'otsb-section-divider' %}
+  <div class="otsb-email-signup__layout-{{ section.id }} otsb-section-layout__customs w-full {% unless section.settings.full_width %}mx-auto page-width x-page-width section{%endunless%}">
+    <div class="z-0 relative newsletter">
+      <div class="email_signup relative {% if section.settings.position_image != 'image_none' %}{% if section.settings.position_image == 'image_left' or section.settings.position_image == 'image_right' %}{% else %}
+          {% if section.settings.mobile_height == "natural" %} h-0 mobile-{{ section.id }}-natural{% else %} h-[{{ section.settings.mobile_height }}] {% endif %}{% endif %}
+          {% if section.settings.desktop_height == "natural" %} md:h-0 desktop-{{ section.id }}-natural {% else %} md:pb-0 md:h-[{{ section.settings.desktop_height }}]{% endif %}{% endif %}"
+      >
+        <div class="{% if section.settings.desktop_height == "natural" and section.settings.position_image != 'image_none' or section.settings.mobile_height == "natural" and section.settings.position_image != 'image_none' %} md:absolute md:top-1/2 md:-translate-y-1/2 {% endif %} flex-col {% if section.settings.position_image == 'image_left' %}flex {% if section.settings.image_alignment == 'image_second' %} flex-col-reverse {% endif %} md:flex-row {% elsif section.settings.position_image == 'image_right' %} flex {% if section.settings.image_alignment == 'image_second' %} flex-col-reverse {% endif %} md:flex-row-reverse {% endif %} md:flex gap-8 promotion w-full h-full">
+          <div class="{% if section.settings.position_image == 'image_left' or  section.settings.position_image == 'image_right' %} md:w-[47%] relative {% endif %} item item-image w-full flex absolute overflow-hidden top-0 left-0 bottom-0 z-0 gap-0">
+            <span class="h-full w-full absolute top-0 left-0 bottom-0 right-0 z-10 image-treatment-overlay transition-opacity opacity-{{ section.settings.overlay_opacity }}{% if imageUrlMobile == blank %} hidden{% endif %}{% if section.settings.image != blank %} md:block{% else %} md:hidden{% endif %}"></span>
+            {% if section.settings.position_image != 'image_none' %}
+              {%- if section.settings.image != blank or section.settings.image_mobile != blank -%}
+                <div class="relative block h-full w-full">
+                  <parallax-image class="block h-full w-full">
+                    <parallax-movement  class="no_parallax_effect">
+                      {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+                      <picture class="block h-full">
+                        <source
+                          srcset="{{ imageUrlMobile | image_url: width: 375 }} 375w,
+                            {{ imageUrlMobile | image_url: width: 450 }} 450w,
+                            {{ imageUrlMobile | image_url: width: 750 }} 750w,
+                            {{ imageUrlMobile | image_url: width: 900 }} 900w,
+                            {{ imageUrlMobile | image_url: width: 1100 }} 1100w,
+                            {{ imageUrlMobile | image_url: width: 1500 }} 1500w"
+                          media="(max-width: 767px)"
+                          width="{{ imageUrlMobile.width }}"
+                          height="{{ imageUrlMobile.height }}"
+                        >
+                        <img
+                          srcset="{{ section.settings.image | image_url: width: 750 }} 750w,
+                            {{ section.settings.image | image_url: width: 900 }} 900w,
+                            {{ section.settings.image | image_url: width: 1100 }} 1100w,
+                            {{ section.settings.image | image_url: width: 1500 }} 1500w,
+                            {{ section.settings.image | image_url: width: 1780 }} 1780w,
+                            {{ section.settings.image | image_url: width: 2000 }} 2000w,
+                            {{ section.settings.image | image_url: width: 3000 }} 3000w,
+                            {{ section.settings.image | image_url: width: 3840 }} 3840w"
+                          loading="lazy"
+                          sizes="100vw"
+                          src="{{ section.settings.image | image_url: width: 3840 }}"
+                          {% if section.settings.image_mobile != blank %}
+                            :alt="(screen.width < 768) ? '{{ section.settings.image_mobile.alt }}' : '{{ section.settings.image.alt }}'"
+                          {% else %}
+                            alt="{{ section.settings.image.alt | escape }}"
+                          {% endif %}
+                          class="object-cover h-full w-full image-{{ section.id }} {% if section.settings.image == blank %} md:otsb-hidden{% endif %} block"
+                          width="{{ section.settings.image.width }}"
+                          height="{{ section.settings.image.height }}"
+                        >
+                        <div class="relative md:block {% if section.settings.image_mobile != blank %} otsb-hidden{% endif %} h-full w-full">
+                          {{ 'lifestyle-2' | placeholder_svg_tag: 'bg-[#c9c9c9] text-[#acacac] absolute top-0 left-0 w-full h-full object-cover bg_img_signup' }}
+                        </div>
+                      </picture>
+                      {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+                    </parallax-movement>
+                  </parallax-image>
+                </div>
+              {% else %}
+                <div class="relative {% if section.settings.image_mobile != blank %} otsb-hidden md:block{% else %} block{% endif %} h-full w-full">
+                  {{ 'lifestyle-2' | placeholder_svg_tag: 'bg-[#c9c9c9] text-[#acacac] absolute top-0 left-0 w-full h-full object-cover bg_img_signup' }}
+                </div>
+              {%- endif %}
+            {% endif %}
+          </div>
+          <div class="{% if section.settings.position_image == 'image_left' or section.settings.position_image == 'image_right' %} md:w-[53%] relative translate-y-0 px-[20px]{% endif %} item item-form w-full z-10 flex items-center h-full overflow-hidden{% if section.settings.position_image != 'image_none' %}{% if imageUrlMobile != blank %} absolute left-0 top-1/2 -translate-y-1/2 {% endif %}  {% if section.settings.image != blank %} {% if section.settings.position_image == 'image_background' %}md:absolute{% endif %} md:left-0 md:top-1/2 md:-translate-y-1/2{% else %} relative {% endif %}{% endif %}">
+          <div class="newsletter__wrapper otsb-email-signup__wrapper-{{ section.id }} md:max-w-[768px] md:w-full mx-auto pl-5 pr-5 lg:pr-0 lg:pl-0 text-{{ section.settings.content_alignment }} flex flex-col justify-center items-center gap-0">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when '@app' -%}
+                  {% render block %}
+                {%- when 'heading' -%}
+                  {%- if block.settings.heading != blank -%}
+                    {% liquid
+                        if settings.heading_base_size != blank
+                          assign heading_size = settings.heading_base_size | times: block.settings.heading_size_desktop | times: 0.000225
+                        else
+                          assign heading_size = block.settings.heading_size_desktop | times: 100 | times: 0.0004
+                        endif
+                        if settings.heading_scale
+                          assign heading_size = heading_size | times: settings.heading_scale | times: 0.01
+                        endif
+                      %}
+                    {% style %}
+                      #shopify-section-{{ section.id }}.otsb__root .heading-{{ block.id }} {
+                        font-weight: 500;
+                        font-size: {{ block.settings.heading_size_mobile | default: 36 }}px;
+                        line-height: 120%;
+                        letter-spacing: 0;
+                        text-transform: {{ section.settings.styles_heading }};
+                        color: {{ section.settings.heading | default: "#FFFFFF" }};
+                      }
+                      @media screen and (min-width: 768px) {
+                        #shopify-section-{{ section.id }}.otsb__root .heading-{{ block.id }} {
+                          font-size: {{ block.settings.heading_size_desktop | default: 36 }}px;
+                        }
+                      }
+                    {% endstyle %}
+                    <{{ block.settings.heading_tag }} x-intersect.once="$el.classList.add('is-visible')" class="{% if section.settings.styles_heading == 'uppercase' %}uppercase {% elsif section.settings.styles_heading == 'capitalize' %}capitalize {% elsif section.settings.styles_heading == 'lowercase' %}lowercase
+                    {% elsif section.settings.styles_heading == 'default' %} normal-case {% endif %} anm-fade-element p-break-words h2 block heading-{{ block.id }} leading-tight break-words" {{ block.shopify_attributes }}>
+                      {{ block.settings.heading }}
+                    </{{ block.settings.heading_tag }}>
+                  {%- endif -%}
+                {%- when 'paragraph' -%}
+                  {%- if block.settings.text != blank -%}
+                    {% style %}
+                      #shopify-section-{{ section.id }} .otsb-email__content-text-{{ block.id }} {
+                        font-weight: 400;
+                        font-size: {{ block.settings.description_size_desktop }}px;
+                        line-height: 160%;
+                        letter-spacing: 0;
+                      }
+                      @media (max-width: 768px) {
+                        #shopify-section-{{ section.id }} .otsb-email__content-text-{{ block.id }} {
+                          font-size: {{ block.settings.description_size_mobile }}px;
+                        }
+                      }
+                    {% endstyle %}
+                    <div x-intersect.once="$el.classList.add('is-visible')" class="otsb-email__content-text-{{ block.id }} anm-fade-element p-break-words otsb-rte mb-6 break-words" {{ block.shopify_attributes }}>
+                      {{ block.settings.text }}
+                    </div>
+                  {%- endif -%}
+                {%- when 'email_form' -%}
+                  {% liquid
+                    assign btnAnimation = ''
+                    case block.settings.button_animation
+                      when 'slide'
+                        assign btnAnimation = 'otsb-btn__slide'
+                      when 'fill_up'
+                        assign btnAnimation = 'otsb-btn__fill_up'
+                      when 'underline'
+                        assign btnAnimation = 'otsb-btn__underline'
+                      when 'sliced'
+                        assign btnAnimation = 'otsb-btn__sliced'
+                      else
+                        assign btnAnimation = ''
+                    endcase
+                    if block.settings.styles_button == 'square'
+                      assign input_btn_styles_class = 'rounded-none'
+                    elsif block.settings.styles_button == 'rounded'
+                      assign input_btn_styles_class = 'rounded-[40px] rounded_radi '
+                    elsif block.settings.styles_button == 'rounded_corners'
+                      assign input_btn_styles_class = 'roundend_corner rounded-[6px]'
+                    endif
+                  %}
+                  {% style %}
+                    #shopify-section-{{ section.id }} .otsb-button.otsb-btn__solid {
+                      {% if block.settings.button_color_mobile == 'color' %}
+                        --color-button-mobile: var(--color-button, 18, 18, 18);
+                        --color-button-text-mobile: rgb(var(--color-button-text, #fff));
+                      {% else %}
+                        --color-button-mobile: var(--colors-button-hover, #fff);
+                        --color-button-text-mobile: rgb(var(--colors-button-text-hover, 18, 18, 18, 1));
+                      {% endif %}
+                    }
+                    {% if block.settings.form_width == 'small' %}
+                      .otsb__root.otsb-email-signup-4 .otsb-email-signup__form-{{ block.id }} {
+                        max-width: 512px;
+                      }
+                    {% endif %}
+                    {% if block.settings.styles_button == 'rounded_corners' %}
+                      #shopify-section-{{ section.id }} .otsb-email-signup__btn-{{ section.id }},
+                      #shopify-section-{{ section.id }} .otsb-email__container-form-{{ block.id }},
+                      .otsb-email__container-form-{{ block.id }} input#NewsletterForm--{{ section.id }} {
+                        border-radius: {{ block.settings.button_corner_radius | default: 6 }}px;
+                      }
+                    {% endif %}
+                    #shopify-section-{{ section.id }} input#NewsletterForm--{{ section.id }},
+                    #shopify-section-{{ section.id }} label[for="NewsletterForm--{{ section.id }}"] {
+                      color: #525252;
+                    }
+                    @media (min-width: 769px) {
+                      .otsb__root .otsb-email__container-form-{{ block.id }} {
+                        padding-block: {{ block.settings.padding_top_bottom | default: 0 }}px;
+                        padding-inline: {{ block.settings.padding_left_right | default: 0 }}px;
+                        background-color: {{ section.settings.input_background | default: "#FFFFFF" }};
+                        border: {{ block.settings.border_thickness | default: 0 }}px solid {{ section.settings.line_border | default: "#E4E4E4" }};
+                      }
+                    }
+                    @media (max-width: 768px) {
+                      #shopify-section-{{ section.id }} .otsb-email__container-form-{{ block.id }} {
+                        flex-direction: column;
+                        gap: 8px;
+                      }
+                      .otsb-email__container-form-{{ block.id }} input#NewsletterForm--{{ section.id }} {
+                        background-color: {{ section.settings.input_background | default: "#FFFFFF" }};
+                        border: {{ block.settings.border_thickness | default: 0 }}px solid {{ section.settings.line_border | default: "#E4E4E4" }};
+                      }
+                      .otsb-email__container-form-{{ block.id }} .otsb-email-signup__btn-{{ section.id }} {
+                        min-height: 44px;
+                        width: 100%;
+                        justify-content: center;
+                        word-break: break-word;
+                      }
+                    }
+                  {% endstyle %}
+                  <div x-intersect.once="$el.classList.add('is-visible')" class="otsb-email-signup__form-{{ block.id }} anm-fade-element{% unless forloop.last %} mb-3{% endunless %} w-full {% if block.settings.form_width == 'small' %} max-w-[676px]{% endif %}" {{ block.shopify_attributes }}>
+                    {% form 'customer', class: 'otsb-newsletter-form' %}
+                      <input type="hidden" name="contact[tags]" value="newsletter">
+                      <div {% unless forloop.first %} class="mt-4 lg:mt-8" {% endunless %}>
+                        <div class="otsb-email__container-form-{{ block.id }} flex md:border md:border-solid gap-2 {{ input_btn_styles_class }}">
+                          <div class="relative flex-1">
+                            <input
+                              id="NewsletterForm--{{ section.id }}"
+                              type="email"
+                              name="contact[email]"
+                              class="w-full input pl-5 pr-5 lg:pr-8 lg:pl-8 pt-5 pb-1 md:pt-3.5 md:pb-2 focus:outline-none focus:border-0 bg-transparent placeholder:opacity-0 shadow-none {{ input_btn_styles_class }}"
+                              value="{{ form.email }}"
+                              aria-required="true"
+                              autocorrect="off"
+                              autocapitalize="off"
+                              autocomplete="email"
+                              {% if form.errors %}
+                                autofocus
+                                aria-invalid="true"
+                                aria-describedby="Newsletter-error--{{ section.id }}"
+                              {% elsif form.posted_successfully? %}
+                                aria-describedby="Newsletter-success--{{ section.id }}"
+                              {% endif %}
+                              placeholder="{{ block.settings.form_placeholder | escape }}"
+                              required
+                            >
+                            <label
+                              for="NewsletterForm--{{ section.id }}"
+                              class="absolute duration-200 top-1/2{% if settings.lang_direction contains request.locale.iso_code %}  right-5 lg:right-8{% else %} left-5 lg:left-8{% endif %} -translate-y-1/2 input_focus:text-xs input_focus:top-2 input_not_empty:top-2 input_not_empty:text-xs"
+                            >
+                              {{ block.settings.form_placeholder | escape }}
+                            </label>
+                          </div>
+                          <button
+                            type="submit"
+                            class="otsb-email-signup__btn-{{ section.id }} flex gap-0 items-center button--{{ section.id }} otsb-button otsb-btn__solid md:ml-0.5 pl-5 pr-5 lg:pl-9 lg:pr-9 pt-2 pb-2 leading-normal cursor-pointer empty:hidden {{ btnAnimation }} {{ input_btn_styles_class }}"
+                            name="commit"
+                            aria-label="{{ 'newsletter.button_label' | t }}"
+                          >
+                            {%- if block.settings.button_label != blank -%}
+                              {% assign button_label = block.settings.button_label %}
+                            {%- else -%}
+                              {% assign button_label = 'newsletter.button_label' | t | default: "Subscribe" %}
+                            {%- endif -%}
+                            {% render 'otsb-button-label',
+                              button_label: button_label,
+                              show_button_style: 'primary',
+                              button_animation: block.settings.button_animation,
+                              custom_icon_button: block.settings.custom_icon_button %}
+                          </button>
+                        </div>
+                        {%- if form.errors -%}
+                          <div
+                            id="Newsletter-error--{{ section.id }}"
+                            class="flex items-center text-left pl-4 pr-4 pt-3.5 pb-3.5 mt-4 bg-[rgba(var(--color-error),0.1)]{% if settings.edges_type == 'rounded_corners' %} rounded-md{% endif %}"
+                          >
+                            <span class="inline-block w-5 mr-2 text-[rgba(var(--color-error))]  selection:bg-[rgba(var(--color-error),0.2)]">{% render 'otsb-icon-alls', icon: 'icon-error' %} </span>
+                            <p class="flex-1">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                      {%- if form.posted_successfully? -%}
+                        <div
+                          id="Newsletter-success--{{ section.id }}"
+                          class="flex items-center text-left pl-4 pr-4 pt-3.5 pb-3.5 mt-4 bg-[rgba(var(--color-success),0.1)] focus:shadown-none focus-visible:outline-none focus:outline-none focus-visible:shadow-none"
+                          tabindex="-1"
+                          autofocus
+                        >
+                          <span class="inline-block w-5 mr-2 selection:bg-[rgba(var(--color-success),0.2)] text-[rgba(var(--color-success))]">
+                            {%- render 'otsb-icon-alls', icon: 'icon-success' %}
+                          </span>
+                          <p class="flex-1">{{ 'newsletter.success' | t }}</p>
+                        </div>
+                      {%- endif -%}
+                    {% endform %}
+                  </div>
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="otsb-email-signup-trademark"></div>
+  </div>
+</div>

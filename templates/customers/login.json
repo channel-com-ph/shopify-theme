@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-login",
+      "custom_css": [
+        "button {width: 100%; margin: 2rem 0 1.5rem;}",
+        "span {display: flex; align-items: center; justify-content: center;}",
+        "@media screen and (max-width: 749px) {#create-acc-btn {padding: 6px 12px; font-size: 0.8125rem; margin: 8px 0; }}"
+      ],
+      "settings": {
+        "enable_shop_login_button": false,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

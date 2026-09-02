@@ -1,0 +1,432 @@
+{% render 'otsb-map-base' %}
+{% schema %}
+{
+  "name": "OT: Map #3",
+  "class": "section section-map x-section",
+  "tag": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "store_address",
+      "default": "75 9th Ave, New York, NY 10011-7006",
+      "label": "Store address",
+      "info": "Google Map will find the exact location"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop height",
+      "options": [
+        {
+          "value": "500px",
+          "label": "Small"
+        },
+        {
+          "value": "600px",
+          "label": "Medium"
+        },
+        {
+          "value": "650px",
+          "label": "Large"
+        }
+      ],
+      "default": "500px"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "options": [
+        {
+          "value": "600px",
+          "label": "Small"
+        },
+        {
+          "value": "650px",
+          "label": "Medium"
+        },
+        {
+          "value": "700px",
+          "label": "Large"
+        }
+      ],
+      "default": "600px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "rounded_corner_image",
+      "default": false,
+      "label": "Enable rounded corner style"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "top-left",
+          "label": "Layered"
+        }
+      ],
+      "default": "top-left",
+      "label": "Content position"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left",
+      "label": "Content alignment"
+    },
+    {
+      "type": "header",
+      "content": "Styles"
+    },
+    {
+      "type": "color",
+      "id": "bg_color_map",
+      "default": "#f6f6f6",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "text_color_map",
+      "default": "#444",
+      "label": "Text color"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "default": "#212020",
+      "label": "Heading and title color"
+    },
+    {
+      "type": "color",
+      "id": "text_link_color",
+      "default": "#FD8E16",
+      "label": "Text link color"
+    },
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "Make section full width"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width_mobile",
+      "default": true,
+      "label": "Make section full width"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Store name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Store name",
+          "label": "Heading"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "min": 50,
+          "max": 200,
+          "unit": "%",
+          "step": 10,
+          "default": 90,
+          "label": "Heading size"
+        },
+        {
+          "type": "select",
+          "id": "heading_tag",
+          "default": "h2",
+          "label": "Heading tag",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "p",
+              "label": "p"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "Address and hour",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>75 9th Ave, New York, NY 10011-7006</p><p>Mon - Fri, 8:30am - 10:30pm,</br>Saturday, 8:30am - 10:30pm,</br>Sunday, 8:30am - 10:30pm</p>",
+          "label": "Text"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 50,
+          "max": 200,
+          "unit": "%",
+          "step": 10,
+          "default": 100,
+          "label": "Text size"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Get Directions"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_primary",
+          "default": true,
+          "label": "Show as primary button"
+        },
+        {
+          "type": "header",
+          "content": "Button design"
+        },
+        {
+          "type": "select",
+          "id": "button_type",
+          "options": [
+            {
+              "value": "square",
+              "label": "Square"
+            },
+            {
+              "value": "rounded",
+              "label": "Rounded"
+            },
+            {
+              "value": "rounded_corners",
+              "label": "Rounded Corners"
+            },
+            {
+              "value": "mixed",
+              "label": "Mixed"
+            }
+          ],
+          "label": "Button style",
+          "default": "rounded_corners"
+        },
+        {
+          "type": "select",
+          "id": "button_color_mobile",
+          "options": [
+            {
+              "value": "hover",
+              "label": "Use button hover color"
+            },
+            {
+              "value": "color",
+              "label": "Use button color"
+            }
+          ],
+          "label": "Mobile primary button style",
+          "default": "color"
+        },
+        {
+          "type": "select",
+          "id": "button_animation",
+          "options": [
+            {
+              "value": "slide",
+              "label": "Slide"
+            },
+            {
+              "value": "fill_up",
+              "label": "Fill up"
+            },
+            {
+              "value": "sliced",
+              "label": "Sliced with icon"
+            },
+            {
+              "value": "underline",
+              "label": "Underline"
+            }
+          ],
+          "label": "Primary button hover animation",
+          "default": "fill_up"
+        },
+        {
+          "type": "html",
+          "id": "custom_icon_button",
+          "label": "Custom icon (SVG code)",
+          "info": "Applies to 'Sliced with icon' animation type. For assistance with custom SVG code or fixing issues that arise from custom SVG code, please [contact our support](https://support.bsscommerce.com/support/tickets/new)."
+        },
+        {
+          "type": "color",
+          "id": "primary_button",
+          "label": "Primary button",
+          "default": "#DCDCDC"
+        },
+        {
+          "type": "color",
+          "id": "primary_button_text",
+          "label": "Primary button text",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "primary_button_hover",
+          "label": "Primary button hover",
+          "default": "#000"
+        },
+        {
+          "type": "color",
+          "id": "primary_button_text_hover",
+          "label": "Primary button hover text",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button",
+          "label": "Secondary button color",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "secondary_button_text",
+          "label": "Secondary button text color",
+          "default": "#000000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "OT: Map #3",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "richtext"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

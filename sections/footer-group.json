@@ -1,0 +1,285 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "otsb_email_signup_2_w3CKbw": {
+      "type": "otsb-email-signup-2",
+      "blocks": {
+        "heading_q43QGF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size_desktop": 49,
+            "heading_size_mobile": 39,
+            "heading_tag": "h2"
+          }
+        },
+        "paragraph_mBVeNN": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>",
+            "description_size_desktop": 20,
+            "description_size_mobile": 16
+          }
+        },
+        "email_form_THNNYR": {
+          "type": "email_form",
+          "settings": {
+            "form_placeholder": "Enter Your email",
+            "form_width": "large",
+            "padding_top_bottom": 2,
+            "padding_left_right": 2,
+            "button_label": "Subscribe",
+            "styles_button": "rounded",
+            "button_corner_radius": 6,
+            "border_thickness": 1,
+            "button_color_mobile": "color",
+            "button_animation": "fill_up",
+            "custom_icon_button": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_q43QGF",
+        "paragraph_mBVeNN",
+        "email_form_THNNYR"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".otsb_trademark_root {color: #9b9b9b;}"
+      ],
+      "name": "OT: Email signup #2",
+      "settings": {
+        "image": "shopify://shop_images/BG_cover_checkout.png",
+        "image_mobile": "shopify://shop_images/BG_cover_checkout.png",
+        "position_image": "image_background",
+        "desktop_height": "450px",
+        "image_alignment": "image_first",
+        "mobile_height": "300px",
+        "overlay_opacity": 20,
+        "colors_overlay": "#000000",
+        "styles_heading": "capitalize",
+        "content_alignment": "left",
+        "background_color": "#9b9b9b",
+        "heading": "#ffffff",
+        "text": "#ffffff",
+        "text_link": "rgba(0,0,0,0)",
+        "input_background": "rgba(0,0,0,0)",
+        "button": "#931704",
+        "button_text": "#ffffff",
+        "button_hover": "#931704",
+        "button_text_hover": "#ffffff",
+        "line_border": "#f2f2f2",
+        "full_width": false,
+        "show_section_divider": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20
+      }
+    },
+    "ss_back_to_top_nHHW4M": {
+      "type": "ss-back-to-top",
+      "disabled": true,
+      "name": "SS - Back to top #3",
+      "settings": {
+        "horizontal_position": "left",
+        "horizontal_dst_to_edge": 30,
+        "horizontal_dst_to_edge_mobile": 20,
+        "vertical_dst_to_edge": 50,
+        "vertical_dst_to_edge_mobile": 50,
+        "circle_size": 56,
+        "circle_size_mobile": 46,
+        "progress_thickness": 4,
+        "circle_bg_color": "#931704",
+        "circle_bg_hover_color": "#931704",
+        "progress_color": "#f3f3f3",
+        "progress_active_color": "#931704",
+        "arrow_color": "#f3f3f3",
+        "arrow_hover_color": "#ffffff"
+      }
+    },
+    "newsletter_gcPrwd": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_XgJzED": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get Exclusive Email Updates",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph_bbDkBJ": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Never miss out on our latest product releases and special offers.</p>"
+          }
+        },
+        "email_form_HPnaKm": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_XgJzED",
+        "paragraph_bbDkBJ",
+        "email_form_HPnaKm"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "otsb_email_signup_2_Ken9Q6": {
+      "type": "otsb-email-signup-2",
+      "blocks": {
+        "heading_CFtB9k": {
+          "type": "heading",
+          "settings": {
+            "heading": "SIGN UP TO JOIN OUR NEWSLETTER",
+            "heading_size_desktop": 37,
+            "heading_size_mobile": 39,
+            "heading_tag": "h2"
+          }
+        },
+        "paragraph_LqEpYF": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>",
+            "description_size_desktop": 20,
+            "description_size_mobile": 16
+          }
+        },
+        "email_form_QC8zXm": {
+          "type": "email_form",
+          "settings": {
+            "form_placeholder": "Enter Your email",
+            "form_width": "large",
+            "padding_top_bottom": 2,
+            "padding_left_right": 2,
+            "button_label": "Subscribe",
+            "styles_button": "rounded",
+            "button_corner_radius": 6,
+            "border_thickness": 1,
+            "button_color_mobile": "color",
+            "button_animation": "fill_up",
+            "custom_icon_button": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_CFtB9k",
+        "paragraph_LqEpYF",
+        "email_form_QC8zXm"
+      ],
+      "disabled": true,
+      "name": "OT: Email signup #2",
+      "settings": {
+        "image_mobile": "shopify://shop_images/Showroom-3_1.jpg",
+        "position_image": "image_background",
+        "desktop_height": "550px",
+        "image_alignment": "image_first",
+        "mobile_height": "300px",
+        "overlay_opacity": 60,
+        "colors_overlay": "#000000",
+        "styles_heading": "capitalize",
+        "content_alignment": "center",
+        "background_color": "#fafafa",
+        "heading": "#ffffff",
+        "text": "#ffffff",
+        "text_link": "rgba(0,0,0,0)",
+        "input_background": "rgba(0,0,0,0)",
+        "button": "#630101",
+        "button_text": "#ffffff",
+        "button_hover": "#630101",
+        "button_text_hover": "#fff",
+        "line_border": "#f2f2f2",
+        "full_width": true,
+        "show_section_divider": false,
+        "padding_top": 24,
+        "padding_bottom": 0,
+        "show_section_divider_mobile": false,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "custom_liquid_zEkNqK": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<footer class=\"site-footer\" role=\"contentinfo\">\n\n  <div class=\"footer-inner\">\n\n    <!-- NEED HELP BOX -->\n    <div class=\"footer-help-box\">\n\n      <img\n        src=\"https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_800x800_69b82952-e917-499c-b748-11c5b390d1ee.png?v=1763189839\"\n        alt=\"Channel Logo\"\n        class=\"fh-logo\">\n\n      <p class=\"fh-title\">Need Assistance?</p>\n      <p class=\"fh-sub\">Call your Sales Engineer.</p>\n\n      <hr class=\"fh-divider\">\n\n      <div class=\"fh-phones\">\n        <p><span>Landline</span>(+632) 7738-2844</p>\n        <p><span>Viber</span>(+63) 915-339-7985</p>\n        <p><span>Smart</span>(+63) 998-983-4535</p>\n      </div>\n\n      <p class=\"fh-email\">sales@channel.com.ph</p>\n\n    </div>\n\n    <!-- RIGHT COLUMNS -->\n    <div class=\"footer-columns\">\n\n      <div class=\"footer-col\">\n        <h4 class=\"footer-heading\">Company</h4>\n        <ul class=\"footer-list\">\n          <li><a href=\"/pages/about-us-company\">About Channel</a></li>\n          <li><a href=\"/pages/hours-of-operation\">Hours of Operation</a></li>\n          <li><a href=\"/pages/directions-parking\">Site Directory</a></li>\n          <li><a href=\"/pages/contact\">Contact Us</a></li>\n        </ul>\n      </div>\n\n      <div class=\"footer-col\">\n        <h4 class=\"footer-heading\">Customer Service</h4>\n        <ul class=\"footer-list\">\n          <li><a href=\"/pages/ordering-information\">Ordering Information</a></li>\n          <li><a href=\"/pages/payment-options\">Payments</a></li>\n          <li><a href=\"/pages/shipping-delivery\">Shipping</a></li>\n          <li><a href=\"/pages/return-policy\">Return Policy</a></li>\n          <li><a href=\"/pages/technical-support\">Technical Support</a></li>\n        </ul>\n      </div>\n\n      <div class=\"footer-col\">\n        <h4 class=\"footer-heading\">Help</h4>\n        <ul class=\"footer-list\">\n          <li><a href=\"/pages/faqs-in-quotation\">FAQ's in Quotation</a></li>\n          <li><a href=\"/pages/store-pickup\">Store Pickup</a></li>\n          <li><a href=\"/pages/quotation-guide\">Request for Quotation (RFQ)</a></li>\n          <li><a href=\"/collections\">Shop By Brand</a></li>\n          <li><a href=\"/pages/help\">All Help Topics</a></li>\n        </ul>\n      </div>\n\n    </div>\n\n  </div>\n\n  <!-- BOTTOM BAR -->\n  <div class=\"footer-bottom-bar\">\n    <div class=\"footer-address\">\n      <a href=\"https://d99e66-54.myshopify.com/\">Channel International Enterprises</a><br>\n      43 Don A. Roces Ave., Brgy. Paligsahan, Quezon City, Metro Manila, Philippines 1103\n    </div>\n    <div class=\"footer-links-right\">\n      <a href=\"https://maps.app.goo.gl/nZZnygqUVay95iJeA\" target=\"_blank\" rel=\"noopener\">Get Directions</a>\n      <a href=\"/pages/hours-of-operation\">Store Hours</a>\n    </div>\n  </div>\n\n  <p class=\"footer-copy\">© 2019 - 2026 channel.com.ph. All rights reserved.</p>\n\n\n<style>\n\n/* ── FOOTER BASE ── */\n.site-footer {\n  background: #D7D7D7;\n  border-top: 2px solid #8A0000;\n  font-family: Helvetica, Inter;\n  color: #000000;\n}\n\n/* ── MAIN LAYOUT ── */\n.footer-inner {\n  max-width: 1300px;\n  margin: 0 auto;\n  padding: 52px 40px 0;\n  display: flex;\n  gap: 60px;\n  align-items: flex-start;\n}\n\n/* ── HELP BOX ── */\n.footer-help-box {\n  flex-shrink: 0;\n  width: 300px;\n  background: #F3F3F3;\n  border: 1px solid #c4c4c4;\n  border-radius: 10px;\n  padding: 24px 22px;\n  text-align: center\n}\n\n.fh-logo {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  object-fit: cover;\n  border: 2px solid #D7D7D7;\n  display: block;\n  margin-bottom: 14px;\n  margin: 0 auto 14px\n}\n\n.fh-title {\n  font-size: 13px;\n  font-weight: 700;\n  letter-spacing: 0.08em;\n  color: #8A0000;\n  text-transform: uppercase;\n  margin: 0 0 3px;\n}\n\n.fh-sub {\n  font-size: 13px;\n  color: #000000;\n  margin: 0 0 14px;\n}\n\n.fh-divider {\n  border: none;\n  border-top: 1px solid #D7D7D7;\n  margin: 0 0 14px;\n}\n\n.fh-phones p {\n  font-size: 13px;\n  font-weight: 600;\n  color: #222;\n  line-height: 2;\n  margin: 0;\n}\n\n.fh-phones p span {\n  display: inline-block;\n  font-weight: 400;\n  color: #000000;\n  min-width: 62px;\n}\n\n.fh-email {\n  margin-top: 12px;\n  font-size: 13px;\n  font-weight: 600;\n  color: #8A0000;\n}\n\n/* ── COLUMNS ── */\n.footer-columns {\n  flex: 1;\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 36px;\n}\n\n.footer-heading {\n  font-size: 13.5px;\n  font-weight: 700;\n  letter-spacing: 0.09em;\n  text-transform: uppercase;\n  color: #8A0000;\n  margin: 0 0 16px;\n  padding-bottom: 8px;\n  border-bottom: 1px solid #bfbfbf;\n}\n\n.footer-list {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\n.footer-list li {\n  margin-bottom: 9px;\n}\n\n.footer-list a {\n  font-size: 13.5px;\n  color:#000000;\n  text-decoration: none;\n}\n\n.footer-list a:hover {\n  color: #8A0000;\n}\n\n/* ── BOTTOM BAR ── */\n.footer-bottom-bar {\n  max-width: 1300px;\n  margin: 40px auto 0;\n  padding: 20px 40px;\n  border-top: 1px solid #bfbfbf;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  flex-wrap: wrap;\n  gap: 12px;\n}\n\n.footer-address {\n  font-size: 12.5px;\n  color: #000000;\n  line-height: 1.7;\n}\n\n.footer-address a {\n  color: #000000;\n  text-decoration: none;\n  font-weight: 600;\n}\n\n.footer-address a:hover { color: #8A0000; }\n\n.footer-links-right {\n  display: flex;\n  gap: 20px;\n  font-size: 12.5px;\n}\n\n.footer-links-right a {\n  color: #000000;\n  text-decoration: none;\n}\n\n.footer-links-right a:hover { color: #8A0000; }\n\n.footer-copy {\n  text-align: center;\n  font-size: 11.5px;\n  color: #000000;\n  padding: 14px 40px 20px;\n  margin: 0;\n}\n\n/* ── MOBILE ── */\n@media (max-width: 768px) {\n  .footer-inner {\n    flex-direction: column;\n    padding: 36px 20px 0;\n    gap: 36px;\n    align-items: center;\n  }\n\n  .footer-help-box {\n    width: 100%;\n  }\n\n  .fh-logo {\n    margin: 0 auto 14px;\n  }\n\n  .fh-phones p span {\n    display: block;\n    min-width: unset;\n  }\n\n  .footer-columns {\n    grid-template-columns: 1fr 1fr;\n    gap: 28px;\n    text-align: center;\n  }\n\n  .footer-col {\n    text-align: center;\n  }\n\n  .footer-bottom-bar {\n    flex-direction: column;\n    align-items: center;\n    text-align: center;\n    padding: 20px;\n    margin-top: 28px;\n    gap: 10px;\n  }\n\n  .footer-links-right {\n    gap: 16px;\n    justify-content: center;\n  }\n\n  .footer-address {\n    text-align: center;\n  }\n}\n\n@media (max-width: 480px) {\n  .footer-columns {\n    grid-template-columns: 1fr;\n    gap: 24px;\n  }\n}\n\n</style>\n\n</footer>",
+        "color_scheme": "scheme-24abeff4-27ea-4743-a9b7-8c8e1b1057e5",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text_fDCcwk": {
+          "type": "text",
+          "settings": {
+            "heading": "Need Assistance?",
+            "subtext": "<h5>Call your Sales Engineer.</h5><h5>Landline(+632) 7738-2844</h5><h5>Viber(+63) 915-339-7985</h5><h5>Smart(+63) 998-983-4535</h5><h5>sales@channel.com.ph</h5>"
+          }
+        },
+        "text_Hnxb3L": {
+          "type": "text",
+          "settings": {
+            "heading": "Shipping Providers",
+            "subtext": "<h5>Lalamove</h5><h5>LBC</h5><h5>AP Cargo</h5><h5>2GO</h5><h5>AIR21</h5><h5>JRS</h5><h5>XEND</h5><h5></h5><p></p>"
+          }
+        },
+        "link_list_A39X4e": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick links",
+            "menu": "main-menu"
+          }
+        }
+      },
+      "block_order": [
+        "text_fDCcwk",
+        "text_Hnxb3L",
+        "link_list_A39X4e"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "otsb_email_signup_2_w3CKbw",
+    "ss_back_to_top_nHHW4M",
+    "newsletter_gcPrwd",
+    "otsb_email_signup_2_Ken9Q6",
+    "custom_liquid_zEkNqK",
+    "footer"
+  ]
+}

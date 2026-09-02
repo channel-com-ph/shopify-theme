@@ -1,0 +1,47 @@
+{% assign file = product.metafields.custom.description_file.value.url %}
+
+{% assign overview = product.metafields.custom.description_overview | metafield_tag %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js" defer></script>
+<div class="styleFile">
+  <div style="display: none; margin-top: 20px;" id="no_file">{{ overview }}</div>
+  <div id="output" style="margin-top: 20px;"></div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const fileUrl = '{{ file }}'; 
+    const overview = document.getElementById('no_file');
+
+    if (!fileUrl) {
+      overview.style.display = 'block';
+      return;
+    }
+
+    if (!fileUrl && overview.style.display === 'none'){
+      document.getElementById('output').innerText = 'No Overview description included yet.';
+    }
+
+    fetch(fileUrl)
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.arrayBuffer();
+      })
+      .then(arrayBuffer => {
+        return mammoth.convertToHtml({ arrayBuffer: arrayBuffer });
+      })
+      .then(displayResult)
+      .catch(handleError);
+  });
+
+  function displayResult(result) {
+    const output = document.getElementById('output');
+    output.innerHTML = result.value; 
+  }
+
+  function handleError(err) {
+    console.error(err);
+    document.getElementById('output').innerText = 'An error occurred during conversion: ' + err.message;
+  }
+</script>
+<style>
+
+</style>

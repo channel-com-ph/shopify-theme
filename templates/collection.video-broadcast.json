@@ -1,0 +1,1238 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_bwPEgA": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gfgjAA": {
+          "type": "heading",
+          "settings": {
+            "heading": "VIDEO & BROADCAST",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gfgjAA"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_FtbAp7": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_trHRJw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camcorder"
+          }
+        },
+        "featured_collection_BKQHfb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ptz-camera"
+          }
+        },
+        "featured_collection_WKtbgb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mirrorless-dslr"
+          }
+        },
+        "featured_collection_T6VaM3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "webcam"
+          }
+        },
+        "featured_collection_DaT8An": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "action-camera"
+          }
+        },
+        "featured_collection_EhpG6W": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drone"
+          }
+        },
+        "featured_collection_7AEmqX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "photo-camera"
+          }
+        },
+        "featured_collection_gpXBtb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "document-camera"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_trHRJw",
+        "featured_collection_BKQHfb",
+        "featured_collection_WKtbgb",
+        "featured_collection_T6VaM3",
+        "featured_collection_DaT8An",
+        "featured_collection_EhpG6W",
+        "featured_collection_7AEmqX",
+        "featured_collection_gpXBtb"
+      ],
+      "settings": {
+        "title": "CAMERA",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_YanknR": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_DJUimM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-lens"
+          }
+        },
+        "featured_collection_kqNVEx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-microphone"
+          }
+        },
+        "featured_collection_FaXPrc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-accessories"
+          }
+        },
+        "featured_collection_n6xr6B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-case-storage"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_DJUimM",
+        "featured_collection_kqNVEx",
+        "featured_collection_FaXPrc",
+        "featured_collection_n6xr6B"
+      ],
+      "settings": {
+        "title": "CAMERA COMPONENTS & ACCESSORIES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_PaAMt8": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_WVBaXQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-lights"
+          }
+        },
+        "featured_collection_NbP4MD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-light"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_WVBaXQ",
+        "featured_collection_NbP4MD"
+      ],
+      "settings": {
+        "title": "VIDEO LIGHTING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_7GLmDb": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_XFQhYV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "monopod"
+          }
+        },
+        "featured_collection_fzwqUU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tripod"
+          }
+        },
+        "featured_collection_NdYF7e": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-tripod-head"
+          }
+        },
+        "featured_collection_nRWjmm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dolly"
+          }
+        },
+        "featured_collection_hn9ApR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "stabilizer"
+          }
+        },
+        "featured_collection_n9zK3t": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "camera-mount-1"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_XFQhYV",
+        "featured_collection_fzwqUU",
+        "featured_collection_NdYF7e",
+        "featured_collection_nRWjmm",
+        "featured_collection_hn9ApR",
+        "featured_collection_n9zK3t"
+      ],
+      "settings": {
+        "title": "CAMERA MOUNT / STAND",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_RP8QUb": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_f8q6Tq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdmi-switcher"
+          }
+        },
+        "featured_collection_LBeQaC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sdi-switcher"
+          }
+        },
+        "featured_collection_a4EHqU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "surface-controller"
+          }
+        },
+        "featured_collection_3Fd8Ln": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ptz-controller"
+          }
+        },
+        "featured_collection_bXBHFj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-wall-controller"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_f8q6Tq",
+        "featured_collection_LBeQaC",
+        "featured_collection_a4EHqU",
+        "featured_collection_3Fd8Ln",
+        "featured_collection_bXBHFj"
+      ],
+      "settings": {
+        "title": "VIDEO MIXER & CONTROLLER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_RdkhL7": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_w36NaU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "av-selector"
+          }
+        },
+        "featured_collection_nNYDLf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vga-selector"
+          }
+        },
+        "featured_collection_TNyFTm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdmi-selector"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_w36NaU",
+        "featured_collection_nNYDLf",
+        "featured_collection_TNyFTm"
+      ],
+      "settings": {
+        "title": "SELECTOR",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_6aaxJr": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_9WrTKV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "compose-matrix"
+          }
+        },
+        "featured_collection_NLKBBd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vga-matrix"
+          }
+        },
+        "featured_collection_wkHntK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdmi-matrix"
+          }
+        },
+        "featured_collection_AqJqUV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cat-5-6-av-matrix"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_9WrTKV",
+        "featured_collection_NLKBBd",
+        "featured_collection_wkHntK",
+        "featured_collection_AqJqUV"
+      ],
+      "settings": {
+        "title": "MATRIX MIXER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_Txekdy": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_qxWpcB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "signal-converter-1"
+          }
+        },
+        "featured_collection_R4tj3q": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "repeater-extender"
+          }
+        },
+        "featured_collection_UEGQ3U": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "signal-measurement"
+          }
+        },
+        "featured_collection_JNLxhQ": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "tally"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_qxWpcB",
+        "featured_collection_R4tj3q",
+        "featured_collection_UEGQ3U",
+        "featured_collection_JNLxhQ"
+      ],
+      "settings": {
+        "title": "SIGNAL MANAGEMENT",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_mjVARQ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_x7UfC6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-video"
+          }
+        },
+        "featured_collection_j9KrNH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "repeater-extender"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_x7UfC6",
+        "featured_collection_j9KrNH"
+      ],
+      "settings": {
+        "title": "WIRELESS VIDEO, REPEATED & EXTENDER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_fztHK6": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_AAyUtt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vga-splitter"
+          }
+        },
+        "featured_collection_TzFdbT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "av-splitter"
+          }
+        },
+        "featured_collection_3Jh8mV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dvi-splitter"
+          }
+        },
+        "featured_collection_V8W48n": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdmi-splitter"
+          }
+        },
+        "featured_collection_gA6eHy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sdi-splitter"
+          }
+        },
+        "featured_collection_yhWWEN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "display-port-splitter"
+          }
+        },
+        "featured_collection_CV9W9a": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdbase-t-splitter"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_AAyUtt",
+        "featured_collection_TzFdbT",
+        "featured_collection_3Jh8mV",
+        "featured_collection_V8W48n",
+        "featured_collection_gA6eHy",
+        "featured_collection_yhWWEN",
+        "featured_collection_CV9W9a"
+      ],
+      "settings": {
+        "title": "SPLITTER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_nXg6BN": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_7tUENa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wired-1"
+          }
+        },
+        "featured_collection_CHTh7p": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-1"
+          }
+        },
+        "featured_collection_AmfwkV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "talkback-system"
+          }
+        },
+        "featured_collection_LFcyMr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tally"
+          }
+        },
+        "featured_collection_RXRnxT": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "teleprompter"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_7tUENa",
+        "featured_collection_CHTh7p",
+        "featured_collection_AmfwkV",
+        "featured_collection_LFcyMr",
+        "featured_collection_RXRnxT"
+      ],
+      "settings": {
+        "title": "COMMUNICATION SYSTEM",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_FnATJG": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_LCVDLf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-video"
+          }
+        },
+        "featured_collection_bLfBbH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teleprompter"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_LCVDLf",
+        "featured_collection_bLfBbH"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "WIRELESS VIDEO & TELEPROMPTER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_tPYdU6": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_MNi6ED": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "capture-recorder-graphics"
+          }
+        },
+        "featured_collection_fFqBir": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "media-player"
+          }
+        },
+        "featured_collection_YCab7p": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "encoder"
+          }
+        },
+        "featured_collection_HUiMLP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "decoder"
+          }
+        },
+        "featured_collection_RhaXTW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-software"
+          }
+        },
+        "featured_collection_FJ8F8z": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "film-scanner"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_MNi6ED",
+        "featured_collection_fFqBir",
+        "featured_collection_YCab7p",
+        "featured_collection_HUiMLP",
+        "featured_collection_RhaXTW",
+        "featured_collection_FJ8F8z"
+      ],
+      "settings": {
+        "title": "CAPTURE DEVICE / MEDIA PLAYER / SOFTWARE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_NLNndd": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_enPJUY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-monitor-1"
+          }
+        },
+        "featured_collection_7yKAMy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-hub-router-1"
+          }
+        },
+        "featured_collection_xyditD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "multiview-processor"
+          }
+        },
+        "featured_collection_BzPPzD": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "tally"
+          }
+        },
+        "featured_collection_9EAWkB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "teleprompter"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_enPJUY",
+        "featured_collection_7yKAMy",
+        "featured_collection_xyditD",
+        "featured_collection_BzPPzD",
+        "featured_collection_9EAWkB"
+      ],
+      "settings": {
+        "title": "VIDEO MONITORING & ROUTING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_tKDKKt": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_YMXJfa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lcd"
+          }
+        },
+        "featured_collection_jGf8Qm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dlp"
+          }
+        },
+        "featured_collection_W6iQ9q": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "laser"
+          }
+        },
+        "featured_collection_Qia7zw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "projector-lens"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_YMXJfa",
+        "featured_collection_jGf8Qm",
+        "featured_collection_W6iQ9q",
+        "featured_collection_Qia7zw"
+      ],
+      "settings": {
+        "title": "PROJECTOR",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_9aWLce": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_nrVwBi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pulldown-screen"
+          }
+        },
+        "featured_collection_Upf6hT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tripod-screen"
+          }
+        },
+        "featured_collection_JTtTEn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "motorized-screen"
+          }
+        },
+        "featured_collection_JfNnEj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "high-gain-3d-screen"
+          }
+        },
+        "featured_collection_NxVr8C": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rear-screen"
+          }
+        },
+        "featured_collection_HTy3fG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fixed-frame-screen"
+          }
+        },
+        "featured_collection_QrDLfc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chroma-key-screen"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_nrVwBi",
+        "featured_collection_Upf6hT",
+        "featured_collection_JTtTEn",
+        "featured_collection_JfNnEj",
+        "featured_collection_NxVr8C",
+        "featured_collection_HTy3fG",
+        "featured_collection_QrDLfc"
+      ],
+      "settings": {
+        "title": "SCREEN",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_iQDeaF": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_NGiGG4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "led-wall"
+          }
+        },
+        "featured_collection_cCJiak": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "indoor-panel"
+          }
+        },
+        "featured_collection_UAfBLW": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "outdoor-panel"
+          }
+        },
+        "featured_collection_EN6DJ3": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "mobile-display"
+          }
+        },
+        "featured_collection_3wNyBQ": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "fixed-display"
+          }
+        },
+        "featured_collection_iGiEkK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "commercial-display"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_NGiGG4",
+        "featured_collection_cCJiak",
+        "featured_collection_UAfBLW",
+        "featured_collection_EN6DJ3",
+        "featured_collection_3wNyBQ",
+        "featured_collection_iGiEkK"
+      ],
+      "settings": {
+        "title": "LED WALL & DISPLAY",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_nfCjt7": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_L6hdgX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ceiling-mount"
+          }
+        },
+        "featured_collection_eLcXbY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "projector-lift"
+          }
+        },
+        "featured_collection_fMjMqH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tv-monitor-table-stand"
+          }
+        },
+        "featured_collection_tPTNcC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "workstation"
+          }
+        },
+        "featured_collection_9Rg9NA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-rack-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_L6hdgX",
+        "featured_collection_eLcXbY",
+        "featured_collection_fMjMqH",
+        "featured_collection_tPTNcC",
+        "featured_collection_9Rg9NA"
+      ],
+      "settings": {
+        "title": "VIDEO MOUNT / BRACKET / STANDS & WORKSTATION",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_xKYgBX": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_jnmg6V": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sdi-cable"
+          }
+        },
+        "featured_collection_KRjA7L": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fiber-optic-cable"
+          }
+        },
+        "featured_collection_CDXdEk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "coaxial-cable"
+          }
+        },
+        "featured_collection_Ncqmhj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdmi-cable"
+          }
+        },
+        "featured_collection_gmaQAx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vga-cable"
+          }
+        },
+        "featured_collection_Y4jmnM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dvi-cable"
+          }
+        },
+        "featured_collection_7Crcwx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "composite-component-cable"
+          }
+        },
+        "featured_collection_gbFMKG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "s-video-cable"
+          }
+        },
+        "featured_collection_XJbwHr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cat-5-6-cable"
+          }
+        },
+        "featured_collection_qKUhWW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "usb-computer-cable"
+          }
+        },
+        "featured_collection_gzAbVt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-bulk-cable"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_jnmg6V",
+        "featured_collection_KRjA7L",
+        "featured_collection_CDXdEk",
+        "featured_collection_Ncqmhj",
+        "featured_collection_gmaQAx",
+        "featured_collection_Y4jmnM",
+        "featured_collection_7Crcwx",
+        "featured_collection_gbFMKG",
+        "featured_collection_XJbwHr",
+        "featured_collection_qKUhWW",
+        "featured_collection_gzAbVt"
+      ],
+      "settings": {
+        "title": "VIDEO CABLES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_TkzT9m": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_nYAKnK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bnc"
+          }
+        },
+        "featured_collection_waY7tP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-rca"
+          }
+        },
+        "featured_collection_ADX9tX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-vga"
+          }
+        },
+        "featured_collection_GgdXND": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ethercon-rj45"
+          }
+        },
+        "featured_collection_TANTiQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-hdmi"
+          }
+        },
+        "featured_collection_q4jnxk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-adapter"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_nYAKnK",
+        "featured_collection_waY7tP",
+        "featured_collection_ADX9tX",
+        "featured_collection_GgdXND",
+        "featured_collection_TANTiQ",
+        "featured_collection_q4jnxk"
+      ],
+      "settings": {
+        "title": "CONNECTORS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_xarw8e": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_J6RRVX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "media-storage"
+          }
+        },
+        "featured_collection_YXhGzp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cloud-storage"
+          }
+        },
+        "featured_collection_WweAax": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "video-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_J6RRVX",
+        "featured_collection_YXhGzp",
+        "featured_collection_WweAax"
+      ],
+      "settings": {
+        "title": "MEDIA STORAGE , CLOUD STORAGE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "rich_text_bwPEgA",
+    "collection_list_FtbAp7",
+    "collection_list_YanknR",
+    "collection_list_PaAMt8",
+    "collection_list_7GLmDb",
+    "collection_list_RP8QUb",
+    "collection_list_RdkhL7",
+    "collection_list_6aaxJr",
+    "collection_list_Txekdy",
+    "collection_list_mjVARQ",
+    "collection_list_fztHK6",
+    "collection_list_nXg6BN",
+    "collection_list_FnATJG",
+    "collection_list_tPYdU6",
+    "collection_list_NLNndd",
+    "collection_list_tKDKKt",
+    "collection_list_9aWLce",
+    "collection_list_iQDeaF",
+    "collection_list_nfCjt7",
+    "collection_list_xKYgBX",
+    "collection_list_TkzT9m",
+    "collection_list_xarw8e"
+  ]
+}

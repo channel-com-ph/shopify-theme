@@ -1,0 +1,144 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_tTpDCU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_xRkXbJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sdi-cable"
+          }
+        },
+        "featured_collection_8PNCaa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fiber-optic-cable"
+          }
+        },
+        "featured_collection_9Wb4Wh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "coaxial-cable"
+          }
+        },
+        "featured_collection_eBYMkX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hdmi-cable"
+          }
+        },
+        "featured_collection_fwJaCP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vga-cable"
+          }
+        },
+        "featured_collection_DewqXH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dvi-cable"
+          }
+        },
+        "featured_collection_qXKKwH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "composite-component-cable"
+          }
+        },
+        "featured_collection_UgRAe7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "s-video-cable"
+          }
+        },
+        "featured_collection_CRjwWL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cat-5-6-cable"
+          }
+        },
+        "featured_collection_6AE6WK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "usb-computer-cable"
+          }
+        },
+        "featured_collection_yfzqCM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-bulk-cable"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_xRkXbJ",
+        "featured_collection_8PNCaa",
+        "featured_collection_9Wb4Wh",
+        "featured_collection_eBYMkX",
+        "featured_collection_fwJaCP",
+        "featured_collection_DewqXH",
+        "featured_collection_qXKKwH",
+        "featured_collection_UgRAe7",
+        "featured_collection_CRjwWL",
+        "featured_collection_6AE6WK",
+        "featured_collection_yfzqCM"
+      ],
+      "settings": {
+        "title": "VIDEO CABLES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_list_tTpDCU"
+  ]
+}

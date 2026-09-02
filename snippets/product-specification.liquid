@@ -1,0 +1,117 @@
+{% assign content = product.metafields.custom.specs_table | metafield_tag %}
+{% if content != blank %}
+  <div id="content-container" class="container-hidden">{{ content }}</div>
+  <div id="container-table">
+    <table id="specs-table" class="specs-table">
+      <tbody>
+        <!-- Rows will be populated dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+{% else %}
+  <div>No specification table included yet.</div>
+{% endif %}
+
+<script>
+  function func() {
+    const contentContainer = document.getElementById('content-container');
+    const h4Elements = Array.from(contentContainer.getElementsByTagName('h4'));
+    const pElements = Array.from(contentContainer.getElementsByTagName('p'));
+    const ulElements = Array.from(contentContainer.getElementsByTagName('ul'));
+
+    const specsTableBody = document.querySelector('#specs-table tbody');
+
+    const maxSets = Math.max(h4Elements.length, pElements.length, ulElements.length);
+
+    for (let i = 0; i < maxSets; i++) {
+      const dataRow = document.createElement('tr');
+      
+      if (h4Elements[i].textContent.trim() !== '') {
+          const headingRow = document.createElement('tr');
+          const headingCell = document.createElement('th');
+          headingCell.colSpan = 2; 
+          headingCell.textContent = h4Elements[i].textContent; 
+      
+          headingRow.appendChild(headingCell);
+          specsTableBody.appendChild(headingRow);
+      } else {
+          // No heading row should be created
+      }
+
+      const subheadingCell = document.createElement('td');
+      subheadingCell.textContent = pElements[i] ? pElements[i].textContent : ''; 
+      dataRow.appendChild(subheadingCell);
+
+      const dataCell = document.createElement('td');
+
+      if (ulElements[i]) {
+        const listItems = Array.from(ulElements[i].children); 
+
+        if (listItems.length > 1) {
+          const list = document.createElement('ul');
+          listItems.forEach(li => {
+            const listItem = document.createElement('li');
+            listItem.textContent = li.textContent; 
+            list.appendChild(listItem);
+          });
+          dataCell.appendChild(list); 
+        } else if (listItems.length === 1) {
+          dataCell.textContent = listItems[0].textContent;
+        } else {
+          dataCell.textContent = ''; 
+        }
+      } else {
+        dataCell.textContent = ''; 
+      }
+
+      dataRow.appendChild(dataCell);
+
+      if (subheadingCell.textContent || dataCell.textContent) {
+        specsTableBody.appendChild(dataRow);
+      }
+    }
+  }
+  func();
+</script>
+
+<style>
+  .container-hidden {
+    display: none;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: #e6e7e8;
+  }
+  table, th, td {
+    border-bottom: solid 1px #4a4d57;
+    border-top: solid 1px #4a4d57;
+    border-left: transparent;
+    border-right: transparent;
+    border-collapse: collapse;
+    padding: 16px 20px;
+  }
+
+  th {
+    font-size: 18px;
+    background-color: #363a45;
+    color: #e6e7e8;
+  }
+  td {
+    padding-left: 24px;
+  }
+  td:nth-child(1){
+    background-color: #1e212b;
+    width: calc(100%/3);
+    font-weight: bold;
+  }
+  ul{
+    list-style-position: inside;
+    padding: 0;
+  }
+</style>
+

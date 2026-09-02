@@ -1,0 +1,687 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text_r6af8Y": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_eBmApK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Brands",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eBmApK"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-90df381f-811c-4bd0-9ee4-b4a4800f8043",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_CFF9XQ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_XkA9BW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "blackmagicdesign"
+          }
+        },
+        "featured_collection_Nq7LMf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bose"
+          }
+        },
+        "featured_collection_9PYYbm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jbl"
+          }
+        },
+        "featured_collection_6cTagw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "allen-heat"
+          }
+        },
+        "featured_collection_jdGexk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "logitech"
+          }
+        },
+        "featured_collection_6XYBBR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "yamaha"
+          }
+        },
+        "featured_collection_tmNagW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mipro"
+          }
+        },
+        "featured_collection_A9HEPe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mackie"
+          }
+        },
+        "featured_collection_n4Lnjz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "furman"
+          }
+        },
+        "featured_collection_RrRek6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rcf"
+          }
+        },
+        "featured_collection_w4B863": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rode"
+          }
+        },
+        "featured_collection_gXAGwP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "on-stage-stands"
+          }
+        },
+        "featured_collection_DpPH6U": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "se-electronics"
+          }
+        },
+        "featured_collection_F6PjQr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "presonus"
+          }
+        },
+        "featured_collection_fQ9wAi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kevler"
+          }
+        },
+        "featured_collection_kwiyNW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hollyland"
+          }
+        },
+        "featured_collection_Wc7kYm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "saramonic"
+          }
+        },
+        "featured_collection_3f6GHq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "benro"
+          }
+        },
+        "featured_collection_yMRfqr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sennheiser"
+          }
+        },
+        "featured_collection_6gYmGk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shure"
+          }
+        },
+        "featured_collection_qDBAfH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "roxtone"
+          }
+        },
+        "featured_collection_rNTqLn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-technica"
+          }
+        },
+        "featured_collection_77T8Xw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "toa"
+          }
+        },
+        "featured_collection_pw4qyb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soundcraft"
+          }
+        },
+        "featured_collection_hDjnjk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dbx"
+          }
+        },
+        "featured_collection_Ux4LKK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "epson"
+          }
+        },
+        "featured_collection_m43qym": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "topp-pro"
+          }
+        },
+        "featured_collection_KbDMGt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "behringer"
+          }
+        },
+        "featured_collection_YBxedp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "focusrite-1"
+          }
+        },
+        "featured_collection_qethFL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "crown"
+          }
+        },
+        "featured_collection_Aa7weV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wharfedale"
+          }
+        },
+        "featured_collection_8hTKab": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audinate"
+          }
+        },
+        "featured_collection_X3Wbmf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "denon"
+          }
+        },
+        "featured_collection_bUG9aX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "neutrik"
+          }
+        },
+        "featured_collection_zCWFjK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "avonic"
+          }
+        },
+        "featured_collection_zFignB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "obsbot"
+          }
+        },
+        "featured_collection_YWhy4E": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dji"
+          }
+        },
+        "featured_collection_Jw8pDH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jabra"
+          }
+        },
+        "featured_collection_PCfK6T": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "art-pro-audio"
+          }
+        },
+        "featured_collection_xm6X7N": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ibanez"
+          }
+        },
+        "featured_collection_6Q34gD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ludwig"
+          }
+        },
+        "featured_collection_iYcV3d": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pearl"
+          }
+        },
+        "featured_collection_qBrtiU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "laney"
+          }
+        },
+        "featured_collection_N6aqTX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aten"
+          }
+        },
+        "featured_collection_FtNJqC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "zoom"
+          }
+        },
+        "featured_collection_4TDXtY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pioneer-dj"
+          }
+        },
+        "featured_collection_fHpgXh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sony"
+          }
+        },
+        "featured_collection_pj3yaf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "panasonic-1"
+          }
+        },
+        "featured_collection_xxVhKb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nuoxun"
+          }
+        },
+        "featured_collection_UAeJNA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fishman"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_XkA9BW",
+        "featured_collection_Nq7LMf",
+        "featured_collection_9PYYbm",
+        "featured_collection_6cTagw",
+        "featured_collection_jdGexk",
+        "featured_collection_6XYBBR",
+        "featured_collection_tmNagW",
+        "featured_collection_A9HEPe",
+        "featured_collection_n4Lnjz",
+        "featured_collection_RrRek6",
+        "featured_collection_w4B863",
+        "featured_collection_gXAGwP",
+        "featured_collection_DpPH6U",
+        "featured_collection_F6PjQr",
+        "featured_collection_fQ9wAi",
+        "featured_collection_kwiyNW",
+        "featured_collection_Wc7kYm",
+        "featured_collection_3f6GHq",
+        "featured_collection_yMRfqr",
+        "featured_collection_6gYmGk",
+        "featured_collection_qDBAfH",
+        "featured_collection_rNTqLn",
+        "featured_collection_77T8Xw",
+        "featured_collection_pw4qyb",
+        "featured_collection_hDjnjk",
+        "featured_collection_Ux4LKK",
+        "featured_collection_m43qym",
+        "featured_collection_KbDMGt",
+        "featured_collection_YBxedp",
+        "featured_collection_qethFL",
+        "featured_collection_Aa7weV",
+        "featured_collection_8hTKab",
+        "featured_collection_X3Wbmf",
+        "featured_collection_bUG9aX",
+        "featured_collection_zCWFjK",
+        "featured_collection_zFignB",
+        "featured_collection_YWhy4E",
+        "featured_collection_Jw8pDH",
+        "featured_collection_PCfK6T",
+        "featured_collection_xm6X7N",
+        "featured_collection_6Q34gD",
+        "featured_collection_iYcV3d",
+        "featured_collection_qBrtiU",
+        "featured_collection_N6aqTX",
+        "featured_collection_FtNJqC",
+        "featured_collection_4TDXtY",
+        "featured_collection_fHpgXh",
+        "featured_collection_pj3yaf",
+        "featured_collection_xxVhKb",
+        "featured_collection_UAeJNA"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 10,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 0
+      }
+    },
+    "collection_list_m7aJj4": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_LnWQwA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "epiphone"
+          }
+        },
+        "featured_collection_NHJgQR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "apex"
+          }
+        },
+        "featured_collection_aLgcDz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "seemax"
+          }
+        },
+        "featured_collection_jbmbrQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "xvive"
+          }
+        },
+        "featured_collection_PY78iL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "stagg"
+          }
+        },
+        "featured_collection_R3U97q": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "betatree"
+          }
+        },
+        "featured_collection_f3arqt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "avmatrix"
+          }
+        },
+        "featured_collection_6j8VhT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "prostax"
+          }
+        },
+        "featured_collection_fMPtin": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fbt"
+          }
+        },
+        "featured_collection_yeLrYx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kramer-av"
+          }
+        },
+        "featured_collection_hyJpwj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "samson"
+          }
+        },
+        "featured_collection_NaMWaW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ld-systems"
+          }
+        },
+        "featured_collection_hLYQr9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sprolink"
+          }
+        },
+        "featured_collection_nac98K": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "konzert"
+          }
+        },
+        "featured_collection_39qab4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hikvision"
+          }
+        },
+        "featured_collection_cA3cA6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dahua"
+          }
+        },
+        "featured_collection_nFrwyy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "d-link"
+          }
+        },
+        "featured_collection_4xrhfy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "synology"
+          }
+        },
+        "featured_collection_q6ULhj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "godox"
+          }
+        },
+        "featured_collection_RVPrtf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sandisk"
+          }
+        },
+        "featured_collection_mUEtQX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "amphenol"
+          }
+        },
+        "featured_collection_hRa7EG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lg"
+          }
+        },
+        "featured_collection_RBxMBF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "belden"
+          }
+        },
+        "featured_collection_aLNw83": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kiloview"
+          }
+        },
+        "featured_collection_9XbA8i": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "infocus"
+          }
+        },
+        "featured_collection_jgmDHL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "viewtech"
+          }
+        },
+        "featured_collection_MFYHg4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "klotz"
+          }
+        },
+        "featured_collection_ygRmTg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "av-matrix"
+          }
+        },
+        "featured_collection_zArtRa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "krk"
+          }
+        },
+        "featured_collection_g4WMwe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "qsc"
+          }
+        },
+        "featured_collection_XeiqPb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ashly"
+          }
+        },
+        "featured_collection_wB38WQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audient"
+          }
+        },
+        "featured_collection_BKiYjK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "l-acoustic"
+          }
+        },
+        "featured_collection_khh6zg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "neumann"
+          }
+        },
+        "featured_collection_8DJTpC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "midas"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_LnWQwA",
+        "featured_collection_NHJgQR",
+        "featured_collection_aLgcDz",
+        "featured_collection_jbmbrQ",
+        "featured_collection_PY78iL",
+        "featured_collection_R3U97q",
+        "featured_collection_f3arqt",
+        "featured_collection_6j8VhT",
+        "featured_collection_fMPtin",
+        "featured_collection_yeLrYx",
+        "featured_collection_hyJpwj",
+        "featured_collection_NaMWaW",
+        "featured_collection_hLYQr9",
+        "featured_collection_nac98K",
+        "featured_collection_39qab4",
+        "featured_collection_cA3cA6",
+        "featured_collection_nFrwyy",
+        "featured_collection_4xrhfy",
+        "featured_collection_q6ULhj",
+        "featured_collection_RVPrtf",
+        "featured_collection_mUEtQX",
+        "featured_collection_hRa7EG",
+        "featured_collection_RBxMBF",
+        "featured_collection_aLNw83",
+        "featured_collection_9XbA8i",
+        "featured_collection_jgmDHL",
+        "featured_collection_MFYHg4",
+        "featured_collection_ygRmTg",
+        "featured_collection_zArtRa",
+        "featured_collection_g4WMwe",
+        "featured_collection_XeiqPb",
+        "featured_collection_wB38WQ",
+        "featured_collection_BKiYjK",
+        "featured_collection_khh6zg",
+        "featured_collection_8DJTpC"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 10,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_r6af8Y",
+    "collection_list_CFF9XQ",
+    "collection_list_m7aJj4"
+  ]
+}

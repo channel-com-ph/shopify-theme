@@ -1,0 +1,540 @@
+{% doc %}
+  @prompt
+    Create an eye-catching, on-brand 404 "lost page" hero section for a store that has recently migrated to a new website. Include a large friendly headline like "Oops! This page got lost in our move", a supportive message explaining the store recently migrated to a new site so some old links may no longer work and inviting visitors to use the product search or browse the website to find what they're looking for, a prominent search bar, and a clear "Continue shopping" / "Back to homepage" button. Make it visually appealing with generous spacing, centered layout, and customizable text and colors.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-404-hero-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.padding_top }}px 20px {{ block.settings.padding_bottom }}px;
+    background-color: {{ block.settings.background_color }};
+    text-align: center;
+  }
+
+  .ai-404-hero-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+    width: {{ block.settings.desktop_width_percent }}%;
+  }
+
+  .ai-404-hero-heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .ai-404-hero-message-{{ ai_gen_id }} {
+    font-size: {{ block.settings.message_size }}px;
+    color: {{ block.settings.message_color }};
+    margin: 0 0 {{ block.settings.message_spacing }}px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ai-404-hero-search-wrapper-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.search_spacing }}px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ai-404-hero-search-form-{{ ai_gen_id }} {
+    position: relative;
+    display: flex;
+    gap: 10px;
+  }
+
+  .ai-404-hero-search-input-{{ ai_gen_id }} {
+    flex: 1;
+    padding: 16px 20px;
+    font-size: {{ block.settings.search_input_size }}px;
+    border: {{ block.settings.search_border_width }}px solid {{ block.settings.search_border_color }};
+    border-radius: {{ block.settings.search_border_radius }}px;
+    background-color: {{ block.settings.search_background }};
+    color: {{ block.settings.search_text_color }};
+    outline: none;
+  }
+
+  .ai-404-hero-search-input-{{ ai_gen_id }}::placeholder {
+    color: {{ block.settings.search_placeholder_color }};
+    opacity: 0.7;
+  }
+
+  .ai-404-hero-search-input-{{ ai_gen_id }}:focus {
+    border-color: {{ block.settings.search_focus_border_color }};
+  }
+
+  .ai-404-hero-search-button-{{ ai_gen_id }} {
+    padding: 16px 32px;
+    font-size: {{ block.settings.search_button_text_size }}px;
+    background-color: {{ block.settings.search_button_bg }};
+    color: {{ block.settings.search_button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.search_button_radius }}px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .ai-404-hero-search-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.search_button_hover_bg }};
+  }
+
+  .ai-404-hero-cta-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 18px 40px;
+    font-size: {{ block.settings.cta_button_text_size }}px;
+    background-color: {{ block.settings.cta_button_bg }};
+    color: {{ block.settings.cta_button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.cta_button_radius }}px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-404-hero-cta-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.cta_button_hover_bg }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-404-hero-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_top | times: 0.6 }}px 16px {{ block.settings.padding_bottom | times: 0.6 }}px;
+    }
+
+    .ai-404-hero-container-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-404-hero-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-404-hero-message-{{ ai_gen_id }} {
+      font-size: {{ block.settings.message_size | times: 0.9 }}px;
+    }
+
+    .ai-404-hero-search-form-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-404-hero-search-button-{{ ai_gen_id }} {
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<lost-page-hero-{{ ai_gen_id }} class="ai-404-hero-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-404-hero-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h1 class="ai-404-hero-heading-{{ ai_gen_id }}">
+        {{ block.settings.heading }}
+      </h1>
+    {% endif %}
+
+    {% if block.settings.message != blank %}
+      <div class="ai-404-hero-message-{{ ai_gen_id }}">
+        {{ block.settings.message }}
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_search %}
+      <div class="ai-404-hero-search-wrapper-{{ ai_gen_id }}">
+        <form action="{{ routes.search_url }}" method="get" class="ai-404-hero-search-form-{{ ai_gen_id }}" role="search">
+          <input
+            type="search"
+            name="q"
+            class="ai-404-hero-search-input-{{ ai_gen_id }}"
+            placeholder="{{ block.settings.search_placeholder }}"
+            aria-label="Search products"
+          >
+          <button type="submit" class="ai-404-hero-search-button-{{ ai_gen_id }}">
+            {{ block.settings.search_button_label }}
+          </button>
+        </form>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_cta_button %}
+      <a href="{{ block.settings.cta_button_link }}" class="ai-404-hero-cta-button-{{ ai_gen_id }}">
+        {{ block.settings.cta_button_label }}
+      </a>
+    {% endif %}
+  </div>
+</lost-page-hero-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class LostPageHero{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupSearchForm();
+      }
+
+      setupSearchForm() {
+        const form = this.querySelector('.ai-404-hero-search-form-{{ ai_gen_id }}');
+        if (!form) return;
+
+        form.addEventListener('submit', function(e) {
+          const input = form.querySelector('.ai-404-hero-search-input-{{ ai_gen_id }}');
+          if (!input.value.trim()) {
+            e.preventDefault();
+            input.focus();
+          }
+        });
+      }
+    }
+
+    customElements.define('lost-page-hero-{{ ai_gen_id }}', LostPageHero{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Lost page hero",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Oops! This page got lost in our move"
+    },
+    {
+      "type": "richtext",
+      "id": "message",
+      "label": "Message",
+      "default": "<p>We recently migrated to a new website, so some old links may no longer work. Don't worry though! Use the search bar below or browse our site to find what you're looking for.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Search bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search placeholder",
+      "default": "Search for products..."
+    },
+    {
+      "type": "text",
+      "id": "search_button_label",
+      "label": "Search button label",
+      "default": "Search"
+    },
+    {
+      "type": "header",
+      "content": "Call to action button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_button",
+      "label": "Show button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "Button label",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 600,
+      "max": 1400,
+      "step": 100,
+      "unit": "px",
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading bottom spacing",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "message_spacing",
+      "label": "Message bottom spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "search_spacing",
+      "label": "Search bottom spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "message_color",
+      "label": "Message",
+      "default": "#161616"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "message_size",
+      "label": "Message size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Search style"
+    },
+    {
+      "type": "range",
+      "id": "search_input_size",
+      "label": "Input text size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "search_background",
+      "label": "Input background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "search_text_color",
+      "label": "Input text",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "search_placeholder_color",
+      "label": "Placeholder text",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "search_border_color",
+      "label": "Border",
+      "default": "#d7d7d7"
+    },
+    {
+      "type": "color",
+      "id": "search_focus_border_color",
+      "label": "Focus border",
+      "default": "#971704"
+    },
+    {
+      "type": "range",
+      "id": "search_border_width",
+      "label": "Border width",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "search_border_radius",
+      "label": "Input border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "search_button_text_size",
+      "label": "Button text size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "search_button_bg",
+      "label": "Button background",
+      "default": "#971704"
+    },
+    {
+      "type": "color",
+      "id": "search_button_hover_bg",
+      "label": "Button hover background",
+      "default": "#7a1103"
+    },
+    {
+      "type": "color",
+      "id": "search_button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "search_button_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "CTA button style"
+    },
+    {
+      "type": "range",
+      "id": "cta_button_text_size",
+      "label": "Text size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "cta_button_bg",
+      "label": "Background",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "cta_button_hover_bg",
+      "label": "Hover background",
+      "default": "#242833"
+    },
+    {
+      "type": "color",
+      "id": "cta_button_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "cta_button_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lost page hero"
+    }
+  ]
+}
+{% endschema %}

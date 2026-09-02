@@ -1,0 +1,811 @@
+{{ 'quotation-form-styles.aio.min.css' | asset_url | stylesheet_tag }}
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+
+  <style>
+    /* --- General Form Styling --- */
+    .form-container {
+      margin-top: 32px;
+      box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50);
+      padding: 32px;
+      background-color: #fff; /* Added for better contrast */
+      border-radius: 8px;
+    }
+
+    .form-container h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .form-container hr {
+      padding: 0;
+      margin: 28px 0;
+      border: 0;
+      border-top: 1px solid #971704;
+    }
+
+    /* --- Labels and Inputs --- */
+    .label-form {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .label-form i {
+      font-weight: normal;
+      color: #555;
+    }
+
+    .text-field-wide,
+    .text-field-normal {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+      transition: border-color 0.3s;
+    }
+
+    .text-field-wide:focus,
+    .text-field-normal:focus {
+      outline: none;
+      border-color: #971704;
+    }
+
+    textarea.text-field-wide {
+      resize: vertical;
+      min-height: 50px;
+      max-width: 100%;
+      min-width: 100%;
+    }
+
+    /* --- Layout --- */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 750px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .grid-col-span-2 {
+        grid-column: span 2;
+      }
+    }
+
+    /* --- Dynamic Rows for Items --- */
+    .item-row-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .item-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .item-row input[name="item[]"] { flex: 3; min-width: 150px; }
+    .item-row input[name="quantity[]"] { flex: 1; min-width: 80px; }
+    .item-row textarea[name="specs[]"] { flex: 4; min-width: 200px; min-height: 42px; }
+    .item-row .minBtn { flex-shrink: 0; }
+
+
+    /* --- Buttons --- */
+    .quotation-btn, .addBtn, .minBtn {
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      border: 1px solid rgb(var(--color-button));
+      background-color: transparent;
+      color: rgb(var(--color-button));
+      transition: background-color 0.3s, color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .quotation-btn:hover, .addBtn:hover {
+      background-color: rgb(var(--color-button));
+      color: rgb(var(--color-button-text));
+    }
+
+    .minBtn {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+      font-weight: bold;
+    }
+    .minBtn:hover {
+      background-color: #e0a8ad;
+    }
+
+    /* Disabled State for Buttons */
+    .quotation-btn:disabled {
+      border-color: transparent;
+      color: rgba(var(--color-foreground), 0.50);
+      background-color: rgba(var(--color-foreground), 0.40);
+      cursor: not-allowed;
+    }
+
+    /* --- File Upload Section --- */
+    .file-upload-section a {
+      margin-top: 0;
+    }
+
+    /* --- Status Messages --- */
+    #live-upload-preview { /* Renamed for clarity */
+      display: flex;
+      flex-direction: column; /* Changed for better list view */
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .status-message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+    }
+    .status-message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .status-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .status-message.loading { background-color: #e2e6ea; color: #383d41; border: 1px solid #dae0e5; }
+
+    /* --- Preview Document --- */
+    .quotation-document table {
+        border: 1px solid #000;
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 16px;
+    }
+    .quotation-document th, .quotation-document td {
+        border: 1px solid #000;
+        padding: 10px;
+        text-align: left;
+    }
+  </style>
+
+  {% assign customerName = customer.metafields.custom_info.first_name | append: ' ' | append: customer.metafields.custom_info.last_name %}
+  {% assign companyName = customer.metafields.custom_info.company_name %}
+  {% assign customerPhone = customer.metafields.custom_info.personal_contactCode | append: customer.metafields.custom_info.personal_contact %}
+
+  <div class="page-width">
+    <div id="main-form">
+      <form id="form" enctype="multipart/form-data">
+        <div class="form-container">
+          <h2>Request a Product Quotation</h2>
+          <div class="customer-details form-grid">
+            <div class="grid-col-span-2">
+              <label class="label-form" for="inputFName">Full Name</label>
+              <input type="text" name="fName" class="text-field-wide" id="inputFName" value="{{ customerName }}" required>
+            </div>
+            <div class="grid-col-span-2">
+              <label class="label-form" for="inputCName">Company Name</label>
+              <input type="text" name="compName" class="text-field-wide" value="{{ companyName }}" id="inputCName" required>
+            </div>
+            <div>
+              <label class="label-form" for="inputPhone">Phone Number</label>
+              <input type="tel" name="inputTel" class="text-field-wide" value="{{ customerPhone }}" id="inputPhone" required>
+            </div>
+            <div>
+              <label class="label-form" for="inputEmail">Email Address</label>
+              <input type="email" placeholder="Email Address" name="emailAdd" class="text-field-wide" id="inputEmail" value="{{ customer.email }}" required>
+            </div>
+            <div class="grid-col-span-2">
+              <label class="label-form" for="inputProject">Project Title</label>
+              <input type="text" name="projName" class="text-field-wide" id="inputProject" required>
+            </div>
+          </div>
+
+          <hr>
+          <span><bold>Answer the following questions provided below.</bold></span>
+
+          <label class="label-form" for="svyProducts">What type of products are you looking for? <i>(Specify in the column area if you have any particular features or specifications.)</i></label>
+          <textarea placeholder="" rows="2" class="text-field-wide" id="svyProducts"></textarea>
+          
+          <div id="inRows" class="item-row-container">
+            <label class="label-form">Leave it blank if you don't have any specific items.</label>
+            <div class="item-row">
+              <input type="text" name="item[]" placeholder="Item (e.g. Mixer, Camera)" class="text-field-wide" id="svyItem">
+              <input type="number" name="quantity[]" placeholder="Quantity" class="text-field-wide" id="svyQty">
+              <textarea placeholder="Specifications" name="specs[]" rows="1" class="text-field-wide svySpecs" id="svySpecs"></textarea>
+              <button type="button" onclick="removeRow(this)" class="minBtn">-</button>
+            </div>
+          </div>
+          <button type="button" onclick="addRow(); return false" class="addBtn" style="margin-top: 10px;">
+            <span class="svg-wrapper" style="transform: scale(0.75);">{{- 'icon-plus.svg' | inline_asset_content -}}</span>
+            ADD ITEM
+          </button>
+          
+          <div class="file-upload-section">
+            <label class="label-form">Upload Specification File(s) <i>(Optional)</i></label>
+            
+            <div id="file-inputs-container">
+              <div class="file-input-wrapper" style="margin-bottom: 15px;">
+                <input type="file" class="gcs-file-input text-field-wide">
+                <div class="gcs-upload-status status-message" style="margin-top: 10px; display: none;"></div>
+              </div>
+            </div>
+
+            <button type="button" id="add-file-btn" class="addBtn" style="margin-top: 5px;">
+              <span class="svg-wrapper" style="transform: scale(0.75);">{{- 'icon-plus.svg' | inline_asset_content -}}</span>
+              ADD ANOTHER FILE
+            </button>
+
+            <div id="live-upload-preview"></div>
+
+            <input type="hidden" id="svyFileLink" name="fileLink">
+          </div>
+          <label class="label-form" for="svyPurpose">How will you be using these products? <i>(Please share the purpose or intended application.)</i></label>
+          <textarea placeholder="" rows="2" class="text-field-wide" id="svyPurpose"></textarea>
+          
+          <label class="label-form" for="svyInOut">Will the products be used indoors or outdoors? <i>(This can help us recommend suitable options.)</i></label>
+          <input type="text" placeholder="" name="svyInOut" class="text-field-wide" id="svyInOut">
+          
+          <label class="label-form" for="svySize">What is the size or area of the place/venue where the products will be used? <i>(Please provide dimensions, if possible.)</i></label>
+          <textarea placeholder="" rows="2" class="text-field-wide" id="svySize"></textarea>
+          
+          <label class="label-form" for="svyBrands">Do you have any preferred brands or manufacturers in mind?</label>
+          <textarea placeholder="" rows="2" class="text-field-wide" id="svyBrands"></textarea>
+          
+          <label class="label-form" for="svyService">Do you need installation services, or do you only need the products supplied?</label>
+          <input type="text" placeholder="" name="svyService" class="text-field-wide" id="svyService">
+          
+          <label class="label-form" for="svyBudget">What is your price range or financial allocation for this project?</label>
+          <input type="text" placeholder="" name="svyBudget" class="text-field-wide" id="svyBudget">
+          
+          <label class="label-form" for="svyDeadline">When do you need the products to be provided? <i>(Please specify if you have any deadlines or time frames.)</i></label>
+          <input type="text" placeholder="" name="svyDeadline" class="text-field-wide" id="svyDeadline">
+
+          <label class="label-form" for="inputMessage">Other Concerns/Requests:</label>
+          <textarea rows="3" class="text-field-wide" id="inputMessage" placeholder="Write your other concerns here..."></textarea>
+        </div>
+        
+        <button type="submit" id="quotation-download-btn" class="quotation-btn" style="margin-top: 20px;">
+          <span class="svg-wrapper">{{- 'icon-save.svg' | inline_asset_content -}}</span>
+          SAVE DATA
+        </button>
+      </form>
+    </div>
+
+    <div class="quotation-document" id="quotation-file">
+      <button id="quotation-send-btn" class="quotation-btn" style="display: none; margin-top: 20px;">
+        <span class="svg-wrapper">{{- 'icon-btn-send.svg' | inline_asset_content -}}</span>
+        SEND REQUEST
+      </button>
+      <div id="send-status-message" class="status-message"></div>
+      <div class="container" id="file" style="width: 100%;">
+        <div id="quotation-customer-info" class="quotation-info"></div>
+        <hr>
+        <div style="text-align: left;">
+          <div id="final-files-preview" name="attachment"></div>
+          <label><strong>What type of products are you looking for?</strong></label>
+          <p id="reqItem"></p>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Qty.</th>
+                <th>Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr></tr>
+            </tbody>
+          </table>
+          <br>
+          <label><strong>How will you be using these products?</strong></label>
+          <p id="reqPurpose"></p>
+          <label><strong>Will the products be used indoors or outdoors?</strong></label>
+          <p id="reqInOut"></p>
+          <label><strong>What is the size or area of the place/venue where the products will be used?</strong></label>
+          <p id="reqSize"></p>
+          <label><strong>Do you have any preferred brands or manufacturers in mind?</strong></label>
+          <p id="reqBrands"></p>
+          <label><strong>Do you need installation services, or do you only need the products supplied?</strong></label>
+          <p id="reqService"></p>
+          <label><strong>What is your price range or financial allocation for this project?</strong></label>
+          <p id="reqBudget"></p>
+          <label><strong>When do you need the products to be provided?</strong></label>
+          <p id="reqDeadline"></p>
+          <label><strong>Other Concerns/Requests:</strong></label>
+          <p id="reqMessage"></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let rowCount = 1;
+      const mainTextArea = document.getElementById('svySpecs');
+
+      function addRow() {
+        const newRow = document.createElement('div');
+        newRow.className = "item-row";
+
+        newRow.innerHTML = `
+          <input type="text" name="item[]" placeholder="Item (e.g. Mixer, Camera)" class="text-field-wide" id="svyItem${rowCount}">
+          <input type="number" name="quantity[]" placeholder="Quantity" class="text-field-wide" id="svyQty${rowCount}">
+          <textarea placeholder="Specifications" name='specs[]' rows="1" class="text-field-wide svySpecs" id="svySpecs${rowCount}"></textarea>
+          <button type="button" onclick="removeRow(this)" class="minBtn">-</button>
+        `;
+
+        document.getElementById('inRows').appendChild(newRow);
+        const bulletArea = newRow.querySelector('.svySpecs');
+        addBulletListeners(bulletArea);
+        rowCount++;
+      }
+
+      function addBulletListeners(bulletArea) {
+        bulletArea.addEventListener('focus', function() {
+          if (bulletArea.value.trim() === '') {
+            bulletArea.value = '• '; 
+          }
+          adjustHeight(bulletArea);
+        });
+
+        bulletArea.addEventListener('input', function() {
+          adjustHeight(bulletArea);
+        });
+
+        bulletArea.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            bulletArea.value += '\n• '; 
+            bulletArea.setSelectionRange(bulletArea.value.length, bulletArea.value.length); 
+            adjustHeight(bulletArea);
+          }
+        });
+      }
+
+      function adjustHeight(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = Math.min(textarea.scrollHeight, 160) + 'px';
+      }
+
+      if (mainTextArea) {
+          addBulletListeners(mainTextArea);
+      }
+
+      function removeRow(button) {
+        const row = button.closest('.item-row');
+        row.remove();
+      }
+    </script>
+    <script>
+    const saveBtn = document.getElementById('quotation-download-btn');
+    const sendBtn = document.getElementById('quotation-send-btn');
+    const sendStatusMessage = document.getElementById('send-status-message');
+
+    function updateButtonStates() {
+      const fName = document.getElementById('inputFName').value.trim();
+      const cName = document.getElementById('inputCName').value.trim();
+      const phone = document.getElementById('inputPhone').value.trim();
+      const email = document.getElementById('inputEmail').value.trim();
+      const project = document.getElementById('inputProject').value.trim();
+      
+      const allRequiredFieldsFilled = fName !== "" && cName !== "" && phone !== "" && email !== "" && project !== "";
+
+      saveBtn.disabled = !allRequiredFieldsFilled;
+      sendBtn.disabled = !allRequiredFieldsFilled;
+    }
+
+    document.getElementById('inputFName').addEventListener('input', updateButtonStates);
+    document.getElementById('inputCName').addEventListener('input', updateButtonStates);
+    document.getElementById('inputPhone').addEventListener('input', updateButtonStates);
+    document.getElementById('inputEmail').addEventListener('input', updateButtonStates);
+    document.getElementById('inputProject').addEventListener('input', updateButtonStates);
+
+    updateButtonStates();
+    
+    document.getElementById('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      document.getElementById('quotation-send-btn').style.display = "inline-flex";
+      
+      const fName = document.getElementById('inputFName').value;
+      const company = document.getElementById('inputCName').value;
+      const phone = document.getElementById('inputPhone').value;
+      const email = document.getElementById('inputEmail').value;
+      const project = document.getElementById('inputProject').value;
+      
+      const today = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+      const date = new Date(today);
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = date.toLocaleDateString(undefined, options);
+      
+      const year = date.getFullYear();
+      const shYear = year.toString().slice(-2);
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      const hours = String.fromCharCode(date.getHours() + 65);
+      const mins = String(date.getMinutes()).padStart(2, '0');
+      const secs = String(date.getSeconds()).padStart(2, '0');
+      const jobNumber = month + day + shYear + "-" + hours + mins + secs;
+
+      document.getElementById('quotation-customer-info').innerHTML = `
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; width: 100%; margin-top: 12px; text-align: left;">
+          <div style="flex: 2; min-width: 300px;">
+            <strong>Attention:</strong> <span id="customerName" name="customerName">${fName}</span> <br>
+            <strong>Company:</strong> <span id="customerCompany" name="customerCompany">${company}</span><br>
+            <strong>Contact Number:</strong> <span id="customerContact" name="customerContact">${phone}</span><br>
+            <strong>Email:</strong> <span id="emailCustomer" name="emailCustomer">${email}</span><br>
+            <strong>Project Title:</strong> <span id="projectName" name="projectName">${project}</span><br>
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            <strong>Date:</strong> <span id="dateSubmitted" name="dateSubmitted">${formattedDate}</span><br>
+            <strong>Job Number:</strong> <span id="jobNumber" name="jobNumber">${jobNumber}</span>
+          </div>
+        </div>
+      `;
+
+      const reqItem = document.getElementById('svyProducts').value;
+      const reqPurpose = document.getElementById('svyPurpose').value;
+      const reqInOut = document.getElementById('svyInOut').value;
+      const reqSize = document.getElementById('svySize').value;
+      const reqBrands = document.getElementById('svyBrands').value;
+      const reqService = document.getElementById('svyService').value;
+      const reqBudget = document.getElementById('svyBudget').value;
+      const reqDeadline = document.getElementById('svyDeadline').value;
+      const reqMessage = document.getElementById('inputMessage').value;
+      
+      const formatValue = (value) => {
+        const trimmedValue = value.trim();
+        return trimmedValue === '' ? 'N/A' : trimmedValue.replace(/\n/g, '<br>');
+      };
+      
+      document.getElementById('reqItem').innerHTML = formatValue(reqItem);
+      document.getElementById('reqPurpose').innerHTML = formatValue(reqPurpose);
+      document.getElementById('reqInOut').innerHTML = formatValue(reqInOut);
+      document.getElementById('reqSize').innerHTML = formatValue(reqSize);
+      document.getElementById('reqBrands').innerHTML = formatValue(reqBrands);
+      document.getElementById('reqService').innerHTML = formatValue(reqService);
+      document.getElementById('reqBudget').innerHTML = formatValue(reqBudget);
+      document.getElementById('reqDeadline').innerHTML = formatValue(reqDeadline);
+      document.getElementById('reqMessage').innerHTML = formatValue(reqMessage);
+
+      const items = document.querySelectorAll("input[name='item[]']");
+      const qtys = document.querySelectorAll("input[name='quantity[]']");
+      const specs = document.querySelectorAll("textarea[name='specs[]']");
+      
+      const resultsDiv = document.querySelector('tbody');
+      resultsDiv.innerHTML = ''; 
+      
+      items.forEach((item, index) => {
+        const itemValue = item.value.trim();
+        const quantityValue = qtys[index]?.value.trim();
+        const specsValue = specs[index]?.value.trim();
+
+        if (itemValue || quantityValue || specsValue) {
+            const itemData = document.createElement('tr');
+            itemData.innerHTML = `
+              <td>${itemValue || 'N/A'}</td>
+              <td>${quantityValue || 'N/A'}</td>
+              <td>${specsValue.replace(/\n/g, '<br>') || 'N/A'}</td>
+            `;
+            resultsDiv.appendChild(itemData);
+        }
+      });
+
+      // START: UPDATED FILE DISPLAY LOGIC
+      const fileLinkValue = document.getElementById('svyFileLink').value.trim();
+      const fileInfoDiv = document.getElementById('final-files-preview'); // Targeting the new unique ID
+      
+      fileInfoDiv.innerHTML = ''; // Clear previous content
+      
+      if (fileLinkValue) {
+        const urls = fileLinkValue.split('\n').filter(url => url.trim() !== '');
+        
+        if (urls.length > 0) {
+          let linksHTML = '<h5>Uploaded Files:</h5>';
+          urls.forEach((url, index) => {
+            linksHTML += `<p><a href="${url}" target="_blank" rel="noopener noreferrer" style="word-break: break-all;">View Uploaded File ${index + 1}</a></p>`;
+          });
+          fileInfoDiv.innerHTML = linksHTML;
+        } else {
+          fileInfoDiv.innerHTML = '<p>No files were uploaded.</p>';
+        }
+      } else {
+        fileInfoDiv.innerHTML = '<p>No files were uploaded.</p>';
+      }
+      // END: UPDATED FILE DISPLAY LOGIC
+      
+      console.log("Your data entered in the forms have been saved.");
+    });
+    
+    function sendMail() {
+      emailjs.init("uzfiB2iNH6YIYoPst");
+      const messageContent = document.getElementById("file"); 
+      const messageContentHeader = "<h3 style='display: block;'>Requested by the Customer</h3>"; 
+      
+      var params = {
+          my_html: messageContentHeader + messageContent.innerHTML,
+          isHtml: true, 
+      };
+    
+      const serviceID = "service_eg4wtpf";
+      const templateID = "template_nrm5mbs";
+      
+      return emailjs.send(serviceID, templateID, params);
+    }
+
+    function sendMailClient() {
+      emailjs.init("uzfiB2iNH6YIYoPst");
+      const messageContentClient = document.getElementById("file");
+      const emailCustomer = document.getElementById("emailCustomer").innerText;   
+      const messageBackContent1 = `
+        <div style="width: 80%; margin: auto; box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50); font-family: 'Poppins', sans-serif;">
+          <div style="background: linear-gradient(137deg, rgba(22,22,22,1) 42%, rgba(151,23,4,1) 100%); color: #fff;padding: 5px 20px;">
+            <h1>Receipt of Request Product Quotation</h1>
+          </div>
+<div style="padding: 32px 20px; background-color: #fafafa;">
+    <p>Good day!</p>
+
+            <p>This email is a receipt that we received your request regarding the product quotation.</p>
+            <p>We will respond to your product price inquiry within 2–3 business days. For simple price inquiries, quotations are typically provided within the same day. Please note that due to the high volume of inquiries we receive, some delays may occur. Rest assured that we are doing our best to provide your quotation as quickly as possible.</p>
+            <p>The information below reflects the details you submitted and will be used as the basis for your quotation request.</p><br><div style="width: 80%; margin: auto; border: 1px solid #971704; padding: 20px;">`
+        + messageContentClient.innerHTML + 
+        `</div><br>
+            <p>For added convenience, you may use our "Create Your Own Quotation" feature. Once you have chosen the products you need and their prices are displayed, you can create your own quotation directly on the website. Simply click "Add to Quotation" for each desired product, then click the quotation icon beside the search icon to access and download your quotation list.</p>
+            <p style="color: rgba(0,0,0,0.75);"><i>Note: Please ensure that you are logged into your account to access the quotation features. Additionally, kindly double-check the email address you have entered to ensure that you receive timely replies and notifications regarding your request.</i></p>
+            <p>Thank you for choosing us. We look forward to assisting you, and stay safe!</p>
+           </div>
+        </div>`;
+      
+      var params = {
+        my_html: messageBackContent1,
+        to_email: emailCustomer, 
+      };
+    
+      const serviceID = "service_eg4wtpf";
+      const templateID = "template_g4313v8";
+      
+      return emailjs.send(serviceID, templateID, params);
+    }
+
+    document.getElementById("quotation-send-btn").addEventListener("click", async () => {
+      const customerRequest = document.getElementById("file");
+      const customerInfoElement = document.getElementById("quotation-customer-info");
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbx4RCrms6xjVvYvn0jBzcexgPHTuSICaRJGTs7Vye_OXQzpL_G703J-aUgQGYXZIbDB/exec'; 
+
+      if (!customerRequest || !customerInfoElement) {
+          console.error("Required elements for sending request are not found.");
+          sendStatusMessage.textContent = "An internal error occurred. Please try again.";
+          sendStatusMessage.className = "status-message error";
+          sendStatusMessage.style.display = "block";
+          return;
+      }
+
+      const customerName = document.getElementById("customerName")?.textContent.trim();
+      const customerCompany = document.getElementById("customerCompany")?.textContent.trim();
+      const customerContact = document.getElementById("customerContact")?.textContent.trim();
+      const emailCustomer = document.getElementById("emailCustomer")?.textContent.trim();
+      const projectName = document.getElementById("projectName")?.textContent.trim();
+      const dateSubmitted = document.getElementById("dateSubmitted")?.textContent.trim();
+      const jobNumber = document.getElementById("jobNumber")?.textContent.trim();
+      
+      // IMPORTANT: Get all file links from the hidden input for sending to Google Sheets
+      const fileValue = document.getElementById('svyFileLink').value.trim() || 'N/A';
+
+      const data = { customerName, customerCompany, customerContact, emailCustomer, projectName, dateSubmitted, jobNumber, fileValue };
+      const formDataString = new URLSearchParams(data).toString();
+
+      try {
+        sendStatusMessage.textContent = "Sending request...";
+        sendStatusMessage.className = "status-message loading";
+        sendStatusMessage.style.display = "block";
+        sendBtn.disabled = true;
+
+        await fetch(scriptURL, {
+          method: "POST",
+          body: formDataString,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          mode: "no-cors"
+        });
+
+        console.log("Sent to Google Script (no-cors)");
+
+        await Promise.all([sendMail(), sendMailClient()]);
+
+        sendStatusMessage.textContent = "Request sent successfully!";
+        sendStatusMessage.className = "status-message success";
+
+        setTimeout(() => { location.reload(); }, 3000);
+
+      } catch (error) {
+        console.error("FULL ERROR DETAILS:", error);
+
+        sendStatusMessage.textContent = "Failed: " + error.message;
+        sendStatusMessage.className = "status-message error";
+
+        sendBtn.disabled = false;
+      }
+
+
+    });
+    </script>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const fileInputsContainer = document.getElementById('file-inputs-container');
+    const addFileBtn = document.getElementById('add-file-btn');
+    const fileLinkInput = document.getElementById('svyFileLink');
+    const liveUploadPreview = document.getElementById('live-upload-preview');
+
+    const UPLOAD_URL_ENDPOINT = 'https://gcs-uploader-final.onrender.com/generate-upload-url';
+    const DOWNLOAD_URL_ENDPOINT = 'https://gcs-uploader-final.onrender.com/generate-download-url';
+
+    const handleFileUpload = (fileInput) => {
+      fileInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const wrapper = fileInput.parentElement;
+        const statusMessage = wrapper.querySelector('.gcs-upload-status');
+
+        statusMessage.textContent = 'Preparing to upload...';
+        statusMessage.className = 'gcs-upload-status status-message loading';
+        statusMessage.style.display = 'block';
+        fileInput.disabled = true;
+
+        try {
+          const uploadUrlResponse = await fetch(UPLOAD_URL_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ filename: file.name, contentType: file.type }),
+          });
+          const uploadUrlData = await uploadUrlResponse.json();
+          if (!uploadUrlResponse.ok) throw new Error(uploadUrlData.error || 'Could not get upload link.');
+          
+          const { url, objectName } = uploadUrlData;
+          statusMessage.textContent = 'Uploading...';
+
+          const uploadResponse = await fetch(url, {
+            method: 'PUT',
+            body: file,
+            headers: { 'Content-Type': file.type || 'application/octet-stream' },
+          });
+          if (!uploadResponse.ok) throw new Error('File upload to Google Cloud failed.');
+          
+          statusMessage.textContent = 'Upload complete. Generating link...';
+
+          const downloadUrlResponse = await fetch(DOWNLOAD_URL_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ objectName: objectName }),
+          });
+          if (!downloadUrlResponse.ok) throw new Error('Could not get download link.');
+
+          const downloadUrlData = await downloadUrlResponse.json();
+          const secureFileUrl = downloadUrlData.url;
+
+          fileLinkInput.value += secureFileUrl + '\n'; 
+
+          statusMessage.textContent = `✅ Success! File "${file.name}" uploaded.`;
+          statusMessage.className = 'gcs-upload-status status-message success';
+
+          const linkElement = document.createElement('p');
+          linkElement.innerHTML = `<strong>Uploaded:</strong> <a href="${secureFileUrl}" target="_blank" rel="noopener noreferrer" style="word-break: break-all;">${file.name}</a>`;
+          liveUploadPreview.appendChild(linkElement);
+
+        } catch (error) {
+          console.error('Upload Error Details:', error);
+          statusMessage.textContent = `❌ Error: ${error.message}`;
+          statusMessage.className = 'gcs-upload-status status-message error';
+          fileInput.disabled = false;
+        }
+      });
+    };
+
+    const addFileInput = () => {
+      const newWrapper = document.createElement('div');
+      newWrapper.className = 'file-input-wrapper';
+      newWrapper.style.marginBottom = '15px';
+      
+      newWrapper.innerHTML = `
+        <input type="file" class="gcs-file-input text-field-wide">
+        <div class="gcs-upload-status status-message" style="margin-top: 10px; display: none;"></div>
+      `;
+      
+      fileInputsContainer.appendChild(newWrapper);
+      
+      const newFileInput = newWrapper.querySelector('.gcs-file-input');
+      handleFileUpload(newFileInput);
+    };
+
+    const initialFileInput = document.querySelector('.gcs-file-input');
+    if (initialFileInput) {
+      handleFileUpload(initialFileInput);
+    }
+
+    if (addFileBtn) {
+      addFileBtn.addEventListener('click', addFileInput);
+    }
+  });
+</script>
+{% schema %}
+{
+"name": "Request Quotation Form",
+"tag": "section",
+"class": "section",
+"settings": [
+  {
+    "type": "color_scheme",
+    "id": "color_scheme",
+    "label": "t:sections.all.colors.label",
+    "info": "t:sections.all.colors.has_cards_info",
+    "default": "scheme-6"
+  },
+  {
+    "type": "select",
+    "id": "sticky_header_type",
+    "options": [
+      { "value": "none", "label": "t:sections.header.settings.sticky_header_type.options__1.label" },
+      { "value": "on-scroll-up", "label": "t:sections.header.settings.sticky_header_type.options__2.label" },
+      { "value": "always", "label": "t:sections.header.settings.sticky_header_type.options__3.label" },
+      { "value": "reduce-logo-size", "label": "t:sections.header.settings.sticky_header_type.options__4.label" }
+    ],
+    "default": "on-scroll-up",
+    "label": "t:sections.header.settings.sticky_header_type.label"
+  },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_top",
+    "default": 36
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_bottom",
+    "default": 36
+  }
+],
+"blocks": [
+  {
+    "type": "@app"
+  }
+],
+"presets": [
+  {
+    "name": "Request Quotation Form"
+  }
+]
+}
+{% endschema %}

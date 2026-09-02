@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_list_H74end": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_UCnK4m": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "blackmagicdesign"
+          }
+        },
+        "featured_collection_zVA9FP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "canon"
+          }
+        },
+        "featured_collection_kzK8Rg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hollyland"
+          }
+        },
+        "featured_collection_77VVha": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kevler"
+          }
+        },
+        "featured_collection_tBF76a": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "konzert"
+          }
+        },
+        "featured_collection_jqUXMc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "logitech"
+          }
+        },
+        "featured_collection_weyw3B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mackie"
+          }
+        },
+        "featured_collection_WVjReR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "medeli"
+          }
+        },
+        "featured_collection_JBFG7N": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mipro"
+          }
+        },
+        "featured_collection_xAtJgH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "presonus"
+          }
+        },
+        "featured_collection_nnQY3t": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pxel"
+          }
+        },
+        "featured_collection_6btx4J": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rcf"
+          }
+        },
+        "featured_collection_93KNRp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rode"
+          }
+        },
+        "featured_collection_X49AE6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sprolink"
+          }
+        },
+        "featured_collection_QXdcQb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "viewtech"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_UCnK4m",
+        "featured_collection_zVA9FP",
+        "featured_collection_kzK8Rg",
+        "featured_collection_77VVha",
+        "featured_collection_tBF76a",
+        "featured_collection_jqUXMc",
+        "featured_collection_weyw3B",
+        "featured_collection_WVjReR",
+        "featured_collection_JBFG7N",
+        "featured_collection_xAtJgH",
+        "featured_collection_nnQY3t",
+        "featured_collection_6btx4J",
+        "featured_collection_93KNRp",
+        "featured_collection_X49AE6",
+        "featured_collection_QXdcQb"
+      ],
+      "settings": {
+        "title": "Brands",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 8,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 84
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "disabled": true,
+      "settings": {
+        "title": "Collections",
+        "sort": "products_vendor",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "columns_mobile": "2"
+      }
+    }
+  },
+  "order": [
+    "collection_list_H74end",
+    "main"
+  ]
+}

@@ -1,0 +1,1233 @@
+{{ 'quotation-form-styles.aio.min.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /* --- NEW Repeating Watermark Style --- */
+  #file {
+    position: relative;
+    /* This ensures the pseudo-element is positioned relative to the file container */
+  }
+
+#file::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: url('https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_Transparent.png?v=1727063299');
+  background-repeat: repeat;
+  background-size: 250px;
+  background-position: 0 0;
+
+  opacity: 0.05;
+  transform: rotate(-20deg) scale(1.2);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 0;
+}
+  /* Custom styles for the quotation table header and footer */
+  .quotation-thead-style {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+
+  .quotation-thead-style th,
+  .quotation-thead-style span {
+    color: #333;
+  }
+
+  .quotation-tfoot-style {
+    color: darkred;
+  }
+
+  .quotation-tfoot-style #colVat strong {
+    color: darkred;
+    font-size: 10px !important;
+  }
+
+  /* Further refinements for a cohesive design */
+  .quotation-table-style {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .quotation-table-style th,
+  .quotation-table-style td {
+    padding: 10px 12px;
+    border: 1px solid #d9d9d9;
+    text-align: left;
+    font-size: 1.2rem;
+  }
+
+  .quotation-tbody-style tr:nth-child(even) {
+    background-color: white;
+  }
+
+  .quotation-tbody-style tr:hover {
+    background-color: white;
+  }
+
+  .quotation-table-style img {
+    max-width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* New flexbox approach for header */
+  .group {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .left-header-content {
+    flex: 1;
+    text-align: left;
+    padding-right: 10px;
+    padding-top: 0;
+  }
+
+  .right-header-content {
+    flex-shrink: 0;
+    width: 30%;
+    text-align: right;
+    padding-top: 0;
+    padding-right: 10px;
+  }
+
+  .quotation-title {
+    color: #8B0000;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .company-name {
+    font-size: 14px;
+    margin: 0 0 2px 0;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .company-details {
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.2;
+    text-align: left;
+    padding: 0;
+  }
+
+  .company-logo {
+    height: 35px;
+    width: 150px;
+    max-width: 150px;
+    margin: 0 0 5px 0;
+    padding: 0;
+    display: block;
+  }
+
+  /* TABLES for PDF generation */
+  #quotation-products-table,
+  #quotation-products-table2,
+  #quotation-products-table3 {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    border: 1px solid white;
+    overflow: hidden;
+  }
+
+  #quotation-products-table td,
+  #quotation-products-table2 td,
+  #quotation-products-table3 td,
+  #quotation-products-table th,
+  #quotation-products-table2 th,
+  #quotation-products-table3 th {
+    border: 1px solid #d9d9d9 !important;
+  }
+
+  .file-table {
+    width: 98%;
+    margin-left: 0.5%;
+    margin-right: auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #b3b3b3;
+    table-layout: fixed;
+  }
+
+  .file-table th,
+  .file-table td {
+    border: 1px solid white;
+    padding: 2px 4px;
+    text-align: left;
+    word-wrap: break-word;
+    font-size: 9px;
+  }
+
+  .file-table th:nth-child(1), .file-table td:nth-child(1) { width: 6%; }
+  .file-table th:nth-child(2), .file-table td:nth-child(2) { width: 29%; }
+  .file-table th:nth-child(3), .file-table td:nth-child(3) { width: 20%; }
+  .file-table th:nth-child(4), .file-table td:nth-child(4) { width: 21%; }
+  .file-table th:nth-child(5), .file-table td:nth-child(5) { width: 5%; }
+  .file-table th:nth-child(6), .file-table td:nth-child(6) { width: 4%; }
+  .file-table th:nth-child(7), .file-table td:nth-child(7) { width: 4%; }
+  .file-table th:nth-child(8), .file-table td:nth-child(8) { width: 4%; }
+  .file-table th:nth-child(9), .file-table td:nth-child(9) { width: 7%; }
+
+  .file-table th {
+    background-color: #e0e0e0;
+    font-weight: bold;
+  }
+
+  .file-table thead tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+  }
+  .file-table thead tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+  }
+
+  .file-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+  }
+  .file-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+  }
+
+  .quotation-footer {
+    margin: 0;
+    padding: 8px 0;
+    background-color: #fff !important;
+    border: 1px solid white;
+  }
+
+  #quotation-products-table + #quotation-products-table2,
+  #quotation-products-table2 + #quotation-products-table3 {
+    border-width: 0.5px;
+    margin-top: 0;
+  }
+
+  #totalRow {
+    background-color: #e0e0e0 !important;
+    border: none;
+  }
+
+  .file-table img {
+    max-width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .quotation-footer p,
+  .quotation-footer ul li {
+    font-size: 10px !important;
+    line-height: 1.1;
+  }
+
+  .quotation-footer p strong {
+    font-size: 11px !important;
+  }
+
+  .signature-line-container {
+    width: 400px;
+    margin: 40px auto 5px 10%;
+    text-align: left;
+  }
+
+  .signature-line-container p {
+    border-top: 1px solid #000;
+    padding-top: 5px;
+    font-size: 8px !important;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    display: block;
+    text-align: center;
+  }
+
+  .signature-line-container strong {
+    /* text-decoration-line: overline; */
+  }
+
+  .action-buttons-cell {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .action-buttons-cell button {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.2s;
+    margin: 2px;
+    min-width: 50px;
+  }
+  .action-buttons-cell button:hover {
+    background-color: #e0e0e0;
+  }
+  .action-buttons-cell .edit-btn2 {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+  }
+  .action-buttons-cell .edit-btn2:hover {
+    background-color: #1d4ed8;
+  }
+  .action-buttons-cell .delete-btn2 {
+    background-color: #dc2626;
+    color: white;
+    border-color: #dc2626;
+  }
+  .action-buttons-cell .delete-btn2:hover {
+    background-color: #b91c1c;
+  }
+
+  .table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  min-width: 900px; /* or adjust based on your columns */
+}
+
+{%- endstyle -%}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" defer="defer"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+{% assign customerName = customer.metafields.custom_info.first_name
+  | append: ' '
+  | append: customer.metafields.custom_info.last_name
+%}
+{% assign companyName = customer.metafields.custom_info.company_name %}
+{% assign customerPhone = customer.metafields.custom_info.personal_contactCode
+  | append: customer.metafields.custom_info.personal_contact
+%}
+
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div style="display: flex; justify-self: end; align-items: center;">
+      <a
+        href="/pages/channel-quotation-template"
+        style="display: flex; text-decoration: none; border-radius: 4px; border: 1px solid rgb(var(--color-button)); padding: 0 20px !important; text-transform: uppercase; line-height: 15px; height: 40px; align-items: center; gap: 10px;"
+        class="anchorHover"
+      >
+        ARE YOU A CONTRACTOR?
+        <span class="svg-wrapper">
+          {{- 'icon-arrow.svg' | inline_asset_content -}}
+        </span>
+      </a>
+    </div>
+    <div id="main-form">
+      <span><h1>Quotation List</h1></span>
+      <p style="color: #FF1F31;">To continue, kindly browse products to select or add to your quotation list.</p>
+      <form id="form">
+      <div class="table-responsive">  
+        <table id="quotation-table" class="quotation-table-style">
+          <thead class="quotation-thead-style">
+            <tr>
+              <th><span>IMAGE</span></th>
+              <th><span>ITEM KEY FEATURES</span></th>
+              <th><span>MODEL</span></th>
+              <th><span>BRAND</span></th>
+              <th><span>UNIT PRICE</span></th>
+              <th><span>QTY.</span></th>
+              <th><span>UNIT</span></th>
+              <th><span>AMOUNT</span></th>
+              <th><span>NOTE</span></th>
+              <th class="action-buttons-header"></th>
+              <th class="action-buttons-header"></th>
+            </tr>
+          </thead>
+          <tbody class="quotation-tbody-style">
+            </tbody>
+          <tfoot class="quotation-tfoot-style">
+            <tr id="totalRow">
+              <td colspan="4"></td> 
+              <td class="total-label" colspan="3" style="color: darkred; text-align: center;">TOTAL AMOUNT</td> 
+              <td id="totalAmountPrice" class="total-amount" colspan="1"></td> 
+              <td colspan="1" id="colVat"><strong>VAT INC.</strong></td> 
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+        <div
+          class="customer-details"
+          style="margin-top: 20px; box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50); padding: 20px;"
+        >
+          <span><h2>Create a Quotation File</h2></span>
+          <label class="label-form">Full Name</label>
+          <div class="two-col">
+            <span><input
+              type="text"
+              placeholder="First Name and Last Name"
+              name="fName"
+              class="text-field-normal"
+              id="inputFName"
+              value="{{ customerName }}"
+              required
+            ></span>
+          </div>
+          <label class="label-form">Company Name</label>
+          <span><input
+            type="text"
+            placeholder="Company Name"
+            name="compName"
+            class="text-field-wide"
+            id="inputCName"
+            value="{{ companyName }}"
+            required
+          ></span>
+          <div class="two-col">
+            <div class="one-col">
+              <label class="label-form">Contact Number</label>
+              <span><input
+                type="tel"
+                placeholder="Contact Number"
+                name="inputTel"
+                class="text-field-wide"
+                id="inputPhone"
+                value="{{ customerPhone }}"
+                required
+              ></span>
+            </div>
+            <div class="one-col">
+              <label class="label-form">Email Address</label>
+              <span><input
+                type="email"
+                placeholder="Email Address"
+                name="emailAdd"
+                class="text-field-wide"
+                id="inputEmail"
+                value="{{ customer.email }}"
+                required
+              ></span>
+            </div>
+          </div>
+          <label class="label-form">Project Title</label>
+          <span><input
+            type="text"
+            placeholder="Project Title"
+            name="projName"
+            class="text-field-wide"
+            id="inputProject"
+            required
+          ></span>
+        </div>
+
+        <div style="margin-top: 20px; box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50); padding: 20px;">
+            <p style="font-weight: bold; margin-bottom: 10px;">We provide delivery, set-up, and installation services. For more details, please refer to the quotation form or contact us at channel.com.ph.</p>
+        </div>
+              
+        <span>
+          <button
+            id="quotation-download-btn"
+            class="quotation-btn"
+            style="margin-top: 20px; align-items: center; justify-content: center; gap: 16px; border-radius: 4px;"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-save.svg' | inline_asset_content -}}
+            </span>
+            SAVE DATA
+          </button>
+        </span>
+      </form>
+    </div>
+    <div class="quotation-document" id="quotation-file">
+      <span>
+        <button id="quotation-download-btn2" class="quotation-btn" style="display: none; margin-top: 20px;">
+          <span style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+            {{- 'icon-btn-download.svg' | inline_asset_content -}}
+            DOWNLOAD
+          </span>
+        </button>
+      </span>
+      <div style="width: 816px; height: auto;">
+        <div class="container" id="file">
+          <div class="group">
+            <div class="left-header-content">
+              <img src="https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_Transparent.png?v=1727063299"
+                class="company-logo"
+                alt="Channel International Logo"
+              >
+              <p class="company-name">CHANNEL INTERNATIONAL ENTERPRISES</p>
+              <p class="company-details">43 Don A. Roces Ave., Bgy. Paligsahan, Quezon City, Philippines - 1103</p>
+              <p class="company-details">Tel.: +632 7738 2844; Smart: +63 998 983 4535; Globe: +63 915 339 7985</p>
+              <p class="company-details">
+                Email: info@channel.com.ph; sales@channel.com.ph | Website: www.channel.com.ph
+              </p>
+            </div>
+
+            <div class="right-header-content">
+              <h1 class="quotation-title">QUOTATION</h1>
+            </div>
+          </div>
+
+          <div id="quotation-customer-info" class="quotation-info"></div>
+
+          <div id="quotation-products-table" style="margin-bottom: 15px;"></div>
+          <div id="quotation-products-table2" style="margin: 15px 0;"></div>
+          <div id="quotation-products-table3" style="margin: 15px 0;"></div>
+
+          <div class="quotation-footer" style="margin-top: 5px;">
+            <div style="width: 100%; text-align: left;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                EXCLUSIONS
+              </p>
+              <p style="margin: 2px 0; font-size: 10px;">Materials, Electrical parts, Delivery, Set-up and Installation</p>
+            </div>
+
+            <div style="width: 100%; text-align: left; margin-top: 10px;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                BANK ACCOUNT DETAILS
+              </p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">Channel International Enterprises</p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">BDO-2560103733; BPI-0279101938</p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">Channel International Enterprises/William P. Abugan</p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">Metrobank 4813481138419, Land Bank 0231 1915 85</p>
+            </div>
+
+            <div style="width: 100%; text-align: left; margin-top: 15px;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                TERMS AND CONDITIONS
+              </p>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>A. PAYMENT TERM:</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>70% downpayment for cash or check. 30% for cash upon pick up or item availability.</li>
+                <li>Check for downpayment has to be cleared first before we proceed with the processing of order.</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>B. VALIDITY:</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>Price and Quotation is valid until seven (7) days of creation.</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>C. ITEM AVAILABILITY:</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>
+                  Pick up from the store for on stock items within a 1-5 day duration from the Purchase Order with down
+                  payment.
+                </li>
+                <li>
+                  Delivery for on stock items within an 5-15 days duration from the Purchase Order with a down payment.
+                </li>
+                <li>Order based items within a 30-90 days duration from the Purchase Order with down payment.</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;">
+                <strong>D. Purchase Orders made (especially with down payment) are not cancelable.</strong>
+              </p>
+              <p style="margin: 2px 0; font-size: 10px;">
+                <strong>E. All items are on first come first served basis.</strong>
+              </p>
+              <p style="margin: 2px 0; font-size: 10px;">
+                <strong>F. If payment for the balance is also check, it has to be cleared first before we release the items.</strong>
+              </p>
+            </div>
+            
+            <div style="width: 70%; margin: 20px auto 0; text-align: left;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; color: darkred;">Conforme:</p>
+              <div class="signature-line-container">
+                <p style="font-size: 8px !important;"><strong>Signature of the Owner/Representative Over Printed Name</strong></p>
+              </div>
+            </div>
+
+            <div style="width: 100%; text-align: left; margin-top: 30px;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                Delivery / Set-up / Installation Services (Optional)
+              </p>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>A. Delivery</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>We deliver nationwide using trusted couriers such as LBC, 2GO, AP Cargo, J&T, JRS, and Lalamove (Metro Manila).</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>B. Set-up</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>Our engineers will configure the system according to your requirements, test all functions, and provide a basic orientation on operation.</li>
+              </ul>
+
+               <p style="margin: 2px 0; font-size: 10px;"><strong>C. Installation</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>We offer complete installation services for audio, video, broadcast, musical instrument, and lighting equipment, from delivery to full integration.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const customerId = {{ customer.id | json }};
+        const quotationDetails = document.querySelector('tbody.quotation-tbody-style');
+
+        function fetchQuotationProducts() {
+          fetch(`https://quotation-api.channel.com.ph/quotation/customer/${customerId}/metafields?namespace=quotation_info`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(res => {
+            if (!res) {
+              throw new Error('Failed to fetch metafields: Response is undefined');
+            }
+            if (!res.ok) {
+              throw new Error(`Failed to fetch metafields: ${res.statusText} (${res.status})`);
+            }
+            return res.json();
+          })
+          .then(data => {
+            const aggregatedProducts = {};
+        
+            data.metafields.forEach(meta => {
+              try {
+                const productData = JSON.parse(meta.value);
+                const title = productData.title || productData.title;
+            
+                if (!aggregatedProducts[title]) {
+                  aggregatedProducts[title] = {
+                    id: meta.id,
+                    title: title,
+                    type: productData.type || "",
+                    vendor: productData.vendor || "",
+                    price: typeof productData.price === 'string' ? 
+                           parseFloat(productData.price.replace(/₱/g, '').replace(/,/g, '')) : 
+                           parseFloat(productData.price) || 0,
+                    quantity: parseInt(productData.quantity, 10) || 0,
+                    metafields: productData.metafields || "",
+                    featured_image: productData.featured_image || "",
+                    note: productData.note || ""
+                  };
+                } else {
+                  aggregatedProducts[title].quantity += parseInt(productData.quantity, 10) || 0; 
+                }
+              } catch (error) {
+                console.error('Error parsing product data:', error);
+              }
+            });
+        
+            Object.keys(aggregatedProducts).forEach(title => {
+              const product = aggregatedProducts[title];
+              // ========== UNIT DISPLAY LOGIC - Maps Metaobject Handles ==========
+            let unitDisplay = product.metafields.trim().toLowerCase();
+
+            // Map metaobject unit handles to display values
+            const unitMap = {
+              'pack': 'PACK',
+              'each': 'EACH',
+              'pair': 'PAIR',
+              'meter': 'METER',
+              'set': 'SET',
+              'lot': 'LOT',
+              'roll': 'ROLL',
+              'piece-s': 'PIECE/S',
+              'pieces': 'PIECE/S',     // Alternative variations
+              'piece/s': 'PIECE/S',
+              'pc': 'PIECE/S',
+              'pcs': 'PIECE/S'
+            };
+
+            // Get the mapped value, or show N/A if not found
+            unitDisplay = unitMap[unitDisplay] || (product.metafields.trim() === '' ? 'N/A' : product.metafields.trim().toUpperCase());
+            // ==================================================================
+              
+              const newRow = document.createElement('tr');
+              newRow.innerHTML = `
+                <td><img src="${product.featured_image}" alt="${escapeHtml(title)}" /></td>
+                <td>${escapeHtml(product.type)}</td>
+                <td>${escapeHtml(product.title)}</td>
+                <td>${escapeHtml(product.vendor)}</td>
+                <td class="table-unitPrice">₱${product.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</td>
+                <td class="table-qty">${product.quantity}</td>
+                <td>${unitDisplay}</td>
+                <td class="table-amountPrice">₱${(product.price * product.quantity).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</td>
+                <td class="table-note">${escapeHtml(product.note)}</td>
+                <td class="action-buttons-cell"><button class="edit-btn2" type="button" data-id="${product.id}">Edit</button></td>
+                <td class="action-buttons-cell"><button class="delete-btn2" type="button" data-id="${product.id}">Delete</button></td>
+              `;
+              quotationDetails.appendChild(newRow);
+              const deleteButton = newRow.querySelector('.delete-btn2');
+              deleteButton.addEventListener('click', () => deleteRowC(newRow, product.id));
+              const editButton = newRow.querySelector('.edit-btn2');
+              editButton.addEventListener('click', () => editQtyC(newRow, product.id, product));
+            });
+        
+            updateTotals();
+          })
+          .catch(error => console.error('Error fetching quotation products:', error));
+        }
+
+        function escapeHtml(unsafe) {
+          return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+        }
+
+        function formatCurrency(amount) {
+          return `₱${amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+        }
+
+        function updateTotals() {
+          const rows = document.querySelectorAll('tbody.quotation-tbody-style tr');
+          let sumValC = 0;
+
+          rows.forEach(row => {
+            const productPriceC = row.querySelector('.table-unitPrice').textContent; 
+            const productQtyC = row.querySelector('.table-qty').textContent; 
+        
+            const parsedPriceC = parseFloat(productPriceC.replace(/₱/g, '').replace(/,/g, ''));
+            const parsedQtyC = parseInt(productQtyC, 10);
+        
+            const productAmountPriceC = parsedPriceC * parsedQtyC;
+            sumValC += productAmountPriceC;
+        
+            const amountPriceCell = row.querySelector('.table-amountPrice'); 
+            if (amountPriceCell) {
+              amountPriceCell.textContent = formatCurrency(productAmountPriceC);
+            }
+          });
+      
+          document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumValC);
+        }
+        
+        function deleteRowC(row, metafieldId) {
+          row.remove();
+          fetch(`https://quotation-api.channel.com.ph/quotation/metafields/${metafieldId}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(res => {
+            if (res.ok) {
+              console.log('Metafield deleted successfully.');
+              updateTotals(); 
+            } else {
+              console.error('Error deleting metafield:', res.statusText);
+            }
+          })
+          .catch(error => console.error('Error:', error));
+        }
+      
+        function editQtyC(row, metafieldId, product) {
+          const editButtonC = row.querySelector('.edit-btn2');
+          const qtyCellC = row.querySelector('.table-qty');
+          const noteCellC = row.querySelector('.table-note');
+          const currentQtyC = qtyCellC.textContent;
+          const currentNoteC = noteCellC.textContent;
+        
+          if (editButtonC.textContent === 'Edit') {
+            qtyCellC.innerHTML = `<input type="number" value="${currentQtyC}" class="edit-qty" min="1" />`;
+            noteCellC.innerHTML = `<input type="text" value="${currentNoteC}" class="edit-note" />`;
+            editButtonC.textContent = 'Save';
+          } else {
+            const inputFieldC = qtyCellC.querySelector('.edit-qty');
+            const newQtyC = inputFieldC.value;
+            const inputFieldNote = noteCellC.querySelector('.edit-note');
+            const newNote = inputFieldNote.value;
+            if (isNaN(newQtyC) || newQtyC <= 0) {
+              console.error("Please enter a valid quantity.");
+              return;
+            }
+
+            noteCellC.textContent = newNote;
+            qtyCellC.textContent = newQtyC;
+            editButtonC.textContent = 'Edit';
+            updateTotals(); 
+        
+            const updatedProduct = {
+              ...product, 
+              quantity: newQtyC, 
+              note: newNote
+            };
+        
+            fetch(`https://quotation-api.channel.com.ph/quotation/metafields/${metafieldId}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                metafield: {
+                  id: metafieldId,
+                  value: JSON.stringify(updatedProduct), 
+                  type: 'json' 
+                }
+              })
+            })
+            .then(res => {
+              if (res.ok) {
+                console.log('Metafield updated successfully.');
+              } else {
+                console.error('Error updating metafield:', res.statusText);
+              }
+            })
+            .catch(error => console.error('Error:', error));
+          }
+        }
+
+        fetchQuotationProducts();
+      });
+    </script>
+    <script>
+      const saveBtn = document.getElementById('quotation-download-btn');
+      saveBtn.style.border = "1px solid transparent";
+      saveBtn.style.color = "rgba(var(--color-foreground), 0.50)";
+      saveBtn.style.backgroundColor = "rgba(var(--color-foreground), 0.40)";
+      saveBtn.style.cursor = "default";
+      function checkInputs() {
+        const tableBody = document.querySelector('tbody');
+        const fName = document.getElementById('inputFName').value.trim();
+        const cName = document.getElementById('inputCName').value.trim();
+        const phone = document.getElementById('inputPhone').value.trim();
+        const email = document.getElementById('inputEmail').value.trim();
+        const project = document.getElementById('inputProject').value.trim();
+        const blankElement = document.getElementById('blank');
+        const isBlankRemoved = blankElement === null;
+
+        const tableRows = document.querySelectorAll('tbody tr'); 
+        const trCount = tableRows.length;
+        
+        if (fName !== "" && cName !== "" && phone !== "" && email !== "" && project !== "" && isBlankRemoved && trCount >= 0) {
+          saveBtn.style.border = "1px solid rgb(var(--color-button))";
+          saveBtn.style.color = "rgb(var(--color-button))";
+          saveBtn.style.backgroundColor = "transparent";
+          saveBtn.style.cursor = "pointer"; 
+          
+          saveBtn.addEventListener('mouseenter', function() {
+            saveBtn.style.backgroundColor = "rgb(var(--color-button))"; 
+            saveBtn.style.color = "rgb(var(--color-button-text))";
+          });
+          saveBtn.addEventListener('mouseleave', function() {
+            saveBtn.style.backgroundColor = "transparent"; 
+            saveBtn.style.color = "rgb(var(--color-button))";
+          });
+        } else {
+          saveBtn.style.border = "1px solid transparent";
+          saveBtn.style.color = "rgba(var(--color-foreground), 0.50)";
+          saveBtn.style.backgroundColor = "rgba(var(--color-foreground), 0.40)";
+          saveBtn.style.cursor = "default"; 
+        }
+      }
+      checkInputs();
+
+      document.getElementById('inputFName').addEventListener('input', checkInputs);
+      document.getElementById('inputCName').addEventListener('input', checkInputs);
+      document.getElementById('inputPhone').addEventListener('input', checkInputs);
+      document.getElementById('inputEmail').addEventListener('input', checkInputs);
+      document.getElementById('inputProject').addEventListener('input', checkInputs);
+    
+      document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        const customerId = {{ customer.id | json }};
+      
+        const fName = document.getElementById('inputFName').value;
+        const company = document.getElementById('inputCName').value;
+        const phone = document.getElementById('inputPhone').value;
+        const email = document.getElementById('inputEmail').value;
+        const project = document.getElementById('inputProject').value;
+        const preparedBy = 'channel.com.ph';
+        const table = document.getElementById('quotation-table');
+      
+        const updatedRows = [];
+        const rows = table.getElementsByTagName('tr');
+        const downloadBtn = document.getElementById('quotation-download-btn2');
+        downloadBtn.style.display = "block";
+      
+        for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          const clonedRow = row.cloneNode(true);
+
+          const headerCells = clonedRow.querySelectorAll('.action-buttons-header');
+          headerCells.forEach(cell => cell.remove());
+
+          const actionCells = clonedRow.querySelectorAll('.action-buttons-cell');
+          actionCells.forEach(cell => cell.remove());
+          
+          updatedRows.push(clonedRow.outerHTML);
+        }
+
+        const tableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${updatedRows.join('')}</tbody></table>`;
+        document.getElementById('quotation-products-table').innerHTML = tableHtml;
+        document.getElementById('quotation-products-table2').innerHTML = '';
+        document.getElementById('quotation-products-table3').innerHTML = '';
+        
+        const today = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+        const date = new Date(today);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = date.toLocaleDateString(undefined, options);
+        
+        const year = date.getFullYear();
+        const shYear = year.toString().slice(-2);
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String.fromCharCode(date.getHours() + 65);
+        const mins = String(date.getMinutes()).padStart(2, '0');
+        const secs = String(date.getSeconds()).padStart(2, '0');
+        const jobNumber = month + day + shYear + "-" + hours + mins + secs;
+        
+        document.getElementById('quotation-customer-info').innerHTML = `
+          <div class="start-margin" style="font-size: 12px; line-height: 1.5;"><div class="start-margin-col"><strong>Attention:</strong> ${fName} <br>
+          <strong>Company:</strong> ${company} <br>
+          <strong>Contact Number:</strong> ${phone} <br>
+          <strong>Email:</strong><span id="emailCustomer"> ${email} </span><br>
+          <strong>Project Title:</strong> ${project} <br></div>
+          <div class="start-margin-col"><strong>Date:</strong> ${formattedDate} <br>
+          <strong>Prepared by:</strong> ${preparedBy} <br>
+          <strong>Job Number:</strong> ${jobNumber} <br></div></div>
+        `;
+        
+        this.reset();
+        alert("Your data entered in the forms have been saved.");
+      });
+  
+      function sendMail() {
+    emailjs.init("uzfiB2iNH6YIYoPst");
+
+    const messageContent = document.getElementById("quotation-customer-info");
+    const messageContentHeader = "<h3 style='display: block;'> Customer Created a Quotation on their own </h3>";
+
+    // Clone tables so the page itself is not modified
+    const table1 = document.getElementById("quotation-products-table").cloneNode(true);
+    const table2 = document.getElementById("quotation-products-table2").cloneNode(true);
+    const table3 = document.getElementById("quotation-products-table3").cloneNode(true);
+
+    // Apply styling from first code
+    [table1, table2, table3].forEach(table => {
+        const rows = table.querySelectorAll("tr");
+        const ths = table.querySelectorAll("th");
+        const tds = table.querySelectorAll("td");
+        const imgs = table.querySelectorAll("img");
+        const totalRows = table.querySelectorAll("#totalRow");
+
+        for (let row of rows) {
+            const cells = row.querySelectorAll("th, td");
+
+            if (cells.length > 8) {
+                cells[0].remove();
+                cells[1].style.width = "15%";
+                cells[2].style.width = "15%";
+                cells[3].style.width = "10%";
+                cells[4].style.width = "10%";
+                cells[5].style.width = "5%";
+                cells[6].style.width = "5%";
+                cells[7].style.width = "15%";
+                cells[8].style.width = "15%";
+            }
+        }
+
+        for (let totalRow of totalRows) {
+            totalRow.style.textAlign = "right";
+
+            const totalRowCells = totalRow.querySelectorAll("td");
+
+            if (totalRowCells.length === 3) {
+                totalRowCells[0].colSpan = 5;
+                totalRowCells[1].colSpan = 2;
+                totalRowCells[2].colSpan = 1;
+                totalRowCells[2].style.textAlign = "center";
+            }
+        }
+
+        for (let th of ths) {
+            th.style.border = "1px solid black";
+            th.style.padding = "10px";
+        }
+
+        for (let td of tds) {
+            td.style.border = "1px solid black";
+            td.style.padding = "10px";
+
+            if (td.cellIndex === 6) {
+                td.style.textAlign = "right";
+            }
+        }
+
+        for (let img of imgs) {
+            img.remove();
+        }
+    });
+
+    var params = {
+        my_html:
+            messageContentHeader +
+            messageContent.innerHTML +
+            table1.outerHTML +
+            table2.outerHTML +
+            table3.outerHTML,
+        isHtml: true,
+    };
+
+    const serviceID = "service_eg4wtpf";
+    const templateID = "template_nrm5mbs";
+
+    emailjs.send(serviceID, templateID, params)
+        .then(res => {
+            console.log("Sending mail...");
+            console.log(res);
+            console.log("Your email sent successfully!");
+        })
+        .catch(err => {
+            console.error("Error sending email:", err);
+        });
+}
+
+      function sendMailClient() {
+        emailjs.init("uzfiB2iNH6YIYoPst");
+        const emailCustomer = document.getElementById("emailCustomer").innerText; 
+        const messageBackContent = `
+        <div style="width: 80%; margin: auto; box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50); font-family: 'Poppins', sans-serif;">
+          <div style="background: linear-gradient(137deg, rgba(22,22,22,1) 42%, rgba(151,23,4,1) 100%); color: #fff;padding: 5px 20px;">
+            <h1>Created a Quotation File</h1>
+          </div>
+          <div style="padding: 32px 20px; background-color: #fafafa;">
+            <p>Good day!</p>
+            <p>Thank you for using our 'Create Your Own Quotation' feature on our website. We’re glad you’re exploring this tool, which allows you to check product prices and receive quick quotes without needing to contact our staff.</p>
+            <p> If any product prices are not indicated, it’s because they may change frequently based on our supplier's pricing. In this case, we recommend using the "Add to Price Inquiry" feature to gather pricing for the products you’re interested in. If you need a formal quote, you can use the "Request Quotation" feature. The "Request Quotation" button is located at the top of every page, or you can click <a href="https://d99e66-54.myshopify.com/pages/quotation-guide">here</a> for the quotation guide.</p> 
+            <p style="color: rgba(0,0,0,0.75);"><i>Note: Please ensure that you are logged into your account to access the quotation features. Additionally, kindly double-check the email address you have entered to ensure that you receive timely replies and notifications regarding your request.</i></p>
+            <p>Thank you again for choosing us. We look forward to assisting you, and stay safe!</p>
+          </div>
+        </div> 
+        `;
+        
+        var params = {
+            my_html: messageBackContent,
+            to_email: emailCustomer, 
+        };
+      
+        const serviceID = "service_eg4wtpf";
+        const templateID = "template_g4313v8";
+      
+        emailjs.send(serviceID, templateID, params)
+        .then(res => {
+          console.log("Sending mail to Client...");
+          console.log(res);
+        })
+        .catch(err => {
+          console.error("Error sending email:", err);
+        });
+      }
+
+      function resetList() {
+        const customerId = {{ customer.id | json }};
+        
+        fetch(`https://quotation-api.channel.com.ph/quotation/customer/${customerId}/metafields?namespace=quotation_info`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`Error fetching metafields: ${res.statusText}`);
+          }
+          return res.json();
+        })
+        .then(data => {
+          const deletePromises = data.metafields.map(meta => {
+            return fetch(`https://quotation-api.channel.com.ph/quotation/customer/${customerId}/metafields/${meta.id}`, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+            .then(deleteRes => {
+              if (!deleteRes.ok) {
+                throw new Error(`Error deleting metafield ${meta.id}: ${deleteRes.statusText}`);
+              }
+            });
+          });
+      
+          return Promise.all(deletePromises);
+        })
+        .then(() => {
+          console.log('All quotation metafields deleted');
+        })
+        .catch(error => console.error('Error:', error));
+      }
+      
+      window.onload = function () {
+        document.getElementById("quotation-download-btn2").addEventListener("click", () => {
+            const file = document.getElementById("file");
+            const mainForm = document.getElementById("main-form");
+
+            document.body.style.cursor = 'wait';
+            mainForm.style.display = 'none';
+            file.style.display = 'block';
+            file.style.zIndex = '10000';
+
+            var opt = {
+                margin: [14.2, 12.7, 14.2, 12.7],
+                filename: 'Quotation - channelcomph.pdf',
+                image: { type: 'PNG', quality: 1 },
+                html2canvas: { scale: 3, useCORS: true },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'letter',
+                    orientation: 'portrait'
+                },
+            };
+
+            resetList();
+
+            if (file) {
+                html2pdf().from(file).set(opt).toPdf().get('pdf').then(function(pdf) {
+                    const totalPages = pdf.internal.getNumberOfPages();
+                    const pageWidth = pdf.internal.pageSize.getWidth();
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+
+                    for (let i = 1; i <= totalPages; i++) {
+                        pdf.setPage(i);
+
+                        // --- DETAILED FOOTER ---
+                        pdf.setFontSize(8);
+                        pdf.setTextColor(150);
+                        const footerY = pageHeight - 10;
+                        pdf.text('This quotation is generated by: channel.com.ph', 12.7, footerY);
+                        pdf.text('Email: sales@channel.com.ph | Tel.: +632 7738 2844', 12.7, footerY + 3);
+
+                        // --- PAGE NUMBER ---
+                        pdf.setFontSize(10);
+                        pdf.setTextColor(100);
+                        pdf.text(
+                            'Page ' + i + ' of ' + totalPages,
+                            pageWidth / 2,
+                            pageHeight - 7, {
+                                align: 'center'
+                            }
+                        );
+                    }
+                    mainForm.style.display = 'block';
+                    file.style.display = 'none';
+                }).save();
+
+                document.body.style.cursor = 'default';
+                
+                setTimeout(() => {
+                    sendMail();
+                    sendMailClient();
+                }, 5000);
+                setTimeout(() => {
+                    location.reload();
+                }, 8000);
+            } else {
+                console.error("Element with ID 'file' not found.");
+                document.body.style.cursor = 'default';
+            }
+        });
+      };
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const serviceYesRadio = document.getElementById('serviceYes');
+        const serviceNoRadio = document.getElementById('serviceNo');
+        const serviceInfoDisplay = document.getElementById('service-info-display');
+
+        function toggleServiceInfo() {
+          if (serviceYesRadio && serviceYesRadio.checked) {
+            serviceInfoDisplay.style.display = 'block';
+          } else if (serviceInfoDisplay) {
+            serviceInfoDisplay.style.display = 'none';
+          }
+        }
+        
+        if(serviceYesRadio && serviceNoRadio){
+            toggleServiceInfo();
+            serviceYesRadio.addEventListener('change', toggleServiceInfo);
+            serviceNoRadio.addEventListener('change', toggleServiceInfo);
+        }
+      });
+    </script>
+    <style>
+      .anchorHover {
+        color: rgb(var(--color-button)) !important;
+      }
+
+      .anchorHover:hover {
+        background-color: rgb(var(--color-button));
+        color: rgb(var(--color-button-text)) !important;
+      }
+    </style>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quotation List 2",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-6"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+"presets": [
+  {
+    "name": "Quotation List 2"
+  }
+]
+}
+{% endschema %}

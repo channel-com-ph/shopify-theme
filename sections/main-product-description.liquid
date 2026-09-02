@@ -1,0 +1,675 @@
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+
+    .description-text{
+        text-align: justify;
+
+    }
+
+    /* SPECS COLLAPSE */
+#specs-wrapper {
+  max-height: 350px;     
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+#specs-wrapper.expanded {
+  max-height: 5000px;    /* large enough to show entire table */
+}
+
+.specs-toggle-btn {
+  display: block;
+  margin: 20px auto 0 auto; /* auto centers horizontally */
+  padding: 10px 20px;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+.specs-toggle-btn:hover {
+  opacity: 0.85;
+}
+
+/* 📱 MOBILE VIEW FIX */
+@media screen and (max-width: 750px) {
+  /* Higher collapsed height for mobile */
+  #specs-wrapper {
+    max-height: 2500px; /* Increase this if your tables are taller */
+  }
+}
+
+
+
+/* 🔧 FIX OVERLAPPING SPEC TITLES ON MOBILE */
+@media screen and (max-width: 750px) {
+
+  /* Section headers (e.g. DIGITAL AUDIO & CONNECTIVITY) */
+  #content-specs .specsTable td[colspan="2"] {
+    line-height: 1.4 !important;   /* FIX overlap */
+    padding: 8px 10px !important;  /* give breathing room */
+    font-size: 14px !important;
+    word-break: break-word;
+  }
+
+  /* Normal cells */
+  #content-specs .specsTable td {
+    line-height: 1.4 !important;
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+  }
+
+  /* Header cells */
+  #content-specs .specsTable th {
+    line-height: 1.4 !important;
+    padding: 8px 10px !important;
+  }
+
+  /* REMOVE overly aggressive compression */
+  table:not([class]) td[colspan="2"] {
+    line-height: normal !important;
+  }
+}
+
+  {%- endstyle -%}
+            {%- if product.metafields.custom.item_notes.value -%}
+    {%- assign note = product.metafields.custom.item_notes.value -%}
+  {%- endif -%}
+  {%- if product.metafields.custom.quantity_units.value -%}
+    {%- assign quantity_unit = product.metafields.custom.quantity_units.value -%}
+  {%- endif -%}
+  {%- if product.metafields.custom.video_url.value.url -%}
+    {%- assign video_url = product.metafields.custom.video_url.value.url -%}
+    {%- if video_url contains "youtube.com" or video_url contains "youtu.be" -%}
+    {%- capture video_id -%}
+      {{ video_url | split: "v=" | last | split: "&" | first }}
+    {%- endcapture -%}
+    {%- assign video_url = "https://www.youtube.com/embed/" | append: video_id -%}
+  {%- endif -%}
+  {%- endif -%}
+  <!-- {%- assign prods = products.metafields.custom.accessories.value -%}
+  {%- for prod in prods.card -%}
+    {{ prods.title }}
+  {%- endfor -%} -->
+  <div class="page-width">
+    {%- assign compatibility_products = product.metafields.custom.compatibility.value -%}
+    <div class="btn-container">
+      <button class="description-btn active" id="desc-overview" onclick="clickDesc(event)">OVERVIEW</button>
+      <button class="description-btn" id="desc-specs" onclick="clickDesc(event)">SPECIFICATIONS</button>
+      <button class="description-btn" id="desc-review" onclick="clickDesc(event)">REVIEW</button>
+      <button class="description-btn" id="desc-accessories" onclick="clickDesc(event)">ACCESSORIES</button>
+      {%- if compatibility_products != blank and compatibility_products.size > 0 -%}
+  <button class="description-btn" id="desc-compatible" onclick="clickDesc(event)">COMPATIBILITY</button>
+{%- endif -%}
+    </div>
+    <div class="description-container">
+      <div class="description-text" id="content-overview">
+        <h2>{{ product.vendor }} {{ product.title }}</h2>
+          
+          {%- if video_url -%}
+            <iframe width="100%" class="yt-video" src="{{ video_url }}" frameborder="0" allowfullscreen></iframe>
+          {%- endif -%}
+
+          {%- render 'product-description-file' -%}
+      </div>
+<!--ORIGINAL CODE - SPECIFICATIONS PART
+      <div class="description-text" id="content-specs">
+        <h2>{{ product.vendor }} {{ product.title }}</h2>
+        <div style="font-size: 20px !important;" class="specsTable">{{ product.description }}</div>
+      </div>---->
+
+
+<!---REPLACED WITH THIS TO HAVE BUTTON SHOW MORE/LESS SA SPECS--->
+
+<div class="description-text" id="content-specs">
+  <h2>{{ product.vendor }} {{ product.title }}</h2>
+
+  <!-- SPEC TABLE WRAPPER -->
+  <div id="specs-wrapper" class="collapsed">
+    <div class="specsTable" id="specs-content">
+      {{ product.description }}
+    </div>
+  </div>
+
+  <!-- BUTTON -->
+  <button id="toggle-specs-btn" class="specs-toggle-btn">See More</button>
+</div>
+
+<style>
+/* === Original CSS retained === */
+.btn-container{ width: 100%; display: flex; justify-content: center; padding: 0; gap: 20px; flex-direction: row; }
+.description-btn{ width: calc(100% / 4); height: 50px; border: solid 1px rgb(var(--color-button)); background-color: transparent; color: rgb(var(--color-link)); font: inherit; }
+.description-btn:hover{ background-color: rgb(var(--color-button)); color: rgb(var(--color-button-text)); }
+.description-btn.active { background-color: rgb(var(--color-button)); color: rgb(var(--color-button-text)); }
+#content-specs, #content-review, #content-accessories, #content-compatible { display: none; }
+.description-container { margin-top: 25px; }
+.styleFile img { display: flex !important; margin: 0 !important; justify-self: center !important; width: 80%; }
+.styleFile table, .styleFile th, .styleFile td { border: none !important; background-color: transparent !important; font-weight: normal !important; font-size: inherit !important; color: inherit !important; padding: 0 !important; gap: 0 !important; box-shadow: none !important; text-align: left; }
+.styleFile th:nth-child(1), .styleFile th:nth-child(2) { width: 60%; }
+.styleFile th:nth-child(1):has(img) { width: 40%; }
+.styleFile th:nth-child(2):has(img) { width: 40%; }
+
+/* === Specs table === */
+.specsTable table {
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: rgb(var(--color-foreground));
+  font-size: 16px !important;
+}
+
+.specsTable table,
+.specsTable th,
+.specsTable td {
+  border-bottom: solid 1px rgb(var(--color-button)) !important;
+  border-top: solid 1px rgb(var(--color-button)) !important;
+  border-left: transparent;
+  border-right: transparent;
+  border-collapse: collapse;
+  padding: 1px 5px; /* compressed spacing */
+  line-height: 1.2;  /* for txt */
+}
+
+.specsTable th{
+  background-color: #363a45;
+  color: #e6e7e8;
+}
+
+
+
+.specsTable td:nth-child(1){
+  background-color: #e4e4e4;
+  font-weight: bold;
+}
+
+/* === header titles to === */
+table:not([class]) td[colspan="2"] {
+  background-color: rgb(var(--color-background)) !important;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+@media screen and (max-width: 750px) {
+  .btn-container { flex-direction: column; }
+  .description-btn{ width: 100%; }
+}
+
+/* === Collapsible wrapper === */
+#specs-wrapper {
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.35s ease;
+}
+
+#specs-wrapper.collapsed::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* was 60px */
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(var(--color-background), 0.95)
+  );
+  pointer-events: none;
+}
+
+
+#specs-wrapper.expanded::after {
+  display: none;
+}
+
+/* === Button === */
+.specs-toggle-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+</style>
+
+<script>
+(function () {
+  function initSpecsToggle() {
+    const wrapper = document.querySelector("#specs-wrapper");
+    const btn = document.querySelector("#toggle-specs-btn");
+
+    if (!wrapper || !btn) return;
+
+    const table = wrapper.querySelector("table");
+
+    // If no table, just hide button
+    if (!table) {
+      btn.style.display = "none";
+      return;
+    }
+
+    const rows = table.querySelectorAll("tr");
+    const previewRows = 10;
+
+    let collapsedHeight = 400;
+
+    for (let i = 0; i < Math.min(rows.length, previewRows); i++) {
+      collapsedHeight += rows[i].offsetHeight;
+    }
+
+    collapsedHeight += 20;
+    wrapper.style.maxHeight = collapsedHeight + "px";
+    wrapper.classList.add("collapsed");
+
+    // Hide button if not enough rows
+    if (rows.length <= previewRows) {
+      btn.style.display = "none";
+      wrapper.style.maxHeight = "none";
+      wrapper.classList.remove("collapsed");
+      return;
+    }
+
+    btn.addEventListener("click", function () {
+      const isCollapsed = wrapper.classList.contains("collapsed");
+
+      if (isCollapsed) {
+        wrapper.classList.remove("collapsed");
+        wrapper.classList.add("expanded");
+        wrapper.style.maxHeight = wrapper.scrollHeight + "px";
+        btn.textContent = "See Less";
+      } else {
+        wrapper.classList.remove("expanded");
+        wrapper.classList.add("collapsed");
+        wrapper.style.maxHeight = collapsedHeight + "px";
+        btn.textContent = "See More";
+
+        wrapper.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+  }
+
+  // Run on normal load
+  document.addEventListener("DOMContentLoaded", initSpecsToggle);
+
+  // Run again if Shopify reloads sections
+  document.addEventListener("shopify:section:load", initSpecsToggle);
+})();
+</script>
+
+      <div class="description-text" id="content-review">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+                <script>
+                  const reviewHeader = document.querySelectorAll(".jdgm-write-rev-link")[0]; 
+                  if (reviewHeader) {
+                    console.log(reviewHeader);
+                    {% if customer %}
+                      reviewHeader.style.display = 'block';
+                      reviewHeader.setAttribute('href', '#');
+                      reviewHeader.setAttribute('aria-expanded', 'false');
+                      reviewHeader.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        reviewHeader.setAttribute('aria-expanded', 'true');
+                      });
+                    {% else %}
+                      reviewHeader.style.display = 'block';
+                      reviewHeader.setAttribute('href', '/account/login');
+                      reviewHeader.setAttribute('aria-expanded', 'false');
+                      reviewHeader.addEventListener('click', function(event) {
+                        event.preventDefault(); 
+                        reviewHeader.setAttribute('aria-expanded', 'false');
+                        window.location.href = '/account/login'; 
+                      });
+                    {% endif %}
+                  }
+                </script>
+            {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      <div class="description-text" id="content-accessories">
+        <h2>{{ product.vendor }} {{ product.title }} Accessories</h2>
+        {%- render 'related-accessories' -%}
+      </div>
+
+        
+{%- if compatibility_products != blank and compatibility_products.size > 0 -%}
+  <div class="description-text" id="content-compatible">
+    <h2>{{ product.vendor }} {{ product.title }} Compatibility</h2>
+    {%- render 'related-compatibility' -%}
+  </div>
+{%- endif -%}
+        
+
+
+    </div>
+   <script>
+function clickDesc(event) {
+  const buttons = document.querySelectorAll('.description-btn');
+  buttons.forEach(button => button.classList.remove('active'));
+
+  event.target.classList.add('active');
+
+  const sections = {
+    overview: document.getElementById("content-overview"),
+    specs: document.getElementById("content-specs"),
+    review: document.getElementById("content-review"),
+    accessories: document.getElementById("content-accessories"),
+    compatible: document.getElementById("content-compatible")
+  };
+
+  // Hide all safely
+  Object.values(sections).forEach(section => {
+    if (section) section.style.display = "none";
+  });
+
+  // Show selected safely
+  const id = event.target.id;
+
+  if (id === "desc-overview" && sections.overview) {
+    sections.overview.style.display = "block";
+  }
+
+  else if (id === "desc-specs" && sections.specs) {
+    sections.specs.style.display = "block";
+
+    setTimeout(() => {
+      const btnContainer = document.querySelector(".btn-container");
+      if (!btnContainer) return;
+
+      const headerOffset = 80;
+      const elementPosition = btnContainer.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }, 100);
+  }
+
+  else if (id === "desc-review" && sections.review) {
+    sections.review.style.display = "block";
+  }
+
+  else if (id === "desc-accessories" && sections.accessories) {
+    sections.accessories.style.display = "block";
+  }
+
+  else if (id === "desc-compatible" && sections.compatible) {
+    sections.compatible.style.display = "block";
+  }
+}
+</script>
+  </div>
+</div>
+
+<style>
+
+    /* COLLAPSED STATE */
+#specs-wrapper.collapsed {
+  max-height: 500px;   /* 6 rows */   
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* EXPANDED STATE */
+#specs-wrapper.expanded {
+  max-height: none;
+  overflow: visible;
+}
+
+  .btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 20px;
+    flex-direction: row;
+  }
+
+  .description-btn{
+    width: calc(100% / 4);
+    height: 50px;
+    border: solid 1px rgb(var(--color-button));
+    background-color: transparent;
+    color: rgb(var(--color-link));
+    font: inherit;
+  }
+
+  .description-btn:hover{
+    background-color: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+  }
+
+  .description-btn.active {
+    background-color: rgb(var(--color-button));
+    color: rgb(var(--color-button-text));
+  }
+
+  #content-specs, #content-review, #content-accessories, #content-compatible{
+    display: none;
+  }
+
+  .description-container {
+    margin-top: 25px;
+  }
+
+  .styleFile img {
+    display: flex !important;
+    margin: 0 !important;
+    justify-self: center !important;
+    width: 80%;
+  }
+    
+  .styleFile table, .styleFile th, .styleFile td {
+    border: none !important;
+    background-color: transparent !important;
+    font-weight: normal !important;
+    font-size: inherit !important;
+    color: inherit !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    box-shadow: none !important;
+    text-align: left;
+  }
+
+  .styleFile th:nth-child(1),
+  .styleFile th:nth-child(2) {
+    width: 60%;
+  }
+    
+  .styleFile th:nth-child(1):has(img) {
+    width: 40%;
+  }
+    
+  .styleFile th:nth-child(2):has(img) {
+    width: 40%;
+  }
+
+  .specsTable table {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: rgb(var(--color-foreground));
+    font-size: 16px !important;
+  }
+
+  table:not([class]) td {
+    padding: 2px 20px;
+  }
+    
+  .specsTable table, .specsTable th, .specsTable td {
+    border-bottom: solid 1px rgb(var(--color-button)) !important;
+    border-top: solid 1px rgb(var(--color-button)) !important;
+    border-left: transparent;
+    border-right: transparent;
+    border-collapse: collapse;
+    padding: 5px 20px;
+  }
+    
+  .specsTable th {
+    font-size: 18px;
+    background-color: #363a45;
+    color: #e6e7e8;
+  }
+
+  .specsTable td {
+    padding-left: 24px;
+  }
+
+  .specsTable td:nth-child(1){
+    background-color: #e4e4e4;
+    font-weight: bold;
+  }
+
+  #content-overview iframe {
+    height: 600px;
+  }
+
+  table:not([class]) td[colspan="2"] {
+    background-color: rgb(var(--color-background)) !important;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+    
+  @media screen and (max-width: 750px) {
+    .btn-container {
+      flex-direction: column;
+    }
+    .description-btn{
+      width: 100%;
+    }
+    #content-overview iframe {
+      height: 200px;
+    }
+  }
+
+  /* ================================
+   FORCE BALANCED SPEC TABLES
+   Product description only
+================================ */
+
+/* Target spec tables inside product description */
+#content-specs .specsTable table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Override inline colgroup widths */
+#content-specs .specsTable table col {
+  width: 50% !important;
+}
+
+/* Left + right cells */
+#content-specs .specsTable td {
+  width: 50%;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+/* Section headers (rows with colspan=2) */
+#content-specs .specsTable td[colspan="2"] {
+  width: 100%;
+  text-align: left;
+}
+
+
+  </style>
+
+{% schema %}
+{
+  "name": "Product Description",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+  {
+    "type": "color_scheme",
+    "id": "color_scheme",
+    "label": "t:sections.all.colors.label",
+    "info": "t:sections.all.colors.has_cards_info",
+    "default": "scheme-3"
+  },
+  {
+    "type": "select",
+    "id": "sticky_header_type",
+    "options": [
+      {
+        "value": "none",
+        "label": "t:sections.header.settings.sticky_header_type.options__1.label"
+      },
+      {
+        "value": "on-scroll-up",
+        "label": "t:sections.header.settings.sticky_header_type.options__2.label"
+      },
+      {
+        "value": "always",
+        "label": "t:sections.header.settings.sticky_header_type.options__3.label"
+      },
+      {
+        "value": "reduce-logo-size",
+        "label": "t:sections.header.settings.sticky_header_type.options__4.label"
+      }
+    ],
+    "default": "on-scroll-up",
+    "label": "t:sections.header.settings.sticky_header_type.label"
+  },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_top",
+    "default": 36
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_bottom",
+    "default": 36
+  }
+  ],
+"presets": [
+  {
+    "name": "Product Description"
+  }
+]
+}
+{% endschema %}

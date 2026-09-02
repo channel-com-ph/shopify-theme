@@ -1,0 +1,27 @@
+{{ 'component-card.aio.min.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.aio.min.css' | asset_url | stylesheet_tag }}
+{{ 'section-related-products.aio.min.css' | asset_url | stylesheet_tag }}
+{% assign prods = product.metafields.custom.accessories.value %}
+<div>
+<ul
+    class="grid product-grid grid--5-col-desktop grid--2-col-tablet-down"
+    role="list"
+  >
+    {% if prods %}
+      {% for prod in prods %}
+        <li class="grid__item">
+          {% render 'card-product',
+            card_product: prod,
+            media_aspect_ratio: settings.image_ratio,
+            image_shape: settings.image_shape,
+            show_secondary_image: settings.show_secondary_image,
+            show_vendor: settings.show_vendor,
+            show_rating: settings.show_rating
+          %}
+        </li>
+      {% endfor %}
+    {% else %}
+      <li>No accessories available.</li>
+    {% endif %}
+  </ul>
+</div>

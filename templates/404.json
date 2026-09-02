@@ -1,0 +1,100 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_list_r6YrDP": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_t9a97V": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "signal-converter-1"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_t9a97V"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "SIGNAL CONVERTER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "blocks_j44D6B": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_fdda1f0_YeeQam": {
+          "type": "ai_gen_block_fdda1f0",
+          "settings": {
+            "heading": "Oops! This page got lost in our move",
+            "message": "<p>We’ve recently updated our website, so some older links may no longer work. If you can’t find the page you’re looking for, don’t worry—just use the search bar above or browse our site to quickly find the products, information, or page you need. </p><p>Thanks for your understanding, and we’re happy to help if you need assistance.</p>",
+            "show_search": false,
+            "search_placeholder": "Search for products...",
+            "search_button_label": "Search",
+            "show_cta_button": true,
+            "cta_button_label": "Continue shopping",
+            "cta_button_link": "/",
+            "desktop_width_percent": 100,
+            "max_width": 1000,
+            "padding_top": 80,
+            "padding_bottom": 80,
+            "heading_spacing": 30,
+            "message_spacing": 40,
+            "search_spacing": 40,
+            "background_color": "#fafafa",
+            "heading_color": "#121212",
+            "message_color": "#161616",
+            "heading_size": 48,
+            "message_size": 18,
+            "search_input_size": 16,
+            "search_background": "#ffffff",
+            "search_text_color": "#121212",
+            "search_placeholder_color": "#666666",
+            "search_border_color": "#d7d7d7",
+            "search_focus_border_color": "#971704",
+            "search_border_width": 1,
+            "search_border_radius": 6,
+            "search_button_text_size": 16,
+            "search_button_bg": "#971704",
+            "search_button_hover_bg": "#7a1103",
+            "search_button_text_color": "#ffffff",
+            "search_button_radius": 6,
+            "cta_button_text_size": 16,
+            "cta_button_bg": "#971704",
+            "cta_button_hover_bg": "#242833",
+            "cta_button_text_color": "#ffffff",
+            "cta_button_radius": 6
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_fdda1f0_YeeQam"
+      ],
+      "name": "Lost page hero",
+      "settings": {}
+    }
+  },
+  "order": [
+    "collection_list_r6YrDP",
+    "blocks_j44D6B"
+  ]
+}

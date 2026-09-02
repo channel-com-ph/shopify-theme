@@ -1,0 +1,88 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "page_e7Thww": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "request-product-quotation",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_banner_y3zeQP": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_yEYGTx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Request a Product Quotation",
+            "heading_size": "h1"
+          }
+        },
+        "text_WyW6F3": {
+          "type": "text",
+          "settings": {
+            "text": "To request or generate a product quotation, please Log in or Register first. Thank you for your interest—we’re excited to assist you and look forward to preparing your quote!",
+            "text_style": "body"
+          }
+        },
+        "buttons_jFFpzK": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "SIGN IN",
+            "button_link_1": "/account/login",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "/account/login",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yEYGTx",
+        "text_WyW6F3",
+        "buttons_jFFpzK"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/RP_Quotation.jpg",
+        "image_overlay_opacity": 80,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "page_e7Thww",
+    "image_banner_y3zeQP"
+  ]
+}

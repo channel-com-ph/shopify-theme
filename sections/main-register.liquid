@@ -1,0 +1,254 @@
+{{ 'customer.aio.min.css' | asset_url | stylesheet_tag }}
+
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+/* ===============================
+   GLOBAL FONT FAMILY (DAWN THEME)
+================================ */
+body,
+.customer.register {
+  font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont,
+    "San Francisco", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* ===============================
+   SECTION PADDING
+================================ */
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+}
+
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  .customer:not(.account):not(.order) {
+    max-width: 90%;
+  }
+}
+
+/* ===============================
+   RESPONSIVE MOBILE STYLING
+================================ */
+@media screen and (max-width: 749px) {
+  .setRow {
+    flex-direction: column;
+    gap: 1rem !important;
+  }
+
+  .setCol .select,
+  .setCol .field input {
+    width: 100% !important;
+  }
+
+  .customer-type-options {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .customer-type-selection {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2.2rem !important;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6rem !important;
+    text-align: center;
+  }
+
+  .customer-type-options label {
+    font-size: 1.4rem !important;
+  }
+
+  .page-width {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ===============================
+   FORM CONTAINER STYLING
+================================ */
+.customer.register {
+  margin: 50px auto;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+  padding: 32px;
+  border-radius: 10px;
+  background: #fff; /* optional: ensures white background */
+}
+
+/* ===============================
+   FORM BUTTONS
+================================ */
+button[type="submit"],
+button[type="button"] {
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(133, 0, 0);
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: rgb(100, 0, 0);
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   CUSTOMER TYPE OPTIONS (SIDE BY SIDE)
+================================ */
+.customer-type-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.customer-type-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.customer-type-options label:hover {
+  background: #ffeaea;
+  border-color: rgb(133, 0, 0);
+}
+
+.customer-type-options input[type="radio"] {
+  accent-color: rgb(133, 0, 0);
+  transform: scale(1.2);
+}
+
+{%- endstyle -%}
+
+
+<script src="{{ 'address-contact-custom.js' | asset_url }}" defer></script>
+<script src="{{ 'address-custom.js' | asset_url }}" defer></script>
+
+<div class="page-width">
+<div class="customer register section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+    <h1>{{ 'customer.register.title' | t }}</h1>
+
+    <!-- Customer Type Selection -->
+    <div class="customer-type-selection">
+      <h2>Are you registering as:</h2>
+      <div class="customer-type-options">
+        <label>
+          <input type="radio" name="customer_type" value="local" checked>
+          Local (Philippine Resident)
+        </label>
+        <label>
+          <input type="radio" name="customer_type" value="foreign">
+          Foreign Resident
+        </label>
+      </div>
+    </div>
+
+    <!-- Forms Container -->
+    <div class="customer-form-container">
+      <!-- Local Customer Form (Philippines) -->
+      <div id="local-customer-form" class="customer-form">
+        {% include 'local-customer-form' %}
+      </div>
+
+      <!-- Foreign Customer Form -->
+      <div id="foreign-customer-form" class="customer-form" style="display:none;">
+        {% include 'foreign-customer-form' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Add JS-ready class when JavaScript is available
+  document.documentElement.classList.add('js-ready');
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const customerTypeRadios = document.querySelectorAll('input[name="customer_type"]');
+    const localForm = document.getElementById('local-customer-form');
+    const foreignForm = document.getElementById('foreign-customer-form');
+    
+    customerTypeRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'local') {
+  localForm.style.display = this.value === 'local' ? 'block' : 'none';
+  foreignForm.style.display = this.value === 'foreign' ? 'block' : 'none';
+        } else {
+  localForm.style.display = this.value === 'local' ? 'block' : 'none';
+  foreignForm.style.display = this.value === 'foreign' ? 'block' : 'none';
+        }
+      });
+    });
+    
+    // Initialize Philippine address fields for local form
+    if (document.querySelector('#local-customer-form')) {
+      initializePhilippineAddressFields();
+    }
+  });
+
+  function initializePhilippineAddressFields() {
+    // Your existing Philippine address field initialization code
+  }
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-register.name",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-6"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "Terms Content",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_toc",
+      "label": "Show Table of Contents",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Article",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Article Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Terms Content"
+    }
+  ]
+}
+{% endschema %}

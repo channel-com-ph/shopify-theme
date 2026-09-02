@@ -1,0 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "quotation_list_eWdDWq": {
+      "type": "quotation-list",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-6",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "quotation_list_2_r99bCB": {
+      "type": "quotation-list-2",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "quotation_list_footer_QDdkYx": {
+      "type": "quotation-list-footer",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "custom_liquid_bqit7L": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n    #previewContainer {\n        display: flex;\n        flex-wrap: wrap;\n        gap: 10px;\n    }\n    img {\n        max-width: 150px; /* Set max width for image previews */\n        cursor: pointer; /* Change cursor to pointer for clickable images */\n        \n    }\n</style>\n<script src=\"https://accounts.google.com/gsi/client\" async defer></script>\n\n<h1>Upload and Preview PDF or Image Files</h1>\n<form id=\"uploadForm\">\n    <input type=\"file\" id=\"fileInput\" accept=\".pdf,image/*\" multiple>\n    <button type=\"submit\">Submit</button>\n</form>\n<div id=\"previewContainer\"></div>\n\n<script>\n    const clientId = '473977629426-n1kooemog057tbh9fp3vlkv2h8l480eu.apps.googleusercontent.com'; // Your client ID\n    const scope = 'https://www.googleapis.com/auth/drive.file'; // Required scopes\n    let accessToken = '';\n\n    function handleClientLoad() {\n        google.accounts.id.initialize({\n            client_id: clientId,\n            callback: handleCredentialResponse\n        });\n\n        google.accounts.id.prompt(); // Show the sign-in prompt\n    }\n\n    function handleCredentialResponse(response) {\n        accessToken = response.credential; // Store the token for API requests\n        console.log(\"User signed in successfully.\", accessToken);\n    }\n\n    const fileInput = document.getElementById('fileInput');\n    const previewContainer = document.getElementById('previewContainer');\n\n    // Display previews of selected files\n    fileInput.addEventListener('change', function() {\n        previewContainer.innerHTML = ''; // Clear existing previews\n        Array.from(fileInput.files).forEach(file => {\n            const reader = new FileReader();\n            reader.onload = function(event) {\n                const img = document.createElement('img');\n                img.src = event.target.result;\n                previewContainer.appendChild(img);\n            };\n            if (file.type.startsWith('image/')) {\n                reader.readAsDataURL(file);\n            } else if (file.type === 'application/pdf') {\n                const pdfPreview = document.createElement('div');\n                pdfPreview.textContent = `PDF: ${file.name}`;\n                previewContainer.appendChild(pdfPreview);\n            }\n        });\n    });\n\n    // Handle form submission\n    document.getElementById('uploadForm').addEventListener('submit', function(event) {\n        event.preventDefault();\n        const files = fileInput.files;\n\n        if (files.length === 0) {\n            alert(\"Please select a file to upload.\");\n            return;\n        }\n\n        if (!accessToken) {\n            alert(\"User is not signed in.\");\n            return;\n        }\n\n        Array.from(files).forEach(file => {\n            const metadata = {\n                name: file.name,\n                mimeType: file.type,\n                parents: ['1WMU4qUOHG5zWG8QWtLn3B3Kb7JdB-cpU'], // Folder ID in Google Drive\n            };\n\n            const form = new FormData();\n            form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));\n            form.append('file', file);\n\n            fetch('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id', {\n                method: 'POST',\n                headers: new Headers({ 'Authorization': 'Bearer ' + accessToken }),\n                body: form,\n            }).then((res) => {\n                if (!res.ok) {\n                    throw new Error('Network response was not ok');\n                }\n                return res.json();\n            }).then(function(val) {\n                console.log('File uploaded successfully:', val);\n            }).catch(function(error) {\n                console.error('Error uploading file:', error);\n            });\n        });\n    });\n\n    // Load the client library when the page loads\n    window.onload = handleClientLoad;\n</script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "quotation_list_eWdDWq",
+    "quotation_list_2_r99bCB",
+    "quotation_list_footer_QDdkYx",
+    "custom_liquid_bqit7L"
+  ]
+}

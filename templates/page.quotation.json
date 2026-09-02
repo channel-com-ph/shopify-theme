@@ -1,0 +1,590 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_pxWqQh": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_CpMLR7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Create a Quotation",
+            "heading_size": "h1"
+          }
+        },
+        "text_C9JARg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Whether you're a <strong>client </strong>or a <strong>contractor</strong>, easily generate a professional quote in just a few steps:</p><p><strong>1. Select Products </strong>– Browse and add items to your quotation list.</p><p><strong>2. Complete Your Quotation Details</strong></p><ul><li>Enter business information (name, logo, contact details)</li><li>Add client/contractor email and billing info</li><li>Include special terms or project notes</li></ul><p><strong>3. Generate & Share</strong> – Save, print, or share the finalized quote with your company branding.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_GE8HB3": {
+          "type": "button",
+          "settings": {
+            "button_label": "QUOTATION LIST",
+            "button_link": "shopify://pages/quotation-list",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_CpMLR7",
+        "text_C9JARg",
+        "button_GE8HB3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".image-with-text__content .image-with-text__text + .button {margin-top: 1rem;}",
+        ".image-with-text__content > * + * {margin-top: 3rem;}",
+        "p {line-height: 24px;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_na6i7n": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_fryBye": {
+          "type": "heading",
+          "settings": {
+            "heading": "Product Price Inquiry",
+            "heading_size": "h1"
+          }
+        },
+        "text_EzDBJB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you're unsure about the products you need, we're here to help! Our dedicated team of engineers and specialists is ready to assist you in selecting the perfect equipment for your needs.</p><h4><br/>Simply click the button below to answer a few questions, and share your vision with us. We'll provide you with a customized quote to meet your needs.</h4>",
+            "text_style": "body"
+          }
+        },
+        "button_Ua8GVj": {
+          "type": "button",
+          "settings": {
+            "button_label": "PRODUCT PRICE INQUIRY LIST",
+            "button_link": "shopify://pages/quotation-form",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_fryBye",
+        "text_EzDBJB",
+        "button_Ua8GVj"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".image-with-text__content .image-with-text__text + .button {margin-top: 1rem;}",
+        ".image-with-text__content > * + * {margin-top: 3rem;}",
+        "p {line-height: 24px;}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/cost.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_9yRnC6": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8x773P": {
+          "type": "heading",
+          "settings": {
+            "heading": "Request a Product Quotation",
+            "heading_size": "h1"
+          }
+        },
+        "text_W96PU4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Need help finding a product you are looking for but no price is indicated on our website?<br/><br/>Since the prices of the product continually change based on what our suppliers provide. Therefore, if a customer asks what the product's price is, our staff must verify the price.<br/><br/><strong>For faster access, If you've found the product you want but the price isn't listed, you can add it to your inquiry list. </strong></p><p>Once you've added all the products you want to inquire about, click the button below or the icon in the header above.</p>",
+            "text_style": "body"
+          }
+        },
+        "caption_qFzMgP": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "FOR PRODUCT QUOTATION",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "button_f7ECJ8": {
+          "type": "button",
+          "settings": {
+            "button_label": "Request a Product Quotation",
+            "button_link": "shopify://pages/inquiry-price",
+            "button_style_secondary": false
+          }
+        },
+        "caption_QmMhGM": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "FOR PRICE QUOTATION",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "button_m3Yw6M": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Request a Price Quotation",
+            "button_link": "shopify://pages/quotation-for-price-for-inquiry",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_8x773P",
+        "text_W96PU4",
+        "caption_qFzMgP",
+        "button_f7ECJ8",
+        "caption_QmMhGM",
+        "button_m3Yw6M"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".image-with-text__content .image-with-text__text + .button {margin-top: 1rem;}",
+        ".image-with-text__content > * + * {margin-top: 3rem;}",
+        "p {line-height: 24px;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/discount.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_EaKJmP": {
+      "type": "rich-text",
+      "blocks": {
+        "text_gVbEfb": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Request for Quotation (RFQ)</h1>"
+          }
+        }
+      },
+      "block_order": [
+        "text_gVbEfb"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "multicolumn_Enef4e": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_tPXhYJ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/enduser.jpg",
+            "title": "<strong>Create your own Quotation </strong>",
+            "text": "<p><strong>(For End Users)</strong></p><p>Quickly generate a quote by adding products, entering your details, and saving or printing the document.<br/><br/><strong>1. Select Products:</strong> Browse the catalog and add items to your quotation list.</p><p><strong>2. Enter Details:</strong> Provide your information (name, company, etc.) and add a project title.</p><p><strong>3. Generate & Save:</strong> Finalize the quote to save or print it for your records.</p>",
+            "link_label": "Create Quotation",
+            "link": "shopify://pages/quotation-list",
+            "card_background": "#f5f8ff",
+            "card_text_color": "#242833",
+            "card_border": ""
+          }
+        },
+        "column_dFCmmm": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/contractor_2fd078ed-3fcd-44fa-b316-6efb73f1b9b7.jpg",
+            "title": "<strong>Contractor's Quotation Form</strong>",
+            "text": "<p><strong>(For Contractors)</strong></p><p>Use this template quotation form designed for contractors.<br/><br/></p><p><strong>1. Add Business Details:</strong> Include your company name, logo, contact info, and custom terms.</p><p><strong>2. Select Products/Services:</strong> Choose items from the catalog for your client's project.</p><p><strong>3. Finalize & Share:</strong> Save, print, or download a professional PDF to send directly to clients.</p>",
+            "link_label": "Contractor's Quotation",
+            "link": "shopify://pages/channel-quotation-template",
+            "card_background": "#f5f8ff",
+            "card_text_color": "#242833",
+            "card_border": ""
+          }
+        },
+        "column_wPfpUe": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/price.jpg",
+            "title": "<strong>Price Inquiry</strong>",
+            "text": "<p><strong>(For Specific Products)</strong></p><p>Interested in a product but no price indicated? Use this form to get accurate pricing from our sales team.<br/><br/></p><p><strong>1. Build Your List:</strong> Add the desired products to your inquiry.</p><p><strong>2. Submit for Verification:</strong> Our sales  team will receive your email to update the cost of items you selected.<br/></p><p><strong>3. Receive Accurate Pricing:</strong> We'll email you the confirmed prices for your inquiry.</p><p></p><p></p><p></p>",
+            "link_label": "Price Inquiry",
+            "link": "shopify://pages/price-inquiry-quote",
+            "card_background": "#f5f8ff",
+            "card_text_color": "#242833",
+            "card_border": ""
+          }
+        },
+        "column_C99Lca": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/recommendation.jpg",
+            "title": "<strong>Project Recommendation</strong>",
+            "text": "<p><strong>(For Project Quotation)</strong></p><p>Let our expertise help you by providing <br/>an accurate recommendation and quotation for this project.</p><p><br/></p><p><strong>1. Share Your Requirements:</strong> Answer a few questions about your project needs and goals.</p><p><strong>2. Get Expert Recommendations:</strong> Our engineers will analyze your needs and suggest the best solutions.</p><p><strong>3. Receive a Quote:</strong> We'll prepare a quotation based on the project requirements.</p>",
+            "link_label": "Request Product Quotation",
+            "link": "shopify://pages/request-product-quotation",
+            "card_background": "#f5f8ff",
+            "card_text_color": "#242833",
+            "card_border": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_tPXhYJ",
+        "column_dFCmmm",
+        "column_wPfpUe",
+        "column_C99Lca"
+      ],
+      "custom_css": [
+        ".animate-arrow {display: inline-block; padding: 10px 10px; background-color: #8b0000; color: white; text-align: center; text-decoration: none; border-radius: 5px; border: 1px solid #8b0000; cursor: pointer; transition: background-color 0.3s ease, border-color 0.3s ease; width: 90%; font-size: 80%; padding: auto; margin-top: auto;}",
+        "Slider-template--17759909281978__multicolumn_Enef4e {flex: 1; display: flex; flex-direction: column; border: 1px solid #eee; padding: 20px;}"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "circle",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "slideshow_grqghn": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_8ndagX": {
+          "type": "slide",
+          "settings": {
+            "image_link": "",
+            "heading": "<strong>Create a Standard Quotation</strong>",
+            "heading_size": "h1",
+            "subheading": "<strong>(For End Users) | </strong>For quickly generating a quote. Simply add products, fill in the client's details, and save or print the document.",
+            "button_label": "Create Quotation",
+            "link": "shopify://pages/quotation-list",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 70,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_LhHKG9": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/CONTRACTOR_390bfe68-96e6-4e5e-8100-f0dec0a0ffea.jpg",
+            "image_link": "",
+            "heading": "<strong>Contractor's Quotation Builder</strong>",
+            "heading_size": "h1",
+            "subheading": "<strong>(For Contractors) | </strong>Create and send polished, branded quotes in minutes with form designed for contractors.",
+            "button_label": "Button label",
+            "link": "shopify://pages/channel-quotation-template",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 50,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_j3TdjY": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/ReqProduct.jpg",
+            "image_link": "",
+            "heading": "<strong>Get a Tailored Recommendation</strong>",
+            "heading_size": "h1",
+            "subheading": "<strong>(For Project Planning) | </strong>Finding the right equipment can be tricky. Let our experts help you by providing a personalized recommendation and quote.",
+            "button_label": "Button label",
+            "link": "https://d99e66-54.myshopify.com/pages/quotation-form",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 50,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_efGTMT": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/ProductPriceInq.jpg",
+            "image_link": "",
+            "heading": "<strong>Product Price Inquiry</strong>",
+            "heading_size": "h1",
+            "subheading": "<strong>(For Specific Items) | </strong>Interested in a product but don't see the price? Use this form to get accurate, up-to-date pricing from our team.",
+            "button_label": "Button label",
+            "link": "https://d99e66-54.myshopify.com/pages/inquiry-price",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 50,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_8ndagX",
+        "slide_LhHKG9",
+        "slide_j3TdjY",
+        "slide_efGTMT"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "rich_text_EetLJt": {
+      "type": "rich-text",
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "slideshow_UKPGnw": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_Tnfq8d": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/CONTRACTOR_390bfe68-96e6-4e5e-8100-f0dec0a0ffea.jpg",
+            "image_link": "",
+            "heading": "<strong>Contractor's Quotation Builder</strong>",
+            "heading_size": "h1",
+            "subheading": "<strong>(For Contractors) | </strong>Create and send polished, branded quotes in minutes with form designed for contractors.",
+            "button_label": "Build Contractor Quote",
+            "link": "shopify://pages/channel-quotation-template",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 50,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_Tnfq8d"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "rich_text_QFTDbx": {
+      "type": "rich-text",
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "slideshow_3z8F8Y": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_A4gtza": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/ProductPriceInq.jpg",
+            "image_link": "",
+            "heading": "<strong>Product Price Inquiry</strong>",
+            "heading_size": "h1",
+            "subheading": "<strong>(For Specific Items) | </strong>Interested in a product but don't see the price? Use this form to get accurate, up-to-date pricing from our team.",
+            "button_label": "Product Price Inquiry",
+            "link": "https://d99e66-54.myshopify.com/pages/inquiry-price",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 50,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_A4gtza"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "rich_text_EMUWBY": {
+      "type": "rich-text",
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "slideshow_N9JmjC": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_jYNq4a": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/ReqProduct.jpg",
+            "image_link": "",
+            "heading": "<strong>Get a Tailored Recommendation</strong>",
+            "heading_size": "h1",
+            "subheading": "Finding the right equipment can be tricky. Let our experts help you by providing a personalized recommendation and quote.",
+            "button_label": "Request Product Quotation",
+            "link": "https://d99e66-54.myshopify.com/pages/quotation-form",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 50,
+            "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_jYNq4a"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_pxWqQh",
+    "image_with_text_na6i7n",
+    "image_with_text_9yRnC6",
+    "rich_text_EaKJmP",
+    "multicolumn_Enef4e",
+    "slideshow_grqghn",
+    "rich_text_EetLJt",
+    "slideshow_UKPGnw",
+    "rich_text_QFTDbx",
+    "slideshow_3z8F8Y",
+    "rich_text_EMUWBY",
+    "slideshow_N9JmjC"
+  ]
+}

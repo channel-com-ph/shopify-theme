@@ -1,0 +1,520 @@
+{{ 'quotation-form-styles.aio.min.css' | asset_url | stylesheet_tag }} 
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}  
+
+  <div class="page-width">
+    <div id="main-form">
+      <span><h2>QUOTATION FORM</h2></span>
+      <form id="form">
+        <div class="customer-details">
+          <label class="label-form">Full Name</label>
+          <div class="two-col">
+            <span><input type="text" placeholder="First Name" name="fName" class="text-field-normal" id="inputFName" required ></span>
+            <span><input type="text" placeholder="Last Name" name="lName" class="text-field-normal" id="inputLName" required ></span>
+          </div>
+          <label class="label-form">Company Name</label>
+          <span><input type="text" placeholder="Company Name" name="compName" class="text-field-wide" id="inputCName" required ></span>
+          <div class="two-col">
+            <div class="one-col">
+              <label class="label-form">Phone Number</label>
+              <span><input type="tel" placeholder="Phone Number" name="inputTel" class="text-field-wide" id="inputPhone" required ></span>
+            </div>
+            <div class="one-col">
+              <label class="label-form">Email Address</label>
+              <span><input type="email" placeholder="Email Address" name="emailAdd" class="text-field-wide" id="inputEmail" required ></span>
+            </div>
+          </div>
+          <label class="label-form">Project Title</label>
+          <span><input type="text" placeholder="Project Title (Enter 'None' if you don't have Title)" name="projName" class="text-field-wide" id="inputProject" required ></span>
+        </div>
+        <div class="quotation-selection">
+          <label class="label-form">Select Product to be Quoted</label>
+          <span><input
+              type="text"
+              id="searchInput"
+              placeholder="Search a Product"
+              class="text-field-wide"
+              onkeyup="filterFunction()"></span>
+          <span><select id="contactFormProductNameField" name="contact[Product]" size="5" class="text-field-options">
+              <option selected disabled>Choose a Product for Quotation</option>
+              {% for product in collections.all.products %}
+  
+                {% if product.price != 0 %}
+                    {%- if product.metafields.custom.item_notes.value -%}
+                      {%- assign note = product.metafields.custom.item_notes.value -%}
+                    {%- else -%}
+                      {%- assign note = '' -%}
+                    {%- endif -%}
+                    {%- if product.metafields.custom.quantity_units.value -%}
+                      {%- assign quantity_unit = product.metafields.custom.quantity_units.value -%}
+                    {%- else -%}
+                      {%- assign quantity_unit = '' -%}
+                    {%- endif -%}
+                  <option
+                    value="{{ product.title }}"
+                    data-price="{{ product.price | money }}"
+                    data-image="{{ product.featured_image | img_url: '80x80' }}"
+                    data-item="{{ product.type }}"
+                    data-note="{{ note.notes }}"
+                    data-quantityUnit="{{ quantity_unit.name }}"
+                    data-brand="{{ product.vendor }}"
+                    onclick="getQtyUnit()" id="productItem"
+                   class="options">
+                    {{ product.title }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select></span
+          >
+          <div class="three-col">
+            <label class="label-form width-col3">Number of Quantity</label>
+            <input
+                type="number"
+                placeholder="Quantity"
+                name="qty"
+                value="1"
+                class="text-field-small width-col3"
+                id="inputQty" min="1"
+                required>
+            <span id="qtyUnit" class="width-col3">UNIT</span>
+          </div>
+          <span><input class="quotation-btn" type="button" onclick="getProductData()" value="ADD PRODUCT" /></span>
+          <!-- <span><input class="quotation-btn" type="button" id="sendEmailButton" value="SEND" /></span> -->
+        </div>
+        <table id="quotation-table" class="quotation-table-style">
+          <thead class="quotation-thead-style">
+            <tr>
+              <th><span>IMAGE</span></th>
+              <th><span>ITEM</span></th>
+              <th><span>MODEL</span></th>
+              <th><span>BRAND</span></th>
+              <th><span>UNIT PRICE</span></th>
+              <th><span>QTY.</span></th>
+              <th><span>UNIT</span></th>
+              <th><span>AMOUNT</span></th>
+              <th><span>NOTE</span></th>
+              <th class="btn-col" id="edit-col"></th>
+              <th class="btn-col" id="delete-col"></th>
+            </tr>
+          </thead>
+          <tbody class="quotation-tbody-style">
+            <tr id="blank">
+              <td id="table-img"></td>
+              <td id="table-item"></td>
+              <td id="table-model"></td>
+              <td id="table-brand"></td>
+              <td id="table-unitPrice"></td>
+              <td id="table-qty"></td>
+              <td id="table-qtyUnit"></td>
+              <td id="table-amountPrice"></td>
+              <td id="table-note"></td>
+              <td><button id="" class="edit-btn">Edit</button></td>
+              <td><button id="" class="delete-btn">Delete</button></td>
+            </tr>
+          </tbody>
+          <tfoot class="quotation-tfoot-style">
+            <tr id="totalRow">
+              <td class="total-label" colspan = "6">TOTAL AMOUNT</td>
+              <td id="totalAmountPrice" class="total-amount" colspan = "2"></td>
+              <td colspan = "1"><strong>VAT INC.</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+        <span><input type="submit" value="SAVE" id="quotation-download-btn" class="quotation-btn"></span>
+        <!-- <span><input type="button" value="DOWNLOAD" id="quotation-download-btn2" class="quotation-btn"></span> -->
+      </form>
+    </div>
+    
+    <div class="quotation-document" id="quotation-file">
+      <span><input type="button" value="DOWNLOAD" id="quotation-download-btn2" class="quotation-btn"></span>
+      <div class="container" id="file">
+        <div class="quotation-header">
+          <span><img src="https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_Transparent.png?v=1727063299" crossorigin="anonymous" 
+      referrerpolicy="no-referrer"  height="40" width="auto"></span>
+          <span class="small-heading"><p style="font-size: 14px;">CHANNEL INTERNATIONAL ENTERPRISES</p></span>
+          <span class="small-heading"><p>#43 Don A. Roces Ave.Quezon City Metro Manila Philippines</p></span>
+          <span class="small-heading"><p>Tel.: (+632) 7738 2844; Smart +63 998 983 4535; Globe +63 915 339 7985</p></span>
+        </div>
+        <div id="quotation-customer-info" class="quotation-info">
+          
+        </div>
+        <div id="quotation-products-table" style=" margin: 0;">
+          
+        </div>
+        <div class="quotation-footer">
+            <span><p><strong>TERMS & CONDITIONS:</strong></p></span>
+            <span>
+              <ol type="A" style="color: black; border-bottom: 1px solid #BC2305;">
+                <li class="col-con">
+                  <span class="col-sh">
+                    <strong>A. Payment Terms:</strong>
+                  </span>
+                  <span>
+                    <ul>
+                      <li>70% Downpayment - cash/check; 30% - cash upon pick up/item availability.</li>
+                      <li>Check for downpayment has to be cleared first before we proceed with the processing of order.</li>
+                    </ul>
+                  </span>
+                </li>
+                <li class="col-con">
+                  <span class="col-sh">
+                    <strong>B. Price Validity:</strong>
+                  </span>
+                  <span>
+                    <ul>
+                      <li>Seven (7) days</li>
+                    </ul>
+                  </span>
+                </li>
+                <li class="col-con">
+                  <span class="col-sh">
+                    <strong>C. Quotation Validity:</strong>
+                  </span>
+                  <span>
+                    <ul>
+                      <li>Seven (7) days</li>
+                    </ul>
+                  </span>
+                </li>
+                <li class="col-con">
+                  <span class="col-sh">
+                    <strong>D. Item Availability:</strong>
+                  </span>
+                  <span>
+                    <ul>
+                      <li>Pick up from store for on-stock items 1 to 5 days from PO with downpayment</li>
+                      <li>Delivery for on-stock items-- 8-10 days upon PO with downpayment</li>
+                      <li>Order-based items-- 21-45 days to arrive upon P.O. with downpayment. </li>
+                    </ul>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>F. Purchase Orders made (especially with downpayment) are non-cancellable.</strong>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>G. All items are on first come first served basis.</strong>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <strong>H. If payment for the balance is also check, it has to be cleared first before we release the items.</strong>
+                  </span>
+                </li>
+              </ol>
+            </span>
+          <div style="width: 70%; margin: auto; text-align: left; margin-top: 4px;">
+            <strong style="margin-left: 20px;">Conforme:</strong>
+            <div style="display: flex; width: 60%; border-bottom: 1px solid #000; border-top: transparent; border-right: transparent; border-left: transparent;margin: auto;"></div>
+            <i style="font-size: 10px; display: block;text-align: center;"><strong>Signature of the Owner/Authorized Representative Over Printed Name</strong></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function filterFunction() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const dropdown = document.getElementById('contactFormProductNameField');
+        const options = dropdown.options;
+
+        for (let i = 1; i < options.length; i++) {
+          const txtValue = options[i].text.toLowerCase();
+          options[i].style.display = txtValue.includes(filter) ? '' : 'none';
+        }
+      }
+      
+      let sumVal = 0; 
+
+      function getProductData() {
+        const selectProduct = document.querySelector('#contactFormProductNameField');
+        const selectedOption = selectProduct.options[selectProduct.selectedIndex];
+        const qty = document.querySelector('#inputQty');
+    
+        const productImage = selectedOption.getAttribute('data-image');
+        const productItem = selectedOption.getAttribute('data-item');
+        const productModel = selectedOption.value;
+        const productBrand = selectedOption.getAttribute('data-brand');
+        const productPrice = selectedOption.getAttribute('data-price');
+        const productQty = qty.value;
+        const productQtyUnit = selectedOption.getAttribute('data-quantityUnit');
+        const productNote = selectedOption.getAttribute('data-note');
+    
+        if (isNaN(productQty) || productQty <= 0) {
+          alert("Please enter a valid quantity.");
+          return;
+        }
+    
+        const productAmountPrice = parseFloat(productPrice.replace(/₱/g, '').replace(/,/g, '')) * parseInt(productQty);
+    
+        const tableBody = document.querySelector('tbody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td><img src="${productImage}" alt="${productModel}" /></td>
+          <td>${productItem}</td>
+          <td>${productModel}</td>
+          <td>${productBrand}</td>
+          <td>${productPrice}</td>
+          <td class="qty-cell">${productQty}</td>
+          <td>${productQtyUnit}</td>
+          <td>${formatCurrency(productAmountPrice)}</td>
+          <td>${productNote}</td>
+          <td id="edit-col"><button class="edit-btn" type="button">Edit</button></td>
+          <td id="delete-col"><button class="delete-btn" type="button">Delete</button></td>
+        `;
+    
+        tableBody.appendChild(newRow);
+        const blankRow = tableBody.querySelector('#blank');
+        if (blankRow) blankRow.remove(); 
+        
+        sumVal += productAmountPrice; 
+        document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumVal);
+    
+        newRow.querySelector('.delete-btn').addEventListener('click', () => deleteRow(newRow, productAmountPrice));
+        newRow.querySelector('.edit-btn').addEventListener('click', () => editQty(newRow));
+    
+        selectProduct.selectedIndex = 0; 
+        qty.value = 1; 
+      }
+
+      function deleteRow(row, productAmountPrice) {
+        sumVal -= productAmountPrice; 
+        row.remove(); 
+        document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumVal); 
+      }
+
+      function editQty(newRow) {
+        const editButton = newRow.querySelector('.edit-btn');
+        const qtyCell = newRow.querySelector('.qty-cell');
+        const currentQty = qtyCell.textContent;
+        const productPrice = newRow.querySelector('td:nth-child(5)').textContent; 
+        const currentAmountPrice = parseFloat(newRow.querySelector('td:nth-child(8)').textContent.replace(/₱/g, '').replace(/,/g, ''));
+    
+        if (editButton.textContent === 'Edit') {
+          qtyCell.innerHTML = `<input type="number" value="${currentQty}" class="edit-qty" min="1" />`;
+          editButton.textContent = 'Save';
+        } else {
+          const inputField = qtyCell.querySelector('.edit-qty');
+          const newQty = inputField.value;
+  
+          if (isNaN(newQty) || newQty <= 0) {
+            alert("Please enter a valid quantity.");
+            return;
+          }
+  
+          qtyCell.textContent = newQty;
+          const newAmountPrice = parseFloat(productPrice.replace(/₱/g, '').replace(/,/g, '')) * parseInt(newQty);
+  
+          sumVal = sumVal - currentAmountPrice + newAmountPrice; 
+          newRow.querySelector('td:nth-child(8)').textContent = formatCurrency(newAmountPrice);
+          document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumVal); 
+  
+          editButton.textContent = 'Edit';
+        }
+      }
+
+      function formatCurrency(value) {
+        return '₱' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+
+      function getQtyUnit() {
+        const selectProduct = document.querySelector('#contactFormProductNameField');
+        const selectedOption = selectProduct.options[selectProduct.selectedIndex];
+        const productQtyUnit = selectedOption.getAttribute('data-quantityUnit');
+        document.querySelector('#qtyUnit').textContent = productQtyUnit;
+      }
+
+
+      document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        
+        const fName = document.getElementById('inputFName').value;
+        const lName = document.getElementById('inputLName').value;
+        const fullName = `${fName} ${lName}`;
+        const company = document.getElementById('inputCName').value;
+        const phone = document.getElementById('inputPhone').value;
+        const email = document.getElementById('inputEmail').value;
+        const project = document.getElementById('inputProject').value;
+        const preparedBy = 'channel.com.ph';
+        const table = document.getElementById('quotation-table');
+    
+        const updatedRows = [];
+        const rows = table.getElementsByTagName('tr');
+    
+        for (let row of rows) {
+          const clonedRow = row.cloneNode(true);
+          const deleteCol = clonedRow.querySelector('#delete-col');
+          const editCol = clonedRow.querySelector('#edit-col');
+  
+          if (deleteCol) deleteCol.remove(); 
+          if (editCol) editCol.remove(); 
+  
+          updatedRows.push(clonedRow.outerHTML);
+        }
+    
+        const updatedTable = `<tbody>${updatedRows.join('')}</tbody>`; 
+        
+        const today = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+        const date = new Date(today);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = date.toLocaleDateString(undefined, options);
+        
+        const year = date.getFullYear();
+        const shYear = year.toString().slice(-2);
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String.fromCharCode(date.getHours() + 65);
+        const mins = String(date.getMinutes()).padStart(2, '0');
+        const secs = String(date.getSeconds()).padStart(2, '0');
+        const jobNumber = month + shYear + day + "-" + hours + mins + secs;
+        
+    
+        document.getElementById('quotation-customer-info').innerHTML = `
+          <div class="start-margin"><div class="start-margin-col"><strong>Attention:</strong> ${fullName} <br>
+          <strong>Company:</strong> ${company} <br>
+          <strong>Contact Number:</strong> ${phone} <br>
+          <strong>Email:</strong> ${email} <br>
+          <strong>Project Title:</strong> ${project} <br></div>
+          <div class="start-margin-col"><strong>Date:</strong> ${formattedDate} <br>
+          <strong>Prepared by:</strong> ${preparedBy} <br>
+          <strong>Job Number:</strong> ${jobNumber} <br></div></div>
+          <strong style="text-align: center;">Q U O T A T I O N</strong><br>
+          <table class="quotation-table-style file-table"> ${updatedTable} </table>
+        `;
+        
+        this.reset();
+        alert("Your data entered in the forms have been saved.");
+      });
+
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          if (document.querySelector(`script[src="${src}"]`)) return resolve();
+          const s = document.createElement('script');
+          s.src = src;
+          s.crossOrigin = 'anonymous';
+          s.referrerPolicy = 'no-referrer';
+          s.onload = resolve;
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+
+      window.onload = function () {
+        document.getElementById("quotation-download-btn2").addEventListener("click", () => {
+          loadScript("https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js").then(() => {
+            const file = document.getElementById("file");
+            const mainForm = document.getElementById("main-form");
+            mainForm.style.display = 'none';
+            file.style.display = 'block';
+            file.style.zIndex = '10000';
+
+            var opt = {
+              margin: 0,
+              filename: 'Quotation - channelcomph.pdf',
+              image: { type: 'PNG', quality: 1 },
+              html2canvas: { scale: 3, useCORS: true, },
+              jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+            };
+
+            if (file) {
+              console.log(file.innerHTML);
+              setTimeout(() => {
+                html2pdf().from(file).set(opt).save().then(() => {
+                  mainForm.style.display = 'block';
+                  file.style.display = 'none'; 
+                  location.reload(); 
+                });
+              }, 500); 
+            } else {
+              console.error("Element with ID 'file' not found.");
+            }
+          }).catch(() => {
+            console.error("Failed to load html2pdf library.");
+          });
+        });
+      };
+    </script>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Quotation Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  {
+    "type": "color_scheme",
+    "id": "color_scheme",
+    "label": "t:sections.all.colors.label",
+    "info": "t:sections.all.colors.has_cards_info",
+    "default": "scheme-6"
+  },
+  {
+    "type": "select",
+    "id": "sticky_header_type",
+    "options": [
+      {
+        "value": "none",
+        "label": "t:sections.header.settings.sticky_header_type.options__1.label"
+      },
+      {
+        "value": "on-scroll-up",
+        "label": "t:sections.header.settings.sticky_header_type.options__2.label"
+      },
+      {
+        "value": "always",
+        "label": "t:sections.header.settings.sticky_header_type.options__3.label"
+      },
+      {
+        "value": "reduce-logo-size",
+        "label": "t:sections.header.settings.sticky_header_type.options__4.label"
+      }
+    ],
+    "default": "on-scroll-up",
+    "label": "t:sections.header.settings.sticky_header_type.label"
+  },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_top",
+    "default": 36
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_bottom",
+    "default": 36
+  }
+  ],
+"presets": [
+  {
+    "name": "Quotation Form"
+  }
+]
+}
+{% endschema %}

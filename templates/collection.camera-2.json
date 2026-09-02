@@ -1,0 +1,151 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_tTpDCU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_BAmUdC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camcorder"
+          }
+        },
+        "featured_collection_QK3Ewe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ptz-camera"
+          }
+        },
+        "featured_collection_6mwbwz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mirrorless-dslr"
+          }
+        },
+        "featured_collection_rHyJpx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "webcam"
+          }
+        },
+        "featured_collection_teLFHY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "action-camera"
+          }
+        },
+        "featured_collection_xRkXbJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drone"
+          }
+        },
+        "featured_collection_T7GdHB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "photo-camera"
+          }
+        },
+        "featured_collection_jaEHTY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "document-camera"
+          }
+        },
+        "featured_collection_QKwBYR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-lens"
+          }
+        },
+        "featured_collection_RDngtE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-microphone"
+          }
+        },
+        "featured_collection_4fYYaA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-case-storage"
+          }
+        },
+        "featured_collection_bACGc7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_BAmUdC",
+        "featured_collection_QK3Ewe",
+        "featured_collection_6mwbwz",
+        "featured_collection_rHyJpx",
+        "featured_collection_teLFHY",
+        "featured_collection_xRkXbJ",
+        "featured_collection_T7GdHB",
+        "featured_collection_jaEHTY",
+        "featured_collection_QKwBYR",
+        "featured_collection_RDngtE",
+        "featured_collection_4fYYaA",
+        "featured_collection_bACGc7"
+      ],
+      "settings": {
+        "title": "CAMERA",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_list_tTpDCU"
+  ]
+}

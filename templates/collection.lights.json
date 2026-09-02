@@ -1,0 +1,660 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_bzw3BR": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_QLPWe6": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_eng4CK": {
+          "type": "heading",
+          "settings": {
+            "heading": "LIGHTS",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eng4CK"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_RcXpjM": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_dtw8za": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "moving-head"
+          }
+        },
+        "featured_collection_x8abC9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "led-light"
+          }
+        },
+        "featured_collection_Wkzfcm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bar-led-light"
+          }
+        },
+        "featured_collection_YpCDzC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "spot-light"
+          }
+        },
+        "featured_collection_f9FNQ9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "laser-light"
+          }
+        },
+        "featured_collection_bfDgge": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "follow-spot"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_dtw8za",
+        "featured_collection_x8abC9",
+        "featured_collection_Wkzfcm",
+        "featured_collection_YpCDzC",
+        "featured_collection_f9FNQ9",
+        "featured_collection_bfDgge"
+      ],
+      "settings": {
+        "title": "STAGE LIGHTS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_RCh6FK": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_VVehxR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lightning-console"
+          }
+        },
+        "featured_collection_hD7m8f": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-controller"
+          }
+        },
+        "featured_collection_dgb6it": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "software-dmx-interface"
+          }
+        },
+        "featured_collection_b6hc9k": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dimmer"
+          }
+        },
+        "featured_collection_Kk3jgz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dmx-distributor"
+          }
+        },
+        "featured_collection_GengUx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-tx-rx"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_VVehxR",
+        "featured_collection_hD7m8f",
+        "featured_collection_dgb6it",
+        "featured_collection_b6hc9k",
+        "featured_collection_Kk3jgz",
+        "featured_collection_GengUx"
+      ],
+      "settings": {
+        "title": "LIGHTING CONTROLLER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_zJzbTU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_hJgBPi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "haze-fog-machine"
+          }
+        },
+        "featured_collection_fNjwWd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "confetti"
+          }
+        },
+        "featured_collection_iMYi6P": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bubble-machine"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_hJgBPi",
+        "featured_collection_fNjwWd",
+        "featured_collection_iMYi6P"
+      ],
+      "settings": {
+        "title": "EFFECTS MACHINE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_J3TtY7": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_rXp9f8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "stage"
+          }
+        },
+        "featured_collection_9qEXaH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "truss-systems"
+          }
+        },
+        "featured_collection_d8kWMz": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "truss-segments"
+          }
+        },
+        "featured_collection_qVxyJ3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "truss-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_rXp9f8",
+        "featured_collection_9qEXaH",
+        "featured_collection_d8kWMz",
+        "featured_collection_qVxyJ3"
+      ],
+      "settings": {
+        "title": "STAGE & TRUSS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_wdrnLg": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_ECMwX6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "light-stand"
+          }
+        },
+        "featured_collection_BeCHjz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dmx-cable"
+          }
+        },
+        "featured_collection_K99CBq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lights-connector"
+          }
+        },
+        "featured_collection_QTVmDn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lights-case"
+          }
+        },
+        "featured_collection_rFiFNY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "light-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_ECMwX6",
+        "featured_collection_BeCHjz",
+        "featured_collection_K99CBq",
+        "featured_collection_QTVmDn",
+        "featured_collection_rFiFNY"
+      ],
+      "settings": {
+        "title": "LIGHT STAND & ACCESSORIES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_3TE9aN": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_iHKNWh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tungsten-lights"
+          }
+        },
+        "featured_collection_yj6W8M": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fluorescent-lights"
+          }
+        },
+        "featured_collection_d7LnkB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hmi-lights"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_iHKNWh",
+        "featured_collection_yj6W8M",
+        "featured_collection_d7LnkB"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "STUDIO LIGHTS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_fPaiWM": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_iDWgpX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-lights"
+          }
+        },
+        "featured_collection_JYHjCf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-light"
+          }
+        },
+        "featured_collection_7tgmHU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "photo-lights"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_iDWgpX",
+        "featured_collection_JYHjCf",
+        "featured_collection_7tgmHU"
+      ],
+      "settings": {
+        "title": "PHOTO & VIDEO LIGHTS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_WTpdLN": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_dWNRLH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "monolights"
+          }
+        },
+        "featured_collection_3eiGiy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "power-packs-heads"
+          }
+        },
+        "featured_collection_ziY9mL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "on-camera-flashes"
+          }
+        },
+        "featured_collection_QiQK3t": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "remote-trigger-strobes"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_dWNRLH",
+        "featured_collection_3eiGiy",
+        "featured_collection_ziY9mL",
+        "featured_collection_QiQK3t"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "STROBE LIGHTING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_xMGwDy": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_HLYAxr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dj-event-lighting"
+          }
+        },
+        "featured_collection_NLehTV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "stage-lighting"
+          }
+        },
+        "featured_collection_KQeqLa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "additional-light-types"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_HLYAxr",
+        "featured_collection_NLehTV",
+        "featured_collection_KQeqLa"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "SPECIALITY LIGHTING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_cHVA6b": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_NLihDa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "softboxes-accessories"
+          }
+        },
+        "featured_collection_VyhJeG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "umbrellas-accessories"
+          }
+        },
+        "featured_collection_TVkTyp": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "reflectors-accessories"
+          }
+        },
+        "featured_collection_MfUGf9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "barn-door-reflector"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_NLihDa",
+        "featured_collection_VyhJeG",
+        "featured_collection_TVkTyp",
+        "featured_collection_MfUGf9"
+      ],
+      "settings": {
+        "title": "LIGHT MODIFIERS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_JYpkBq": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_wgz4dX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-light-stands"
+          }
+        },
+        "featured_collection_LPCJ3r": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "boom-equipment"
+          }
+        },
+        "featured_collection_9UxCaC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "light-stands-mounting-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_wgz4dX",
+        "featured_collection_LPCJ3r",
+        "featured_collection_9UxCaC"
+      ],
+      "settings": {
+        "title": "STUDIO LIGHT STANDS & MOUNTING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_twfUjJ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_dLQz4p": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-background"
+          }
+        },
+        "featured_collection_YtHqHh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tabletop-shooting"
+          }
+        },
+        "featured_collection_XYLQi4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "stage-studio-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_dLQz4p",
+        "featured_collection_YtHqHh",
+        "featured_collection_XYLQi4"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "STUDIO EQUIPMENT",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "custom_liquid_bzw3BR",
+    "rich_text_QLPWe6",
+    "collection_list_RcXpjM",
+    "collection_list_RCh6FK",
+    "collection_list_zJzbTU",
+    "collection_list_J3TtY7",
+    "collection_list_wdrnLg",
+    "collection_list_3TE9aN",
+    "collection_list_fPaiWM",
+    "collection_list_WTpdLN",
+    "collection_list_xMGwDy",
+    "collection_list_cHVA6b",
+    "collection_list_JYpkBq",
+    "collection_list_twfUjJ"
+  ]
+}

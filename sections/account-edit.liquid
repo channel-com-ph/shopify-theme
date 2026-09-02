@@ -1,0 +1,262 @@
+{% layout 'theme' %}
+
+<style>
+  .account-edit-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .account-edit-form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .account-edit-form h2 {
+    margin: 25px 0 15px;
+    font-size: 1.2rem;
+    color: rgba(var(--color-foreground), 0.9);
+  }
+
+  .account-edit-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: rgba(var(--color-foreground), 0.8);
+  }
+
+  .account-edit-form input[type="text"],
+  .account-edit-form input[type="email"],
+  .account-edit-form input[type="tel"],
+  .account-edit-form input[type="date"],
+  .account-edit-form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(var(--color-foreground), 0.2);
+    border-radius: 4px;
+    background: rgb(var(--color-background));
+    color: rgba(var(--color-foreground), 0.9);
+  }
+
+  .phone-input-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .phone-input-group select {
+    flex: 0 0 100px;
+  }
+
+  .phone-input-group input {
+    flex: 1;
+  }
+
+  .account-edit-form .button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+  }
+
+  .account-edit-form .button {
+    flex: 1;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .account-edit-form .button-group {
+      flex-direction: column;
+    }
+    
+    .phone-input-group {
+      flex-direction: column;
+    }
+    
+    .phone-input-group select {
+      flex: 1;
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="customer account section-{{ section.id }}-padding color-{{ section.settings.color_scheme }}">
+  <div class="account-edit-form">
+    <h1 class="customer__title">{{ 'customer.account.edit_title' | t }}</h1>
+
+    {% form 'customer' %}
+      <input type="hidden" name="customer[id]" value="{{ customer.id }}">
+      <input type="hidden" name="customer_type" id="customer_type" value="{{ customer.metafields.custom.customer_type.value | default: 'foreign' }}">
+
+      <h2>{{ 'customer.account.personal_info' | t }}</h2>
+      <div>
+        <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+        <input type="text" name="customer[first_name]" id="FirstName" value="{{ customer.first_name }}" required>
+      </div>
+      
+      <div>
+        <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+        <input type="text" name="customer[last_name]" id="LastName" value="{{ customer.last_name }}" required>
+      </div>
+      
+      <div>
+        <label for="Email">{{ 'customer.register.email' | t }}</label>
+        <input type="email" name="customer[email]" id="Email" value="{{ customer.email }}" required>
+      </div>
+
+      <div>
+        <label for="birthdate">{{ 'customer.register.birthdate' | t }}</label>
+        <input type="date" name="customer[metafields][custom][birthdate]" id="birthdate" value="{{ customer.metafields.custom.birthdate.value }}">
+      </div>
+
+      <div>
+        <label for="phone">{{ 'customer.register.phone' | t }}</label>
+        <div class="phone-input-group">
+          <select name="customer[metafields][custom][personal_contactCode]" id="phoneCode">
+            <option value="+63" {% if customer.metafields.custom.personal_contactCode.value == '+63' %}selected{% endif %}>+63 (PH)</option>
+            <option value="+1" {% if customer.metafields.custom.personal_contactCode.value == '+1' %}selected{% endif %}>+1 (US/CA)</option>
+            <option value="+44" {% if customer.metafields.custom.personal_contactCode.value == '+44' %}selected{% endif %}>+44 (UK)</option>
+            <option value="+61" {% if customer.metafields.custom.personal_contactCode.value == '+61' %}selected{% endif %}>+61 (AU)</option>
+            <option value="+65" {% if customer.metafields.custom.personal_contactCode.value == '+65' %}selected{% endif %}>+65 (SG)</option>
+          </select>
+          <input type="tel" name="customer[phone]" id="phone" value="{{ customer.phone }}" placeholder="{{ 'customer.register.phone_placeholder' | t }}">
+        </div>
+      </div>
+
+      <h2>{{ 'customer.addresses.shipping_address' | t }}</h2>
+      
+      <div>
+        <label for="address_type">{{ 'customer.addresses.address_type' | t }}</label>
+        <select name="customer[metafields][custom][customer_type]" id="address_type" onchange="toggleAddressFields()">
+          <option value="local" {% if customer.metafields.custom.customer_type.value == 'local' %}selected{% endif %}>{{ 'customer.addresses.local' | t }}</option>
+          <option value="foreign" {% if customer.metafields.custom.customer_type.value == 'foreign' or customer.metafields.custom.customer_type.value == blank %}selected{% endif %}>{{ 'customer.addresses.foreign' | t }}</option>
+        </select>
+      </div>
+
+      <div id="local_address_fields" {% unless customer.metafields.custom.customer_type.value == 'local' %}style="display:none;"{% endunless %}>
+        <div>
+          <label for="home_address">{{ 'customer.addresses.address1' | t }}</label>
+          <input type="text" name="customer[metafields][custom][home_address]" id="home_address" value="{{ customer.metafields.custom.home_address.value }}">
+        </div>
+        
+        <div>
+          <label for="home_brgy">{{ 'customer.addresses.barangay' | t }}</label>
+          <input type="text" name="customer[metafields][custom][home_brgy]" id="home_brgy" value="{{ customer.metafields.custom.home_brgy.value }}">
+        </div>
+        
+        <div>
+          <label for="home_city">{{ 'customer.addresses.city' | t }}</label>
+          <input type="text" name="customer[metafields][custom][home_city]" id="home_city" value="{{ customer.metafields.custom.home_city.value }}">
+        </div>
+        
+        <div>
+          <label for="home_province">{{ 'customer.addresses.province' | t }}</label>
+          <input type="text" name="customer[metafields][custom][home_province]" id="home_province" value="{{ customer.metafields.custom.home_province.value }}">
+        </div>
+        
+        <div>
+          <label for="home_code">{{ 'customer.addresses.zip' | t }}</label>
+          <input type="text" name="customer[metafields][custom][home_code]" id="home_code" value="{{ customer.metafields.custom.home_code.value }}">
+        </div>
+      </div>
+
+      <div id="foreign_address_fields" {% if customer.metafields.custom.customer_type.value == 'local' %}style="display:none;"{% endif %}>
+        {% include 'address-form' with customer.default_address %}
+      </div>
+
+      <h2>{{ 'customer.account.employment_info' | t }}</h2>
+      <div>
+        <label for="employment_status">{{ 'customer.account.employment_status' | t }}</label>
+        <select name="customer[metafields][custom][employment_status]" id="employment_status" onchange="toggleEmploymentFields()">
+          <option value="Employed" {% if customer.metafields.custom.employment_status.value == 'Employed' %}selected{% endif %}>{{ 'customer.account.employed' | t }}</option>
+          <option value="Student" {% if customer.metafields.custom.employment_status.value == 'Student' %}selected{% endif %}>{{ 'customer.account.student' | t }}</option>
+          <option value="Self-Employed" {% if customer.metafields.custom.employment_status.value == 'Self-Employed' %}selected{% endif %}>{{ 'customer.account.self_employed' | t }}</option>
+          <option value="Unemployed" {% if customer.metafields.custom.employment_status.value == 'Unemployed' %}selected{% endif %}>{{ 'customer.account.unemployed' | t }}</option>
+        </select>
+      </div>
+
+      <div id="employment_fields" {% unless customer.metafields.custom.employment_status.value == 'Employed' %}style="display:none;"{% endunless %}>
+        <div>
+          <label for="company_name">{{ 'customer.account.company_name' | t }}</label>
+          <input type="text" name="customer[metafields][custom][company_name]" id="company_name" value="{{ customer.metafields.custom.company_name.value }}">
+        </div>
+        
+        <div>
+          <label for="positionEmployed">{{ 'customer.account.position' | t }}</label>
+          <input type="text" name="customer[metafields][custom][positionEmployed]" id="positionEmployed" value="{{ customer.metafields.custom.positionEmployed.value }}">
+        </div>
+        
+        <div>
+          <label for="industry">{{ 'customer.account.industry' | t }}</label>
+          <input type="text" name="customer[metafields][custom][industry]" id="industry" value="{{ customer.metafields.custom.industry.value }}">
+        </div>
+        
+        <div>
+          <label for="company_contact">{{ 'customer.account.company_contact' | t }}</label>
+          <div class="phone-input-group">
+            <select name="customer[metafields][custom][company_contactCode]" id="company_contactCode">
+              <option value="+63" {% if customer.metafields.custom.company_contactCode.value == '+63' %}selected{% endif %}>+63 (PH)</option>
+              <option value="+1" {% if customer.metafields.custom.company_contactCode.value == '+1' %}selected{% endif %}>+1 (US/CA)</option>
+              <option value="+44" {% if customer.metafields.custom.company_contactCode.value == '+44' %}selected{% endif %}>+44 (UK)</option>
+            </select>
+            <input type="tel" name="customer[metafields][custom][company_contact]" id="company_contact" value="{{ customer.metafields.custom.company_contact.value }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" class="button">{{ 'customer.account.save_changes' | t }}</button>
+        <a href="{{ routes.account_url }}" class="button button--secondary">{{ 'customer.account.cancel' | t }}</a>
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+<script>
+  function toggleAddressFields() {
+    const addressType = document.getElementById('address_type').value;
+    document.getElementById('local_address_fields').style.display = addressType === 'local' ? 'block' : 'none';
+    document.getElementById('foreign_address_fields').style.display = addressType === 'local' ? 'none' : 'block';
+  }
+
+  function toggleEmploymentFields() {
+    const employmentStatus = document.getElementById('employment_status').value;
+    document.getElementById('employment_fields').style.display = employmentStatus === 'Employed' ? 'block' : 'none';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize form fields visibility
+    toggleAddressFields();
+    toggleEmploymentFields();
+
+    // Handle form submission
+    const form = document.querySelector('.account-edit-form form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Prepare form data
+        const formData = new FormData(form);
+        
+        // Submit via AJAX
+        fetch('/account', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = '{{ routes.account_url }}';
+          } else {
+            alert('{{ 'customer.account.update_error' | t }}');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('{{ 'customer.account.update_error' | t }}');
+        });
+      });
+    }
+  });
+</script>

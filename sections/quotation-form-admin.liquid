@@ -1,0 +1,1127 @@
+{{ 'quotation-form-styles.aio.min.css' | asset_url | stylesheet_tag }}
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+
+    /* --- NEW Repeating Watermark Style --- */
+    #file {
+      position: relative;
+      /* This ensures the pseudo-element is positioned relative to the file container */
+    }
+
+#file::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image: url('https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_Transparent.png?v=1727063299');
+  background-repeat: repeat;
+  background-size: 250px;
+  background-position: 0 0;
+
+  opacity: 0.05;
+  transform: rotate(-20deg) scale(1.2);
+  transform-origin: center;
+  pointer-events: none;
+  z-index: 0;
+}
+    
+    /* Custom styles for the quotation table header and footer */
+    .quotation-thead-style {
+      background-color: #e0e0e0; /* Light Grey Background for header */
+      color: #333;
+    }
+    
+    .quotation-thead-style th,
+    .quotation-thead-style span {
+      color: #333; /* Ensure header text is dark */
+    }
+    
+    .quotation-tfoot-style {
+      color: darkred; /* Ensure footer text is darkred */
+    }
+    
+    .quotation-tfoot-style #colVat strong {
+      color: darkred; /* Ensure VAT INC. text is darkred */
+      font-size: 10px !important; /* Adjusted VAT INC. font size */
+    }
+    
+    /* Further refinements for a cohesive design */
+    .quotation-table-style {
+      border-collapse: collapse; /* Ensure borders are clean */
+      width: 100%;
+      margin-top: 20px;
+      /* Apply border to the table, but also ensure cells have borders */
+      border: 1px solid #d9d9d9; /* This will be the outer border */
+      border-radius: 8px;
+      overflow: hidden; /* Keep this for rounded corners clipping content */
+    }
+    
+    .quotation-table-style th,
+    .quotation-table-style td {
+      padding: 10px 12px;
+      border: 1px solid #d9d9d9; /* Apply borders to cells for inner lines */
+      text-align: left;
+      font-size: 1.2rem;
+    }
+    
+    .quotation-tbody-style tr:nth-child(even) {
+      background-color: white; /* Light stripe for readability */
+    }
+    
+    .quotation-tbody-style tr:hover {
+      background-color: white;
+    }
+    
+    .quotation-table-style img {
+      max-width: 80px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    /* New flexbox approach for header */
+    .group {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      padding-top: 0;
+    }
+    
+    .left-header-content {
+      flex: 1;
+      text-align: left;
+      padding-right: 10px;
+      padding-top: 0;
+    }
+    
+    .right-header-content {
+      flex-shrink: 0; /* Don't shrink */
+      width: 30%; /* Adjusted width */
+      text-align: right; /* Align content to the right */
+      padding-top: 0; /* Removed top padding */
+      padding-right: 10px; /* Added padding to the right */
+    }
+    
+    .quotation-title {
+      color: #8B0000;
+      text-transform: uppercase;
+      margin: 0; /* Remove default margins */
+      font-size: 22px; /* Slightly smaller font size for prominence */
+      font-weight: bold;
+      text-align: right; /* Align to the right */
+    }
+    
+    .company-name {
+      font-size: 14px; /* Restored font size */
+      margin: 0 0 2px 0; /* Adjusted margin */
+      font-weight: bold;
+      text-align: left; /* Align left */
+    }
+    
+    .company-details {
+      font-size: 11px; /* Adjusted font size for addresses/contact */
+      margin: 0; /* Remove default margins */
+      line-height: 1.2; /* Adjusted line height for tighter spacing */
+      text-align: left; /* Ensure left alignment */
+      padding: 0; /* Remove padding */
+    }
+    
+    .company-logo {
+      height: 35px; /* Slightly larger logo size */
+      width: 150px;
+      max-width: 150px; /* Max width for responsiveness */
+      margin: 0 0 5px 0; /* Margin bottom and left alignment, removed top margin */
+      padding: 0;
+      display: block; /* Ensures proper positioning */
+    }
+    
+    /* TABLES for PDF generation */
+    #quotation-products-table,
+    #quotation-products-table2,
+    #quotation-products-table3 {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      border-radius: 8px;
+      /* Crucial: To make the outer border visible with border-radius and overflow:hidden */
+      border: 1px solid white; /* This will be the outer border for the table container */
+      overflow: hidden; /* Needed for border-radius to work visually */
+    }
+    
+    /* Apply borders to individual cells within the quotation product tables */
+    #quotation-products-table td,
+    #quotation-products-table2 td,
+    #quotation-products-table3 td,
+    #quotation-products-table th, 
+    #quotation-products-table2 th,
+    #quotation-products-table3 th {
+      border: 1px solid   #d9d9d9 !important; /* Apply borders to cells and headers for inner lines */
+    }
+    
+    /* Styling for tables generated for PDF */
+    .file-table {
+      width: 98%; /* Adjusted table width to 98% */
+      margin-left: 0.5%;
+      margin-right: auto;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid  #b3b3b3; /* Outer border for file-table */
+      table-layout: fixed;
+    }
+    
+    .file-table th,
+    .file-table td {
+      border: 1px solid white; /* Inner borders for file-table cells and headers */
+      padding: 2px 4px;
+      text-align: left;
+      word-wrap: break-word;
+      font-size: 9px;
+    }
+    
+    /* Column widths for file-table */
+    .file-table th:nth-child(1), .file-table td:nth-child(1) { width: 6%; } /* IMAGE */
+    .file-table th:nth-child(2), .file-table td:nth-child(2) { width: 29%; }  /* ITEM KEY FEAT. */
+    .file-table th:nth-child(3), .file-table td:nth-child(3) { width: 20%; }  /* MODEL */
+    .file-table th:nth-child(4), .file-table td:nth-child(4) { width: 21%; }  /* BRAND */
+    .file-table th:nth-child(5), .file-table td:nth-child(5) { width: 5%; }  /* UNIT PRICE */
+    .file-table th:nth-child(6), .file-table td:nth-child(6) { width: 4%; }  /* QTY. */
+    .file-table th:nth-child(7), .file-table td:nth-child(7) { width: 4%; }  /* UNIT */
+    .file-table th:nth-child(8), .file-table td:nth-child(8) { width: 4%; }  /* AMOUNT */
+    .file-table th:nth-child(9), .file-table td:nth-child(9) { width: 7%; }  /* NOTE */
+    
+    
+    .file-table th {
+      background-color: #e0e0e0;
+      font-weight: bold;
+      
+    }
+    
+    /* Ensure top-left and top-right corners of the header are rounded */
+    .file-table thead tr:first-child th:first-child {
+      border-top-left-radius: 8px;
+    }
+    .file-table thead tr:first-child th:last-child {
+      border-top-right-radius: 8px;
+    }
+    
+    /* Ensure bottom-left and bottom-right corners of the last row are rounded */
+    .file-table tbody tr:last-child td:first-child {
+      border-bottom-left-radius: 8px;
+    }
+    .file-table tbody tr:last-child td:last-child {
+      border-bottom-right-radius: 8px;
+    }
+    
+    .quotation-footer {
+      margin: 0;
+      padding: 8px 0;
+      background-color: #fff !important;
+      border: 1px solid white; /* Border for the footer */
+    }
+    
+    #quotation-products-table + #quotation-products-table2,
+    #quotation-products-table2 + #quotation-products-table3 {
+      border-width: 0.5px; /* Reduced thickness */
+      margin-top: 0;
+    }
+    
+    #totalRow {
+      background-color: #e0e0e0 !important; /* Light Grey for total row */
+      border: none; 
+    }
+    
+    /* New style for images within the PDF table */
+    .file-table img {
+      max-width: 50px; /* Reduced image size for PDF */
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    
+    /* Smaller font for footer sections */
+    .quotation-footer p,
+    .quotation-footer ul li {
+      font-size: 10px !important; /* Adjusted for smaller font */
+      line-height: 1.1; /* Slightly tighter line height */
+    }
+    
+    .quotation-footer p strong {
+      font-size: 11px !important; /* Keep strong tags slightly larger */
+    }
+    
+    /* Signature line and text styling */
+    .signature-line-container {
+      width: 400px; /* Increased width to ensure text fits on one line */
+      margin: 40px auto 5px 10%; /* Shift left by setting left margin to 10% and right to auto, increased top margin */
+      text-align: left; /* Align content to the left within its container */
+    }
+    
+    .signature-line-container p {
+      border-top: 1px solid #000; /* Solid line */
+      padding-top: 5px;
+      font-size: 8px !important; /* Adjusted font size to be smaller and added !important */
+      font-style: italic;
+      white-space: nowrap; /* Force text to stay on one line */
+      overflow: hidden; /* Hide overflow if text is still too long */
+      text-overflow: ellipsis; /* Add ellipsis if text overflows */
+      margin: 0; /* Remove default paragraph margin */
+      display: block; /* Allows border to span width */
+      text-align: center; /* Center the text within the block */
+    }
+    
+    /* Removed text-decoration-line: overline from strong to prevent double line */
+    .signature-line-container strong {
+      /* text-decoration-line: overline; */
+    }
+    
+    /* Styles for buttons */
+    .action-buttons-cell {
+      text-align: center; /* Center the buttons in their cells */
+      vertical-align: middle; /* Vertically align buttons */
+    }
+    .action-buttons-cell button {
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      border-radius: 0.25rem;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      transition: background-color 0.2s;
+      margin: 2px; /* Small margin between buttons if they are side-by-side */
+      min-width: 50px; /* Ensure buttons have a minimum width */
+    }
+    .action-buttons-cell button:hover {
+      background-color: #e0e0e0;
+    }
+    .action-buttons-cell .edit-btn2 {
+      background-color: #2563eb; /* Blue */
+      color: white;
+      border-color: #2563eb;
+    }
+    .action-buttons-cell .edit-btn2:hover {
+      background-color: #1d4ed8;
+    }
+    .action-buttons-cell .delete-btn2 {
+      background-color: #dc2626; /* Red */
+      color: white;
+      border-color: #dc2626;
+    }
+    .action-buttons-cell .delete-btn2:hover {
+      background-color: #b91c1c;
+    }
+  {%- endstyle -%}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer="defer"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"
+    defer="defer"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" defer="defer"></script>
+
+  <div class="page-width">
+    <div id="main-form">
+      {% assign units = shop.metaobjects.quantity_units.values %}
+      <span><h1>Create Product Quotation</h1></span>
+      <form id="form">
+        <div
+          class="customer-details"
+          style="margin-top: 32px; box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50); padding: 28px;"
+        >
+          <span><h2>Customer Details</h2></span>
+          <label class="label-form">Full Name</label>
+          <div class="two-col">
+            <span><input type="text" name="fName" class="text-field-normal" id="inputFName" required></span>
+            </div>
+          <label class="label-form">Company Name</label>
+          <span><input type="text" name="compName" class="text-field-wide" id="inputCName" required></span>
+          <div class="two-col">
+            <div class="one-col">
+              <label class="label-form">Phone Number</label>
+              <span><input type="tel" name="inputTel" class="text-field-wide" id="inputPhone" required></span>
+            </div>
+            <div class="one-col">
+              <label class="label-form">Email Address</label>
+              <span><input type="email" name="emailAdd" class="text-field-wide" id="inputEmail" required></span>
+            </div>
+          </div>
+          <label class="label-form">Project Title</label>
+          <span><input type="text" name="projName" class="text-field-wide" id="inputProject" required></span>
+          <label class="label-form">Job Number</label>
+          <span><input type="text" name="jobNum" class="text-field-wide" id="inputJobNum" required></span>
+        </div>
+        <div
+          class="quotation-selection"
+          style="margin-top: 32px; margin-bottom: 32px; box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.50); padding: 28px;"
+        >
+          <span><h2>Product Selection</h2></span>
+
+<label class="label-form">Search and Select a Product to be Quoted</label>
+
+<input
+  type="text"
+  id="searchInput"
+  placeholder="Search a Product"
+  class="text-field-wide"
+  autocomplete="off"
+  style="margin-bottom: 5px;"
+>
+
+<div id="searchResults" class="text-field-options" style="margin-bottom: 16px; display:none;"></div>
+
+<input type="hidden" id="selectedProductTitle" name="contact[Product]">
+
+<div class="three-col">
+  <label class="label-form width-col3">Number of Quantity</label>
+  <input
+    type="number"
+    placeholder="Quantity"
+    name="qty"
+    value="1"
+    class="text-field-small width-col3"
+    id="inputQty"
+    min="1"
+    required
+  >
+  <span id="qtyUnit" class="width-col3">UNIT</span>
+</div>
+
+<button
+  type="button"
+  id="addProduct-btn"
+  onclick="getProductData()"
+  class="quotation-btn"
+>
+  <span style="display:flex;align-items:center;justify-content:center;gap:5px;">
+    <span class="svg-wrapper" style="transform: scale(0.75);">
+      {{- 'icon-plus.svg' | inline_asset_content -}}
+    </span>
+    ADD PRODUCT
+  </span>
+</button>
+
+<script>
+let debounceTimer;
+let selectedProduct = {};
+
+document.getElementById('searchInput').addEventListener('input', function () {
+  clearTimeout(debounceTimer);
+  const query = this.value.trim();
+
+  if (query.length < 2) {
+    document.getElementById('searchResults').style.display = 'none';
+    return;
+  }
+
+  debounceTimer = setTimeout(() => {
+    fetch(`/search/suggest.json?q=${encodeURIComponent(query)}&resources[type]=product&resources[limit]=10`)
+      .then(res => res.json())
+      .then(data => {
+        const products = data.resources.results.products;
+        let html = '';
+
+        products.forEach(product => {
+          html += `
+            <div class="search-item"
+              data-handle="${product.handle}"
+              data-type="${product.type}"
+              data-title="${product.title}"
+              data-vendor="${product.vendor}"
+              data-image="${product.image}"
+            >
+              <img src="${product.image}" alt="">
+              <span>${product.title}</span>
+            </div>
+          `;
+        });
+
+        const results = document.getElementById('searchResults');
+        results.innerHTML = html;
+        results.style.display = 'block';
+      });
+  }, 300);
+});
+
+document.addEventListener('click', function (e) {
+  const item = e.target.closest('.search-item');
+  if (!item) return;
+
+  document.getElementById('addProduct-btn').disabled = false;
+
+
+  document.getElementById('searchInput').value = item.dataset.title;
+  document.getElementById('selectedProductTitle').value = item.dataset.title;
+  document.getElementById('searchResults').style.display = 'none';
+
+  fetch(`/products/${item.dataset.handle}.js`)
+    .then(res => res.json())
+    .then(product => {
+      selectedProduct = product;
+
+      // Example metafield fallback
+      document.getElementById('qtyUnit').innerText =
+        product.metafields?.custom?.quantity_units?.name || 'UNIT';
+    });
+});
+
+
+      function formatCurrency(value) {
+        return '₱' + value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+      
+function getProductData() {
+  if (!selectedProduct || !selectedProduct.title) {
+    alert('Please select a product');
+    return;
+  }
+
+  const qty = parseInt(document.getElementById('inputQty').value, 10);
+  if (isNaN(qty) || qty <= 0) {
+    alert('Invalid quantity');
+    return;
+  }
+
+  const price = selectedProduct.price / 100;
+  const amount = price * qty;
+
+  const tableBody = document.querySelector('#quotation-table tbody');
+  const newRow = document.createElement('tr');
+
+newRow.innerHTML = `
+  <td>
+    <img src="${selectedProduct.images && selectedProduct.images.length > 0 ? selectedProduct.images[0] : ''}" 
+         alt="${selectedProduct.title || 'Product Image'}" />
+  </td>
+  <td>${selectedProduct.type || 'N/A'}</td> 
+  <td>${selectedProduct.title || 'Untitled'}</td>
+  <td>${selectedProduct.vendor || 'Unknown'}</td>
+  <td>${formatCurrency(price || 0)}</td>
+  <td class="qty-cell">${qty || 1}</td>
+  <td>${document.getElementById('qtyUnit')?.innerText || ''}</td>
+  <td>${formatCurrency(amount || 0)}</td>
+  <td>${selectedProduct.note || 'None'}</td>
+  <td id="edit-col"><button class="edit-btn" type="button">Edit</button></td>
+  <td id="delete-col"><button class="delete-btn" type="button">Delete</button></td>
+`;
+
+
+  const blankRow = document.getElementById('blank');
+  if (blankRow) blankRow.remove();
+
+  tableBody.appendChild(newRow);
+
+  sumVal += amount;
+  document.getElementById('totalAmountPrice').textContent = formatCurrency(sumVal);
+
+  newRow.querySelector('.delete-btn').addEventListener('click', () => {
+    sumVal -= amount;
+    newRow.remove();
+    document.getElementById('totalAmountPrice').textContent = formatCurrency(sumVal);
+  });
+
+  newRow.querySelector('.edit-btn').addEventListener('click', () => editQty(newRow));
+
+  document.getElementById('searchInput').value = '';
+  document.getElementById('inputQty').value = 1;
+  document.getElementById('addProduct-btn').disabled = true;
+
+  selectedProduct = {};
+}
+
+
+</script>
+
+
+          </div>
+        <table id="quotation-table" class="quotation-table-style">
+          <thead class="quotation-thead-style">
+            <tr>
+              <th><span>IMAGE</span></th>
+              <th><span>ITEM</span></th>
+              <th><span>MODEL</span></th>
+              <th><span>BRAND</span></th>
+              <th><span>UNIT PRICE</span></th>
+              <th><span>QTY.</span></th>
+              <th><span>UNIT</span></th>
+              <th><span>AMOUNT</span></th>
+              <th><span>NOTE</span></th>
+              <th class="btn-col" id="edit-col"></th>
+              <th class="btn-col" id="delete-col"></th>
+            </tr>
+          </thead>
+          <tbody class="quotation-tbody-style">
+            <tr id="blank">
+              <td id="table-img"></td>
+              <td id="table-item"></td>
+              <td id="table-model"></td>
+              <td id="table-brand"></td>
+              <td id="table-unitPrice"></td>
+              <td id="table-qty"></td>
+              <td id="table-qtyUnit"></td>
+              <td id="table-amountPrice"></td>
+              <td id="table-note"></td>
+              <td><button id="" class="edit-btn">Edit</button></td>
+              <td><button id="" class="delete-btn">Delete</button></td>
+            </tr>
+          </tbody>
+          <tfoot class="quotation-tfoot-style">
+            <tr id="totalRow">
+              <td colspan="4"></td> 
+              <td class="total-label" colspan="3" style="color: black; text-align: center;">TOTAL AMOUNT</td> 
+              <td id="totalAmountPrice" class="total-amount" colspan="1"></td> 
+              <td colspan="1" id="colVat"><strong>VAT INC.</strong></td> 
+            </tr>
+          </tfoot>
+        </table>
+        <span>
+          <button
+            id="quotation-download-btn"
+            class="quotation-btn"
+            style="margin-top: 20px; align-items: center; justify-content: center; gap: 16px;"
+          >
+            <span class="svg-wrapper">
+              {{- 'icon-save.svg' | inline_asset_content -}}
+            </span>
+            SAVE DATA
+          </button>
+        </span>
+        </form>
+    </div>
+
+    <div class="quotation-document" id="quotation-file">
+      <span>
+        <button id="quotation-download-btn2" class="quotation-btn" style="display: none; margin-top: 20px;">
+          <span style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+            {{- 'icon-btn-download.svg' | inline_asset_content -}}
+            DOWNLOAD
+          </span>
+        </button>
+      </span>
+      <div style="width: 816px; height: auto;">
+        <div class="container" id="file">
+          <div class="group">
+            <div class="left-header-content">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_Transparent.png?v=1727063299"
+                class="company-logo"
+                alt="Channel International Logo"
+              >
+              <p class="company-name">CHANNEL INTERNATIONAL ENTERPRISES</p>
+              <p class="company-details">43 Don A. Roces Ave., Bgy. Paligsahan, Quezon City, Philippines - 1103</p>
+              <p class="company-details">Tel.: +632 7738 2844; Smart: +63 998 983 4535; Globe: +63 915 339 7985</p>
+              <p class="company-details">
+                Email: info@channel.com.ph; sales@channel.com.ph | Website: www.channel.com.ph
+              </p>
+            </div>
+
+            <div class="right-header-content">
+              <h1 class="quotation-title">QUOTATION</h1>
+            </div>
+          </div>
+
+          <div id="quotation-customer-info" class="quotation-info"></div>
+
+          <div id="quotation-products-table" style="margin-bottom: 15px;"></div>
+          <div id="quotation-products-table2" style="margin: 15px 0;"></div>
+          <div id="quotation-products-table3" style="margin: 15px 0;"></div>
+
+          <div class="quotation-footer" style="margin-top: 5px;">
+            <div style="width: 100%; text-align: left;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                EXCLUSIONS
+              </p>
+              <p style="margin: 2px 0; font-size: 10px;">Materials, Electrical parts, Delivery, Set-up and Installation</p>
+            </div>
+
+            <div style="width: 100%; text-align: left; margin-top: 10px;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                BANK ACCOUNT DETAILS
+              </p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">Channel International Enterprises</p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">BDO-2560103733; BPI-0279101938</p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">Channel International Enterprises/William P. Abugan</p>
+              <p style="margin: 2px 0; font-size: 10px; line-height: 1.2;">Metrobank 4813481138419, Land Bank 0231 1915 85</p>
+            </div>
+
+            <div style="width: 100%; text-align: left; margin-top: 15px;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; text-transform: uppercase; color: darkred; font-weight: bold;">
+                TERMS AND CONDITIONS
+              </p>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>A. PAYMENT TERM:</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>70% downpayment for cash or check. 30% for cash upon pick up or item availability.</li>
+                <li>Check for downpayment has to be cleared first before we proceed with the processing of order.</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>B. VALIDITY:</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>Price and Quotation is valid until seven (7) days of creation.</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;"><strong>C. ITEM AVAILABILITY:</strong></p>
+              <ul style="margin: 2px 0; padding-left: 15px; font-size: 10px;">
+                <li>
+                  Pick up from the store for on stock items within a 1-5 day duration from the Purchase Order with down
+                  payment.
+                </li>
+                <li>
+                  Delivery for on stock items within an 8-10 day duration from the Purchase Order with a down payment.
+                </li>
+                <li>Order based items within a 21-45 days duration from the Purchase Order with down payment.</li>
+              </ul>
+
+              <p style="margin: 2px 0; font-size: 10px;">
+                <strong>D. Purchase Orders made (especially with down payment) are not cancelable.</strong>
+              </p>
+              <p style="margin: 2px 0; font-size: 10px;">
+                <strong>E. All items are on first come first served basis.</strong>
+              </p>
+              <p style="margin: 2px 0; font-size: 10px;">
+                <strong
+                  >F. If payment for the balance is also check, it has to be cleared first before we release the items.</strong
+                >
+              </p>
+            </div>
+
+            <div style="width: 70%; margin: 20px auto 0; text-align: left;">
+              <p style="margin: 5px 0; font-weight: bold; font-size: 12px; color: darkred;">Conforme:</p>
+              <div class="signature-line-container">
+                <p style="font-size: 8px !important;"><strong>Signature of the Owner/Representative Over Printed Name</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    
+      let sumVal = 0; 
+
+        const productAmountPrice = parseFloat(productPrice.replace(/₱/g, '').replace(/,/g, '')) * parseInt(productQty);
+    
+        const tableBody = document.querySelector('tbody');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td><img src="${productImage}" alt="${productModel}" /></td>
+          <td>${productItem}</td>
+          <td>${productModel}</td>
+          <td>${productBrand}</td>
+          <td>${productPrice}</td>
+          <td class="qty-cell">${productQty}</td>
+          <td>${productQtyUnit}</td>
+          <td>${formatCurrency(productAmountPrice)}</td>
+          <td>${productNote}</td>
+          <td id="edit-col"><button class="edit-btn" type="button">Edit</button></td>
+          <td id="delete-col"><button class="delete-btn" type="button">Delete</button></td>
+        `;
+    
+        tableBody.appendChild(newRow);
+        const blankRow = tableBody.querySelector('#blank');
+        if (blankRow) {
+          blankRow.remove();
+            checkInputs();
+        } 
+        
+        sumVal += productAmountPrice; 
+        document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumVal);
+    
+        newRow.querySelector('.delete-btn').addEventListener('click', () => deleteRow(newRow, productAmountPrice));
+        newRow.querySelector('.edit-btn').addEventListener('click', () => editQty(newRow));
+    
+        selectProduct.selectedIndex = 0; 
+        qty.value = 1; 
+      }
+
+      function deleteRow(row, productAmountPrice) {
+        sumVal -= productAmountPrice; 
+        row.remove(); 
+        document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumVal); 
+      }
+
+      const units = [
+          {% assign units = shop.metaobjects.quantity_units.values %}
+          {% for unit in units %}
+            { name: '{{ unit.name }}' }{% if forloop.last == false %}, {% endif %}
+          {% endfor %}
+        ];
+      
+      function editQty(newRow) {
+        const editButton = newRow.querySelector('.edit-btn');
+        const qtyCell = newRow.querySelector('.qty-cell');
+        const priceCell = newRow.querySelector('td:nth-child(5)'); 
+        const unitCell = newRow.querySelector('td:nth-child(7)'); 
+        const noteCell = newRow.querySelector('td:nth-child(9)'); 
+        const currentQty = qtyCell.textContent;
+        const currentPriceText = priceCell.textContent.replace(/₱/g, '').replace(/,/g, ''); 
+        const currentAmountPrice = parseFloat(newRow.querySelector('td:nth-child(8)').textContent.replace(/₱/g, '').replace(/,/g, ''));
+        const currentNote = noteCell.textContent;
+        
+        if (editButton.textContent === 'Edit') {
+          qtyCell.innerHTML = `<input type="number" value="${currentQty}" class="edit-qty" min="1" />`;
+          priceCell.innerHTML = `<input type="text" value="${currentPriceText}" class="edit-price" />`; 
+          noteCell.innerHTML = `<input type="text" value="${currentNote}" class="edit-note" />`; 
+    
+          let unitOptions = units.map(unit => `<option value="${unit.name}">${unit.name}</option>`).join('');
+          unitCell.innerHTML = `<select class="edit-unit">${unitOptions}</select>`;
+    
+          editButton.textContent = 'Save';
+        } else {
+          const inputQtyField = qtyCell.querySelector('.edit-qty');
+          const inputPriceField = priceCell.querySelector('.edit-price');
+          const selectedUnit = unitCell.querySelector('.edit-unit').value;
+          const inputNoteField = noteCell.querySelector('.edit-note').value;
+          
+          const newQty = parseInt(inputQtyField.value, 10); 
+          const newPrice = parseFloat(inputPriceField.value.replace(/₱/g, '').replace(/,/g, '')); 
+    
+          if (isNaN(newQty) || newQty <= 0) {
+            alert("Please enter a valid quantity.");
+            return;
+          }
+    
+          if (isNaN(newPrice) || newPrice <= 0) {
+            alert("Please enter a valid price.");
+            return;
+          }
+    
+          qtyCell.textContent = newQty;
+          priceCell.textContent = formatCurrency(newPrice); 
+          unitCell.textContent = selectedUnit; 
+          noteCell.textContent = inputNoteField;
+    
+          const newAmountPrice = newPrice * newQty; 
+    
+          sumVal = sumVal - currentAmountPrice + newAmountPrice; 
+          newRow.querySelector('td:nth-child(8)').textContent = formatCurrency(newAmountPrice);
+          document.querySelector('#totalAmountPrice').textContent = formatCurrency(sumVal); 
+    
+          editButton.textContent = 'Edit';
+        }
+      }
+
+
+
+
+      // Initially disable the button
+      const saveBtn = document.getElementById('quotation-download-btn');
+      saveBtn.style.border = "1px solid transparent";
+      saveBtn.style.color = "rgba(var(--color-foreground), 0.50)";
+      saveBtn.style.backgroundColor = "rgba(var(--color-foreground), 0.40)";
+      saveBtn.style.cursor = "default";
+      function checkInputs() {
+        const tableBody = document.querySelector('tbody');
+        const fName = document.getElementById('inputFName').value.trim();
+        // const lName = document.getElementById('inputLName').value.trim();
+        const cName = document.getElementById('inputCName').value.trim();
+        const phone = document.getElementById('inputPhone').value.trim();
+        const email = document.getElementById('inputEmail').value.trim();
+        const jobnum = document.getElementById('inputJobNum').value.trim();
+        const project = document.getElementById('inputProject').value.trim();
+        const blankElement = document.getElementById('blank'); 
+        const isBlankRemoved = blankElement === null;
+  
+        const tableRows = document.querySelectorAll('tbody tr'); 
+        const trCount = tableRows.length;
+        console.log('Is blank div removed:', isBlankRemoved);
+        console.log('Number of <tr> elements:', trCount);
+    
+        console.log(fName, cName, phone, email, project, jobnum, blankElement);
+
+          if (fName !== "" && cName !== "" && phone !== "" && email !== "" && project !== "" && jobnum !== "" && isBlankRemoved && trCount >= 0) {
+            saveBtn.style.border = "1px solid rgb(var(--color-button))";
+            saveBtn.style.color = "rgb(var(--color-button))";
+            saveBtn.style.backgroundColor = "transparent";
+            saveBtn.style.cursor = "pointer"; 
+            
+            saveBtn.addEventListener('mouseenter', function() {
+              saveBtn.style.backgroundColor = "rgb(var(--color-button))"; 
+              saveBtn.style.color = "rgb(var(--color-button-text))";
+            });
+            saveBtn.addEventListener('mouseleave', function() {
+              saveBtn.style.backgroundColor = "transparent"; 
+              saveBtn.style.color = "rgb(var(--color-button))";
+            });
+          } else {
+            saveBtn.style.border = "1px solid transparent";
+            saveBtn.style.color = "rgba(var(--color-foreground), 0.50)";
+            saveBtn.style.backgroundColor = "rgba(var(--color-foreground), 0.40)";
+            saveBtn.style.cursor = "default"; 
+          }
+      }
+  
+      document.getElementById('inputFName').addEventListener('input', checkInputs);
+      // document.getElementById('inputLName').addEventListener('input', checkInputs);
+      document.getElementById('inputCName').addEventListener('input', checkInputs);
+      document.getElementById('inputPhone').addEventListener('input', checkInputs);
+      document.getElementById('inputEmail').addEventListener('input', checkInputs);
+      document.getElementById('inputJobNum').addEventListener('input', checkInputs);
+      document.getElementById('inputProject').addEventListener('input', checkInputs);
+      
+      document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+    
+        const fName = document.getElementById('inputFName').value;
+        // const lName = document.getElementById('inputLName').value;
+        // const fullName = `${fName} ${lName}`;
+        const company = document.getElementById('inputCName').value;
+        const phone = document.getElementById('inputPhone').value;
+        const email = document.getElementById('inputEmail').value;
+        const project = document.getElementById('inputProject').value;
+        const jobNum = document.getElementById('inputJobNum').value;
+        const preparedBy = 'channel.com.ph';
+        const table = document.getElementById('quotation-table');
+    
+        const updatedRows = [];
+        const rows = table.getElementsByTagName('tr');
+        const downloadBtn = document.getElementById('quotation-download-btn2');
+        downloadBtn.style.display = "block";
+        
+        for (let row of rows) {
+          const clonedRow = row.cloneNode(true);
+          const deleteCol = clonedRow.querySelector('#delete-col');
+          const editCol = clonedRow.querySelector('#edit-col');
+  
+          if (deleteCol) deleteCol.remove(); 
+          if (editCol) editCol.remove(); 
+  
+          updatedRows.push(clonedRow.outerHTML);
+        }
+
+        let tableHtml = '';
+        const numRows = updatedRows.length;
+        
+        if (numRows <= 7) {
+          tableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${updatedRows.join('')}</tbody></table>`;
+          document.getElementById('quotation-products-table').innerHTML = tableHtml;
+          document.getElementById('quotation-products-table2').innerHTML = '';
+          document.getElementById('quotation-products-table3').innerHTML = '';
+        } else if (numRows >= 8 && numRows < 17) {
+          const firstTableRows = updatedRows.slice(0, 7);
+          const secondTableRows = updatedRows.slice(7);
+        
+          tableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${firstTableRows.join('')}</tbody></table>`;
+          document.getElementById('quotation-products-table').innerHTML = tableHtml;
+        
+          const secondTableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${secondTableRows.join('')}</tbody></table>`;
+          document.getElementById('quotation-products-table2').innerHTML = secondTableHtml;
+          document.getElementById('quotation-products-table3').innerHTML = '';
+        } else if (numRows >= 17) {
+          const firstTableRows = updatedRows.slice(0, 7);
+          const secondTableRows = updatedRows.slice(7, 16);
+          const thirdTableRows = updatedRows.slice(16);
+          tableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${firstTableRows.join('')}</tbody></table>`;
+          document.getElementById('quotation-products-table').innerHTML = tableHtml;
+        
+          const secondTableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${secondTableRows.join('')}</tbody></table>`;
+          document.getElementById('quotation-products-table2').innerHTML = secondTableHtml;
+          const thirdTableHtml = `<table class="file-table" style="border-collapse: collapse;"><tbody>${thirdTableRows.join('')}</tbody></table>`;
+          document.getElementById('quotation-products-table3').innerHTML = thirdTableHtml;
+        } 
+        
+        const today = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+        const date = new Date(today);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = date.toLocaleDateString(undefined, options);
+
+        document.getElementById('quotation-customer-info').innerHTML = `
+          <div class="start-margin" style="font-size: 11px; line-height: 1.37;"><div class="start-margin-col"><strong>Attention:</strong> ${fName} <br>
+          <strong>Company:</strong> ${company} <br>
+          <strong>Contact Number:</strong> ${phone} <br>
+          <strong>Email:</strong> ${email} <br>
+          <strong>Project Title:</strong> ${project} <br></div>
+          <div class="start-margin-col"><strong>Date:</strong> ${formattedDate} <br>
+          <strong>Prepared by:</strong> ${preparedBy} <br>
+          <strong>Job Number:</strong> ${jobNum} <br></div></div>
+          
+        `;
+        
+        this.reset();
+        alert("Your data entered in the forms have been saved.");
+      });
+
+      window.onload = function () {
+        document.getElementById("quotation-download-btn2").addEventListener("click", () => {
+          const file = document.getElementById("file");
+          const mainForm = document.getElementById("main-form");
+        
+          const dlBtn = document.getElementById("quotation-download-btn2");
+          
+          document.body.style.cursor = 'wait';
+          mainForm.style.display = 'none';
+          file.style.display = 'block';
+          file.style.zIndex = '10000';
+    
+          var opt = {
+            margin: [14.2, 12.7, 14.2, 12.7],
+            filename: 'Quotation - channelcomph.pdf',
+            image: { type: 'PNG', quality: 1 },
+            html2canvas: { scale: 3, useCORS: true },
+            jsPDF: {
+              unit: 'mm',
+              format: 'letter',
+              orientation: 'portrait'
+            },
+            pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+          };
+    
+          if (file) {
+              html2pdf().from(file).set(opt).toPdf().get('pdf').then(function(pdf) {
+                  const totalPages = pdf.internal.getNumberOfPages();
+                  const pageWidth = pdf.internal.pageSize.getWidth();
+                  const pageHeight = pdf.internal.pageSize.getHeight();
+
+                  // --- START: FOOTER SCRIPT ---
+                  for (let i = 1; i <= totalPages; i++) {
+                      pdf.setPage(i);
+
+                      // ADD FOOTER
+                      pdf.setFontSize(8);
+                      pdf.setTextColor(150); // A light grey color
+
+                      const footerY = pageHeight - 10;
+                      pdf.text('This quotation is generated by: channel.com.ph', 12.7, footerY);
+                      pdf.text('Email: sales@channel.com.ph | Tel.: +632 7738 2844', 12.7, footerY + 3);
+
+                      // Add the page number at the bottom-center
+                      pdf.setFontSize(10);
+                      pdf.setTextColor(100); // A darker grey for the page number
+                      pdf.text(
+                          'Page ' + i + ' of ' + totalPages,
+                          pageWidth / 2, // Center horizontally
+                          pageHeight - 7, // Position vertically
+                          { align: 'center' } // Ensure text is centered
+                      );
+                  }
+                  // --- END: FOOTER SCRIPT ---
+
+              }).then(() => {
+                  mainForm.style.display = 'block';
+                  file.style.display = 'none';
+                  document.body.style.cursor = 'default';
+              }).save();
+                          
+              setTimeout(() => {
+                  sendMail();
+                  sendMailClient();
+              }, 5000);
+              setTimeout(() => {
+                  location.reload();
+              }, 8000);
+          } else {
+              console.error("Element with ID 'file' not found.");
+              document.body.style.cursor = 'default';
+          }
+        });
+      };
+    </script>
+  </div>
+</div>
+
+<style>
+#searchResults {
+  border: 1px solid #ccc;
+  max-height: 250px;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.search-item {
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-item:hover {
+  background: #f2f2f2;
+}
+
+.search-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+</style>
+
+
+
+{% schema %}
+{
+  "name": "Admin Quotation Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  {
+    "type": "color_scheme",
+    "id": "color_scheme",
+    "label": "t:sections.all.colors.label",
+    "info": "t:sections.all.colors.has_cards_info",
+    "default": "scheme-6"
+  },
+  {
+    "type": "select",
+    "id": "sticky_header_type",
+    "options": [
+      {
+        "value": "none",
+        "label": "t:sections.header.settings.sticky_header_type.options__1.label"
+      },
+      {
+        "value": "on-scroll-up",
+        "label": "t:sections.header.settings.sticky_header_type.options__2.label"
+      },
+      {
+        "value": "always",
+        "label": "t:sections.header.settings.sticky_header_type.options__3.label"
+      },
+      {
+        "value": "reduce-logo-size",
+        "label": "t:sections.header.settings.sticky_header_type.options__4.label"
+      }
+    ],
+    "default": "on-scroll-up",
+    "label": "t:sections.header.settings.sticky_header_type.label"
+  },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_top",
+    "default": 36
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_bottom",
+    "default": 36
+  }
+  ],
+"presets": [
+  {
+    "name": "Admin Quotation Form"
+  }
+]
+}
+{% endschema %}

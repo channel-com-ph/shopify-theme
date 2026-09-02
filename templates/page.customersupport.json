@@ -1,0 +1,128 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "collection_list_HWqeUJ": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_ibWpPX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio"
+          }
+        },
+        "featured_collection_RcETrN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-broadcast"
+          }
+        },
+        "featured_collection_NydmB8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "musical-instrument"
+          }
+        },
+        "featured_collection_tGdHjP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mirrorless-dslr"
+          }
+        },
+        "featured_collection_QbD4bg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lights"
+          }
+        },
+        "featured_collection_GBV3zU": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "network-solutions"
+          }
+        },
+        "featured_collection_TiCKYm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "parts-tools"
+          }
+        },
+        "featured_collection_gcQWyr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "video-conference-system"
+          }
+        },
+        "featured_collection_JedBqg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "system-integration-controller"
+          }
+        },
+        "featured_collection_YDebFn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "surveillance"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_ibWpPX",
+        "featured_collection_RcETrN",
+        "featured_collection_NydmB8",
+        "featured_collection_tGdHjP",
+        "featured_collection_QbD4bg",
+        "featured_collection_GBV3zU",
+        "featured_collection_TiCKYm",
+        "featured_collection_gcQWyr",
+        "featured_collection_JedBqg",
+        "featured_collection_YDebFn"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Categories",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "page_3NKPdT": {
+      "type": "page",
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "customer-support",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collection_list_HWqeUJ",
+    "page_3NKPdT"
+  ]
+}

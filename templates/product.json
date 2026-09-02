@@ -1,0 +1,205 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_6hTpt6": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>SOLD BY: </strong> {{ product.metafields.custom.quantity_units.value.name.value }}",
+            "text_style": "body"
+          }
+        },
+        "sku_9hFCft": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "custom_liquid_LWhVDn": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% comment %} \nRetrieves the connected unit Metaobject entry from the product's metafield.\nKey: custom.quantity_units\n{% endcomment %}\n{% assign unit_metaobject = product.metafields.custom.quantity_units %}\n\n{% comment %} \nDisplays the 'Name' of the Metaobject entry if one is connected.\n{% endcomment %}\n{% if unit_metaobject != blank %}\n  <p class=\"product-unit\">{{ unit_metaobject.name }}</p>\n{% endif %}"
+          }
+        },
+        "judge_me_reviews_preview_badge_nd3Acq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
+          }
+        },
+        "boostly_benifit_boxes_bHKfLH": {
+          "type": "shopify://apps/boostly/blocks/benifit_boxes/340aca85-c061-4ab2-945c-2ce6536f27cc",
+          "settings": {
+            "first_benefit": "Authorized Dealer",
+            "first_benefit_icon": "check-badge",
+            "second_benefit": "Certified Quality Products",
+            "second_benefit_icon": "star",
+            "third_benefit": "After-Sales Support",
+            "third_benefit_icon": "chat",
+            "fourth_benefit": "Secure Payments",
+            "fourth_benefit_icon": "shield-check",
+            "background_color": "#fff4f4",
+            "icon_color": "#931704",
+            "text_color": "#333333",
+            "bold_text": false,
+            "text_size": "medium",
+            "icon_size": 20
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_tmMNDT": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "vendor",
+        "price",
+        "text_6hTpt6",
+        "sku_9hFCft",
+        "custom_liquid_LWhVDn",
+        "judge_me_reviews_preview_badge_nd3Acq",
+        "variant_picker",
+        "boostly_benifit_boxes_bHKfLH",
+        "quantity_selector",
+        "buy_buttons",
+        "share_tmMNDT"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": false,
+        "color_scheme": "scheme-c24dca0c-4410-4a5f-9c86-2170367c1c9d",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "mobile_thumbnails": "show",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "main_product_description_XXH3AC": {
+      "type": "main-product-description",
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-c24dca0c-4410-4a5f-9c86-2170367c1c9d",
+        "sticky_header_type": "on-scroll-up",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "177943975510aab846": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_NMFkKt": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_NMFkKt"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17286065535487bd02": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_dgkBRH": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_dgkBRH"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 5,
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "main_product_description_XXH3AC",
+    "177943975510aab846",
+    "17286065535487bd02",
+    "related-products"
+  ]
+}

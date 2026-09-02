@@ -1,0 +1,109 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_tTpDCU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_ttJDF7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "recording-tools-package"
+          }
+        },
+        "featured_collection_Fzt8xF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-monitor-controller"
+          }
+        },
+        "featured_collection_8TfQt4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "recording-software"
+          }
+        },
+        "featured_collection_YPxBBr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-midi-interface"
+          }
+        },
+        "featured_collection_7dqPtQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vidmixer-surface-controller"
+          }
+        },
+        "featured_collection_BzLXQD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "portable-recorder"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_ttJDF7",
+        "featured_collection_Fzt8xF",
+        "featured_collection_8TfQt4",
+        "featured_collection_YPxBBr",
+        "featured_collection_7dqPtQ",
+        "featured_collection_BzLXQD"
+      ],
+      "settings": {
+        "title": "RECORDING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_list_tTpDCU"
+  ]
+}

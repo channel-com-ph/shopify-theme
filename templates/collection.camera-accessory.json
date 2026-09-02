@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-6"
+      }
+    },
+    "rich_text_R3GJ4B": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JMdQWE": {
+          "type": "heading",
+          "settings": {
+            "heading": "CAMERA ACCESSORIES",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JMdQWE"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 20
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_qpBFKM": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_6XEgcY": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "battery-charger"
+          }
+        },
+        "featured_collection_eK6JeG": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "camera-microphone"
+          }
+        },
+        "featured_collection_zWFWd3": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "camera-lights"
+          }
+        },
+        "featured_collection_Ep7h47": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "camera-remote"
+          }
+        },
+        "featured_collection_6inKwy": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "camera-case"
+          }
+        },
+        "featured_collection_hnppcB": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "camera-mount"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_6XEgcY",
+        "featured_collection_eK6JeG",
+        "featured_collection_zWFWd3",
+        "featured_collection_Ep7h47",
+        "featured_collection_6inKwy",
+        "featured_collection_hnppcB"
+      ],
+      "settings": {
+        "title": "CAMERA ACCESSORIES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "rich_text_R3GJ4B",
+    "product-grid",
+    "collection_list_qpBFKM"
+  ]
+}

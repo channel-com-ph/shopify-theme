@@ -1,0 +1,546 @@
+{{ 'quotation-form-styles-2.aio.min.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- unless settings.cart_type == 'drawer' -%}
+  <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js" defer=></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js" defer="defer"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+<script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
+
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+
+  <div id="main-form">
+    <span><h2>PRODUCT PRICE INQUIRY LIST</h2></span>
+     <form id="form">
+        <table id="quotation-table" class="quotation-table-style">
+          <thead class="quotation-thead-style">
+              <tr>
+                  <th><span>ITEM</span></th>
+                  <th><span>MODEL</span></th>
+                  <th><span>BRAND</span></th>
+                  <th><span>UNIT PRICE</span></th>
+                  <th><span>QTY.</span></th>
+                  <th><span>UNIT</span></th>
+                  <th><span>AMOUNT</span></th>
+                  <th><span>NOTE</span></th>
+                  <th class="btn-col" id="edit-col"></th>
+                  <th class="btn-col" id="delete-col"></th>
+              </tr>
+          </thead>
+          <tbody class="quotation-tbody-style">
+              <!-- Rows will be inserted here -->
+          </tbody>
+          <tfoot class="quotation-tfoot-style">
+              <tr id="totalRow">
+                  <td class="total-label" colspan="5">TOTAL AMOUNT</td>
+                  <td id="totalAmountPrice" class="total-amount" colspan="2">To be Calculated</td>
+                  <td colspan="1" id="colVat"><strong>VAT INC.</strong></td>
+              </tr>
+          </tfoot>
+      </table>
+        <div class="customer-details" style="margin-top: 12px;">
+          <label class="label-form">Full Name</label>
+          <div class="two-col">
+            <span><input type="text" placeholder="First Name" name="fName" class="text-field-normal" id="inputFName" required ></span>
+            <span><input type="text" placeholder="Last Name" name="lName" class="text-field-normal" id="inputLName" required ></span>
+          </div>
+          <label class="label-form">Company Name</label>
+          <span><input type="text" placeholder="Company Name" name="compName" class="text-field-wide" id="inputCName" required ></span>
+          <div class="two-col">
+            <div class="one-col">
+              <label class="label-form">Contact Number</label>
+              <span><input type="tel" placeholder="Contact Number" name="inputTel" class="text-field-wide" id="inputPhone" required ></span>
+            </div>
+            <div class="one-col">
+              <label class="label-form">Email Address</label>
+              <span><input type="email" placeholder="Email Address" name="emailAdd" class="text-field-wide" id="inputEmail" required ></span>
+            </div>
+          </div>
+          <label class="label-form">Project Title</label>
+          <span><input type="text" placeholder="Project Title (Enter 'None' if you don't have Title)" name="projName" class="text-field-wide" id="inputProject" required ></span>
+        </div>
+          <span><input type="submit" value="SAVE" id="quotation-download-btn" class="quotation-btn"></span>
+    </form>
+  </div>
+  <div class="quotation-document" id="quotation-file">
+    <span><input type="button" value="DOWNLOAD" id="quotation-download-btn2" class="quotation-btn" style="display: none;"></span>
+    <div class="container" id="file">
+      <div class="quotation-header">
+        <span><img src="https://cdn.shopify.com/s/files/1/0676/7991/2122/files/Channel_Logo_-_Transparent.png?v=1727063299" crossorigin="anonymous" 
+    referrerpolicy="no-referrer"  height="40" width="auto"></span>
+        <span class="small-heading"><p style="font-size: 14px;">CHANNEL INTERNATIONAL ENTERPRISES</p></span>
+        <span class="small-heading"><p>#43 Don A. Roces Ave.Quezon City Metro Manila Philippines</p></span>
+        <span class="small-heading"><p>Tel.: (+632) 7738 2844; Smart +63 998 983 4535; Globe +63 915 339 7985</p></span>
+      </div>
+      <div id="quotation-customer-info" class="quotation-info">
+        
+      </div>
+      <div id="quotation-products-table" style=" margin: 0;">
+        
+      </div>
+      <div class="quotation-footer">
+          <span><p><strong>TERMS & CONDITIONS:</strong></p></span>
+          <span>
+            <ol type="A" style="color: black; border-bottom: 1px solid #BC2305;">
+              <li class="col-con">
+                <span class="col-sh">
+                  <strong>A. Payment Terms:</strong>
+                </span>
+                <span>
+                  <ul>
+                    <li>70% Downpayment - cash/check; 30% - cash upon pick up/item availability.</li>
+                    <li>Check for downpayment has to be cleared first before we proceed with the processing of order.</li>
+                  </ul>
+                </span>
+              </li>
+              <li class="col-con">
+                <span class="col-sh">
+                  <strong>B. Price Validity:</strong>
+                </span>
+                <span>
+                  <ul>
+                    <li>Seven (7) days</li>
+                  </ul>
+                </span>
+              </li>
+              <li class="col-con">
+                <span class="col-sh">
+                  <strong>C. Quotation Validity:</strong>
+                </span>
+                <span>
+                  <ul>
+                    <li>Seven (7) days</li>
+                  </ul>
+                </span>
+              </li>
+              <li class="col-con">
+                <span class="col-sh">
+                  <strong>D. Item Availability:</strong>
+                </span>
+                <span>
+                  <ul>
+                    <li>Pick up from store for on-stock items 1 to 5 days from PO with downpayment</li>
+                    <li>Delivery for on-stock items-- 8-10 days upon PO with downpayment</li>
+                    <li>Order-based items-- 21-45 days to arrive upon P.O. with downpayment. </li>
+                  </ul>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <strong>F. Purchase Orders made (especially with downpayment) are non-cancellable.</strong>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <strong>G. All items are on first come first served basis.</strong>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <strong>H. If payment for the balance is also check, it has to be cleared first before we release the items.</strong>
+                </span>
+              </li>
+            </ol>
+          </span><div style="width: 70%; margin: auto; text-align: left; margin-top: 4px;">
+          <strong style="margin-left: 20px;">Conforme:</strong>
+          <div style="display: flex; width: 60%; border-bottom: 1px solid #000; border-top: transparent; border-right: transparent; border-left: transparent;margin: auto;"></div>
+          <i style="font-size: 10px; display: block;text-align: center;"><strong>Signature of the Owner/Authorized Representative Over Printed Name</strong></i>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const storedProducts = sessionStorage.getItem('inquireProducts');
+  
+    if (storedProducts) {
+      const quotationProducts = JSON.parse(storedProducts);
+      const quotationDetails = document.querySelector('tbody.quotation-tbody-style');
+  
+      const aggregatedProducts = {};
+  
+      quotationProducts.forEach(product => {
+        const type = product.type || "";
+        const metafields = product.metafields || ""; 
+  
+        if (!aggregatedProducts[product.title]) {
+          aggregatedProducts[product.title] = {
+            type: type,
+            vendor: product.vendor,
+            price: product.price,
+            quantity: parseInt(product.quantity, 10),
+            metafields: metafields,
+            featured_image: product.featured_image
+          };
+        } else {
+          aggregatedProducts[product.title].quantity += parseInt(product.quantity, 10);
+          // aggregatedProducts[product.title].price += parseFloat(product.price.replace(/₱/g, '').replace(/,/g, ''));
+        }
+      });
+  
+      Object.keys(aggregatedProducts).forEach(title => {
+        const product = aggregatedProducts[title];
+        
+        const metafieldsDisplay = product.metafields.trim() || "N/A"; 
+        const newRow = document.createElement('tr');
+  
+        newRow.innerHTML = `
+          <td>${escapeHtml(product.type)}</td>
+          <td>${escapeHtml(title)}</td>
+          <td>${escapeHtml(product.vendor)}</td>
+          <td class="table-unitPrice">${escapeHtml(product.price)}</td>
+          <td class="table-qty">${product.quantity}</td>
+          <td>${metafieldsDisplay}</td>
+          <td class="table-amountPrice">${escapeHtml(product.price)}</td>
+          <td><img src="${product.featured_image}" alt="${escapeHtml(title)}" /></td>
+          <td id="edit-col"><button class="edit-btn2" type="button">Edit</button></td>
+          <td id="delete-col"><button class="delete-btn2" type="button">Delete</button></td>
+        `;
+        quotationDetails.appendChild(newRow);
+        const deleteButton = newRow.querySelector('.delete-btn2');
+        deleteButton.addEventListener('click', () => deleteRowC(newRow, title));
+      });
+  
+      const rows = quotationDetails.querySelectorAll('tr');
+      rows.forEach(row => {
+        row.querySelector('.delete-btn2').addEventListener('click', () => deleteRowC(row));
+        row.querySelector('.edit-btn2').addEventListener('click', () => editQtyC(row));
+      });
+    }
+  
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function deleteRowC(row, title) {
+ 
+  row.remove();
+
+  const storedProducts = sessionStorage.getItem('inquireProducts');
+
+  if (storedProducts) {
+    const quotationProducts = JSON.parse(storedProducts);
+
+    const updatedProducts = quotationProducts.filter(product => product.title !== title);
+
+    sessionStorage.setItem('inquireProducts', JSON.stringify(updatedProducts));
+  }
+
+      updateQuotationCount();
+}
+  
+    function editQtyC(row) {
+      const qtyCellC = row.querySelector('.table-qty');
+      const currentQtyC = qtyCellC.textContent;
+      const editButtonC = row.querySelector('.edit-btn2');
+    
+      if (editButtonC.textContent === 'Edit') {
+        qtyCellC.innerHTML = `<input type="number" value="${currentQtyC}" class="edit-qty" min="1" />`;
+        editButtonC.textContent = 'Save';
+      } else {
+        const inputFieldC = qtyCellC.querySelector('.edit-qty');
+        const newQtyC = inputFieldC.value;
+    
+        if (isNaN(newQtyC) || newQtyC <= 0) {
+          alert("Please enter a valid quantity.");
+          return;
+        }
+    
+        qtyCellC.textContent = newQtyC;
+        editButtonC.textContent = 'Edit';
+      }
+    }
+  });
+    </script>
+    <script>
+        const saveBtn = document.getElementById('quotation-download-btn');
+        saveBtn.style.border = "1px solid #484848";
+        saveBtn.style.color = "#484848";
+        saveBtn.style.backgroundColor = "transparent";
+        saveBtn.style.cursor = "default";
+        function checkInputs() {
+          const tableBody = document.querySelector('tbody');
+          const fName = document.getElementById('inputFName').value.trim();
+          const lName = document.getElementById('inputLName').value.trim();
+          const cName = document.getElementById('inputCName').value.trim();
+          const phone = document.getElementById('inputPhone').value.trim();
+          const email = document.getElementById('inputEmail').value.trim();
+          const project = document.getElementById('inputProject').value.trim();
+          const blankElement = document.getElementById('blank');
+          const isBlankRemoved = blankElement === null;
+    
+          const tableRows = document.querySelectorAll('tbody tr'); 
+          const trCount = tableRows.length;
+          console.log('Is blank div removed:', isBlankRemoved);
+          console.log('Number of <tr> elements:', trCount);
+      
+          console.log(fName, lName, cName, phone, email, project, blankElement);
+  
+          if (fName !== "" && lName !== "" && cName !== "" && phone !== "" && email !== "" && project !== "" && isBlankRemoved && trCount >= 0) {
+            saveBtn.style.border = "1px solid #fff";
+            saveBtn.style.color = "#242833";
+            saveBtn.style.backgroundColor = "#fff";
+            saveBtn.style.cursor = "pointer"; 
+          } else {
+            saveBtn.style.border = "1px solid #484848";
+            saveBtn.style.color = "#484848";
+            saveBtn.style.backgroundColor = "transparent";
+            saveBtn.style.cursor = "default";
+          }
+        }
+    
+        document.getElementById('inputFName').addEventListener('input', checkInputs);
+        document.getElementById('inputLName').addEventListener('input', checkInputs);
+        document.getElementById('inputCName').addEventListener('input', checkInputs);
+        document.getElementById('inputPhone').addEventListener('input', checkInputs);
+        document.getElementById('inputEmail').addEventListener('input', checkInputs);
+        document.getElementById('inputProject').addEventListener('input', checkInputs);
+      
+      document.getElementById('form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+    
+        const fName = document.getElementById('inputFName').value;
+        const lName = document.getElementById('inputLName').value;
+        const fullName = `${fName} ${lName}`;
+        const company = document.getElementById('inputCName').value;
+        const phone = document.getElementById('inputPhone').value;
+        const email = document.getElementById('inputEmail').value;
+        const project = document.getElementById('inputProject').value;
+        const preparedBy = 'channel.com.ph';
+        const table = document.getElementById('quotation-table');
+      
+        const updatedRows = [];
+        const rows = table.getElementsByTagName('tr');
+        
+        const downloadBtn = document.getElementById('quotation-download-btn2');
+        downloadBtn.style.display = "block";
+      
+        for (let row of rows) {
+          const clonedRow = row.cloneNode(true);
+          const deleteCol = clonedRow.querySelector('#delete-col');
+          const editCol = clonedRow.querySelector('#edit-col');
+    
+          if (deleteCol) deleteCol.remove(); 
+          if (editCol) editCol.remove(); 
+    
+          updatedRows.push(clonedRow.outerHTML);
+        }
+      
+        const updatedTable = `<tbody>${updatedRows.join('')}</tbody>`; 
+      
+        const today = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+        const date = new Date(today);
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = date.toLocaleDateString(undefined, options);
+        
+        const year = date.getFullYear();
+        const shYear = year.toString().slice(-2);
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String.fromCharCode(date.getHours() + 65);
+        const mins = String(date.getMinutes()).padStart(2, '0');
+        const secs = String(date.getSeconds()).padStart(2, '0');
+        const jobNumber = month + shYear + day + "-" + hours + mins + secs;
+      
+        document.getElementById('quotation-customer-info').innerHTML = `
+          <div class="start-margin"><div class="start-margin-col"><strong>Attention:</strong> ${fullName} <br>
+          <strong>Company:</strong> ${company} <br>
+          <strong>Contact Number:</strong> ${phone} <br>
+          <strong>Email:</strong><span id="emailCustomer"> ${email} </span><br>
+          <strong>Project Title:</strong> ${project} <br></div>
+          <div class="start-margin-col"><strong>Date:</strong> ${formattedDate} <br>
+          <strong>Prepared by:</strong> ${preparedBy} <br>
+          <strong>Job Number:</strong> ${jobNumber} <br></div></div>
+          <strong style="text-align: center;">QUOTATION</strong><br>
+          <table class="quotation-table-style file-table" style="border-collapse: collapse;"> ${updatedTable} </table>
+        `;
+        
+        this.reset();
+        alert("Your data entered in the forms have been saved.");
+      });
+  
+      function sendMail() {
+        
+        emailjs.init("uzfiB2iNH6YIYoPst"); //API Public Key; Link:https://dashboard.emailjs.com/admin/account
+        const messageContent = document.getElementById("quotation-customer-info"); 
+        const messageContentHeader = "<h3 style='display: block;'> Customer Product Price Inquiry </h3>"; 
+        const ths = messageContent.querySelectorAll("th");
+        const tds = messageContent.querySelectorAll("td");
+        const imgs = messageContent.querySelectorAll("img");
+        const colVats = messageContent.querySelectorAll("#colVat");
+        const totalRows = messageContent.querySelectorAll("#totalRow");
+        const rows = messageContent.querySelectorAll("tr");
+        for (let row of rows) {
+            const cells = row.querySelectorAll("th, td");
+            if (cells.length > 7) {
+                cells[7].remove(); 
+            }
+        }
+
+        for (let totalRow of totalRows) {
+            totalRow.style.textAlign = "right";
+        }
+
+        for (let colVat of colVats) {
+            colVat.remove();
+        }
+        
+        for (let th of ths) {
+            th.style.border = "1px solid black"; 
+            th.style.padding = "10px";
+        }
+        
+        for (let td of tds) {
+            td.style.border = "1px solid black"; 
+            td.style.padding= "10px";
+            if (td.cellIndex === 6) { 
+              td.style.textAlign = "right";
+            }
+        }
+        for (let img of imgs) {
+          img.remove();
+        }
+      
+        
+        var params = {
+            my_html: messageContentHeader + messageContent.innerHTML,
+            isHtml: true, 
+        };
+      
+        const serviceID = "service_eg4wtpf"; //Service ID; Link:https://dashboard.emailjs.com/admin
+        const templateID = "template_nrm5mbs"; //Template ID; Link:https://dashboard.emailjs.com/admin/templates
+      
+        emailjs.send(serviceID, templateID, params)
+        .then(res => {
+          console.log("Sending mail...");
+          console.log(res);
+          alert("Your email sent successfully!");
+        })
+        .catch(err => {
+          console.error("Error sending email:", err);
+        });
+      }
+
+      function sendMailClient() {
+        
+        emailjs.init("uzfiB2iNH6YIYoPst"); //API Public Key; Link:https://dashboard.emailjs.com/admin/account
+        const messageContentClient = document.getElementById("quotation-customer-info");
+        const emailCustomer = document.getElementById("emailCustomer").innerText; 
+        const messageBackContent1 = "<p>Thank you for your email.</p><p>We will answer your product price inquiry within 2 - 3 days. For simple inquiry will be sent the within the day. Please take note that due to the high volume of inquiries, we have delays but we are doing our best to provide it to you as soon as possible.</p><p>The details displayed below is the copy of the details you have entered this will be the referenced for quotation:</p>";
+        const messageBackContent2 = "<p>If there be any further questions or clarifications please do not hesitate to contact us @ 09153397985 / 7738 2844 or email us @ sales@channel.com.ph</p><p>Thank you and keep safe.</p>";
+        console.log("Message content1:", messageBackContent1);
+        console.log("Message content2:", messageContentClient);
+        console.log("Message content4:", messageBackContent2);
+        console.log("Message To:", emailCustomer);
+        
+        var params = {
+            my_html: messageBackContent1 + messageContentClient.innerHTML + messageBackContent2,
+            to_email: emailCustomer, 
+        };
+      
+        const serviceID = "service_eg4wtpf"; //Service ID; Link:https://dashboard.emailjs.com/admin
+        const templateID = "template_g4313v8"; //Template ID; Link:https://dashboard.emailjs.com/admin/templates
+      
+        emailjs.send(serviceID, templateID, params)
+        .then(res => {
+          console.log("Sending mail to Client...");
+          console.log(res);
+        })
+        .catch(err => {
+          console.error("Error sending email:", err);
+        });
+      }
+
+      window.onload = function () {
+        document.getElementById("quotation-download-btn2").addEventListener("click", () => {
+          const file = document.getElementById("file");
+          
+          sessionStorage.removeItem('inquireProducts');
+          updateQuotationCount();
+          if (file) {
+            setTimeout(() => {
+              sendMail();
+              sendMailClient();
+            }, 5000);
+            setTimeout(() => {
+              location.reload(); 
+            }, 6000);
+            
+          } else {
+            console.error("Element with ID 'file' not found.");
+          }
+          
+        });
+      };
+    </script>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Price Inquiry List",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-6"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+"presets": [
+  {
+    "name": "Price Inquiry List"
+  }
+]
+}
+{% endschema %}

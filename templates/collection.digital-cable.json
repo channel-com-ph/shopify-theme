@@ -1,0 +1,95 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-3"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-3",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_tTpDCU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_QK3Ewe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "optical-coaxial-cable"
+          }
+        },
+        "featured_collection_BAmUdC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "protocols-cable"
+          }
+        },
+        "featured_collection_AfA4Gb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "midi-cable"
+          }
+        },
+        "featured_collection_PQcpn3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "madi-ethernet-cable"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_QK3Ewe",
+        "featured_collection_BAmUdC",
+        "featured_collection_AfA4Gb",
+        "featured_collection_PQcpn3"
+      ],
+      "settings": {
+        "title": "DIGITAL CABLE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 52,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "collection_list_tTpDCU"
+  ]
+}

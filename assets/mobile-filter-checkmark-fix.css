@@ -1,0 +1,15 @@
+
+
+/* Unchecked - white square */
+.mobile-facets__label input[type="checkbox"] ~ .square-icon svg,
+.mobile-facets__label input[type="checkbox"] ~ .square-icon svg * {
+  fill: #ffffff !important;
+  stroke: #cccccc !important;
+}
+
+/* Checked - filled red square */
+.mobile-facets__label input[type="checkbox"]:checked ~ .square-icon svg,
+.mobile-facets__label input[type="checkbox"]:checked ~ .square-icon svg * {
+  fill: #bc2305 !important;
+  stroke: #bc2305 !important;
+}

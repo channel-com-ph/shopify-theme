@@ -1,0 +1,108 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_9yRnC6": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_8x773P": {
+          "type": "heading",
+          "settings": {
+            "heading": "Price Inquiry",
+            "heading_size": "h1"
+          }
+        },
+        "text_W96PU4": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Need help finding a product you are looking for but no price is indicated on our website?<br/></h3><p>Since the prices of the product continually change based on what our suppliers provide. </p><p>Therefore, if a customer asks what the product's price is, our staff must verify the price.  </p><p><strong>For faster access, If you've found the product you want but the price isn't listed, you can add it to your inquiry list. </strong>Once you've added all the products you want to inquire about, click the icon in the header above. </p>",
+            "text_style": "body"
+          }
+        },
+        "caption_qFzMgP": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "FOR PRODUCT QUOTATION",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "button_f7ECJ8": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Request a Product Quotation",
+            "button_link": "shopify://pages/quotation-form",
+            "button_style_secondary": false
+          }
+        },
+        "caption_QmMhGM": {
+          "type": "caption",
+          "disabled": true,
+          "settings": {
+            "caption": "FOR PRICE QUOTATION",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "button_m3Yw6M": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Request a Price Quotation",
+            "button_link": "shopify://pages/quotation-for-price-for-inquiry",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_8x773P",
+        "text_W96PU4",
+        "caption_qFzMgP",
+        "button_f7ECJ8",
+        "caption_QmMhGM",
+        "button_m3Yw6M"
+      ],
+      "custom_css": [
+        ".image-with-text__content .image-with-text__text + .button {margin-top: 1rem;}",
+        ".image-with-text__content > * + * {margin-top: 3rem;}",
+        "p {line-height: 24px;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/discount.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 68,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_9yRnC6"
+  ]
+}

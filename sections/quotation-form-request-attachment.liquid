@@ -1,0 +1,221 @@
+{{ 'quotation-form-styles.aio.min.css' | asset_url | stylesheet_tag }} 
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+<style>
+  #previewContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+<div class="page-width">
+<span><h1>Request Quotation - File Attachments</h1></span>
+<table class="quotation-table-style" style="margin-bottom: 40px;">
+    <thead class="quotation-thead-style" style="font-size: 16px;">
+        <tr>
+            <th style="padding: 8px 0;">Job Number</th>
+            <th style="padding: 8px 0;">Name</th>
+            <th style="padding: 8px 0;">Action</th>
+            <th class="btn-col delColumn" id="delete-col" style="padding: 8px 0;"></th>
+        </tr>
+    </thead>
+    <tbody class="quotation-tbody-style" style="font-size: 16px;">
+        <!-- Table rows will be dynamically inserted here -->
+    </tbody>
+</table>
+
+<script>
+  const fileInfoDiv = document.querySelector('tbody.quotation-tbody-style');
+  
+  const fetchAllCustomers = () => {
+    return fetch('https://quotation-api.channel.com.ph/quotation/customers', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      if (!res.ok) throw new Error('Failed to fetch customers');
+      return res.json();
+    });
+  };
+  
+  const fetchMetafields = (customerId) => {
+    return fetch(`https://quotation-api.channel.com.ph/quotation/customer/${customerId}/metafields`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      if (!res.ok) throw new Error(`Failed to fetch metafields for customer ${customerId}`);
+      return res.json();
+    })
+    .catch((error) => {
+      console.error(`Error fetching metafields for customer ${customerId}:`, error);
+      return { metafields: [] }; 
+    });
+  };
+  
+  fetchAllCustomers()
+  .then(data => {
+    const customerIds = data.customers.map(customer => customer.id);
+    return Promise.all(customerIds.map(id => fetchMetafields(id).catch(err => ({ metafields: [] }))));
+  })
+  .then(results => {
+    const allFiles = results.flatMap(data => {
+        return data.metafields ? data.metafields.filter(metafield => metafield.namespace === 'request_quote') : [];
+    });
+  
+    if (allFiles.length > 0) {
+      console.log('Found files:', allFiles);
+      allFiles.forEach(metafield => {
+        const fileData = JSON.parse(metafield.value); 
+  
+        if (fileData.data) { 
+          try {
+            const binaryString = atob(fileData.data); 
+            const len = binaryString.length;
+            const bytes = new Uint8Array(len);
+  
+            for (let i = 0; i < len; i++) {
+              bytes[i] = binaryString.charCodeAt(i);
+            }
+  
+            const blob = new Blob([bytes], { type: fileData.fileType });
+            const downloadLink = URL.createObjectURL(blob); 
+  
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+              <td style="padding: 4px 0;">${fileData.jobNumber}</td>
+              <td style="padding: 4px 0;">${fileData.handle}</td>
+              <td style="padding: 4px 0;"><a href="${downloadLink}" download="${fileData.handle}" style="color: rgb(var(--color-link));">Download</a></td>
+              <td class="delColumn" style="padding: 4px 0;"><button class="delete-btn2" type="button" data-id="${metafield.id}">Delete</button></td>
+            `;
+            fileInfoDiv.appendChild(newRow); 
+  
+            const deleteButton = newRow.querySelector('.delete-btn2');
+            deleteButton.addEventListener('click', () => deleteRowC(newRow, metafield.id)); 
+          } catch (e) {
+            console.error('Failed to decode base64 for', fileData.handle, e);
+          }
+        } else {
+          console.warn('No valid data found for file:', metafield.key);
+        }
+      });
+    } else {
+      fileInfoDiv.innerHTML = '<tr><td colspan="4">No files found for any accounts.</td></tr>';
+    }
+  })
+  .catch(error => console.error('Error fetching data:', error));
+  
+  function deleteRowC(row, metafieldId) {
+    row.remove();
+    fetch(`https://quotation-api.channel.com.ph/quotation/metafields/${metafieldId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => {
+      if (res.ok) {
+        console.log('File deleted successfully.');
+      } else {
+        console.error('Error deleting metafield:', res.statusText);
+      }
+    })
+    .catch(error => console.error('Error:', error));
+  }
+</script>
+
+<style>
+  .delColumn {
+    width: calc(50%/10);
+  }
+</style>
+</div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "Request Quotation Files",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  {
+    "type": "color_scheme",
+    "id": "color_scheme",
+    "label": "t:sections.all.colors.label",
+    "info": "t:sections.all.colors.has_cards_info",
+    "default": "scheme-6"
+  },
+  {
+    "type": "select",
+    "id": "sticky_header_type",
+    "options": [
+      {
+        "value": "none",
+        "label": "t:sections.header.settings.sticky_header_type.options__1.label"
+      },
+      {
+        "value": "on-scroll-up",
+        "label": "t:sections.header.settings.sticky_header_type.options__2.label"
+      },
+      {
+        "value": "always",
+        "label": "t:sections.header.settings.sticky_header_type.options__3.label"
+      },
+      {
+        "value": "reduce-logo-size",
+        "label": "t:sections.header.settings.sticky_header_type.options__4.label"
+      }
+    ],
+    "default": "on-scroll-up",
+    "label": "t:sections.header.settings.sticky_header_type.label"
+  },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_top",
+    "default": 36
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 4,
+    "unit": "px",
+    "label": "t:sections.all.padding.padding_bottom",
+    "default": 36
+  }
+  ],  
+"blocks": [
+  {
+    "type": "@app"
+  }
+],
+"presets": [
+  {
+    "name": "Request Quotation Files"
+  }
+]
+}
+{% endschema %}

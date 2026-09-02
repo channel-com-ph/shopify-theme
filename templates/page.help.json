@@ -1,0 +1,164 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_6QmhN3": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RfXazR": {
+          "type": "heading",
+          "settings": {
+            "heading": "How can we Assist you?",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RfXazR"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "h1 {text-align: center;}",
+        "h2 {text-align: center;}"
+      ],
+      "settings": {
+        "padding_top": 12,
+        "padding_bottom": 100
+      }
+    },
+    "collection_list_qkafFB": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_NQrzie": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "privacy-agreement"
+          }
+        },
+        "featured_collection_BFi983": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "user-agreement"
+          }
+        },
+        "featured_collection_QWEmUQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "customer-guide"
+          }
+        },
+        "featured_collection_mbxLh3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "payment-option"
+          }
+        },
+        "featured_collection_H8AkPK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shipping-option"
+          }
+        },
+        "featured_collection_iVcLJ6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "customer-support"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_NQrzie",
+        "featured_collection_BFi983",
+        "featured_collection_QWEmUQ",
+        "featured_collection_mbxLh3",
+        "featured_collection_H8AkPK",
+        "featured_collection_iVcLJ6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "HELP",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 7,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "page_wJ3LJj": {
+      "type": "page",
+      "disabled": true,
+      "name": "t:sections.page.presets.name",
+      "settings": {
+        "page": "help",
+        "heading_size": "h1",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter_4rbJqt": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_pBVacQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get Exclusive Email Updates",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph_yRa7ME": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Never miss out on our latest product releases and special offers.</p>"
+          }
+        },
+        "email_form_wJrLWh": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_pBVacQ",
+        "paragraph_yRa7ME",
+        "email_form_wJrLWh"
+      ],
+      "disabled": true,
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-1e64a689-0542-4530-93d4-25fe025a860a",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "rich_text_6QmhN3",
+    "main",
+    "collection_list_qkafFB",
+    "page_wJ3LJj",
+    "newsletter_4rbJqt"
+  ]
+}

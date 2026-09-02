@@ -1,0 +1,1438 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-fe36b609-2ac0-4baf-bbd0-464226861b90"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_nbrYRL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_tmryEj": {
+          "type": "heading",
+          "settings": {
+            "heading": "AUDIO",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tmryEj"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_mgwM8p": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_DMajH8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "analog-mixer"
+          }
+        },
+        "featured_collection_4gykkt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "digital-mixer"
+          }
+        },
+        "featured_collection_dxcmkK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "streaming-mixer"
+          }
+        },
+        "featured_collection_mqHe4Y": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "personal-monitor-mixer"
+          }
+        },
+        "featured_collection_p4THkj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "powered-mixer"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_DMajH8",
+        "featured_collection_4gykkt",
+        "featured_collection_dxcmkK",
+        "featured_collection_mqHe4Y",
+        "featured_collection_p4THkj"
+      ],
+      "settings": {
+        "title": "MIXER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_frddXA": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_7fcVMa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "passive-speaker"
+          }
+        },
+        "featured_collection_UwhaQC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "active-speaker"
+          }
+        },
+        "featured_collection_FBXXhd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-monitor"
+          }
+        },
+        "featured_collection_4UyGQN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-speaker-all"
+          }
+        },
+        "featured_collection_fNqtaK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hi-fi-5-1-ch-speaker"
+          }
+        },
+        "featured_collection_Et34xK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "karaoke-speaker"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_7fcVMa",
+        "featured_collection_UwhaQC",
+        "featured_collection_FBXXhd",
+        "featured_collection_4UyGQN",
+        "featured_collection_fNqtaK",
+        "featured_collection_Et34xK"
+      ],
+      "settings": {
+        "title": "SPEAKER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_njmyMh": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_FFRy6D": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "portable-system-w-battery"
+          }
+        },
+        "featured_collection_Uedn3k": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "portable-system-w-o-battery"
+          }
+        },
+        "featured_collection_YbBFUg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lectern-sound-system"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_FFRy6D",
+        "featured_collection_Uedn3k",
+        "featured_collection_YbBFUg"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "PORTABLE SOUND SYSTEM",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_aMi6nc": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_xiar9A": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "power-amplifier"
+          }
+        },
+        "featured_collection_NBfhy4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dsp-network-amplifier"
+          }
+        },
+        "featured_collection_hx7gNY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-amplifier-70v-100v-1"
+          }
+        },
+        "featured_collection_metKeJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "integrated-amplifier"
+          }
+        },
+        "featured_collection_Gx8mjK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "karaoke-amplifier"
+          }
+        },
+        "featured_collection_D49MAG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hi-fi-av-receiver"
+          }
+        },
+        "featured_collection_frhVXe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headphone-amplifier"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_xiar9A",
+        "featured_collection_NBfhy4",
+        "featured_collection_hx7gNY",
+        "featured_collection_metKeJ",
+        "featured_collection_Gx8mjK",
+        "featured_collection_D49MAG",
+        "featured_collection_frhVXe"
+      ],
+      "settings": {
+        "title": "AMPLIFIER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_jJNPNE": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_f8HMkm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wired"
+          }
+        },
+        "featured_collection_7BfKLr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless"
+          }
+        },
+        "featured_collection_rcdqkB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microphone-array-system"
+          }
+        },
+        "featured_collection_wrRxGn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "remote-conference-processor"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_f8HMkm",
+        "featured_collection_7BfKLr",
+        "featured_collection_rcdqkB",
+        "featured_collection_wrRxGn"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "AUDIO CONFERENCE SYSTEM",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_jQrry8": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_CwHiFq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-speaker"
+          }
+        },
+        "featured_collection_CcXVz7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-amplifier-70v-100v"
+          }
+        },
+        "featured_collection_xX7Ugy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-mixer"
+          }
+        },
+        "featured_collection_k4UWG9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-dsp"
+          }
+        },
+        "featured_collection_z7D6WP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "speaker-controller"
+          }
+        },
+        "featured_collection_mfbNnG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-microphone"
+          }
+        },
+        "featured_collection_VEbpQV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rack-mount-audio-monitors"
+          }
+        },
+        "featured_collection_CYBUkb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pa-integrated-system"
+          }
+        },
+        "featured_collection_GwpaAi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "control-interface"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_CwHiFq",
+        "featured_collection_CcXVz7",
+        "featured_collection_xX7Ugy",
+        "featured_collection_k4UWG9",
+        "featured_collection_z7D6WP",
+        "featured_collection_mfbNnG",
+        "featured_collection_VEbpQV",
+        "featured_collection_CYBUkb",
+        "featured_collection_GwpaAi"
+      ],
+      "settings": {
+        "title": "COMMERCIAL AUDIO SYSTEM",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_8QFwVd": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_NxtWzJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dante-device"
+          }
+        },
+        "featured_collection_bkfFWw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aes67-device"
+          }
+        },
+        "featured_collection_YmTCJN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cobranet-device"
+          }
+        },
+        "featured_collection_MXQk6a": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-network"
+          }
+        },
+        "featured_collection_iQbdNb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "io-expansion-card"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_NxtWzJ",
+        "featured_collection_bkfFWw",
+        "featured_collection_YmTCJN",
+        "featured_collection_MXQk6a",
+        "featured_collection_iQbdNb"
+      ],
+      "settings": {
+        "title": "DIGITAL AUDIO NETWORK",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_pXFiyH": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_a7BgL4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dynamic-microphone"
+          }
+        },
+        "featured_collection_6eahr9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "condenser-microphone"
+          }
+        },
+        "featured_collection_hhGRf8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ribbon-microphone"
+          }
+        },
+        "featured_collection_RJwxUJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "usb-microphone"
+          }
+        },
+        "featured_collection_r8tnpe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microphone-array"
+          }
+        },
+        "featured_collection_n3EnKt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "drum-microphone"
+          }
+        },
+        "featured_collection_RxB7aM": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "wireless-microphone"
+          }
+        },
+        "featured_collection_HDanBF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microphone-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_a7BgL4",
+        "featured_collection_6eahr9",
+        "featured_collection_hhGRf8",
+        "featured_collection_RJwxUJ",
+        "featured_collection_r8tnpe",
+        "featured_collection_n3EnKt",
+        "featured_collection_RxB7aM",
+        "featured_collection_HDanBF"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "WIRED MICROPHONE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_ewC6CU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_rgMNjP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "handheld-microphone-set"
+          }
+        },
+        "featured_collection_exqJVj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lavalier-microphone-set"
+          }
+        },
+        "featured_collection_6MdTHM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headworn-microphone-set"
+          }
+        },
+        "featured_collection_y6QDUz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-mic-combo"
+          }
+        },
+        "featured_collection_3wKbpk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-instrument-mic"
+          }
+        },
+        "featured_collection_NdVPJC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gooseneck-microphone-set"
+          }
+        },
+        "featured_collection_rnM4mT": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "in-ear-wireless-set"
+          }
+        },
+        "featured_collection_URMeCg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "camera-wireless-set"
+          }
+        },
+        "featured_collection_rqFd4N": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "transmitter"
+          }
+        },
+        "featured_collection_wTeG6g": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "receiver"
+          }
+        },
+        "featured_collection_3zANAE": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "wireless-antenna-system"
+          }
+        },
+        "featured_collection_W399VC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "interchangeable-microphone-capsule"
+          }
+        },
+        "featured_collection_gCnRxn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-microphone-accessories"
+          }
+        },
+        "featured_collection_ymp7DM": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "audio-wireless-system"
+          }
+        },
+        "featured_collection_DLBjgX": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "microphone-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_rgMNjP",
+        "featured_collection_exqJVj",
+        "featured_collection_6MdTHM",
+        "featured_collection_y6QDUz",
+        "featured_collection_3wKbpk",
+        "featured_collection_NdVPJC",
+        "featured_collection_rnM4mT",
+        "featured_collection_URMeCg",
+        "featured_collection_rqFd4N",
+        "featured_collection_wTeG6g",
+        "featured_collection_3zANAE",
+        "featured_collection_W399VC",
+        "featured_collection_gCnRxn",
+        "featured_collection_ymp7DM",
+        "featured_collection_DLBjgX"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "WIRELESS MICROPHONE",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_PHkU4d": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_TcGExW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-tourguide"
+          }
+        },
+        "featured_collection_AYiMAW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "in-ear-wireless-set"
+          }
+        },
+        "featured_collection_Vz6CJj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-wireless-system"
+          }
+        },
+        "featured_collection_NBjh9f": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-antenna-system"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_TcGExW",
+        "featured_collection_AYiMAW",
+        "featured_collection_Vz6CJj",
+        "featured_collection_NBjh9f"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "WIRELESS AUDIO SYSTEM",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_BDtNTV": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_iJhxcy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "recording-tools-package"
+          }
+        },
+        "featured_collection_YwttWp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "studio-monitor-controller"
+          }
+        },
+        "featured_collection_GhczjR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "recording-software"
+          }
+        },
+        "featured_collection_jmj4cP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio-midi-interface"
+          }
+        },
+        "featured_collection_FQKRKk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vidmixer-surface-controller"
+          }
+        },
+        "featured_collection_QTYQME": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "portable-recorder"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_iJhxcy",
+        "featured_collection_YwttWp",
+        "featured_collection_GhczjR",
+        "featured_collection_jmj4cP",
+        "featured_collection_FQKRKk",
+        "featured_collection_QTYQME"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "RECORDING",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_aEgMFh": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_LdL3cb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dj-system-controller"
+          }
+        },
+        "featured_collection_zBxcVg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dj-mixer"
+          }
+        },
+        "featured_collection_PCf4yc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "turntable-player"
+          }
+        },
+        "featured_collection_r4GcB8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dj-sampler-processor"
+          }
+        },
+        "featured_collection_nrtkPg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dj-headphone"
+          }
+        },
+        "featured_collection_yJrYcw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dj-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_LdL3cb",
+        "featured_collection_zBxcVg",
+        "featured_collection_PCf4yc",
+        "featured_collection_r4GcB8",
+        "featured_collection_nrtkPg",
+        "featured_collection_yJrYcw"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "DJ EQUIPMENT",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_FaHhrn": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_GLpQzy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "compressor-gate"
+          }
+        },
+        "featured_collection_CAWd6B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "effector-1"
+          }
+        },
+        "featured_collection_aaKKxQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mic-preamp"
+          }
+        },
+        "featured_collection_hANqyg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "equalizer"
+          }
+        },
+        "featured_collection_mFQndf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "digital-speaker-management"
+          }
+        },
+        "featured_collection_eLXGFc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "exciter-enhancer"
+          }
+        },
+        "featured_collection_Dxtdxm": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "crossover"
+          }
+        },
+        "featured_collection_Y6QqyJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "feedback-reduction"
+          }
+        },
+        "featured_collection_FhpfXA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ad-da-converter"
+          }
+        },
+        "featured_collection_Ka9xVz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "di-box"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_GLpQzy",
+        "featured_collection_CAWd6B",
+        "featured_collection_aaKKxQ",
+        "featured_collection_hANqyg",
+        "featured_collection_mFQndf",
+        "featured_collection_eLXGFc",
+        "featured_collection_Dxtdxm",
+        "featured_collection_Y6QqyJ",
+        "featured_collection_FhpfXA",
+        "featured_collection_Ka9xVz"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "SIGNAL PROCESSOR",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_4Fwhif": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_LVQCVg": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "mp3-usb-sd-player"
+          }
+        },
+        "featured_collection_8pgmrh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bluetooth-mp3-usb-sdplayer-fmtuner"
+          }
+        },
+        "featured_collection_Me9jeW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "videoke-player"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_LVQCVg",
+        "featured_collection_8pgmrh",
+        "featured_collection_Me9jeW"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "AUDIO PLAYER",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_WHALCB": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_AD6Ga9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headphone"
+          }
+        },
+        "featured_collection_fqYJaV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "earphone"
+          }
+        },
+        "featured_collection_dPdfFF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headphone-amplifier"
+          }
+        },
+        "featured_collection_tepWFT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "headphone-earphone-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_AD6Ga9",
+        "featured_collection_fqYJaV",
+        "featured_collection_dPdfFF",
+        "featured_collection_tepWFT"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "HEADPHONES & EARPHONES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_EDKX7D": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_3zFaAg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "smart-phone-interface"
+          }
+        },
+        "featured_collection_UBfT7c": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-solutions"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_3zFaAg",
+        "featured_collection_UBfT7c"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "SMART PHONE INTERFACE / ACOUSTIC SOLUTIONS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_MxAhUp": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_DAJCxG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wired-1"
+          }
+        },
+        "featured_collection_q6QfRc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wireless-1"
+          }
+        },
+        "featured_collection_aR47qY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "talkback-system"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_DAJCxG",
+        "featured_collection_q6QfRc",
+        "featured_collection_aR47qY"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "COMMUNICATION SYSTEM",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_R4XBAC": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_xP7g3c": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "assembled-audio-cable"
+          }
+        },
+        "featured_collection_pVqGR7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "digital-cable"
+          }
+        },
+        "featured_collection_pPrycC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "multicore-cable"
+          }
+        },
+        "featured_collection_CfYHAk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "computer-cable"
+          }
+        },
+        "featured_collection_8hbbf9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bulk-cable"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_xP7g3c",
+        "featured_collection_pVqGR7",
+        "featured_collection_pPrycC",
+        "featured_collection_CfYHAk",
+        "featured_collection_8hbbf9"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "AUDIO CABLES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_P4ftCA": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_ztcVMR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "xlr"
+          }
+        },
+        "featured_collection_h8EibD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pl-6-3mm-1-4inch"
+          }
+        },
+        "featured_collection_UnHfAD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mini-pl-3-5mm"
+          }
+        },
+        "featured_collection_FUDwk4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "speakon"
+          }
+        },
+        "featured_collection_hMWR8L": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rca"
+          }
+        },
+        "featured_collection_3wwUfy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "banana-plug"
+          }
+        },
+        "featured_collection_QKFYM6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ethercon-rj45"
+          }
+        },
+        "featured_collection_dVEgEi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "adapter"
+          }
+        },
+        "featured_collection_LJagVp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "powercon-ac-connector"
+          }
+        },
+        "featured_collection_ENC74Y": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mic-plate"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_ztcVMR",
+        "featured_collection_h8EibD",
+        "featured_collection_UnHfAD",
+        "featured_collection_FUDwk4",
+        "featured_collection_hMWR8L",
+        "featured_collection_3wwUfy",
+        "featured_collection_QKFYM6",
+        "featured_collection_dVEgEi",
+        "featured_collection_LJagVp",
+        "featured_collection_ENC74Y"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "CONNECTORS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_jQCaDy": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_yatqwC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "microphone-stand"
+          }
+        },
+        "featured_collection_mhnmJC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "music-stand"
+          }
+        },
+        "featured_collection_py8tG7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "speaker-stand-bracket"
+          }
+        },
+        "featured_collection_d8abYE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "array-frames-rigging"
+          }
+        },
+        "featured_collection_giErHD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tv-monitor-table-stand"
+          }
+        },
+        "featured_collection_hGqAGK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "workstation"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_yatqwC",
+        "featured_collection_mhnmJC",
+        "featured_collection_py8tG7",
+        "featured_collection_d8abYE",
+        "featured_collection_giErHD",
+        "featured_collection_hGqAGK"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "STANDS, MOUNTS & WORKSTATIONS",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_yLtaYM": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_FeLgpn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hard-case"
+          }
+        },
+        "featured_collection_hBV9Vc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rack-case"
+          }
+        },
+        "featured_collection_dx783b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soft-bag"
+          }
+        },
+        "featured_collection_WbVmMt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cart"
+          }
+        },
+        "featured_collection_e6XRTr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rack-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_FeLgpn",
+        "featured_collection_hBV9Vc",
+        "featured_collection_dx783b",
+        "featured_collection_WbVmMt",
+        "featured_collection_e6XRTr"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "CASE / RACK / BAG & UTILITY CART",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    },
+    "collection_list_3MkKbz": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_6ndyRY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gooseneck-lamp-for-mixer"
+          }
+        },
+        "featured_collection_KDnQXL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "remote"
+          }
+        },
+        "featured_collection_9Vjtgc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "power-supply-batteries"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_6ndyRY",
+        "featured_collection_KDnQXL",
+        "featured_collection_9Vjtgc"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "AUDIO ACCESSORIES",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "rich_text_nbrYRL",
+    "collection_list_mgwM8p",
+    "collection_list_frddXA",
+    "collection_list_njmyMh",
+    "collection_list_aMi6nc",
+    "collection_list_jJNPNE",
+    "collection_list_jQrry8",
+    "collection_list_8QFwVd",
+    "collection_list_pXFiyH",
+    "collection_list_ewC6CU",
+    "collection_list_PHkU4d",
+    "collection_list_BDtNTV",
+    "collection_list_aEgMFh",
+    "collection_list_FaHhrn",
+    "collection_list_4Fwhif",
+    "collection_list_WHALCB",
+    "collection_list_EDKX7D",
+    "collection_list_MxAhUp",
+    "collection_list_R4XBAC",
+    "collection_list_P4ftCA",
+    "collection_list_jQCaDy",
+    "collection_list_yLtaYM",
+    "collection_list_3MkKbz"
+  ]
+}

@@ -1,0 +1,138 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-fe36b609-2ac0-4baf-bbd0-464226861b90"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-6",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_K9dD4D": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_nbrYRL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_tmryEj": {
+          "type": "heading",
+          "settings": {
+            "heading": "NETWORK SOLUTIONS",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tmryEj"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_mgwM8p": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_DMajH8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "network-switch"
+          }
+        },
+        "featured_collection_4gykkt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nas"
+          }
+        },
+        "featured_collection_Mn6MLc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "router"
+          }
+        },
+        "featured_collection_DWkdAq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "network-cable"
+          }
+        },
+        "featured_collection_mzMUh4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "network-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_DMajH8",
+        "featured_collection_4gykkt",
+        "featured_collection_Mn6MLc",
+        "featured_collection_DWkdAq",
+        "featured_collection_mzMUh4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "custom_liquid_K9dD4D",
+    "rich_text_nbrYRL",
+    "collection_list_mgwM8p"
+  ]
+}

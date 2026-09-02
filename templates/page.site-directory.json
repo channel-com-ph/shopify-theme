@@ -1,0 +1,63 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "custom_css": [
+        "h1 {text-align: center;}",
+        "h2 {text-align: center;}"
+      ],
+      "settings": {
+        "padding_top": 72,
+        "padding_bottom": 28
+      }
+    },
+    "newsletter_tqY6fJ": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_tM7mPd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get Exclusive Email Updates",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph_PcWaDw": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Never miss out on our latest product releases and special offers.</p>"
+          }
+        },
+        "email_form_UDDz3c": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_tM7mPd",
+        "paragraph_PcWaDw",
+        "email_form_UDDz3c"
+      ],
+      "disabled": true,
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-fe36b609-2ac0-4baf-bbd0-464226861b90",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "newsletter_tqY6fJ"
+  ]
+}

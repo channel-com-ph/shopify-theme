@@ -1,0 +1,213 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_r94nDq": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "products_per_page": 36,
+        "columns_desktop": 1,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "1",
+        "padding_top": 36,
+        "padding_bottom": 100
+      }
+    },
+    "rich_text_3wtTWL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_J3rjdw": {
+          "type": "heading",
+          "settings": {
+            "heading": "SYSTEM INTEGRATION",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_J3rjdw"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "full_width": true,
+        "padding_top": 68,
+        "padding_bottom": 68
+      }
+    },
+    "collection_list_U4KirE": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_YhxRGd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "surveillance-controller"
+          }
+        },
+        "featured_collection_HRX6Na": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "expansion-box"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_YhxRGd",
+        "featured_collection_HRX6Na"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_KXHkgp": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_WaHKqq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "system-integration-controller-control-interface"
+          }
+        },
+        "featured_collection_HUbnt8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "system-integration-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_WaHKqq",
+        "featured_collection_HUbnt8"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 100
+      }
+    },
+    "collection_list_M9Kk6x": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_mkeGUk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "processing"
+          }
+        },
+        "featured_collection_cbU6j4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "surveillance-controller"
+          }
+        },
+        "featured_collection_dNyFNj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "expansion-box"
+          }
+        },
+        "featured_collection_hfCDaq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "control-interface"
+          }
+        },
+        "featured_collection_bgMAT4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "system-integration-accessories"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_mkeGUk",
+        "featured_collection_cbU6j4",
+        "featured_collection_dNyFNj",
+        "featured_collection_hfCDaq",
+        "featured_collection_bgMAT4"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 12,
+        "padding_bottom": 80
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_r94nDq",
+    "banner",
+    "product-grid",
+    "rich_text_3wtTWL",
+    "collection_list_U4KirE",
+    "collection_list_KXHkgp",
+    "collection_list_M9Kk6x"
+  ]
+}
