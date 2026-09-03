@@ -1,0 +1,463 @@
+{% comment %}
+  Native replacement for the EComposer "About Us" page.
+  Built from theme-native Liquid + Dawn's existing CSS classes
+  (page-width, rte, grid, button, title) so it needs no external
+  CDN stylesheets, no external Google Font requests, and no
+  third-party JS. The FAQ accordion uses native <details>/<summary>
+  and the testimonials render as a static responsive grid, so this
+  section ships with zero additional JavaScript.
+{% endcomment %}
+
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} about-us-section">
+  <div class="page-width">
+
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="about-us__hero title-wrapper center">
+        {%- if section.settings.heading != blank -%}
+          <h1 class="title title--primary h0">{{ section.settings.heading | escape }}</h1>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="subtitle">{{ section.settings.subheading | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+
+        {%- when 'image_with_text' -%}
+          <div
+            class="about-us__row grid grid--2-col-desktop grid--1-col-tablet-down{% if block.settings.image_position == 'right' %} about-us__row--reverse{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="grid__item about-us__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 900
+                  | image_tag: loading: 'lazy', widths: '400,600,900', class: 'about-us__image'
+                }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg about-us__image' }}
+              {%- endif -%}
+            </div>
+            <div class="grid__item about-us__copy">
+              {%- if block.settings.heading != blank -%}
+                <h2 class="h2">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+
+        {%- when 'stats_row' -%}
+          <div class="about-us__stats grid grid--3-col-desktop grid--1-col-tablet-down" {{ block.shopify_attributes }}>
+            {%- for i in (1..3) -%}
+              {%- assign stat_number = 'stat_' | append: i | append: '_number' -%}
+              {%- assign stat_suffix = 'stat_' | append: i | append: '_suffix' -%}
+              {%- assign stat_label = 'stat_' | append: i | append: '_label' -%}
+              {%- assign number_value = block.settings[stat_number] -%}
+              {%- if number_value != blank -%}
+                <div class="grid__item about-us__stat center">
+                  <p class="about-us__stat-number h1">
+                    {{ number_value }}{{ block.settings[stat_suffix] }}
+                  </p>
+                  <p class="about-us__stat-label caption-with-letter-spacing">
+                    {{ block.settings[stat_label] | escape }}
+                  </p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+        {%- when 'features_row' -%}
+          <div class="about-us__features grid grid--3-col-desktop grid--1-col-tablet-down" {{ block.shopify_attributes }}>
+            {%- for i in (1..3) -%}
+              {%- assign feature_image = 'feature_' | append: i | append: '_image' -%}
+              {%- assign feature_heading = 'feature_' | append: i | append: '_heading' -%}
+              {%- assign feature_text = 'feature_' | append: i | append: '_text' -%}
+              {%- if block.settings[feature_heading] != blank -%}
+                <div class="grid__item about-us__feature">
+                  {%- if block.settings[feature_image] != blank -%}
+                    {{
+                      block.settings[feature_image]
+                      | image_url: width: 100
+                      | image_tag: loading: 'lazy', class: 'about-us__feature-icon'
+                    }}
+                  {%- endif -%}
+                  <h3 class="h4">{{ block.settings[feature_heading] | escape }}</h3>
+                  <div class="rte">{{ block.settings[feature_text] }}</div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+        {%- when 'services' -%}
+          <div class="about-us__row grid grid--2-col-desktop grid--1-col-tablet-down" {{ block.shopify_attributes }}>
+            <div class="grid__item about-us__copy">
+              {%- if block.settings.heading != blank -%}
+                <h2 class="h2">{{ block.settings.heading | escape }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+            </div>
+            <div class="grid__item about-us__media">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 900
+                  | image_tag: loading: 'lazy', widths: '400,600,900', class: 'about-us__image'
+                }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg about-us__image' }}
+              {%- endif -%}
+            </div>
+          </div>
+
+        {%- when 'testimonials_heading' -%}
+          {%- if block.settings.heading != blank -%}
+            <div class="title-wrapper center" {{ block.shopify_attributes }}>
+              <h2 class="h2">{{ block.settings.heading | escape }}</h2>
+            </div>
+          {%- endif -%}
+
+        {%- when 'testimonial' -%}
+          <div class="about-us__testimonial" {{ block.shopify_attributes }}>
+            {%- if block.settings.rating > 0 -%}
+              <div class="about-us__testimonial-rating" aria-hidden="true">
+                {%- for i in (1..5) -%}
+                  {%- if i <= block.settings.rating -%}★{%- else -%}☆{%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.quote != blank -%}
+              <p class="about-us__testimonial-quote">&ldquo;{{ block.settings.quote | escape }}&rdquo;</p>
+            {%- endif -%}
+            {%- if block.settings.author != blank -%}
+              <p class="about-us__testimonial-author caption-with-letter-spacing">
+                {{ block.settings.author | escape }}
+              </p>
+            {%- endif -%}
+          </div>
+
+        {%- when 'faq_heading' -%}
+          {%- if block.settings.heading != blank or block.settings.text != blank -%}
+            <div class="about-us__faq-intro grid grid--2-col-desktop grid--1-col-tablet-down" {{ block.shopify_attributes }}>
+              <div class="grid__item">
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="h2">{{ block.settings.heading | escape }}</h2>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="rte">{{ block.settings.text }}</div>
+                {%- endif -%}
+              </div>
+              <div class="grid__item about-us__faq-cta">
+                {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+                  <a href="{{ block.settings.button_link }}" class="button button--secondary">
+                    {{ block.settings.button_label | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endif -%}
+
+        {%- when 'faq' -%}
+          <details class="about-us__faq-item" {{ block.shopify_attributes }}>
+            <summary class="about-us__faq-question">
+              <span>{{ block.settings.question | escape }}</span>
+              <span class="svg-wrapper about-us__faq-icon">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
+            </summary>
+            <div class="about-us__faq-answer rte">{{ block.settings.answer }}</div>
+          </details>
+
+      {%- endcase -%}
+    {%- endfor -%}
+
+  </div>
+</div>
+
+{% style %}
+  .about-us__row {
+    align-items: center;
+    margin-bottom: 6rem;
+  }
+
+  .about-us__row--reverse {
+    direction: rtl;
+  }
+
+  .about-us__row--reverse > * {
+    direction: ltr;
+  }
+
+  .about-us__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--media-radius);
+  }
+
+  .about-us__hero {
+    margin-bottom: 5rem;
+  }
+
+  .about-us__stats,
+  .about-us__features {
+    margin-bottom: 6rem;
+    text-align: center;
+  }
+
+  .about-us__stat-number {
+    margin: 0;
+    color: rgb(var(--color-button));
+  }
+
+  .about-us__stat-label {
+    margin-top: 0.5rem;
+  }
+
+  .about-us__feature-icon {
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto 1.5rem;
+    display: block;
+  }
+
+  .about-us__testimonial {
+    background: rgba(var(--color-foreground), 0.04);
+    border-radius: var(--media-radius);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    break-inside: avoid;
+  }
+
+  #shopify-section-{{ section.id }} .about-us__testimonials-grid {
+    columns: 2;
+    column-gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .about-us__testimonials-grid {
+      columns: 1;
+    }
+  }
+
+  .about-us__testimonial-rating {
+    color: rgb(var(--color-button));
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-us__testimonial-quote {
+    font-style: italic;
+  }
+
+  .about-us__faq-intro {
+    margin-bottom: 3rem;
+    align-items: center;
+  }
+
+  .about-us__faq-item {
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    padding: 1.5rem 0;
+  }
+
+  .about-us__faq-question {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: var(--font-body-weight-bold);
+  }
+
+  .about-us__faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .about-us__faq-icon {
+    width: 1.2rem;
+    flex-shrink: 0;
+    transition: transform var(--duration-short) ease;
+  }
+
+  .about-us__faq-item[open] .about-us__faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .about-us__faq-answer {
+    margin-top: 1rem;
+  }
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "About us",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "About Us"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get to know the people who know your gear best."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_with_text",
+      "name": "Image with text",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "stats_row",
+      "name": "Stats row (3 stats)",
+      "settings": [
+        { "type": "text", "id": "stat_1_number", "label": "Stat 1 number", "default": "15" },
+        { "type": "text", "id": "stat_1_suffix", "label": "Stat 1 suffix", "default": "+" },
+        { "type": "text", "id": "stat_1_label", "label": "Stat 1 label", "default": "Years of Experience" },
+        { "type": "text", "id": "stat_2_number", "label": "Stat 2 number", "default": "250" },
+        { "type": "text", "id": "stat_2_suffix", "label": "Stat 2 suffix", "default": "+" },
+        { "type": "text", "id": "stat_2_label", "label": "Stat 2 label", "default": "Categories" },
+        { "type": "text", "id": "stat_3_number", "label": "Stat 3 number", "default": "100" },
+        { "type": "text", "id": "stat_3_suffix", "label": "Stat 3 suffix", "default": "+" },
+        { "type": "text", "id": "stat_3_label", "label": "Stat 3 label", "default": "Outstanding Brands" }
+      ]
+    },
+    {
+      "type": "features_row",
+      "name": "Features row (3 features)",
+      "settings": [
+        { "type": "image_picker", "id": "feature_1_image", "label": "Feature 1 icon" },
+        { "type": "text", "id": "feature_1_heading", "label": "Feature 1 heading" },
+        { "type": "richtext", "id": "feature_1_text", "label": "Feature 1 text" },
+        { "type": "image_picker", "id": "feature_2_image", "label": "Feature 2 icon" },
+        { "type": "text", "id": "feature_2_heading", "label": "Feature 2 heading" },
+        { "type": "richtext", "id": "feature_2_text", "label": "Feature 2 text" },
+        { "type": "image_picker", "id": "feature_3_image", "label": "Feature 3 icon" },
+        { "type": "text", "id": "feature_3_heading", "label": "Feature 3 heading" },
+        { "type": "richtext", "id": "feature_3_text", "label": "Feature 3 text" }
+      ]
+    },
+    {
+      "type": "services",
+      "name": "Services (image + list)",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Our Services" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "testimonials_heading",
+      "name": "Testimonials heading",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Happy Clients Say!" }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "richtext", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Author name" },
+        { "type": "range", "id": "rating", "min": 0, "max": 5, "step": 1, "label": "Star rating", "default": 5 }
+      ]
+    },
+    {
+      "type": "faq_heading",
+      "name": "FAQ heading",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently Asked Questions" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Still have questions? Contact us" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About us",
+      "blocks": [
+        { "type": "image_with_text" },
+        { "type": "stats_row" },
+        { "type": "image_with_text" },
+        { "type": "testimonials_heading" },
+        { "type": "testimonial" },
+        { "type": "faq_heading" },
+        { "type": "faq" }
+      ]
+    }
+  ]
+}
+{% endschema %}
