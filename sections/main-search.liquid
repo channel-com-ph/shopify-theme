@@ -1,4 +1,14 @@
-{% render 'rapid-search-results-template-v2' %}
+{% comment %}
+  Removed 2026-09-03: the Rapid Search & Filter render call and the
+  'rps_active' gating logic below it. Rapid Search is no longer
+  installed on this store (confirmed in Shopify admin) — the store now
+  uses Shopify's native Search & Discovery app instead, which enhances
+  Dawn's own facets/predictive search directly and needs no special
+  template logic. The gating below solved a problem (double-rendering
+  while Rapid's script CSS-hid the native grid) that no longer applies,
+  and since the app is gone, those metafield lookups were dead weight
+  computed on every search page load for nothing.
+{% endcomment %}
 {{ 'template-collection.aio.min.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.aio.min.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.aio.min.css' | asset_url | stylesheet_tag }}
@@ -426,73 +436,13 @@
               {%- endfor -%}
             </ul>  
             </div>
-              <!-- <ul
-                class="grid product-grid  grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
-                role="list"
-              >
-                {%- assign skip_card_product_styles = false -%}
-                {%- for item in search.results -%}
-                  {% assign lazy_load = false %}
-                  {%- if forloop.index > 2 -%}
-                    {%- assign lazy_load = true -%}
-                  {%- endif -%}
-
-                  <li
-                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                    {% if settings.animations_reveal_on_scroll %}
-                      data-cascade
-                    {% endif %}
-                  >
-                    {%- case item.object_type -%}
-                      {%- when 'product' -%}
-                        {%- capture product_settings -%}{%- if section.settings.product_show_vendor -%}vendor,{%- endif -%}title,price{%- endcapture -%}
-                        {% render 'card-product',
-                          card_product: item,
-                          media_aspect_ratio: section.settings.image_ratio,
-                          image_shape: section.settings.image_shape,
-                          show_secondary_image: section.settings.show_secondary_image,
-                          show_vendor: section.settings.show_vendor,
-                          show_rating: section.settings.show_rating,
-                          lazy_load: lazy_load,
-                          skip_styles: skip_card_product_styles
-                        %}
-                        {%- assign skip_card_product_styles = true -%}
-                      {%- when 'article' -%}
-                        {% render 'article-card',
-                          article: item,
-                          show_image: true,
-                          show_date: section.settings.article_show_date,
-                          show_author: section.settings.article_show_author,
-                          show_badge: true,
-                          media_aspect_ratio: 1,
-                          lazy_load: lazy_load
-                        %}
-                      {%- when 'page' -%}
-                        <div class="article-card-wrapper card-wrapper underline-links-hover">
-                          <div
-                            class="card card--card card--text ratio color-{{ settings.blog_card_color_scheme }}"
-                            style="--ratio-percent: 100%;"
-                          >
-                            <div class="card__content">
-                              <div class="card__information">
-                                <h3 class="card__heading">
-                                  <a href="{{ item.url }}" class="full-unstyled-link">
-                                    {{ item.title | truncate: 50 | escape }}
-                                  </a>
-                                </h3>
-                              </div>
-                              <div class="card__badge {{ settings.badge_position }}">
-                                <span class="badge color-{{ settings.color_schemes | first }}">
-                                  {{- 'templates.search.page' | t -}}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    {%- endcase -%}
-                  </li>
-                {%- endfor -%}
-              </ul> -->
+              {% comment %}
+                Removed 2026-09-02: a third copy of the search-results
+                product loop lived here inside an HTML comment. Browsers
+                never displayed it, but Liquid still rendered every
+                product card on every search page load and shipped the
+                output as dead bytes. No functional loss from removing it.
+              {% endcomment %}
               {%- if paginate.pages > 1 -%}
                 {% render 'pagination', paginate: paginate %}
               {%- endif -%}
