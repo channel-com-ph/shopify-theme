@@ -1,4 +1,14 @@
-{% render 'rapid-search-results-template-v2' %}
+{% comment %}
+  Removed 2026-09-03: the Rapid Search & Filter render call and the
+  'rps_active' gating logic below it. Rapid Search is no longer
+  installed on this store (confirmed in Shopify admin) — the store now
+  uses Shopify's native Search & Discovery app instead, which enhances
+  Dawn's own facets/filters directly and needs no special template
+  logic. The gating below was solving a problem (double-rendering
+  while Rapid's script CSS-hid the native grid) that no longer applies,
+  and since the app is gone, every one of those metafield lookups was
+  dead weight computed on every collection page load for nothing.
+{% endcomment %}
 {{ 'template-collection.aio.min.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.aio.min.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.aio.min.css' | asset_url | stylesheet_tag }}
@@ -6,6 +16,7 @@
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.aio.min.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
+
 
 {%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.aio.min.css' | asset_url | stylesheet_tag }}
