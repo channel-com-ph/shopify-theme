@@ -568,7 +568,7 @@
         "animation": false,
         "animation_duration": 5,
         "background_color": "#161616",
-        "wave_color": "#FFFFFF",
+        "wave_color": "#ffffff",
         "margin_top": -100,
         "margin_bottom": 0,
         "padding_top": 0,
@@ -841,7 +841,7 @@
         "direction": "left",
         "pause_on_hover": false,
         "grayscale": false,
-        "padding_top": 0,
+        "padding_top": 12,
         "padding_bottom": 36
       }
     },
@@ -952,7 +952,7 @@
         "direction": "right",
         "pause_on_hover": false,
         "grayscale": false,
-        "padding_top": 0,
+        "padding_top": 12,
         "padding_bottom": 28
       }
     },
