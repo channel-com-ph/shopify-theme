@@ -1204,7 +1204,9 @@
         "logo_PEtnVT",
         "logo_fx9UwL"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".logo-marquee__heading{font-size: 30px; color: darkred; }"
+      ],
       "name": "Logo marquee",
       "settings": {
         "heading": "Featuring 100+ Top Brands",
@@ -1315,6 +1317,7 @@
         "logo_wdm8VJ",
         "logo_jyrp88"
       ],
+      "custom_css": [],
       "name": "Logo marquee",
       "settings": {
         "heading": "",
