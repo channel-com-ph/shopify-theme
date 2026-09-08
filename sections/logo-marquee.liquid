@@ -1,0 +1,256 @@
+{%- style -%}
+  .logo-marquee-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .logo-marquee-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .logo-marquee-{{ section.id }} .logo-marquee__heading {
+    text-align: center;
+    margin: 0 0 3rem 0;
+  }
+
+  .logo-marquee-{{ section.id }} .logo-marquee__viewport {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .logo-marquee-{{ section.id }} .logo-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: logo-marquee-scroll-{{ section.id }} {{ section.settings.speed }}s linear infinite;
+    animation-direction: {% if section.settings.direction == 'right' %}reverse{% else %}normal{% endif %};
+  }
+
+  {%- if section.settings.pause_on_hover %}
+  .logo-marquee-{{ section.id }} .logo-marquee__viewport:hover .logo-marquee__track {
+    animation-play-state: paused;
+  }
+  {%- endif %}
+
+  .logo-marquee-{{ section.id }} .logo-marquee__list {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .logo-marquee-{{ section.id }} .logo-marquee__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0 {{ section.settings.logo_gap }}px;
+  }
+
+  .logo-marquee-{{ section.id }} .logo-marquee__item img {
+    display: block;
+    height: {{ section.settings.logo_height }}px;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    {%- if section.settings.grayscale %}
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter 0.25s ease, opacity 0.25s ease;
+    {%- endif %}
+  }
+
+  {%- if section.settings.grayscale %}
+  .logo-marquee-{{ section.id }} .logo-marquee__item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+  {%- endif %}
+
+  @keyframes logo-marquee-scroll-{{ section.id }} {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee-{{ section.id }} .logo-marquee__track {
+      animation: none;
+    }
+    .logo-marquee-{{ section.id }} .logo-marquee__viewport {
+      overflow-x: auto;
+    }
+  }
+{%- endstyle -%}
+
+<div class="logo-marquee-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="logo-marquee__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="logo-marquee__viewport">
+        <div class="logo-marquee__track">
+          {%- for i in (1..2) -%}
+            <div class="logo-marquee__list" aria-hidden="{% if i == 2 %}true{% else %}false{% endif %}">
+              {%- for block in section.blocks -%}
+                {%- liquid
+                  assign logo_alt = block.settings.alt
+                  if logo_alt == blank and block.settings.image
+                    assign logo_alt = block.settings.image.alt
+                  endif
+                -%}
+                <div class="logo-marquee__item" {{ block.shopify_attributes }}>
+                  {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+                  {%- if block.settings.image -%}
+                    {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: logo_alt }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                  {%- if block.settings.link != blank -%}</a>{%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Logo marquee",
+  "class": "section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featuring 100+ Top Brands"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo height",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "logo_gap",
+      "min": 8,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Space between logos",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 5,
+      "max": 120,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll speed (lower is faster)",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Scroll direction",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale",
+      "label": "Show logos in grayscale until hovered",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "info": "Defaults to the image's alt text if left blank"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo marquee",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}
