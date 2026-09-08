@@ -11,83 +11,6 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "otsb_email_signup_2_w3CKbw": {
-      "type": "otsb-email-signup-2",
-      "blocks": {
-        "heading_q43QGF": {
-          "type": "heading",
-          "settings": {
-            "heading": "Subscribe to our emails",
-            "heading_size_desktop": 49,
-            "heading_size_mobile": 39,
-            "heading_tag": "h2"
-          }
-        },
-        "paragraph_mBVeNN": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>",
-            "description_size_desktop": 20,
-            "description_size_mobile": 16
-          }
-        },
-        "email_form_THNNYR": {
-          "type": "email_form",
-          "settings": {
-            "form_placeholder": "Enter Your email",
-            "form_width": "large",
-            "padding_top_bottom": 2,
-            "padding_left_right": 2,
-            "button_label": "Subscribe",
-            "styles_button": "rounded",
-            "button_corner_radius": 6,
-            "border_thickness": 1,
-            "button_color_mobile": "color",
-            "button_animation": "fill_up",
-            "custom_icon_button": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_q43QGF",
-        "paragraph_mBVeNN",
-        "email_form_THNNYR"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".otsb_trademark_root {color: #9b9b9b;}"
-      ],
-      "name": "OT: Email signup #2",
-      "settings": {
-        "image": "shopify://shop_images/BG_cover_checkout.png",
-        "image_mobile": "shopify://shop_images/BG_cover_checkout.png",
-        "position_image": "image_background",
-        "desktop_height": "450px",
-        "image_alignment": "image_first",
-        "mobile_height": "300px",
-        "overlay_opacity": 20,
-        "colors_overlay": "#000000",
-        "styles_heading": "capitalize",
-        "content_alignment": "left",
-        "background_color": "#9b9b9b",
-        "heading": "#ffffff",
-        "text": "#ffffff",
-        "text_link": "rgba(0,0,0,0)",
-        "input_background": "rgba(0,0,0,0)",
-        "button": "#931704",
-        "button_text": "#ffffff",
-        "button_hover": "#931704",
-        "button_text_hover": "#ffffff",
-        "line_border": "#f2f2f2",
-        "full_width": false,
-        "show_section_divider": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 20
-      }
-    },
     "ss_back_to_top_nHHW4M": {
       "type": "ss-back-to-top",
       "disabled": true,
@@ -142,79 +65,6 @@
         "full_width": true,
         "padding_top": 48,
         "padding_bottom": 48
-      }
-    },
-    "otsb_email_signup_2_Ken9Q6": {
-      "type": "otsb-email-signup-2",
-      "blocks": {
-        "heading_CFtB9k": {
-          "type": "heading",
-          "settings": {
-            "heading": "SIGN UP TO JOIN OUR NEWSLETTER",
-            "heading_size_desktop": 37,
-            "heading_size_mobile": 39,
-            "heading_tag": "h2"
-          }
-        },
-        "paragraph_LqEpYF": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>",
-            "description_size_desktop": 20,
-            "description_size_mobile": 16
-          }
-        },
-        "email_form_QC8zXm": {
-          "type": "email_form",
-          "settings": {
-            "form_placeholder": "Enter Your email",
-            "form_width": "large",
-            "padding_top_bottom": 2,
-            "padding_left_right": 2,
-            "button_label": "Subscribe",
-            "styles_button": "rounded",
-            "button_corner_radius": 6,
-            "border_thickness": 1,
-            "button_color_mobile": "color",
-            "button_animation": "fill_up",
-            "custom_icon_button": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_CFtB9k",
-        "paragraph_LqEpYF",
-        "email_form_QC8zXm"
-      ],
-      "disabled": true,
-      "name": "OT: Email signup #2",
-      "settings": {
-        "image_mobile": "shopify://shop_images/Showroom-3_1.jpg",
-        "position_image": "image_background",
-        "desktop_height": "550px",
-        "image_alignment": "image_first",
-        "mobile_height": "300px",
-        "overlay_opacity": 60,
-        "colors_overlay": "#000000",
-        "styles_heading": "capitalize",
-        "content_alignment": "center",
-        "background_color": "#fafafa",
-        "heading": "#ffffff",
-        "text": "#ffffff",
-        "text_link": "rgba(0,0,0,0)",
-        "input_background": "rgba(0,0,0,0)",
-        "button": "#630101",
-        "button_text": "#ffffff",
-        "button_hover": "#630101",
-        "button_text_hover": "#fff",
-        "line_border": "#f2f2f2",
-        "full_width": true,
-        "show_section_divider": false,
-        "padding_top": 24,
-        "padding_bottom": 0,
-        "show_section_divider_mobile": false,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
       }
     },
     "custom_liquid_zEkNqK": {
@@ -275,10 +125,8 @@
     }
   },
   "order": [
-    "otsb_email_signup_2_w3CKbw",
     "ss_back_to_top_nHHW4M",
     "newsletter_gcPrwd",
-    "otsb_email_signup_2_Ken9Q6",
     "custom_liquid_zEkNqK",
     "footer"
   ]

@@ -145,16 +145,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "11119278427475967885": {
-        "type": "shopify://apps/ot-theme-sections/blocks/otsb-style/45c0d634-d78b-458c-8bca-17086e7d65aa",
-        "disabled": false,
-        "settings": {}
-      },
-      "12016176150940211849": {
-        "type": "shopify://apps/ot-theme-sections/blocks/otsb-script/45c0d634-d78b-458c-8bca-17086e7d65aa",
-        "disabled": false,
-        "settings": {}
-      },
       "21474836472147483647": {
         "type": "shopify://apps/ecomposer-landing-page-builder/blocks/app-embed/a0fc26e1-7741-4773-8b27-39389b4fb4a0",
         "disabled": false,
@@ -162,11 +152,6 @@
       },
       "3780119319618794447": {
         "type": "shopify://apps/marvyn-ai/blocks/marvin-chatbot-embed/0199a07e-9867-75e1-a339-602f277179b7",
-        "disabled": false,
-        "settings": {}
-      },
-      "3957738928735315565": {
-        "type": "shopify://apps/xb-countdown-timer/blocks/countdown/019b2116-58bf-7e68-8b06-04175c500d9a",
         "disabled": false,
         "settings": {}
       },
@@ -204,6 +189,16 @@
         "settings": {
           "widget_type": "review-widget"
         }
+      },
+      "12016176150940211849": {
+        "type": "shopify://apps/ot-theme-sections/blocks/otsb-script/45c0d634-d78b-458c-8bca-17086e7d65aa",
+        "disabled": true,
+        "settings": {}
+      },
+      "11119278427475967885": {
+        "type": "shopify://apps/ot-theme-sections/blocks/otsb-style/45c0d634-d78b-458c-8bca-17086e7d65aa",
+        "disabled": true,
+        "settings": {}
       }
     },
     "color_schemes": {
