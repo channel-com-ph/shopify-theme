@@ -345,7 +345,7 @@
         "wave_side": "0",
         "animation": false,
         "animation_duration": 5,
-        "background_color": "#FAFAFA",
+        "background_color": "#fafafa",
         "wave_color": "#161616",
         "margin_top": -60,
         "margin_bottom": 0,
@@ -359,18 +359,6 @@
     },
     "177768471038f5d157": {
       "type": "apps",
-      "blocks": {
-        "xb_countdown_timer_countdown_block_rTecCa": {
-          "type": "shopify://apps/xb-countdown-timer/blocks/countdown-block/019b2116-58bf-7e68-8b06-04175c500d9a",
-          "disabled": true,
-          "settings": {
-            "offerId": "d71e1b387e2a4c82b3c6d4f5d88c1454"
-          }
-        }
-      },
-      "block_order": [
-        "xb_countdown_timer_countdown_block_rTecCa"
-      ],
       "custom_css": [],
       "settings": {
         "include_margins": false
@@ -580,7 +568,7 @@
         "animation": false,
         "animation_duration": 5,
         "background_color": "#161616",
-        "wave_color": "#fafafa",
+        "wave_color": "#FFFFFF",
         "margin_top": -100,
         "margin_bottom": 0,
         "padding_top": 0,
@@ -891,6 +879,7 @@
         "image_Cg93UY",
         "image_bfKAzm"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "OT: Scrolling Image #1",
       "settings": {
@@ -1063,6 +1052,7 @@
         "image_rYYjJe",
         "image_qeGfWJ"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "OT: Scrolling Image #1",
       "settings": {
@@ -1107,6 +1097,236 @@
         "space_block_mobile": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
+      }
+    },
+    "logo_marquee_xzLKhM": {
+      "type": "logo-marquee",
+      "blocks": {
+        "logo_pjiWYx": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Atech.png",
+            "alt": "AUDIO TECHNICA",
+            "link": ""
+          }
+        },
+        "logo_tDeTTL": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/SE_ELECTRONICS-removebg-preview.png",
+            "alt": "SE ELECTRONICS",
+            "link": ""
+          }
+        },
+        "logo_fktR3m": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/aten_logo.png",
+            "alt": "ATEN",
+            "link": "shopify://collections/aten"
+          }
+        },
+        "logo_JaGQt3": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/pnasonic.png",
+            "alt": "PANASONIC",
+            "link": ""
+          }
+        },
+        "logo_hJwGYg": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ALLEN_HEAT_1d2e3a51-7fe6-4fa7-b5cc-62d8a8f91e24-removebg-preview.png",
+            "alt": "ALLEN & HEATH",
+            "link": ""
+          }
+        },
+        "logo_FTGRFc": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ROXTONE_66b7557e-b97d-4f5d-8817-96f9e6ef51aa-removebg-preview.png",
+            "alt": "ROXTONE",
+            "link": ""
+          }
+        },
+        "logo_yTWkKD": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/JBL_0be181ba-51ba-4380-9a4b-9bae6bffa6bc-removebg-preview.png",
+            "alt": "JBL",
+            "link": ""
+          }
+        },
+        "logo_KEM4Tp": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/MACKIE_66670801-4e65-453f-87ae-1675dc13c267-removebg-preview.png",
+            "alt": "MACKIE",
+            "link": ""
+          }
+        },
+        "logo_ihjNqy": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/SOUNDCRAFT_LOGO_09e6e5e8-2ecc-4302-9154-cdefbba5f3de-removebg-preview.png",
+            "alt": "SOUNDCRAFT",
+            "link": ""
+          }
+        },
+        "logo_PEtnVT": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/WHARFEDALE_LOGO_35584d47-9e28-49e8-8886-d0d3f71e7757-removebg-preview.png",
+            "alt": "WHARFEDALE",
+            "link": ""
+          }
+        },
+        "logo_fx9UwL": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/NEUTRIK_c9d0e130-2479-4198-add4-81be510ae92c-removebg-preview.png",
+            "alt": "NEUTRIK",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_pjiWYx",
+        "logo_tDeTTL",
+        "logo_fktR3m",
+        "logo_JaGQt3",
+        "logo_hJwGYg",
+        "logo_FTGRFc",
+        "logo_yTWkKD",
+        "logo_KEM4Tp",
+        "logo_ihjNqy",
+        "logo_PEtnVT",
+        "logo_fx9UwL"
+      ],
+      "custom_css": [],
+      "name": "Logo marquee",
+      "settings": {
+        "heading": "Featuring 100+ Top Brands",
+        "color_scheme": "scheme-1",
+        "logo_height": 120,
+        "logo_gap": 52,
+        "speed": 25,
+        "direction": "left",
+        "pause_on_hover": false,
+        "grayscale": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "logo_marquee_GKceGh": {
+      "type": "logo-marquee",
+      "blocks": {
+        "logo_MkDcGP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/ON_STAGE_STANDS_df361ff5-8109-4b68-bb80-4685b77b891e-removebg-preview.png",
+            "alt": "ON STAGE STANDS",
+            "link": ""
+          }
+        },
+        "logo_kH4aCW": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/BLACKMAGICDESIGN.png",
+            "alt": "BLACKMAGICDESIGN",
+            "link": ""
+          }
+        },
+        "logo_f4GdXf": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/MIPRO.png",
+            "alt": "MIPRO",
+            "link": ""
+          }
+        },
+        "logo_Kmeq8T": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/PRESONUS.png",
+            "alt": "PRESONUS",
+            "link": ""
+          }
+        },
+        "logo_XpwdPH": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/rcf.jpg",
+            "alt": "RCF",
+            "link": ""
+          }
+        },
+        "logo_YbhN6d": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/CANON.png",
+            "alt": "CANON",
+            "link": ""
+          }
+        },
+        "logo_9MJAmt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/HOLLYLAND.jpg",
+            "alt": "HOLLYLAND",
+            "link": ""
+          }
+        },
+        "logo_FUaabL": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/KEVLER.png",
+            "alt": "KEVLER",
+            "link": ""
+          }
+        },
+        "logo_wdm8VJ": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/LOGITECH.png",
+            "alt": "LOGITECH",
+            "link": ""
+          }
+        },
+        "logo_jyrp88": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/KONZERT.png",
+            "alt": "KONZERT",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_MkDcGP",
+        "logo_kH4aCW",
+        "logo_f4GdXf",
+        "logo_Kmeq8T",
+        "logo_XpwdPH",
+        "logo_YbhN6d",
+        "logo_9MJAmt",
+        "logo_FUaabL",
+        "logo_wdm8VJ",
+        "logo_jyrp88"
+      ],
+      "name": "Logo marquee",
+      "settings": {
+        "heading": "",
+        "color_scheme": "",
+        "logo_height": 120,
+        "logo_gap": 52,
+        "speed": 25,
+        "direction": "right",
+        "pause_on_hover": false,
+        "grayscale": false,
+        "padding_top": 0,
+        "padding_bottom": 28
       }
     },
     "newsletter_8nTkLV": {
@@ -1321,7 +1541,7 @@
       ],
       "name": "t:sections.newsletter.presets.name",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-c24dca0c-4410-4a5f-9c86-2170367c1c9d",
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 52
@@ -1346,6 +1566,8 @@
     "collection_list_My3Rza",
     "otsb_scrolling_image_1_ENK97A",
     "otsb_scrolling_image_1_8HenaN",
+    "logo_marquee_xzLKhM",
+    "logo_marquee_GKceGh",
     "newsletter_8nTkLV",
     "featured_blog_LT7xJk",
     "otsb_email_signup_2_MhCfM9",
