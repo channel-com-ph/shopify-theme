@@ -342,7 +342,13 @@
 } */
     </style>
 
-    {% render 'rapid-search-settings' %}
+    {% comment %}
+      Removed 2026-09-03: 'rapid-search-settings' rendered metafields for
+      the Rapid Search & Filter app, which is no longer installed (the
+      store now uses Shopify's native Search & Discovery app instead).
+      This was dead weight — a metafield lookup and snippet render on
+      every single page load for an app that isn't there.
+    {% endcomment %}
 </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
