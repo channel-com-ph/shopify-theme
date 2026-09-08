@@ -462,7 +462,7 @@
         "logo_fx9UwL"
       ],
       "custom_css": [
-        ".logo-marquee__heading {font-size: 30px; color: darkred;}"
+        ".logo-marquee__heading {font-size: 35px; color: darkred;}"
       ],
       "name": "Logo marquee",
       "settings": {
