@@ -125,7 +125,7 @@
     "currency_code_enabled": true,
     "cart_type": "notification",
     "show_vendor": true,
-    "show_cart_note": false,
+    "show_cart_note": true,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
     "checkout_accent_color": "#971704",
@@ -178,16 +178,6 @@
         "settings": {
           "widget_type": "review-widget"
         }
-      },
-      "12016176150940211849": {
-        "type": "shopify://apps/ot-theme-sections/blocks/otsb-script/45c0d634-d78b-458c-8bca-17086e7d65aa",
-        "disabled": true,
-        "settings": {}
-      },
-      "11119278427475967885": {
-        "type": "shopify://apps/ot-theme-sections/blocks/otsb-style/45c0d634-d78b-458c-8bca-17086e7d65aa",
-        "disabled": true,
-        "settings": {}
       },
       "6159598353363395418": {
         "type": "shopify://apps/google-youtube/blocks/store_widget/14ec7bd0-ac77-49a9-9417-90752398bdff",
