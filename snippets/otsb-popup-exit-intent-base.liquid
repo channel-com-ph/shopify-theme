@@ -348,7 +348,7 @@
                             {% comment %} @click.prevent="$store.otsb_xModal.removeFocus(); close();"{% endcomment %}
                           {% endif %}
                         >
-                          {% render 'otsb-button-label', button_animation: section.settings.button_animation, button_label: thankiu_block.settings.continue_shopping_text | default: 'Continue shopping', show_button_primary: true, custom_icon_button: section.settings.custom_icon_button %}
+                          {% render 'otsb-button-label', button_animation: section.settings.button_animation, button_label: thankiu_block.settings.continue_shopping_text, default: 'Continue shopping', show_button_primary: true, custom_icon_button: section.settings.custom_icon_button %}
                         </a>
                       {% endif %}
                   {% endif %}
@@ -628,3 +628,19 @@
 <script data-src="../../section-scripts/inline-js/popup-intent.ts">(()=>{window.otsb.loadedScript.includes("otsb-popup-exit-intent.ts")||(document.addEventListener("alpine:init",()=>{Alpine.data("otsb_popup_intent",function(n){let u=e=>{let t=localStorage.getItem(`intent-${e}_completed`);return t?(typeof t=="string"&&(t=t==="true"),t===!0):!0},a=e=>{let t=`intent-${e}_session_closed`,o=sessionStorage.getItem(t);return o&&typeof o=="string"?o==="1":!1},r=e=>{let t=`intent-${e}_cookie_closed`,o=localStorage.getItem(t),i={expires:0},s=new Date().getTime();if(o)try{if(i=JSON.parse(o),s<=i.expires)return!0}catch{}return i.expires=s+864e5*n.x_days,localStorage.setItem(t,JSON.stringify(i)),!1};return{isMobileScreen:window.innerWidth<768,isTouchDevice:"ontouchstart"in window||navigator.maxTouchPoints||navigator.msMaxTouchPoints||!1,formLoading:!1,onPopupClose:function(e,t,o){let i=n.enable_exit_intent;return n.email_form_success&&localStorage.removeItem(`intent-${t.sectionId}_completed`),i?(e.hide(),o.putPopupStateToStorage("hidden",!0),sessionStorage.setItem(`intent-${t.sectionId}_session_closed`,"1"),!0):!1},onPopupLoad:function(e,t){let o=n.email_form_success,s=!u(t.sectionId)&&o,p=".otsb-popup__thankiu-"+t.sectionId,c="#Newsletter-success--"+t.sectionId;return(e.$el.querySelector(p)||e.$el.querySelector(c))&&s?(e.showFull(),!0):!!n.enable_exit_intent},onPopupOpen:function(){return!!n.enable_exit_intent},onPopupInit(e,t,o){let i=n.enable_exit_intent,s=n.email_form_success;if(i&&s===!1&&!Shopify.designMode&&!(this.isTouchDevice||this.isMobileScreen)){let c=navigator.userAgent.toLowerCase().indexOf("firefox")>-1,d=/^((?!chrome|android).)*safari/i.test(navigator.userAgent);if(n.trigger==="once_per_session"&&a(t.sectionId)||n.trigger==="once_per_x_days"&&r(t.sectionId))return;(c||d)&&document.documentElement&&typeof document.documentElement.addEventListener=="function"?document.documentElement.addEventListener("mouseout",l=>{l.clientY<=0&&!e.isShow()&&e.showFull()}):(document.addEventListener("mousemove",function(l){l.clientY<20&&!e.isShow()&&e.showFull()}),document.addEventListener("mouseleave",l=>{l.clientY<=0&&!e.isShow()&&e.showFull()}))}let p=document.getElementById(`otsb-popupIntentNewsletter-${t.sectionId}`);p&&!Shopify.designMode&&p.addEventListener("submit",c=>{document.dispatchEvent(new CustomEvent("otsb-popup-lock",{detail:{lock:!0}})),this.formLoading=!0,localStorage.setItem(`intent-${t.sectionId}_completed`,String(!1))})}}}),Alpine.store("otsb_xPopupExitIntent",{thankiu_page_active_blocks:{}}),Alpine.data("otsb_popupIntent",()=>({init(){if(Shopify&&Shopify.designMode){let n=Alpine.store("otsb_xPopupExitIntent").thankiu_page_active_blocks,u=r=>{let e=r.detail.blockId;if(e.startsWith("thankiu_page")){if(!n?.[e]){n[e]=!0;return}n[e]=!0}},a=r=>{let e=r.detail.blockId;if(e.startsWith("thankiu_page")){if(!n?.[e])return;n[e]=!1}};document.addEventListener("shopify:block:select",u),document.addEventListener("shopify:block:deselect",a)}}}))}),window.otsb.loadedScript.push("otsb-popup-exit-intent.ts"));})();</script>
 {% endif %}
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'otsb-button-label', button_animation: section.settings.button_animation,
+    button_label: thankiu_block.settings.continue_shopping_text | default: 'Continue
+    shopping', show_button_primary: true, custom_icon_button: section.settings.custom_icon_button
+    %}"
+  to: "{% render 'otsb-button-label', button_animation: section.settings.button_animation,
+    button_label: thankiu_block.settings.continue_shopping_text, default: 'Continue
+    shopping', show_button_primary: true, custom_icon_button: section.settings.custom_icon_button
+    %}"
+  position: 20301..20561
+{% endcomment %}
