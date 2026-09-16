@@ -295,7 +295,7 @@
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
-      "note": "Order Notes: Add special instructions or requests.\nTo request the Official Receipt, indicate:\n(Company Name, Address, and TIN)",
+      "note": "Order Notes: Add special instructions or requests.\nTo request the Official Receipt, indicate:\n\n\n(Company Name, Address, and TIN)",
       "checkout": "Check out",
       "empty": "Your cart is empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
