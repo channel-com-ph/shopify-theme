@@ -624,6 +624,12 @@
           "settings": {
             "collection": "midas"
           }
+        },
+        "featured_collection_rbtfVN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
         }
       },
       "block_order": [
@@ -661,7 +667,8 @@
         "featured_collection_wB38WQ",
         "featured_collection_BKiYjK",
         "featured_collection_khh6zg",
-        "featured_collection_8DJTpC"
+        "featured_collection_8DJTpC",
+        "featured_collection_rbtfVN"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
