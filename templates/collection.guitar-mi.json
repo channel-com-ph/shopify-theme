@@ -48,16 +48,16 @@
             "collection": "electric-guitar"
           }
         },
-        "featured_collection_QK3Ewe": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "acoustic-guitar"
-          }
-        },
         "featured_collection_rHyJpx": {
           "type": "featured_collection",
           "settings": {
             "collection": "electric-bass-guitar"
+          }
+        },
+        "featured_collection_QK3Ewe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acoustic-guitar"
           }
         },
         "featured_collection_teLFHY": {
@@ -75,8 +75,8 @@
       },
       "block_order": [
         "featured_collection_BAmUdC",
-        "featured_collection_QK3Ewe",
         "featured_collection_rHyJpx",
+        "featured_collection_QK3Ewe",
         "featured_collection_teLFHY",
         "featured_collection_xRkXbJ"
       ],
