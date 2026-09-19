@@ -630,6 +630,12 @@
           "settings": {
             "collection": "hartke"
           }
+        },
+        "featured_collection_hbbYMN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "luxgen"
+          }
         }
       },
       "block_order": [
@@ -668,7 +674,8 @@
         "featured_collection_BKiYjK",
         "featured_collection_khh6zg",
         "featured_collection_8DJTpC",
-        "featured_collection_rbtfVN"
+        "featured_collection_rbtfVN",
+        "featured_collection_hbbYMN"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
