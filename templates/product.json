@@ -48,7 +48,14 @@
         },
         "judge_me_reviews_preview_badge_nd3Acq": {
           "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {}
+        },
+        "klaviyo_reviews_average_rating_baUKHj": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -102,6 +109,7 @@
         "sku_9hFCft",
         "custom_liquid_LWhVDn",
         "judge_me_reviews_preview_badge_nd3Acq",
+        "klaviyo_reviews_average_rating_baUKHj",
         "variant_picker",
         "boostly_benifit_boxes_bHKfLH",
         "quantity_selector",
