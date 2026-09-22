@@ -636,6 +636,12 @@
           "settings": {
             "collection": "luxgen"
           }
+        },
+        "featured_collection_EDnKD9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "peavey"
+          }
         }
       },
       "block_order": [
@@ -675,7 +681,8 @@
         "featured_collection_khh6zg",
         "featured_collection_8DJTpC",
         "featured_collection_rbtfVN",
-        "featured_collection_hbbYMN"
+        "featured_collection_hbbYMN",
+        "featured_collection_EDnKD9"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
