@@ -250,6 +250,9 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "custom_css": [
+        ".h1 {text-align: center;}"
+      ],
       "settings": {
         "title": "New Products",
         "heading_size": "h1",
@@ -308,7 +311,9 @@
     },
     "featured_collection_n7hyqe": {
       "type": "featured-collection",
-      "custom_css": [],
+      "custom_css": [
+        ".h1 {text-align: center;}"
+      ],
       "settings": {
         "title": "Featured Products",
         "heading_size": "h1",
