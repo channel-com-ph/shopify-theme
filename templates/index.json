@@ -12,6 +12,44 @@
     "slideshow_qkjELP": {
       "type": "slideshow",
       "blocks": {
+        "slide_PijR4H": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/FREE_OCULAR.png",
+            "image_link": "shopify://pages/quotation-form",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-3",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_a94Jkm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/QUOTATION_72dd1abe-5757-4740-b6af-b2bc88d0c566.jpg",
+            "image_link": "shopify://pages/quotation-guide",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-3",
+            "text_alignment_mobile": "center"
+          }
+        },
         "slide_n3Hw89": {
           "type": "slide",
           "settings": {
@@ -68,52 +106,14 @@
             "color_scheme": "scheme-6",
             "text_alignment_mobile": "center"
           }
-        },
-        "slide_a94Jkm": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/QUOTATION_72dd1abe-5757-4740-b6af-b2bc88d0c566.jpg",
-            "image_link": "shopify://pages/quotation-guide",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-3",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_PijR4H": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/FREE_OCULAR.png",
-            "image_link": "shopify://pages/quotation-form",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-3",
-            "text_alignment_mobile": "center"
-          }
         }
       },
       "block_order": [
+        "slide_PijR4H",
+        "slide_a94Jkm",
         "slide_n3Hw89",
         "slide_MeYLzk",
-        "slide_KdcxJn",
-        "slide_a94Jkm",
-        "slide_PijR4H"
+        "slide_KdcxJn"
       ],
       "custom_css": [
         ".slider-counter__link--active.slider-counter__link--dots .dot {background-color: white;}",
@@ -278,6 +278,7 @@
     },
     "ss_waves_TAGGAg": {
       "type": "ss-waves",
+      "disabled": true,
       "name": "SS - Wave",
       "settings": {
         "wave_height": 300,
@@ -288,8 +289,8 @@
         "animation_duration": 5,
         "background_color": "#fafafa",
         "wave_color": "#161616",
-        "margin_top": -60,
-        "margin_bottom": 0,
+        "margin_top": 0,
+        "margin_bottom": -12,
         "padding_top": 0,
         "padding_bottom": 0,
         "padding_horizontal": 0,
@@ -318,7 +319,7 @@
         "products_to_show": 5,
         "columns_desktop": 5,
         "full_width": false,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "color_scheme": "scheme-99cee7f9-8f8f-4a24-9200-137b746b3b0d",
