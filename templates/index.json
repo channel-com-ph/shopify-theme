@@ -272,8 +272,8 @@
         "quick_add": "none",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 0
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "ss_waves_TAGGAg": {
@@ -330,8 +330,8 @@
         "quick_add": "none",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "ss_waves_BiNtkQ": {
@@ -692,8 +692,8 @@
       "settings": {
         "color_scheme": "scheme-c24dca0c-4410-4a5f-9c86-2170367c1c9d",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },
