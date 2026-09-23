@@ -59,8 +59,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "full_width": true,
-        "padding_top": 68,
-        "padding_bottom": 68
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_FtbAp7": {
@@ -127,15 +127,15 @@
       ],
       "settings": {
         "title": "CAMERA",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_YanknR": {
@@ -174,15 +174,15 @@
       ],
       "settings": {
         "title": "CAMERA COMPONENTS & ACCESSORIES",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_PaAMt8": {
@@ -207,15 +207,15 @@
       ],
       "settings": {
         "title": "VIDEO LIGHTING",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_7GLmDb": {
@@ -269,15 +269,15 @@
       ],
       "settings": {
         "title": "CAMERA MOUNT / STAND",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_RP8QUb": {
@@ -323,15 +323,15 @@
       ],
       "settings": {
         "title": "VIDEO MIXER & CONTROLLER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_RdkhL7": {
@@ -363,15 +363,15 @@
       ],
       "settings": {
         "title": "SELECTOR",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_6aaxJr": {
@@ -410,15 +410,15 @@
       ],
       "settings": {
         "title": "MATRIX MIXER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_Txekdy": {
@@ -459,15 +459,15 @@
       ],
       "settings": {
         "title": "SIGNAL MANAGEMENT",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_mjVARQ": {
@@ -492,15 +492,15 @@
       ],
       "settings": {
         "title": "WIRELESS VIDEO, REPEATED & EXTENDER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_fztHK6": {
@@ -560,15 +560,15 @@
       ],
       "settings": {
         "title": "SPLITTER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_nXg6BN": {
@@ -615,15 +615,15 @@
       ],
       "settings": {
         "title": "COMMUNICATION SYSTEM",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_FnATJG": {
@@ -646,18 +646,17 @@
         "featured_collection_LCVDLf",
         "featured_collection_bLfBbH"
       ],
-      "disabled": true,
       "settings": {
         "title": "WIRELESS VIDEO & TELEPROMPTER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 36
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_tPYdU6": {
@@ -710,15 +709,15 @@
       ],
       "settings": {
         "title": "CAPTURE DEVICE / MEDIA PLAYER / SOFTWARE",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_NLNndd": {
@@ -765,15 +764,15 @@
       ],
       "settings": {
         "title": "VIDEO MONITORING & ROUTING",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_tKDKKt": {
@@ -812,15 +811,15 @@
       ],
       "settings": {
         "title": "PROJECTOR",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_9aWLce": {
@@ -880,15 +879,15 @@
       ],
       "settings": {
         "title": "SCREEN",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_iQDeaF": {
@@ -945,15 +944,15 @@
       ],
       "settings": {
         "title": "LED WALL & DISPLAY",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_nfCjt7": {
@@ -999,15 +998,15 @@
       ],
       "settings": {
         "title": "VIDEO MOUNT / BRACKET / STANDS & WORKSTATION",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_xKYgBX": {
@@ -1095,15 +1094,15 @@
       ],
       "settings": {
         "title": "VIDEO CABLES",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_TkzT9m": {
@@ -1156,15 +1155,15 @@
       ],
       "settings": {
         "title": "CONNECTORS",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_xarw8e": {
@@ -1197,15 +1196,15 @@
       ],
       "settings": {
         "title": "MEDIA STORAGE , CLOUD STORAGE",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },

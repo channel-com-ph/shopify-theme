@@ -70,8 +70,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "full_width": true,
-        "padding_top": 68,
-        "padding_bottom": 68
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_Uiyh9E": {
@@ -97,15 +97,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "KEYBOARD",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_yGeNC7": {
@@ -152,15 +152,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "GUITAR",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_akycAM": {
@@ -221,15 +221,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "DRUMS",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_etf9wU": {
@@ -255,15 +255,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "PERCUSSION",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_naUjVQ": {
@@ -303,15 +303,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "INSTRUMENT AMPLIFIER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_FfUThC": {
@@ -344,15 +344,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "EFFECTOR",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_KhbWch": {
@@ -392,15 +392,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "STRING",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_N8EyCQ": {
@@ -475,15 +475,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "ACCESSORIES",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },

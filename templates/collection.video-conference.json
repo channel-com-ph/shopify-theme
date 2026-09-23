@@ -70,8 +70,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "full_width": true,
-        "padding_top": 68,
-        "padding_bottom": 68
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_XhLqrk": {
@@ -138,9 +138,9 @@
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "rich_text_rjd94d": {
@@ -150,7 +150,7 @@
           "type": "heading",
           "settings": {
             "heading": "VIDEO CONFERENCE ACCESSORIES",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         }
       },
@@ -219,9 +219,9 @@
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_kebVGT": {

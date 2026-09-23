@@ -59,8 +59,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "full_width": true,
-        "padding_top": 68,
-        "padding_bottom": 68
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_mgwM8p": {
@@ -106,15 +106,15 @@
       ],
       "settings": {
         "title": "MIXER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_frddXA": {
@@ -167,15 +167,15 @@
       ],
       "settings": {
         "title": "SPEAKER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_njmyMh": {
@@ -208,15 +208,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "PORTABLE SOUND SYSTEM",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_aMi6nc": {
@@ -276,15 +276,15 @@
       ],
       "settings": {
         "title": "AMPLIFIER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_jJNPNE": {
@@ -324,15 +324,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "AUDIO CONFERENCE SYSTEM",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_jQrry8": {
@@ -406,15 +406,15 @@
       ],
       "settings": {
         "title": "COMMERCIAL AUDIO SYSTEM",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_8QFwVd": {
@@ -460,15 +460,15 @@
       ],
       "settings": {
         "title": "DIGITAL AUDIO NETWORK",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_pXFiyH": {
@@ -537,15 +537,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "WIRED MICROPHONE",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_ewC6CU": {
@@ -666,15 +666,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "WIRELESS MICROPHONE",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_PHkU4d": {
@@ -714,15 +714,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "WIRELESS AUDIO SYSTEM",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_BDtNTV": {
@@ -776,15 +776,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "RECORDING",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_aEgMFh": {
@@ -838,15 +838,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "DJ EQUIPMENT",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_FaHhrn": {
@@ -928,15 +928,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "SIGNAL PROCESSOR",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_4Fwhif": {
@@ -970,15 +970,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "AUDIO PLAYER",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_WHALCB": {
@@ -1018,15 +1018,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "HEADPHONES & EARPHONES",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_EDKX7D": {
@@ -1052,15 +1052,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "SMART PHONE INTERFACE / ACOUSTIC SOLUTIONS",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_MxAhUp": {
@@ -1093,15 +1093,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "COMMUNICATION SYSTEM",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_R4XBAC": {
@@ -1148,14 +1148,14 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "AUDIO CABLES",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
+        "swipe_on_mobile": true,
+        "padding_top": 32,
         "padding_bottom": 80
       }
     },
@@ -1238,15 +1238,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "CONNECTORS",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_jQCaDy": {
@@ -1300,15 +1300,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "STANDS, MOUNTS & WORKSTATIONS",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_yLtaYM": {
@@ -1355,15 +1355,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "CASE / RACK / BAG & UTILITY CART",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     },
     "collection_list_3MkKbz": {
@@ -1396,15 +1396,15 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "AUDIO ACCESSORIES",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 6,
         "color_scheme": "scheme-1d6eb715-aec2-4591-aa68-aefc81a3c73c",
         "show_view_all": false,
         "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 80
+        "swipe_on_mobile": true,
+        "padding_top": 32,
+        "padding_bottom": 32
       }
     }
   },

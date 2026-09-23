@@ -270,8 +270,8 @@
         "show_vendor": true,
         "show_rating": true,
         "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
         "padding_top": 60,
         "padding_bottom": 0
       }
@@ -328,8 +328,8 @@
         "show_vendor": true,
         "show_rating": true,
         "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
         "padding_top": 12,
         "padding_bottom": 80
       }
