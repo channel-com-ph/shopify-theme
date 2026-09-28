@@ -31,29 +31,10 @@
             "text_alignment_mobile": "center"
           }
         },
-        "slide_a94Jkm": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/QUOTATION_72dd1abe-5757-4740-b6af-b2bc88d0c566.jpg",
-            "image_link": "shopify://pages/quotation-guide",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-3",
-            "text_alignment_mobile": "center"
-          }
-        },
         "slide_n3Hw89": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/SE-banner-sale.png",
+            "image": "shopify://shop_images/SE.jpg",
             "image_link": "shopify://collections/se-electronics",
             "heading": "",
             "heading_size": "h1",
@@ -106,14 +87,33 @@
             "color_scheme": "scheme-6",
             "text_alignment_mobile": "center"
           }
+        },
+        "slide_a94Jkm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/QUOTATION_72dd1abe-5757-4740-b6af-b2bc88d0c566.jpg",
+            "image_link": "shopify://pages/quotation-guide",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-3",
+            "text_alignment_mobile": "center"
+          }
         }
       },
       "block_order": [
         "slide_PijR4H",
-        "slide_a94Jkm",
         "slide_n3Hw89",
         "slide_MeYLzk",
-        "slide_KdcxJn"
+        "slide_KdcxJn",
+        "slide_a94Jkm"
       ],
       "custom_css": [
         ".slider-counter__link--active.slider-counter__link--dots .dot {background-color: white;}",
