@@ -3,7 +3,7 @@
 {{ 'component-slider.aio.min.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-/* Make collection card titles bigger */
+  /* Section padding */
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -144,6 +144,71 @@
   html.js-ready .customer-form-container {
     display: block;
   }
+
+  /* === COLLECTION CARDS: smaller title + light red hover ===
+     Scoped to this section only. Tweak the variables below. */
+  .section-{{ section.id }}-padding {
+    --cl-title-size: 1.4rem;          /* mobile title size */
+    --cl-title-size-desktop: 1.1rem;  /* desktop title size */
+    --cl-hover-bg: #fdeaea;           /* light red card background on hover */
+    --cl-hover-text: #b42318;         /* deeper red title on hover (keeps contrast) */
+    --cl-card-radius: var(--media-radius, 20px);
+  }
+
+  .section-{{ section.id }}-padding .collection-list .card-wrapper {
+    border-radius: var(--cl-card-radius);
+    background-color: transparent;
+    transition: background-color 0.25s ease;
+  }
+
+  /* Size is forced on the heading AND its inner link/text, because the theme's
+     card CSS can set the size on any of them (h3 classes, .full-unstyled-link, etc.) */
+  .section-{{ section.id }}-padding .collection-list .card__heading,
+  .section-{{ section.id }}-padding .collection-list .card__heading a,
+  .section-{{ section.id }}-padding .collection-list .card__heading .full-unstyled-link {
+    font-size: var(--cl-title-size-desktop) !important;
+    line-height: 1.3 !important;
+  }
+
+  .section-{{ section.id }}-padding .collection-list .card__heading {
+    transition: color 0.25s ease;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding .collection-list .card__heading,
+    .section-{{ section.id }}-padding .collection-list .card__heading a,
+    .section-{{ section.id }}-padding .collection-list .card__heading .full-unstyled-link {
+      font-size: var(--cl-title-size-desktop) !important;
+    }
+  }
+
+  /* Hover only on devices that truly hover (avoids sticky hover on touch),
+     plus focus-within so keyboard users get the same feedback. */
+  @media (hover: hover) {
+    .section-{{ section.id }}-padding .collection-list .card-wrapper:hover {
+      background-color: var(--cl-hover-bg);
+    }
+    .section-{{ section.id }}-padding .collection-list .card-wrapper:hover .card__heading,
+    .section-{{ section.id }}-padding .collection-list .card-wrapper:hover .card__heading a {
+      color: var(--cl-hover-text);
+    }
+  }
+
+  .section-{{ section.id }}-padding .collection-list .card-wrapper:focus-within {
+    background-color: var(--cl-hover-bg);
+  }
+
+  .section-{{ section.id }}-padding .collection-list .card-wrapper:focus-within .card__heading,
+  .section-{{ section.id }}-padding .collection-list .card-wrapper:focus-within .card__heading a {
+    color: var(--cl-hover-text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-{{ section.id }}-padding .collection-list .card-wrapper,
+    .section-{{ section.id }}-padding .collection-list .card__heading {
+      transition: none;
+    }
+  }
 {%- endstyle -%}
 
 
@@ -161,7 +226,7 @@
       {%- render 'category-directory' -%}
       <div class="title-wrapper-with-link{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
         <h2
-          id="SectionHeading-{{ section.id }}"
+          id="SectionHeading-{{ section.id }}" 
           class="collection-list-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
         >
           {{ section.settings.title }}
