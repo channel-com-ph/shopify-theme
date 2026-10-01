@@ -36,6 +36,224 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* === PRODUCT CARDS: smaller title + light red hover ===
+     Scoped to this section only. Tweak the variables below. */
+  .section-{{ section.id }}-padding {
+    --cl-title-size: 1.4rem;          /* mobile title size */
+    --cl-title-size-desktop: 1.5rem;  /* desktop title size */
+    --cl-hover-bg: #f3f3f3ff;           /* light grey on hover */
+    --cl-hover-text: #b42318;         /* deeper red title on hover (keeps contrast) */
+    --cl-card-radius: var(--media-radius, 20px);
+    --cl-arrow-top: 34%;              /* vertical position of carousel arrows */
+    --cl-gutter: 5rem;                 /* side gutter of the contained carousel (matches .page-width on desktop) */
+    --cl-scroll-thumb: #d6d6d6;        /* scrollbar at rest (light grey) */
+    --cl-scroll-thumb-hover: #9a9a9a;  /* scrollbar while hovering the carousel */
+    --cl-scroll-thumb-active: #6b6b6b; /* scrollbar while hovering/dragging the bar itself */
+  }
+
+  .section-{{ section.id }}-padding .product-grid .card-wrapper {
+    border-radius: var(--cl-card-radius);
+    background-color: transparent;
+    transition: background-color 0.25s ease;
+  }
+
+  /* Size is forced on the heading AND its inner link/text, because the theme's
+     card CSS can set the size on any of them (h3 classes, .full-unstyled-link, etc.) */
+  .section-{{ section.id }}-padding .product-grid .card__heading,
+  .section-{{ section.id }}-padding .product-grid .card__heading a,
+  .section-{{ section.id }}-padding .product-grid .card__heading .full-unstyled-link {
+    font-size: var(--cl-title-size) !important;
+    line-height: 1.3 !important;
+  }
+
+  .section-{{ section.id }}-padding .product-grid .card__heading {
+    transition: color 0.25s ease;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding .product-grid .card__heading,
+    .section-{{ section.id }}-padding .product-grid .card__heading a,
+    .section-{{ section.id }}-padding .product-grid .card__heading .full-unstyled-link {
+      font-size: var(--cl-title-size-desktop) !important;
+    }
+  }
+
+  /* Hover only on devices that truly hover (avoids sticky hover on touch),
+     plus focus-within so keyboard users get the same feedback. */
+  @media (hover: hover) {
+    .section-{{ section.id }}-padding .product-grid .card-wrapper:hover {
+      background-color: var(--cl-hover-bg);
+    }
+    .section-{{ section.id }}-padding .product-grid .card-wrapper:hover .card__heading,
+    .section-{{ section.id }}-padding .product-grid .card-wrapper:hover .card__heading a {
+      color: var(--cl-hover-text);
+    }
+  }
+
+  .section-{{ section.id }}-padding .product-grid .card-wrapper:focus-within {
+    background-color: var(--cl-hover-bg);
+  }
+
+  .section-{{ section.id }}-padding .product-grid .card-wrapper:focus-within .card__heading,
+  .section-{{ section.id }}-padding .product-grid .card-wrapper:focus-within .card__heading a {
+    color: var(--cl-hover-text);
+  }
+
+  /* === CAROUSEL: Sweetwater-style ===
+     Swipeable/scrollable row, round arrows overlaid on the sides, no page counter.
+     Uses the theme's own <slider-component> JS; only the look is changed here. */
+  {%- if section.settings.carousel_style -%}
+    .section-{{ section.id }}-padding.collection--carousel slider-component {
+      position: relative;
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider {
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 1.6rem; /* room so the scrollbar doesn't touch the cards */
+    }
+
+    /* Visible scrollbar: light grey at rest, darker while hovering the carousel,
+       so customers can see the row can be slid. */
+    .section-{{ section.id }}-padding.collection--carousel .slider {
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: var(--cl-scroll-thumb) transparent;
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider:hover {
+      scrollbar-color: var(--cl-scroll-thumb-hover) transparent;
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider::-webkit-scrollbar {
+      display: block;
+      height: 8px; /* Chrome, Edge, Safari */
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider::-webkit-scrollbar-thumb {
+      background-color: var(--cl-scroll-thumb);
+      border-radius: 999px;
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider:hover::-webkit-scrollbar-thumb {
+      background-color: var(--cl-scroll-thumb-hover);
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider::-webkit-scrollbar-thumb:hover {
+      background-color: var(--cl-scroll-thumb-active);
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider__slide {
+      scroll-snap-align: start;
+    }
+
+    /* Contained on desktop (not full bleed): same max width and side gutters as the
+       other sections, so the row stops at the container edge and lines up with the
+       Featured Categories below. Phones keep the edge-to-edge peek. The offsets are
+       reset explicitly so the theme's own slider spacing can't add to them. */
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding.collection--carousel:not(.collection--full-width) slider-component {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: var(--page-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: var(--cl-gutter);
+        padding-right: var(--cl-gutter);
+      }
+
+      .section-{{ section.id }}-padding.collection--carousel:not(.collection--full-width) .slider {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        scroll-padding-left: 0 !important;
+        scroll-padding-right: 0 !important;
+        justify-content: flex-start !important;
+      }
+
+      /* The first card must start exactly where the scrollbar starts */
+      .section-{{ section.id }}-padding.collection--carousel:not(.collection--full-width) .slider > li:first-child {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+      }
+
+      .section-{{ section.id }}-padding.collection--carousel:not(.collection--full-width) .slider::before,
+      .section-{{ section.id }}-padding.collection--carousel:not(.collection--full-width) .slider::after {
+        content: none !important;
+        display: none !important;
+      }
+    }
+
+    /* The counter is replaced by the overlaid arrows */
+    .section-{{ section.id }}-padding.collection--carousel .slider-counter {
+      display: none;
+    }
+
+    /* Collapse the button row so the arrows can position against the slider */
+    .section-{{ section.id }}-padding.collection--carousel .slider-buttons {
+      display: block;
+      height: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider-button {
+      position: absolute;
+      top: var(--cl-arrow-top);
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      margin: 0;
+      border-radius: 50%;
+      background-color: #fff;
+      color: #111;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+      transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Arrows straddle the container edge: half over the first/last card, half in the gutter */
+    .section-{{ section.id }}-padding.collection--carousel .slider-button--prev {
+      left: calc(var(--cl-gutter) - 22px);
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider-button--next {
+      right: calc(var(--cl-gutter) - 22px);
+    }
+
+    .section-{{ section.id }}-padding.collection--carousel .slider-button:not([disabled]):hover {
+      background-color: var(--cl-hover-bg);
+      color: var(--cl-hover-text);
+    }
+
+    /* Hide an arrow when there is nothing more to scroll to in that direction */
+    .section-{{ section.id }}-padding.collection--carousel .slider-button[disabled] {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Touch devices and phones: swipe instead of arrows */
+    @media (hover: none), (max-width: 749px) {
+      .section-{{ section.id }}-padding.collection--carousel .slider-buttons {
+        display: none;
+      }
+    }
+  {%- endif -%}
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-{{ section.id }}-padding .product-grid .card-wrapper,
+    .section-{{ section.id }}-padding .product-grid .card__heading,
+    .section-{{ section.id }}-padding.collection--carousel .slider,
+    .section-{{ section.id }}-padding.collection--carousel .slider-button {
+      transition: none;
+      scroll-behavior: auto;
+    }
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -47,13 +265,23 @@
   endif
 
   assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+
+  # Carousel style forces the slider on for both mobile and desktop
+  # (only when there are more products than fit in one row).
+  assign want_mobile_slider = section.settings.swipe_on_mobile
+  assign want_desktop_slider = section.settings.enable_desktop_slider
+  if section.settings.carousel_style
+    assign want_mobile_slider = true
+    assign want_desktop_slider = true
+  endif
+
   assign show_mobile_slider = false
-  if section.settings.swipe_on_mobile and products_to_display > columns_mobile_int
+  if want_mobile_slider and products_to_display > columns_mobile_int
     assign show_mobile_slider = true
   endif
 
   assign show_desktop_slider = false
-  if section.settings.enable_desktop_slider and products_to_display > section.settings.columns_desktop
+  if want_desktop_slider and products_to_display > section.settings.columns_desktop
     assign show_desktop_slider = true
   endif
 -%}
@@ -62,7 +290,7 @@
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
   <div
-    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
+    class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}{% if section.settings.carousel_style %} collection--carousel{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
@@ -325,6 +553,13 @@
         }
       ],
       "default": "solid"
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_style",
+      "label": "Carousel style (arrows on the sides, swipe on mobile)",
+      "info": "Turns the slider on for desktop and mobile when there are more products than fit in one row. Overrides the two slider options.",
+      "default": true
     },
     {
       "type": "checkbox",
