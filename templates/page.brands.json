@@ -654,6 +654,12 @@
           "settings": {
             "collection": "peavey"
           }
+        },
+        "featured_collection_MLmpga": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rean"
+          }
         }
       },
       "block_order": [
@@ -696,7 +702,8 @@
         "featured_collection_8DJTpC",
         "featured_collection_rbtfVN",
         "featured_collection_hbbYMN",
-        "featured_collection_EDnKD9"
+        "featured_collection_EDnKD9",
+        "featured_collection_MLmpga"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
