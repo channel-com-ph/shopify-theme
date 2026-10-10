@@ -672,6 +672,12 @@
           "settings": {
             "collection": "show"
           }
+        },
+        "featured_collection_8CdaT4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "eikon"
+          }
         }
       },
       "block_order": [
@@ -717,7 +723,8 @@
         "featured_collection_hbbYMN",
         "featured_collection_EDnKD9",
         "featured_collection_MLmpga",
-        "featured_collection_6caLYX"
+        "featured_collection_6caLYX",
+        "featured_collection_8CdaT4"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
