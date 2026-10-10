@@ -666,6 +666,12 @@
           "settings": {
             "collection": "rean"
           }
+        },
+        "featured_collection_6caLYX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "show"
+          }
         }
       },
       "block_order": [
@@ -710,7 +716,8 @@
         "featured_collection_rbtfVN",
         "featured_collection_hbbYMN",
         "featured_collection_EDnKD9",
-        "featured_collection_MLmpga"
+        "featured_collection_MLmpga",
+        "featured_collection_6caLYX"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
