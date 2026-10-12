@@ -684,6 +684,12 @@
           "settings": {
             "collection": "acer"
           }
+        },
+        "featured_collection_yg8k4L": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "benq"
+          }
         }
       },
       "block_order": [
@@ -731,7 +737,8 @@
         "featured_collection_MLmpga",
         "featured_collection_6caLYX",
         "featured_collection_8CdaT4",
-        "featured_collection_LbCFHf"
+        "featured_collection_LbCFHf",
+        "featured_collection_yg8k4L"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
