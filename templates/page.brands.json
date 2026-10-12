@@ -678,6 +678,12 @@
           "settings": {
             "collection": "eikon"
           }
+        },
+        "featured_collection_LbCFHf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acer"
+          }
         }
       },
       "block_order": [
@@ -724,7 +730,8 @@
         "featured_collection_EDnKD9",
         "featured_collection_MLmpga",
         "featured_collection_6caLYX",
-        "featured_collection_8CdaT4"
+        "featured_collection_8CdaT4",
+        "featured_collection_LbCFHf"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
