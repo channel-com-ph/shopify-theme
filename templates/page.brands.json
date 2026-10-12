@@ -690,6 +690,12 @@
           "settings": {
             "collection": "benq"
           }
+        },
+        "featured_collection_qBzRQj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "axiom"
+          }
         }
       },
       "block_order": [
@@ -738,7 +744,8 @@
         "featured_collection_6caLYX",
         "featured_collection_8CdaT4",
         "featured_collection_LbCFHf",
-        "featured_collection_yg8k4L"
+        "featured_collection_yg8k4L",
+        "featured_collection_qBzRQj"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
