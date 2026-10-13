@@ -702,6 +702,12 @@
           "settings": {
             "collection": "gravity"
           }
+        },
+        "featured_collection_dG4REi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bosch"
+          }
         }
       },
       "block_order": [
@@ -752,7 +758,8 @@
         "featured_collection_LbCFHf",
         "featured_collection_yg8k4L",
         "featured_collection_qBzRQj",
-        "featured_collection_DKN3Ff"
+        "featured_collection_DKN3Ff",
+        "featured_collection_dG4REi"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
