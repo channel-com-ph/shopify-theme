@@ -39,31 +39,6 @@
         "padding_bottom": 100
       }
     },
-    "rich_text_yLMEwQ": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_bcF6UV": {
-          "type": "heading",
-          "settings": {
-            "heading": "WIRELESS MICROPHONES",
-            "heading_size": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_bcF6UV"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
-      }
-    },
     "collection_list_nb9cxg": {
       "type": "collection-list",
       "blocks": {
@@ -137,7 +112,6 @@
   "order": [
     "banner",
     "product-grid",
-    "rich_text_yLMEwQ",
     "collection_list_nb9cxg"
   ]
 }
