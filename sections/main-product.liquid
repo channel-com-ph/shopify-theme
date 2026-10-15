@@ -262,6 +262,42 @@
   }
 }
 
+/* NO LONGER AVAILABLE — HELP NOTE */
+.no-longer-available-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid #a33227;
+  border-radius: 6px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  background: #fff;
+}
+
+.no-longer-available-note__icon {
+  flex-shrink: 0;
+  color: #a33227;
+  margin-top: 2px;
+}
+
+.no-longer-available-note__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.no-longer-available-note p {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #111;
+}
+
+.no-longer-available-note strong {
+  color: #a33227;
+}
+
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
@@ -525,6 +561,7 @@
                 </div>
 
               {%- when 'quantity_selector' -%}
+                {%- unless is_no_longer_available -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -746,6 +783,7 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
+                {%- endunless -%}
 
           <!-- QUOTATION SECTION -->
           {%- assign quantity_unit_name = quantity_unit.name | default: "" -%}
@@ -756,7 +794,8 @@
 
           {%- if customer -%}
 
-            {%- if product.price != 0 and is_no_longer_available == false -%}
+            {%- if is_no_longer_available -%}
+
               {%- capture quotation_json -%}
                 {
                   "featured_image": {{ product.featured_image | img_url: "80x80" | json }},
@@ -770,6 +809,20 @@
                   "note": {{ badge_note | json }}
                 }
               {%- endcapture -%}
+
+                <div class="no-longer-available-note">
+                <span class="no-longer-available-note__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 10v4a1 1 0 0 0 1 1h2l4.29 3.86A1 1 0 0 0 12 18.1V5.9a1 1 0 0 0-1.71-.76L6 9H4a1 1 0 0 0-1 1zm14.5 2a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 17.5 12zm2.5 0a7 7 0 0 1-4 6.32v-1.66A5.5 5.5 0 0 0 19 12a5.5 5.5 0 0 0-3-4.66V5.68A7 7 0 0 1 20 12z"/>
+                  </svg>
+                </span>
+                <p>
+                  Don't worry—we're here to help! Contact our team, and we'll
+                  <strong>Recommend the Latest Alternative Model</strong>
+                  with similar features or the best solution for your project and requirements.
+                </p>
+              </div>
+
               <div id="quotation-section" class="product-form__buttons">
                 <button
                   id="addToQuotationButton"
@@ -780,44 +833,89 @@
                   <span>Add to Quotation</span>
                 </button>
               </div>
-            {%- endif -%}
 
-            {%- if product.price == 0 or is_no_longer_available -%}
-              {%- capture inquiry_json -%}
-                {
-                  "featured_image": {{ product.featured_image | img_url: "80x80" | json }},
-                  "handle": {{ product.handle | json }},
-                  "title": {{ product.title | json }},
-                  "price": "Price for Inquiry",
-                  "vendor": {{ product.vendor | json }},
-                  "metafields": {{ quantity_unit_name | json }},
-                  "type": {{ product.type | json }},
-                  "url": {{ product.url | json }},
-                  "note": {{ badge_note | json }}
-                }
-              {%- endcapture -%}
-              <div id="quotation-section" class="product-form__buttons">
-                <button
-                  class="addToInquireButton product-form__submit button button--full-width button--secondary"
-                  data-item="{{ inquiry_json | strip | escape }}"
-                >
-                  <span>Add to Price for Inquiry</span>
-                </button>
-              </div>
+
+
+            {%- else -%}
+
+              {%- if product.price != 0 -%}
+                {%- capture quotation_json -%}
+                  {
+                    "featured_image": {{ product.featured_image | img_url: "80x80" | json }},
+                    "handle": {{ product.handle | json }},
+                    "title": {{ product.title | json }},
+                    "price": {{ product.price | divided_by: 100.0 | json }},
+                    "vendor": {{ product.vendor | json }},
+                    "metafields": {{ quantity_unit_name | json }},
+                    "type": {{ product.type | json }},
+                    "url": {{ product.url | json }},
+                    "note": {{ badge_note | json }}
+                  }
+                {%- endcapture -%}
+                <div id="quotation-section" class="product-form__buttons">
+                  <button
+                    id="addToQuotationButton"
+                    type="button"
+                    class="product-form__submit button button--full-width button--secondary"
+                    data-product="{{ quotation_json | strip | escape }}"
+                  >
+                    <span>Add to Quotation</span>
+                  </button>
+                </div>
+              {%- endif -%}
+
+              {%- if product.price == 0 -%}
+                {%- capture inquiry_json -%}
+                  {
+                    "featured_image": {{ product.featured_image | img_url: "80x80" | json }},
+                    "handle": {{ product.handle | json }},
+                    "title": {{ product.title | json }},
+                    "price": "Price for Inquiry",
+                    "vendor": {{ product.vendor | json }},
+                    "metafields": {{ quantity_unit_name | json }},
+                    "type": {{ product.type | json }},
+                    "url": {{ product.url | json }},
+                    "note": {{ badge_note | json }}
+                  }
+                {%- endcapture -%}
+                <div id="quotation-section" class="product-form__buttons">
+                  <button
+                    class="addToInquireButton product-form__submit button button--full-width button--secondary"
+                    data-item="{{ inquiry_json | strip | escape }}"
+                  >
+                    <span>Add to Price for Inquiry</span>
+                  </button>
+                </div>
+              {%- endif -%}
+
             {%- endif -%}
 
           {%- else -%}
 
+            
+            {%- if is_no_longer_available -%}
+              <div class="no-longer-available-note">
+                <span class="no-longer-available-note__icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 10v4a1 1 0 0 0 1 1h2l4.29 3.86A1 1 0 0 0 12 18.1V5.9a1 1 0 0 0-1.71-.76L6 9H4a1 1 0 0 0-1 1zm14.5 2a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 17.5 12zm2.5 0a7 7 0 0 1-4 6.32v-1.66A5.5 5.5 0 0 0 19 12a5.5 5.5 0 0 0-3-4.66V5.68A7 7 0 0 1 20 12z"/>
+                  </svg>
+                </span>
+                <p>
+                  Don't worry—we're here to help! Contact our team, and we'll
+                  <strong>Recommend the Latest Alternative Model</strong>
+                  with similar features or the best solution for your project and requirements.
+                </p>
+              </div>
+            {%- endif -%}
+            
             <div id="quotation-section" class="product-form__buttons">
-              {%- if product.price != 0 and is_no_longer_available == false -%}
-                <a href="{{ routes.storefront_login_url }}" 
+              {%- if product.price != 0 or is_no_longer_available -%}
+                <a href="{{ routes.storefront_login_url }}"
                   class="product-form__submit button button--full-width button--secondary"
                 >
                   <span>Add to Quotation</span>
                 </a>
-              {%- endif -%}
-
-              {%- if product.price == 0 or is_no_longer_available -%}
+              {%- else -%}
                 <a href="{{ routes.storefront_login_url }}"
                   class="product-form__submit button button--full-width button--secondary"
                 >
