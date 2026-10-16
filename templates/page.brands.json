@@ -794,22 +794,14 @@
         "featured_collection_9gBdJG": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
-          }
-        },
-        "featured_collection_7Y3HhA": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": ""
+            "collection": "konzert"
           }
         }
       },
       "block_order": [
         "featured_collection_aaezNV",
-        "featured_collection_9gBdJG",
-        "featured_collection_7Y3HhA"
+        "featured_collection_9gBdJG"
       ],
-      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
