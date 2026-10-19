@@ -441,6 +441,7 @@
         },
         "featured_collection_NHJgQR": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "apex"
           }
