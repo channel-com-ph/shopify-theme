@@ -790,12 +790,18 @@
           "settings": {
             "collection": "cad-audio"
           }
+        },
+        "featured_collection_epxG3M": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jvc"
+          }
         }
       },
       "block_order": [
-        "featured_collection_aaezNV"
+        "featured_collection_aaezNV",
+        "featured_collection_epxG3M"
       ],
-      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
