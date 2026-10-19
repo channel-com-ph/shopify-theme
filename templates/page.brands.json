@@ -441,9 +441,8 @@
         },
         "featured_collection_NHJgQR": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
-            "collection": "apex"
+            "collection": "konzert"
           }
         },
         "featured_collection_aLgcDz": {
@@ -791,18 +790,12 @@
           "settings": {
             "collection": "cad-audio"
           }
-        },
-        "featured_collection_9gBdJG": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "konzert"
-          }
         }
       },
       "block_order": [
-        "featured_collection_aaezNV",
-        "featured_collection_9gBdJG"
+        "featured_collection_aaezNV"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
