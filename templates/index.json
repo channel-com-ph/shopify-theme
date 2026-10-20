@@ -397,7 +397,7 @@
         ".h1 {text-align: center;}"
       ],
       "settings": {
-        "title": "Featured Products",
+        "title": "Popular Products",
         "heading_size": "h1",
         "description": "",
         "show_description": false,
