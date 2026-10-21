@@ -802,12 +802,19 @@
           "settings": {
             "collection": "kustom"
           }
+        },
+        "featured_collection_UeRx3y": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "canare"
+          }
         }
       },
       "block_order": [
         "featured_collection_aaezNV",
         "featured_collection_epxG3M",
-        "featured_collection_erVzUR"
+        "featured_collection_erVzUR",
+        "featured_collection_UeRx3y"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
