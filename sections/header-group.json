@@ -11,6 +11,12 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "179256480961023903": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
@@ -75,6 +81,7 @@
     }
   },
   "order": [
+    "179256480961023903",
     "announcement-bar",
     "header",
     "custom_liquid_Gf6RRR"
