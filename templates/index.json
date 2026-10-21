@@ -144,9 +144,7 @@
       "block_order": [
         "heading_tfhLzq"
       ],
-      "custom_css": [
-        ".h1 {color: grey;}"
-      ],
+      "custom_css": [],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
