@@ -143,7 +143,6 @@
       "block_order": [
         "hoppy_banners_announcement_bar_block_ztFRdh"
       ],
-      "disabled": true,
       "settings": {
         "include_margins": true
       }
@@ -909,10 +908,10 @@
   },
   "order": [
     "slideshow_qkjELP",
-    "17925675877546fcbd",
     "rich_text_p76zF7",
     "collection_list_GEPR3w",
     "1792564844c21f5f2a",
+    "17925675877546fcbd",
     "multicolumn_jddmgY",
     "featured_collection",
     "ss_waves_TAGGAg",
