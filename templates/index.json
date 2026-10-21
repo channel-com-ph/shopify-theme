@@ -151,7 +151,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 16,
         "padding_bottom": 12
@@ -240,7 +240,7 @@
         "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 9,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "show_view_all": false,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
@@ -254,7 +254,7 @@
         "column_n78cTc": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/CUSTOMIZED.png",
+            "image": "shopify://shop_images/ASSEMBLED.png",
             "title": "&nbsp;CUSTOMIZED & ASSEMBLED CABLES&nbsp;",
             "text": "<p>All your needs for reliable AV System Cables</p>",
             "link_label": "VIEW ALL",
