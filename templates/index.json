@@ -130,6 +130,24 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "17925675877546fcbd": {
+      "type": "apps",
+      "blocks": {
+        "hoppy_banners_announcement_bar_block_ztFRdh": {
+          "type": "shopify://apps/hoppy-banners/blocks/announcement_bar_block/019d00e5-18bb-7f23-bc62-d8f33e2f2f7e",
+          "settings": {
+            "announcement-id": "151ad8cb-c9db-4cda-8dda-a7e3cd02555a"
+          }
+        }
+      },
+      "block_order": [
+        "hoppy_banners_announcement_bar_block_ztFRdh"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true
+      }
+    },
     "rich_text_p76zF7": {
       "type": "rich-text",
       "blocks": {
@@ -397,23 +415,6 @@
         "padding_horizontal_mobile": 0,
         "full_width": true,
         "content_width": 120
-      }
-    },
-    "17925675877546fcbd": {
-      "type": "apps",
-      "blocks": {
-        "hoppy_banners_announcement_bar_block_ztFRdh": {
-          "type": "shopify://apps/hoppy-banners/blocks/announcement_bar_block/019d00e5-18bb-7f23-bc62-d8f33e2f2f7e",
-          "settings": {
-            "announcement-id": "151ad8cb-c9db-4cda-8dda-a7e3cd02555a"
-          }
-        }
-      },
-      "block_order": [
-        "hoppy_banners_announcement_bar_block_ztFRdh"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "177768471038f5d157": {
@@ -908,10 +909,10 @@
   },
   "order": [
     "slideshow_qkjELP",
+    "17925675877546fcbd",
     "rich_text_p76zF7",
     "collection_list_GEPR3w",
     "1792564844c21f5f2a",
-    "17925675877546fcbd",
     "multicolumn_jddmgY",
     "featured_collection",
     "ss_waves_TAGGAg",
