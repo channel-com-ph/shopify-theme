@@ -246,6 +246,23 @@
         "padding_bottom": 32
       }
     },
+    "1792564844c21f5f2a": {
+      "type": "apps",
+      "blocks": {
+        "gsc_countdown_timer_countdown_hypnKC": {
+          "type": "shopify://apps/gsc-countdown-timer/blocks/countdown/58dc5b1b-43d2-4209-b1f3-52aff31643ed",
+          "settings": {
+            "widget_id": "GSC-INLINE-BAR-zkXWZhKXrMDf"
+          }
+        }
+      },
+      "block_order": [
+        "gsc_countdown_timer_countdown_hypnKC"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "multicolumn_jddmgY": {
       "type": "multicolumn",
       "blocks": {
@@ -382,6 +399,23 @@
         "content_width": 120
       }
     },
+    "17925675877546fcbd": {
+      "type": "apps",
+      "blocks": {
+        "hoppy_banners_announcement_bar_block_ztFRdh": {
+          "type": "shopify://apps/hoppy-banners/blocks/announcement_bar_block/019d00e5-18bb-7f23-bc62-d8f33e2f2f7e",
+          "settings": {
+            "announcement-id": "151ad8cb-c9db-4cda-8dda-a7e3cd02555a"
+          }
+        }
+      },
+      "block_order": [
+        "hoppy_banners_announcement_bar_block_ztFRdh"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "177768471038f5d157": {
       "type": "apps",
       "custom_css": [],
@@ -419,23 +453,6 @@
         "swipe_on_mobile": true,
         "padding_top": 32,
         "padding_bottom": 32
-      }
-    },
-    "1792564844c21f5f2a": {
-      "type": "apps",
-      "blocks": {
-        "gsc_countdown_timer_countdown_hypnKC": {
-          "type": "shopify://apps/gsc-countdown-timer/blocks/countdown/58dc5b1b-43d2-4209-b1f3-52aff31643ed",
-          "settings": {
-            "widget_id": "GSC-INLINE-BAR-zkXWZhKXrMDf"
-          }
-        }
-      },
-      "block_order": [
-        "gsc_countdown_timer_countdown_hypnKC"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "collection_list_JftcCa": {
@@ -894,6 +911,7 @@
     "rich_text_p76zF7",
     "collection_list_GEPR3w",
     "1792564844c21f5f2a",
+    "17925675877546fcbd",
     "multicolumn_jddmgY",
     "featured_collection",
     "ss_waves_TAGGAg",
