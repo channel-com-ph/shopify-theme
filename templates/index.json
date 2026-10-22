@@ -71,6 +71,7 @@
         },
         "slide_KdcxJn": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/blackmagic-bannet.png",
             "image_link": "shopify://collections/blackmagicdesign",
@@ -128,23 +129,6 @@
         "image_behavior": "none",
         "show_text_below": false,
         "accessibility_info": "Slideshow about our brand"
-      }
-    },
-    "17925675877546fcbd": {
-      "type": "apps",
-      "blocks": {
-        "hoppy_banners_announcement_bar_block_ztFRdh": {
-          "type": "shopify://apps/hoppy-banners/blocks/announcement_bar_block/019d00e5-18bb-7f23-bc62-d8f33e2f2f7e",
-          "settings": {
-            "announcement-id": "151ad8cb-c9db-4cda-8dda-a7e3cd02555a"
-          }
-        }
-      },
-      "block_order": [
-        "hoppy_banners_announcement_bar_block_ztFRdh"
-      ],
-      "settings": {
-        "include_margins": true
       }
     },
     "rich_text_p76zF7": {
@@ -275,6 +259,23 @@
       },
       "block_order": [
         "gsc_countdown_timer_countdown_hypnKC"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17925675877546fcbd": {
+      "type": "apps",
+      "blocks": {
+        "hoppy_banners_announcement_bar_block_ztFRdh": {
+          "type": "shopify://apps/hoppy-banners/blocks/announcement_bar_block/019d00e5-18bb-7f23-bc62-d8f33e2f2f7e",
+          "settings": {
+            "announcement-id": "151ad8cb-c9db-4cda-8dda-a7e3cd02555a"
+          }
+        }
+      },
+      "block_order": [
+        "hoppy_banners_announcement_bar_block_ztFRdh"
       ],
       "settings": {
         "include_margins": true
