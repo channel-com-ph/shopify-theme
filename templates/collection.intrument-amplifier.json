@@ -65,13 +65,20 @@
           "settings": {
             "collection": "keyboard-amplifier"
           }
+        },
+        "featured_collection_GFkq47": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "e-drum-amplifier"
+          }
         }
       },
       "block_order": [
         "featured_collection_BAmUdC",
         "featured_collection_QK3Ewe",
         "featured_collection_rHyJpx",
-        "featured_collection_teLFHY"
+        "featured_collection_teLFHY",
+        "featured_collection_GFkq47"
       ],
       "settings": {
         "title": "INSTRUMENT AMPLIFIER",
