@@ -167,24 +167,8 @@
         "disabled": false,
         "settings": {}
       },
-      "6159598353363395418": {
-        "type": "shopify://apps/google-youtube/blocks/store_widget/14ec7bd0-ac77-49a9-9417-90752398bdff",
-        "disabled": true,
-        "settings": {
-          "widget_position": "RIGHT_BOTTOM",
-          "side_margin": 25,
-          "bottom_margin": 0,
-          "mobile_side_margin": 34,
-          "mobile_bottom_margin": 46
-        }
-      },
       "12412247409707363845": {
         "type": "shopify://apps/contentsquare-analytics/blocks/csq_tag_snippet_script/019a7cb2-3ace-7c1e-bb5d-112ee54f5310",
-        "disabled": false,
-        "settings": {}
-      },
-      "855628211100114053": {
-        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
         "disabled": false,
         "settings": {}
       },
@@ -196,6 +180,22 @@
       "3652877127102885391": {
         "type": "shopify://apps/hoppy-banners/blocks/announcement_bar/019d00e5-18bb-7f23-bc62-d8f33e2f2f7e",
         "disabled": false,
+        "settings": {}
+      },
+      "6159598353363395418": {
+        "type": "shopify://apps/google-youtube/blocks/store_widget/14ec7bd0-ac77-49a9-9417-90752398bdff",
+        "disabled": true,
+        "settings": {
+          "widget_position": "LEFT_BOTTOM",
+          "side_margin": 25,
+          "bottom_margin": 0,
+          "mobile_side_margin": 34,
+          "mobile_bottom_margin": 46
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": true,
         "settings": {}
       }
     },
