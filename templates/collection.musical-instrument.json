@@ -292,13 +292,20 @@
           "settings": {
             "collection": "keyboard-amplifier"
           }
+        },
+        "featured_collection_h3yB8Y": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "e-drum-amplifier"
+          }
         }
       },
       "block_order": [
         "featured_collection_GHPGUn",
         "featured_collection_Pwyrk6",
         "featured_collection_C4VbMJ",
-        "featured_collection_AKJtA3"
+        "featured_collection_AKJtA3",
+        "featured_collection_h3yB8Y"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
