@@ -808,13 +808,20 @@
           "settings": {
             "collection": "canare"
           }
+        },
+        "featured_collection_4WFJ3i": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nux"
+          }
         }
       },
       "block_order": [
         "featured_collection_aaezNV",
         "featured_collection_epxG3M",
         "featured_collection_erVzUR",
-        "featured_collection_UeRx3y"
+        "featured_collection_UeRx3y",
+        "featured_collection_4WFJ3i"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
