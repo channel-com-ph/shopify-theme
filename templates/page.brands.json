@@ -814,6 +814,18 @@
           "settings": {
             "collection": "nux"
           }
+        },
+        "featured_collection_ikxXpb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "power-works"
+          }
+        },
+        "featured_collection_NjWFWV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "soundking"
+          }
         }
       },
       "block_order": [
@@ -821,7 +833,9 @@
         "featured_collection_epxG3M",
         "featured_collection_erVzUR",
         "featured_collection_UeRx3y",
-        "featured_collection_4WFJ3i"
+        "featured_collection_4WFJ3i",
+        "featured_collection_ikxXpb",
+        "featured_collection_NjWFWV"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
