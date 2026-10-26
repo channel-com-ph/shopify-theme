@@ -826,6 +826,12 @@
           "settings": {
             "collection": "soundking"
           }
+        },
+        "featured_collection_EWMczq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "martin-audio"
+          }
         }
       },
       "block_order": [
@@ -835,7 +841,8 @@
         "featured_collection_UeRx3y",
         "featured_collection_4WFJ3i",
         "featured_collection_ikxXpb",
-        "featured_collection_NjWFWV"
+        "featured_collection_NjWFWV",
+        "featured_collection_EWMczq"
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
