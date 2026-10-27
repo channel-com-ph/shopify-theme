@@ -39,7 +39,7 @@
         "color_scheme": "scheme-90df381f-811c-4bd0-9ee4-b4a4800f8043",
         "full_width": true,
         "padding_top": 68,
-        "padding_bottom": 68
+        "padding_bottom": 0
       }
     },
     "collection_list_CFF9XQ": {
@@ -398,6 +398,7 @@
         "featured_collection_xxVhKb",
         "featured_collection_UAeJNA"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -768,6 +769,7 @@
         "featured_collection_dG4REi",
         "featured_collection_g3rnnX"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -844,6 +846,7 @@
         "featured_collection_NjWFWV",
         "featured_collection_EWMczq"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -857,6 +860,52 @@
         "padding_top": 36,
         "padding_bottom": 100
       }
+    },
+    "17930620784c9f0e8b": {
+      "type": "apps",
+      "blocks": {
+        "lg_brand_page_a_z_brands_list_brands_BzAT9G": {
+          "type": "shopify://apps/lg-brand-page-a-z-brands-list/blocks/brands/019b36a6-bd26-7447-afa4-68a32f743127",
+          "settings": {
+            "design": "logos",
+            "show_title": true,
+            "page_title": "",
+            "loading_text": "",
+            "view_all_text": "",
+            "error_no_brands": "",
+            "show_count": false,
+            "show_tag_filter": false,
+            "show_search": true,
+            "search_placeholder": "",
+            "show_images": true,
+            "image_ratio": "auto",
+            "image_style": "square",
+            "image_radius_px": 8,
+            "image_size_mode": "fixed",
+            "image_width": 80,
+            "full_width": false,
+            "grid_columns_desktop": 5,
+            "grid_columns_mobile": "2",
+            "title_align": "left",
+            "content_align": "left",
+            "nav_behavior": "filter",
+            "nav_align": "flex-start",
+            "text_color": "#333333",
+            "link_color": "#333333",
+            "hover_color": "#000000",
+            "font_size": 16,
+            "nav_font_size": 14,
+            "header_font_size": 28,
+            "section_header_font_size": 28
+          }
+        }
+      },
+      "block_order": [
+        "lg_brand_page_a_z_brands_list_brands_BzAT9G"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -864,6 +913,7 @@
     "rich_text_r6af8Y",
     "collection_list_CFF9XQ",
     "collection_list_m7aJj4",
-    "collection_list_knXETT"
+    "collection_list_knXETT",
+    "17930620784c9f0e8b"
   ]
 }
