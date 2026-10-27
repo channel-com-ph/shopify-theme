@@ -864,6 +864,7 @@
     },
     "brand_directory_xKeJYU": {
       "type": "brand-directory",
+      "custom_css": [],
       "name": "Brand Directory (Auto)",
       "settings": {
         "heading": "Shop by Brand",
