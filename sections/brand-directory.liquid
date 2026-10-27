@@ -613,11 +613,12 @@
   }
 
   #BrandDirectory-{{ section.id }} .brand-directory__foot {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 8px;
-    padding: 14px 16px;
+    padding: 14px 40px; 
     border-top: 1px solid rgba(var(--bd-fg), 0.07);
   }
 
@@ -630,21 +631,24 @@
   }
 
   #BrandDirectory-{{ section.id }} .brand-directory__arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
     flex: none;
     color: var(--bd-accent);
     opacity: 0;
-    transform: translateX(-6px);
+    transform: translate(-6px, -50%);
     transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   #BrandDirectory-{{ section.id }} .brand-directory__card:hover .brand-directory__arrow,
   #BrandDirectory-{{ section.id }} .brand-directory__card:focus-visible .brand-directory__arrow {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(0, -50%);
   }
 
   @media (hover: none) {
-    #BrandDirectory-{{ section.id }} .brand-directory__arrow { opacity: 0.5; transform: none; }
+    #BrandDirectory-{{ section.id }} .brand-directory__arrow { opacity: 0.5; transform: translateY(-50%); 
   }
 
   @media (prefers-reduced-motion: reduce) {
