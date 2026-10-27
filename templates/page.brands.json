@@ -892,9 +892,9 @@
             "nav_align": "flex-start",
             "text_color": "#333333",
             "link_color": "#333333",
-            "hover_color": "#000000",
+            "hover_color": "#950000",
             "font_size": 16,
-            "nav_font_size": 14,
+            "nav_font_size": 16,
             "header_font_size": 28,
             "section_header_font_size": 28
           }
