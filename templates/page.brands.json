@@ -32,6 +32,7 @@
       "block_order": [
         "heading_eBmApK"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
@@ -398,6 +399,7 @@
         "featured_collection_xxVhKb",
         "featured_collection_UAeJNA"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -768,6 +770,7 @@
         "featured_collection_dG4REi",
         "featured_collection_g3rnnX"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -844,6 +847,7 @@
         "featured_collection_NjWFWV",
         "featured_collection_EWMczq"
       ],
+      "disabled": true,
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "",
@@ -857,6 +861,26 @@
         "padding_top": 36,
         "padding_bottom": 100
       }
+    },
+    "brand_directory_xKeJYU": {
+      "type": "brand-directory",
+      "name": "Brand Directory (Auto)",
+      "settings": {
+        "heading": "Shop by Brand",
+        "subheading": "Authorized dealer of top pro audio, video, lighting, musical & surveillance brands.",
+        "show_count": true,
+        "show_search": true,
+        "show_logos": true,
+        "use_file_fallback": true,
+        "hidden_vendors": "",
+        "columns_desktop": 5,
+        "accent_color": "#950000",
+        "section_bg": "#f5f5f3",
+        "card_bg": "#ffffff",
+        "sticky_offset": 80,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
     }
   },
   "order": [
@@ -864,6 +888,7 @@
     "rich_text_r6af8Y",
     "collection_list_CFF9XQ",
     "collection_list_m7aJj4",
-    "collection_list_knXETT"
+    "collection_list_knXETT",
+    "brand_directory_xKeJYU"
   ]
 }
