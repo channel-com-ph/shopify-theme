@@ -872,7 +872,7 @@
         "show_search": true,
         "show_logos": true,
         "use_file_fallback": true,
-        "hidden_vendors": "",
+        "hidden_vendors": "APEX",
         "columns_desktop": 6,
         "accent_color": "#950000",
         "section_bg": "#f5f5f3",
