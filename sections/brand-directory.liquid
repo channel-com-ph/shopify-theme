@@ -2,11 +2,16 @@
   Brand Directory (Auto)
   - Brands are built automatically from product vendors (shop.vendors), sorted A-Z.
   - Link + logo come from the collection whose handle matches the vendor name.
-  - "Brand override" blocks fix vendors whose collection handle is different.
+  - If there is no collection image, the section auto-detects a logo file in Settings > Files
+    by trying many filename formats (case, separators, _logo suffix, extensions).
+  - Letter buttons FILTER the list (no scrolling). Search and letters reset each other.
+  - "Brand override" blocks fix anything that still doesn't match.
 {%- endcomment -%}
 
 {%- assign alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' -%}
 {%- assign jump_letters = '#,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ',' -%}
+{%- assign f_suffixes = 'none,_logo,-logo,_LOGO' | split: ',' -%}
+{%- assign f_exts = 'jpg,png,webp,jpeg,svg' | split: ',' -%}
 
 {%- comment -%} Hidden vendors list {%- endcomment -%}
 {%- assign hidden_raw = section.settings.hidden_vendors | downcase | split: ',' -%}
@@ -72,24 +77,68 @@
         {%- if v_coll -%}{%- assign v_href = v_coll.url -%}{%- endif -%}
         {%- if v_custom_url != blank -%}{%- assign v_href = v_custom_url -%}{%- endif -%}
 
-        {%- comment -%} 4. Logo: override > collection image > file named like the vendor {%- endcomment -%}
+        {%- comment -%} 4. Logo: override > collection image > auto-detected file {%- endcomment -%}
         {%- if section.settings.show_logos -%}
           {%- if v_logo == blank and v_coll -%}
             {%- if v_coll.image -%}{%- assign v_logo = v_coll.image -%}{%- endif -%}
           {%- endif -%}
+
           {%- if v_logo == blank and section.settings.use_file_fallback -%}
-            {%- assign f_base = v_name | replace: ' ', '_' | replace: "'", '_' | replace: '&', '_' | replace: '/', '_' -%}
-            {%- assign f_key = f_base | append: '.jpg' -%}
-            {%- assign f_try = images[f_key] -%}
-            {%- if f_try == blank -%}
-              {%- assign f_key = f_base | append: '.png' -%}
-              {%- assign f_try = images[f_key] -%}
+            {%- assign f_src = v_name -%}
+            {%- if v_coll -%}
+              {%- assign f_src = v_name | append: '~' | append: v_coll.title | append: '~' | append: v_coll.handle -%}
             {%- endif -%}
-            {%- if f_try == blank -%}
-              {%- assign f_key = f_base | append: '.webp' -%}
-              {%- assign f_try = images[f_key] -%}
-            {%- endif -%}
-            {%- if f_try != blank -%}{%- assign v_logo = f_try -%}{%- endif -%}
+            {%- assign f_names = f_src | split: '~' -%}
+
+            {%- assign f_bases = '' -%}
+            {%- for f_name in f_names -%}
+              {%- assign f_clean = f_name | strip -%}
+              {%- if f_clean != blank -%}
+                {%- assign f_raw = f_clean | replace: ' ', '_' | replace: "'", '_' | replace: '&', '_' | replace: '/', '_' | replace: '.', '_' -%}
+                {%- assign f_us = f_raw | replace: '__', '_' | replace: '__', '_' -%}
+                {%- assign f_dash = f_us | replace: '_', '-' -%}
+                {%- assign f_none = f_clean | remove: ' ' | remove: "'" | remove: '&' | remove: '/' | remove: '.' -%}
+                {%- assign f_hnd = f_clean | handleize -%}
+                {%- assign f_hnd_us = f_hnd | replace: '-', '_' -%}
+                {%- assign f_bases = f_bases | append: f_raw | append: '~' | append: f_us | append: '~' | append: f_dash | append: '~' | append: f_none | append: '~' | append: f_hnd | append: '~' | append: f_hnd_us | append: '~' -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign f_list = f_bases | split: '~' | uniq -%}
+            {%- assign f_all = '' -%}
+            {%- for b in f_list -%}
+              {%- if b != blank -%}
+                {%- assign b_up = b | upcase -%}
+                {%- assign b_low = b | downcase -%}
+                {%- assign b_cap = b | capitalize -%}
+                {%- assign f_all = f_all | append: b | append: '~' | append: b_up | append: '~' | append: b_low | append: '~' | append: b_cap | append: '~' -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- assign f_cands = f_all | split: '~' | uniq -%}
+
+            {%- assign f_found = nil -%}
+            {%- for cand in f_cands -%}
+              {%- if cand != blank -%}
+                {%- for sfx in f_suffixes -%}
+                  {%- if sfx == 'none' -%}
+                    {%- assign sfx_v = '' -%}
+                  {%- else -%}
+                    {%- assign sfx_v = sfx -%}
+                  {%- endif -%}
+                  {%- for ext in f_exts -%}
+                    {%- assign f_key = cand | append: sfx_v | append: '.' | append: ext -%}
+                    {%- assign f_try = images[f_key] -%}
+                    {%- if f_try != blank -%}
+                      {%- assign f_found = f_try -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  {%- if f_found != blank -%}{%- break -%}{%- endif -%}
+                {%- endfor -%}
+                {%- if f_found != blank -%}{%- break -%}{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if f_found != blank -%}{%- assign v_logo = f_found -%}{%- endif -%}
           {%- endif -%}
         {%- endif -%}
 
@@ -130,6 +179,9 @@
                 }}
               {%- else -%}
                 <span class="brand-directory__monogram" aria-hidden="true">{{ v_first }}</span>
+                {%- if request.design_mode and section.settings.show_logos -%}
+                  <span class="brand-directory__hint">No logo found</span>
+                {%- endif -%}
               {%- endif -%}
             </span>
             <span class="brand-directory__foot">
@@ -148,7 +200,7 @@
 
 <div
   id="BrandDirectory-{{ section.id }}"
-  class="brand-directory"
+  class="brand-directory{% if section.settings.sticky_nav %} is-sticky{% endif %}"
   style="
     --bd-cols: {{ section.settings.columns_desktop }};
     --bd-accent: {{ section.settings.accent_color }};
@@ -186,19 +238,17 @@
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" focusable="false"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </button>
         </div>
-        <p class="brand-directory__status">Showing all {{ total }} brands</p>
       {%- endif -%}
     </header>
 
-    <nav class="brand-directory__jump" aria-label="Brand index">
+    <nav class="brand-directory__jump" aria-label="Filter brands by letter">
       <div class="brand-directory__jump-scroll">
         <ul class="brand-directory__jump-list" role="list">
-          <li><a class="brand-directory__pill is-active" href="#BrandDirectory-{{ section.id }}" data-letter="*">All</a></li>
+          <li><button type="button" class="brand-directory__pill is-active" data-letter="*" aria-pressed="true">All</button></li>
           {%- for letter in jump_letters -%}
             {%- assign l_key = '|' | append: letter | append: '|' -%}
             {%- if used_letters contains l_key -%}
-              {%- if letter == '#' -%}{%- assign l_id = 'num' -%}{%- else -%}{%- assign l_id = letter -%}{%- endif -%}
-              <li><a class="brand-directory__pill" href="#bd-{{ section.id }}-{{ l_id }}" data-letter="{{ letter }}">{{ letter }}</a></li>
+              <li><button type="button" class="brand-directory__pill" data-letter="{{ letter }}" aria-pressed="false">{{ letter }}</button></li>
             {%- else -%}
               <li><span class="brand-directory__pill is-disabled" aria-hidden="true">{{ letter }}</span></li>
             {%- endif -%}
@@ -207,7 +257,9 @@
       </div>
     </nav>
 
-    <p class="brand-directory__message" role="status" aria-live="polite" hidden></p>
+    <p class="brand-directory__status" aria-live="polite">Showing all {{ total }} brands</p>
+
+    <p class="brand-directory__message brand-directory__noresults" aria-hidden="true" hidden></p>
 
     <div class="brand-directory__groups">
       {%- if total == 0 -%}
@@ -225,6 +277,8 @@
 <style>
   #BrandDirectory-{{ section.id }} {
     --bd-fg: var(--color-foreground, 18, 18, 18);
+    position: relative;
+    z-index: 0; /* keeps everything in this section below the header and its search panel */
     background: var(--bd-bg);
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -337,19 +391,18 @@
 
   #BrandDirectory-{{ section.id }} .brand-directory__clear:hover { background: rgba(var(--bd-fg), 0.16); }
 
-  #BrandDirectory-{{ section.id }} .brand-directory__status {
-    margin: 12px 0 0;
-    font-size: 13px;
-    color: rgba(var(--bd-fg), 0.55);
+  /* ---------- Letter filter bar ---------- */
+  #BrandDirectory-{{ section.id }} .brand-directory__jump {
+    margin: 24px 0 8px;
+    padding: 4px 0;
   }
 
-  /* ---------- Sticky A-Z bar ---------- */
-  #BrandDirectory-{{ section.id }} .brand-directory__jump {
+  #BrandDirectory-{{ section.id }}.is-sticky .brand-directory__jump {
     position: sticky;
     top: var(--bd-sticky-top);
-    z-index: 10;
-    margin: 24px 0 32px;
+    z-index: 2;
     padding: 12px 0 20px;
+    margin-bottom: 0;
     background: linear-gradient(var(--bd-bg) 70%, transparent);
   }
 
@@ -385,19 +438,27 @@
     justify-content: center;
     min-width: 36px;
     height: 36px;
+    margin: 0;
     padding: 0 10px;
+    font: inherit;
     font-size: 13px;
     font-weight: 700;
-    text-decoration: none;
+    line-height: 1;
     color: rgb(var(--bd-fg));
+    background: transparent;
+    border: 0;
     border-radius: 999px;
     box-sizing: border-box;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
     transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
   }
 
-  #BrandDirectory-{{ section.id }} a.brand-directory__pill:hover { background: rgba(var(--bd-fg), 0.08); }
+  #BrandDirectory-{{ section.id }} button.brand-directory__pill:hover { background: rgba(var(--bd-fg), 0.08); }
 
-  #BrandDirectory-{{ section.id }} a.brand-directory__pill.is-active {
+  #BrandDirectory-{{ section.id }} .brand-directory__pill.is-active,
+  #BrandDirectory-{{ section.id }} button.brand-directory__pill.is-active:hover {
     color: #fff;
     background: var(--bd-accent);
   }
@@ -405,17 +466,25 @@
   #BrandDirectory-{{ section.id }} .brand-directory__pill.is-disabled,
   #BrandDirectory-{{ section.id }} .brand-directory__pill.is-muted {
     opacity: 0.25;
+    cursor: default;
     pointer-events: none;
   }
 
-  #BrandDirectory-{{ section.id }} a.brand-directory__pill:focus-visible,
+  #BrandDirectory-{{ section.id }} button.brand-directory__pill:focus-visible,
   #BrandDirectory-{{ section.id }} .brand-directory__clear:focus-visible,
   #BrandDirectory-{{ section.id }} .brand-directory__card:focus-visible {
     outline: 3px solid var(--bd-accent);
     outline-offset: 3px;
   }
 
-  /* ---------- Message ---------- */
+  /* ---------- Status + message ---------- */
+  #BrandDirectory-{{ section.id }} .brand-directory__status {
+    margin: 12px 0 28px;
+    font-size: 13px;
+    text-align: center;
+    color: rgba(var(--bd-fg), 0.55);
+  }
+
   #BrandDirectory-{{ section.id }} .brand-directory__message {
     margin: 0 auto 32px;
     max-width: 480px;
@@ -427,12 +496,7 @@
   }
 
   /* ---------- Groups ---------- */
-  #BrandDirectory-{{ section.id }} .brand-directory__group {
-    margin-bottom: 48px;
-    scroll-margin-top: calc(var(--bd-sticky-top) + 96px);
-  }
-
-  #BrandDirectory-{{ section.id }} .brand-directory__group:focus { outline: none; }
+  #BrandDirectory-{{ section.id }} .brand-directory__group { margin-bottom: 48px; }
 
   #BrandDirectory-{{ section.id }} .brand-directory__letter {
     display: flex;
@@ -538,6 +602,16 @@
     border-radius: 50%;
   }
 
+  #BrandDirectory-{{ section.id }} .brand-directory__hint {
+    position: absolute;
+    right: 8px;
+    bottom: 6px;
+    left: 8px;
+    font-size: 10px;
+    text-align: center;
+    color: rgba(var(--bd-fg), 0.45);
+  }
+
   #BrandDirectory-{{ section.id }} .brand-directory__foot {
     display: flex;
     align-items: center;
@@ -585,116 +659,118 @@
 
     var input = root.querySelector('.brand-directory__input');
     var clearBtn = root.querySelector('.brand-directory__clear');
-    var message = root.querySelector('.brand-directory__jump + .brand-directory__message');
+    var noResults = root.querySelector('.brand-directory__noresults');
     var status = root.querySelector('.brand-directory__status');
     var nav = root.querySelector('.brand-directory__jump');
     var navScroll = root.querySelector('.brand-directory__jump-scroll');
+    var groupsEl = root.querySelector('.brand-directory__groups');
     var items = [].slice.call(root.querySelectorAll('.brand-directory__item'));
     var groups = [].slice.call(root.querySelectorAll('.brand-directory__group'));
-    var pills = [].slice.call(root.querySelectorAll('a.brand-directory__pill'));
+    var pills = [].slice.call(root.querySelectorAll('button.brand-directory__pill'));
     var total = items.length;
+    var sticky = root.classList.contains('is-sticky');
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var lastActive = null;
-    var ticking = false;
+    var state = { letter: '*', query: '' };
+
+    function plural(n) {
+      return n + (n === 1 ? ' brand' : ' brands');
+    }
 
     function stickyTop() {
       return parseInt(getComputedStyle(root).getPropertyValue('--bd-sticky-top'), 10) || 0;
     }
 
-    function filter() {
-      var raw = input ? input.value.trim() : '';
-      var q = raw.toLowerCase();
+    function apply() {
+      var q = state.query.toLowerCase();
       var shown = 0;
       var visibleLetters = {};
 
       items.forEach(function (li) {
-        var ok = q === '' || li.getAttribute('data-search').indexOf(q) !== -1;
-        li.hidden = !ok;
-        if (ok) shown++;
+        li.hidden = !(q === '' || li.getAttribute('data-search').indexOf(q) !== -1);
       });
 
       groups.forEach(function (g) {
-        var any = g.querySelector('.brand-directory__item:not([hidden])');
-        g.hidden = !any;
-        if (any) visibleLetters[g.getAttribute('data-letter')] = true;
+        var l = g.getAttribute('data-letter');
+        var count = g.querySelectorAll('.brand-directory__item:not([hidden])').length;
+        if (count) visibleLetters[l] = true;
+        var show = count > 0 && (state.letter === '*' || state.letter === l);
+        g.hidden = !show;
+        if (show) shown += count;
       });
 
-      pills.forEach(function (a) {
-        var l = a.getAttribute('data-letter');
+      var activePill = null;
+      pills.forEach(function (b) {
+        var l = b.getAttribute('data-letter');
+        var on = l === state.letter;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        if (on) activePill = b;
         if (l === '*') return;
         var off = q !== '' && !visibleLetters[l];
-        a.classList.toggle('is-muted', off);
-        a.setAttribute('aria-disabled', off ? 'true' : 'false');
-        a.tabIndex = off ? -1 : 0;
+        b.classList.toggle('is-muted', off);
+        b.disabled = off;
       });
 
-      if (clearBtn) clearBtn.hidden = raw === '';
-
-      if (status) {
-        status.textContent = q === ''
-          ? 'Showing all ' + total + ' brands'
-          : 'Showing ' + shown + ' of ' + total + ' brands';
-      }
-
-      if (message) {
-        if (q !== '' && shown === 0) {
-          message.textContent = 'No brands found for \u201C' + raw + '\u201D';
-          message.hidden = false;
-        } else {
-          message.textContent = '';
-          message.hidden = true;
-        }
-      }
-
-      spy();
-    }
-
-    function resetSearch() {
-      if (!input) return;
-      input.value = '';
-      filter();
-    }
-
-    function setActive(letter) {
-      if (letter === lastActive) return;
-      lastActive = letter;
-      var activePill = null;
-      pills.forEach(function (a) {
-        var on = a.getAttribute('data-letter') === letter;
-        a.classList.toggle('is-active', on);
-        if (on) activePill = a;
-      });
       if (activePill && navScroll && navScroll.scrollWidth > navScroll.clientWidth) {
         var left = activePill.offsetLeft - (navScroll.clientWidth - activePill.offsetWidth) / 2;
         navScroll.scrollTo({ left: left, behavior: reduce ? 'auto' : 'smooth' });
       }
-    }
 
-    function spy() {
-      var line = stickyTop() + (nav ? nav.offsetHeight : 0) + 24;
-      var current = '*';
-      for (var i = 0; i < groups.length; i++) {
-        if (groups[i].hidden) continue;
-        if (groups[i].getBoundingClientRect().top - line <= 0) {
-          current = groups[i].getAttribute('data-letter');
+      if (clearBtn) clearBtn.hidden = q === '';
+
+      var text;
+      if (q !== '') {
+        text = shown === 0
+          ? 'No brands found for \u201C' + state.query + '\u201D'
+          : 'Showing ' + shown + ' of ' + plural(total);
+      } else if (state.letter !== '*') {
+        text = 'Showing ' + plural(shown) +
+          (state.letter === '#' ? ' starting with a number or symbol' : ' starting with ' + state.letter);
+      } else {
+        text = 'Showing all ' + plural(total);
+      }
+      if (status) status.textContent = text;
+
+      if (noResults) {
+        if (q !== '' && shown === 0) {
+          noResults.textContent = 'No brands found for \u201C' + state.query + '\u201D';
+          noResults.hidden = false;
         } else {
-          break;
+          noResults.textContent = '';
+          noResults.hidden = true;
         }
       }
-      setActive(current);
     }
 
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(function () {
-        spy();
-        ticking = false;
-      });
+    function ensureVisible() {
+      var offset = (sticky ? stickyTop() + (nav ? nav.offsetHeight : 0) : 0) + 24;
+      var top = groupsEl.getBoundingClientRect().top + window.pageYOffset - offset;
+      if (window.pageYOffset > top) {
+        window.scrollTo({ top: Math.max(top, 0), behavior: reduce ? 'auto' : 'smooth' });
+      }
+    }
+
+    function selectLetter(letter) {
+      if (letter === state.letter) letter = '*'; /* click the active letter again = back to All */
+      state.letter = letter;
+      state.query = '';
+      if (input) input.value = '';
+      apply();
+      ensureVisible();
+    }
+
+    function resetSearch() {
+      state.query = '';
+      if (input) input.value = '';
+      apply();
     }
 
     if (input) {
-      input.addEventListener('input', filter);
+      input.addEventListener('input', function () {
+        state.query = input.value.trim();
+        state.letter = '*'; /* searching always looks across all brands */
+        apply();
+      });
       input.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') resetSearch();
       });
@@ -707,31 +783,13 @@
       });
     }
 
-    pills.forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (a.getAttribute('aria-disabled') === 'true') return;
-
-        if (input && input.value.trim() !== '') resetSearch();
-
-        var isAll = a.getAttribute('data-letter') === '*';
-        var target = isAll ? root : document.getElementById(a.getAttribute('href').slice(1));
-        if (!target) return;
-
-        var offset = isAll ? stickyTop() : stickyTop() + (nav ? nav.offsetHeight : 0) + 16;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top: Math.max(top, 0), behavior: reduce ? 'auto' : 'smooth' });
-
-        if (!isAll) {
-          target.setAttribute('tabindex', '-1');
-          target.focus({ preventScroll: true });
-        }
+    pills.forEach(function (b) {
+      b.addEventListener('click', function () {
+        selectLetter(b.getAttribute('data-letter'));
       });
     });
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    spy();
+    apply();
   })();
 </script>
 
@@ -784,9 +842,9 @@
     {
       "type": "checkbox",
       "id": "use_file_fallback",
-      "label": "Fallback: look for a logo in Settings > Files",
+      "label": "Auto-detect logo files in Settings > Files",
       "default": true,
-      "info": "Used when the brand has no collection image. File must be named like the vendor, e.g. ERNIE_BALL.jpg"
+      "info": "Used when the brand has no collection image. Tries many filename formats (case, spaces, _logo suffix, jpg/png/webp/svg)."
     },
     {
       "type": "text",
@@ -826,14 +884,21 @@
       "default": "#ffffff"
     },
     {
+      "type": "checkbox",
+      "id": "sticky_nav",
+      "label": "Keep letter bar stuck to the top while scrolling",
+      "default": false
+    },
+    {
       "type": "range",
       "id": "sticky_offset",
-      "label": "Sticky A-Z bar offset (header height)",
+      "label": "Sticky bar offset (header height)",
       "min": 0,
       "max": 200,
       "step": 5,
       "unit": "px",
-      "default": 80
+      "default": 80,
+      "info": "Only used when the letter bar is sticky."
     },
     {
       "type": "range",
