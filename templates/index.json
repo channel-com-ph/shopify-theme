@@ -33,6 +33,7 @@
         },
         "slide_n3Hw89": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/SE.jpg",
             "image_link": "shopify://collections/se-electronics",
