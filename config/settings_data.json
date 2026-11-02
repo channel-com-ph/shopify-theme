@@ -185,7 +185,7 @@
       },
       "15683396631634586217": {
         "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "greeting_message": "",
           "show_featured_products": true,
@@ -208,7 +208,7 @@
       },
       "3780119319618794447": {
         "type": "shopify://apps/marvyn-ai/blocks/marvin-chatbot-embed/0199a07e-9867-75e1-a339-602f277179b7",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
       }
     },
