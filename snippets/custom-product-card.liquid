@@ -16,6 +16,7 @@
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - button_mode: {String} Which buttons to show. Values are "default" (Add to Cart + Add to Quotation), "inquiry_only" (Price for Inquiry only) and "quote_only" (Add to Quotation only). Default: "default" (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -537,12 +538,36 @@
   endcase
 -%}
 
+{%- comment -%}
+  BUTTON VISIBILITY (driven by button_mode from main-collection-product-grid.liquid)
+    default      -> price > 0: Add to Quotation + Add to Cart | price == 0: Price Inquiry
+    inquiry_only -> Price Inquiry only
+    quote_only   -> Add to Quotation only
+{%- endcomment -%}
+{%- liquid
+  assign bm = button_mode | default: 'default'
+  assign show_inquiry = false
+  assign show_quote = false
+  assign show_cart = false
+
+  if bm == 'inquiry_only'
+    assign show_inquiry = true
+  elsif bm == 'quote_only'
+    assign show_quote = true
+  elsif card_product.price == 0
+    assign show_inquiry = true
+  else
+    assign show_quote = true
+    assign show_cart = true
+  endif
+-%}
+
 <!-- UNIT DEBUG2: unit_obj="{{ unit_obj }}" handle="{{ unit_obj['handle'] }}" system.handle="{{ unit_obj.system.handle }}" -->
 
 {% if customer %}
 
-  {% if card_product.price == 0 %}
-    <!-- PRICE = 0 → Inquiry for logged-in customer -->
+  {% if show_inquiry %}
+    <!-- PRICE FOR INQUIRY (logged-in customer) -->
     <input type="hidden" class="quantity__input" value="1">
 <button
   class="card-add-to-quote addToInquireButton quick-add__submit button button--full-width button--secondary"
@@ -559,9 +584,10 @@
 >
   ADD TO PRICE INQUIRY
 </button>
+  {% endif %}
 
-  {% else %}
-    <!-- NORMAL PRODUCT -->
+  {% if show_quote %}
+    <!-- ADD TO QUOTATION (logged-in customer) -->
 <button
   class="card-add-to-quote quick-add__submit button button--full-width button--secondary"
   data-product='{
@@ -578,23 +604,29 @@
 >
   ADD TO QUOTATION
 </button>
-
   {% endif %}
 
 {% else %}
   <!-- Guest -->
   
-  {% if card_product.price != 0 %}
+  {% if show_quote %}
     <a href="{{ routes.storefront_login_url }}?return_to={{ canonical_url | url_encode }}"
        class="button button--secondary">
       ADD TO QUOTATION
     </a>
   {% endif %}
 
+  {% if bm == 'inquiry_only' %}
+    <a href="{{ routes.storefront_login_url }}?return_to={{ canonical_url | url_encode }}"
+       class="button button--secondary">
+      ADD TO PRICE INQUIRY
+    </a>
+  {% endif %}
+
 {% endif %}  
 
 <!---ADD TO CART BUTTON---->
-{% if card_product.price > 0 %}
+{% if show_cart %}
             {%- liquid
               assign qty_rules = false
               if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
@@ -1019,5 +1051,4 @@
 }
 
 </style>
-
 
