@@ -202,33 +202,9 @@
                 {%- if forloop.index > 3 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
-
-                {%- comment -%}
-                  BUTTON MODE (by tag or badge)
-                  Priority: Price for inquiry > No longer available / Special Order > default.
-                    inquiry_only = show only the Price for Inquiry button
-                    quote_only   = show only the Add to Quotation button
-                    default      = Add to Cart + Add to Quotation
-                  Matches product tags AND the custom.labels badge titles (case-insensitive).
-                {%- endcomment -%}
-                {%- assign button_mode = 'default' -%}
-                {%- assign btn_signals = product.tags | join: '|' | downcase | replace: '-', ' ' | replace: '_', ' ' -%}
-                {%- assign btn_badges = product.metafields.custom.labels.value -%}
-                {%- if btn_badges != blank -%}
-                  {%- for btn_badge in btn_badges -%}
-                    {%- assign btn_badge_title = btn_badge.title | downcase | replace: '-', ' ' | replace: '_', ' ' -%}
-                    {%- assign btn_signals = btn_signals | append: '|' | append: btn_badge_title -%}
-                  {%- endfor -%}
-                {%- endif -%}
-                {%- if btn_signals contains 'price for inquiry' -%}
-                  {%- assign button_mode = 'inquiry_only' -%}
-                {%- elsif btn_signals contains 'special order' or btn_signals contains 'no longer available' -%}
-                  {%- assign button_mode = 'quote_only' -%}
-                {%- endif -%}
                 
                 <li
                   class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  data-button-mode="{{ button_mode }}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                     style="--animation-order: {{ forloop.index }};"
@@ -244,8 +220,7 @@
                     lazy_load: lazy_load,
                     skip_styles: skip_card_product_styles,
                     quick_add: section.settings.quick_add,
-                    section_id: section.id,
-                    button_mode: button_mode
+                    section_id: section.id
                   %}
                 </li>
                 {%- assign skip_card_product_styles = true -%}
@@ -269,26 +244,8 @@
                 {%- if forloop.index > 2 -%}
                   {%- assign lazy_load = true -%}
                 {%- endif -%}
-
-                {%- comment -%} BUTTON MODE (same logic as the list view above) {%- endcomment -%}
-                {%- assign button_mode = 'default' -%}
-                {%- assign btn_signals = product.tags | join: '|' | downcase | replace: '-', ' ' | replace: '_', ' ' -%}
-                {%- assign btn_badges = product.metafields.custom.labels.value -%}
-                {%- if btn_badges != blank -%}
-                  {%- for btn_badge in btn_badges -%}
-                    {%- assign btn_badge_title = btn_badge.title | downcase | replace: '-', ' ' | replace: '_', ' ' -%}
-                    {%- assign btn_signals = btn_signals | append: '|' | append: btn_badge_title -%}
-                  {%- endfor -%}
-                {%- endif -%}
-                {%- if btn_signals contains 'price for inquiry' -%}
-                  {%- assign button_mode = 'inquiry_only' -%}
-                {%- elsif btn_signals contains 'special order' or btn_signals contains 'no longer available' -%}
-                  {%- assign button_mode = 'quote_only' -%}
-                {%- endif -%}
-
                 <li 
                   class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                  data-button-mode="{{ button_mode }}"
                   {% if settings.animations_reveal_on_scroll %}
                     data-cascade
                     style="--animation-order: {{ forloop.index }};"
@@ -304,8 +261,7 @@
                     lazy_load: lazy_load,
                     skip_styles: skip_card_product_styles,
                     quick_add: section.settings.quick_add,
-                    section_id: section.id,
-                    button_mode: button_mode
+                    section_id: section.id
                   %}
                 </li>
                 {%- assign skip_card_product_styles = true -%}
