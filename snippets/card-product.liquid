@@ -887,4 +887,33 @@ modal-dialog,
   }
 
 }
-  </style>
+  
+/* === QUOTATION / INQUIRY / CART BUTTONS: centered text, no underline === */
+.quick-add .button,
+.quick-add a.button,
+.quick-add .quick-add__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.quick-add .button:hover,
+.quick-add .button:focus,
+.quick-add a.button:hover,
+.quick-add a.button:focus,
+.underline-links-hover .quick-add a.button:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Side spacing so buttons don't stretch edge to edge in grid view */
+#gridView .quick-add {
+  padding: 0 12px 12px;
+  box-sizing: border-box;
+}
+</style>
