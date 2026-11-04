@@ -16,7 +16,7 @@
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false (optional)
   - horizontal_quick_add: {Boolean} Changes the quick add button styles when set to true. Default: false (optional)
   - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
-  - button_mode: {String} Which buttons to show. Values are "default", "inquiry_only" and "quote_only". Add to Cart only shows in "default". Default: "default" (optional)
+  - button_mode: {String} Which buttons to show. Values are "default", "inquiry_only" and "quote_only". "default" shows Quotation + Add to Cart (or Price Inquiry when price is 0), "inquiry_only" shows Price Inquiry only, "quote_only" shows Quotation only. Default: "default" (optional)
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -306,14 +306,134 @@
           </div>
         </div>
         {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
-        {%- comment -%}
-          Add to Cart only shows for button_mode 'default'. Products with the
-          "Price for inquiry", "Special Order" or "No Longer Available" badge/tag
-          do not get an Add to Cart button.
-        {%- endcomment -%}
-        {%- assign bm = button_mode | default: 'default' -%}
-        {% if quick_add == 'standard' and bm == 'default' %}
+        {% if quick_add == 'standard' %}
           <div class="quick-add no-js-hidden">
+
+{%- liquid
+  assign unit_obj = card_product.metafields.custom.quantity_units.value
+  assign raw_unit = unit_obj['handle'] | downcase | strip
+
+  if raw_unit == blank
+    assign raw_unit = unit_obj.system.handle | downcase | strip
+  endif
+
+  case raw_unit
+    when 'pack'
+      assign mapped_unit = 'PACK'
+    when 'each'
+      assign mapped_unit = 'EACH'
+    when 'pair'
+      assign mapped_unit = 'PAIR'
+    when 'meter'
+      assign mapped_unit = 'METER'
+    when 'set'
+      assign mapped_unit = 'SET'
+    when 'lot'
+      assign mapped_unit = 'LOT'
+    when 'roll'
+      assign mapped_unit = 'ROLL'
+    when 'piece-s'
+      assign mapped_unit = 'PIECE/S'
+    when 'pieces'
+      assign mapped_unit = 'PIECE/S'
+    when 'piece/s'
+      assign mapped_unit = 'PIECE/S'
+    when 'pc'
+      assign mapped_unit = 'PIECE/S'
+    when 'pcs'
+      assign mapped_unit = 'PIECE/S'
+    else
+      assign mapped_unit = 'N/A'
+  endcase
+-%}
+
+{%- comment -%}
+  BUTTON VISIBILITY (driven by button_mode from main-collection-product-grid.liquid)
+    default      -> price > 0: Add to Quotation + Add to Cart | price == 0: Price Inquiry
+    inquiry_only -> Price Inquiry only
+    quote_only   -> Add to Quotation only
+{%- endcomment -%}
+{%- liquid
+  assign bm = button_mode | default: 'default'
+  assign show_inquiry = false
+  assign show_quote = false
+  assign show_cart = false
+
+  if bm == 'inquiry_only'
+    assign show_inquiry = true
+  elsif bm == 'quote_only'
+    assign show_quote = true
+  elsif card_product.price == 0
+    assign show_inquiry = true
+  else
+    assign show_quote = true
+    assign show_cart = true
+  endif
+-%}
+
+{% if customer %}
+
+  {% if show_inquiry %}
+    <!-- PRICE FOR INQUIRY (logged-in customer) -->
+    <input type="hidden" class="quantity__input" value="1">
+    <button
+      class="card-add-to-quote addToInquireButton quick-add__submit button button--full-width button--secondary"
+      data-item='{
+        "featured_image": {{ card_product.featured_media | image_url: width: 80 | json }},
+        "handle": {{ card_product.handle | json }},
+        "title": {{ card_product.title | json }},
+        "price": {{ "Price for Inquiry" | json }},
+        "vendor": {{ card_product.vendor | json }},
+        "type": {{ card_product.type | json }},
+        "url": {{ card_product.url | json }},
+        "metafields": {{ mapped_unit | json }}
+      }'
+    >
+      ADD TO PRICE INQUIRY
+    </button>
+  {% endif %}
+
+  {% if show_quote %}
+    <!-- ADD TO QUOTATION (logged-in customer) -->
+    <button
+      class="card-add-to-quote quick-add__submit button button--full-width button--secondary"
+      data-product='{
+        "featured_image": {{ card_product.featured_media | image_url: width: 80 | json }},
+        "handle": {{ card_product.handle | json }},
+        "title": {{ card_product.title | json }},
+        "price": {{ card_product.price | money | json }},
+        "vendor": {{ card_product.vendor | json }},
+        "type": {{ card_product.type | json }},
+        "url": {{ card_product.url | json }},
+        "metafields": {{ mapped_unit | json }},
+        "note": {{ "None" | json }}
+      }'
+    >
+      ADD TO QUOTATION
+    </button>
+  {% endif %}
+
+{% else %}
+  <!-- Guest -->
+
+  {% if show_quote %}
+    <a href="{{ routes.storefront_login_url }}?return_to={{ canonical_url | url_encode }}"
+       class="button button--secondary">
+      ADD TO QUOTATION
+    </a>
+  {% endif %}
+
+  {% if bm == 'inquiry_only' %}
+    <a href="{{ routes.storefront_login_url }}?return_to={{ canonical_url | url_encode }}"
+       class="button button--secondary">
+      ADD TO PRICE INQUIRY
+    </a>
+  {% endif %}
+
+{% endif %}
+
+<!---ADD TO CART BUTTON---->
+{% if show_cart %}
             {%- liquid
               assign qty_rules = false
               if card_product.selected_or_first_available_variant.quantity_rule.min > 1 or card_product.selected_or_first_available_variant.quantity_rule.max != null or card_product.selected_or_first_available_variant.quantity_rule.increment > 1
@@ -410,6 +530,7 @@
                 {%- endform -%}
               </product-form>
             {%- endif -%}
+{% endif %}
           </div>
         {% elsif quick_add == 'bulk' %}
           {% if card_product.variants.size == 1 %}
