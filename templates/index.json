@@ -71,9 +71,8 @@
         },
         "slide_KdcxJn": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/blackmagic-bannet.png",
+            "image": "shopify://shop_images/BMD.jpg",
             "image_link": "shopify://collections/blackmagicdesign",
             "heading": "",
             "heading_size": "h1",
