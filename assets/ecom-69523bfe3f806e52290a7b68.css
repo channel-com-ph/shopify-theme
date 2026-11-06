@@ -1,108 +1,4 @@
-/* Publish by EComposer at 2026-11-06 08:52:21*//**ECOM-INSERT-CSS**/
-                .ecom-column {
-                    position: relative;
-                }
-                .ecom-column>.core__column--wrapper {
-                    align-items: flex-start; /* fix tam de mn lam layout */
-                    display: flex;
-                }
-                .ecom-column__overlay .ecom-overlay {
-                    pointer-events: none;
-                }
-
-                .ecom-column__overlay > .ecom-overlay, .ecom-column__overlay .ecom-video-background-youtube {
-                    position: absolute;
-                    inset: 0;
-                }
-
-                @media only screen and (min-width: 768px) {
-                    .ecom-column>.core__column--wrapper {
-                        height: 100%;
-                    }
-                }
-                /*.ecom-parallax-background {
-                    background-size: cover;
-                    width: 100%;
-                    height: 100%;
-                    transition: background-position 0.2s linear;
-                    background-repeat: inherit !important;
-                }*/
-                .ecom-grid-item .ecom-row > .core__row--columns {
-                    height: 100%;
-                }
-                .ecom-use-parallax {
-                    background: unset !important;
-                }
-                .ecom-parallax-background {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    overflow: hidden;
-                }
-                .ecom-parallax-background img {
-                    object-fit: cover;
-                    width: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translate(-50%,0);
-                    pointer-events: none;
-                }
-                .ecom-row {
-                    width: 100%;
-                    position: relative;
-                }
-                .ecom-video-background-youtube-wrapper {
-                    overflow: hidden
-                }
-                .ecom-section__overlay > .ecom-overlay, .ecom-section__overlay .ecom-video-background-youtube, .ecom-video-background-youtube-wrapper{
-                    position:absolute;
-                    top:0;
-                    left:0;
-                    bottom:0;
-                    right:0;
-                }
-                .ecom-row.ecom-section {
-                    clear: both;
-                }
-                .ecom-row:hover {
-                    z-index: 1;
-                }
-                .ecom-row>div.core__row--columns.core__row--full {
-                    max-width: 100%;
-                }
-                @media (min-aspect-ratio: 16/9) {
-                    .ecom-section__overlay .ecom-video-background-youtube  { height: 300%; top: -100%; }
-                }
-                @media (max-aspect-ratio: 16/9) {
-                    .ecom-section__overlay .ecom-video-background-youtube  { width: 300%; left: -100%; }
-                }
-                @supports not (aspect-ratio: 16 / 9) {
-                    .ecom-video-background-youtube:before {
-                        display: block;
-                        content: "";
-                        width: 100%;
-                        padding-top: 56.25%;
-                    }
-                    .ecom-video-background-youtube .ecom-video-background {
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                    }
-                    .ecom-video-background {
-                        -o-object-fit: unset !important;
-                        object-fit: unset !important;
-                    }
-                }
-                @media (max-width: 767px) {
-                    .ecom-section__video-bg .ecom-video-background-youtube {
-                        display: none;
-                    }
-                }
-                
+/* Publish by EComposer at 2026-11-06 08:57:23*//**ECOM-INSERT-CSS**/
                 .ec-flex-full-height.ec-flex-wp>.ecom-block{
                     overflow: hidden;
                 }
@@ -266,6 +162,110 @@
                     }
                 }
             
+                .ecom-column {
+                    position: relative;
+                }
+                .ecom-column>.core__column--wrapper {
+                    align-items: flex-start; /* fix tam de mn lam layout */
+                    display: flex;
+                }
+                .ecom-column__overlay .ecom-overlay {
+                    pointer-events: none;
+                }
+
+                .ecom-column__overlay > .ecom-overlay, .ecom-column__overlay .ecom-video-background-youtube {
+                    position: absolute;
+                    inset: 0;
+                }
+
+                @media only screen and (min-width: 768px) {
+                    .ecom-column>.core__column--wrapper {
+                        height: 100%;
+                    }
+                }
+                /*.ecom-parallax-background {
+                    background-size: cover;
+                    width: 100%;
+                    height: 100%;
+                    transition: background-position 0.2s linear;
+                    background-repeat: inherit !important;
+                }*/
+                .ecom-grid-item .ecom-row > .core__row--columns {
+                    height: 100%;
+                }
+                .ecom-use-parallax {
+                    background: unset !important;
+                }
+                .ecom-parallax-background {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    overflow: hidden;
+                }
+                .ecom-parallax-background img {
+                    object-fit: cover;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%,0);
+                    pointer-events: none;
+                }
+                .ecom-row {
+                    width: 100%;
+                    position: relative;
+                }
+                .ecom-video-background-youtube-wrapper {
+                    overflow: hidden
+                }
+                .ecom-section__overlay > .ecom-overlay, .ecom-section__overlay .ecom-video-background-youtube, .ecom-video-background-youtube-wrapper{
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    bottom:0;
+                    right:0;
+                }
+                .ecom-row.ecom-section {
+                    clear: both;
+                }
+                .ecom-row:hover {
+                    z-index: 1;
+                }
+                .ecom-row>div.core__row--columns.core__row--full {
+                    max-width: 100%;
+                }
+                @media (min-aspect-ratio: 16/9) {
+                    .ecom-section__overlay .ecom-video-background-youtube  { height: 300%; top: -100%; }
+                }
+                @media (max-aspect-ratio: 16/9) {
+                    .ecom-section__overlay .ecom-video-background-youtube  { width: 300%; left: -100%; }
+                }
+                @supports not (aspect-ratio: 16 / 9) {
+                    .ecom-video-background-youtube:before {
+                        display: block;
+                        content: "";
+                        width: 100%;
+                        padding-top: 56.25%;
+                    }
+                    .ecom-video-background-youtube .ecom-video-background {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                    }
+                    .ecom-video-background {
+                        -o-object-fit: unset !important;
+                        object-fit: unset !important;
+                    }
+                }
+                @media (max-width: 767px) {
+                    .ecom-section__video-bg .ecom-video-background-youtube {
+                        display: none;
+                    }
+                }
+                
                     .el__heading--tooltip-wrapper{
                         position: relative;
                         display: inline-block;
@@ -389,6 +389,85 @@
                         }
                     }
                 
+                .ecom__text--dropcap:first-letter {
+                    font-size: 40px;
+                    color: #2bcf19;
+                    display:inline-flex;
+                    border-style: solid;
+                    border-width: 1px;
+                    border-color: transparent;
+                    float:left;
+                    line-height:1;
+                }
+                .ecom__text--dropcap.has-drop-cap-view-default:first-letter {
+                    border:none;
+                }
+                body[ecom-loaded] .ecom-sections .element__text a {
+                    cursor: auto;
+                }
+                .text-content.ecom-html {
+                    overflow: hidden;
+                    position: relative;
+                }
+
+                .ecom-text--is-mark::after {
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    height: 150px;
+                    background: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
+                    pointer-events: none;
+                }
+
+                .ecom-text_view-more-btn,
+                .ecom-text_view-less-btn {
+                    display: flex;
+                    background: none;
+                    outline: none;
+                    border: none;
+                    align-items: center;
+                }
+
+                .ecom__element--button-icon {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .ecom-text_view-more-btn svg, .ecom-text_view-less-btn svg {
+                    width: 16px;
+                    color: #fff;
+                }
+                sub, sup{
+                    position: relative;
+                    font-size: 75%;
+                    line-height: 0;
+                    vertical-align: baseline;
+                }
+                sup{
+                    top: -.5em;
+                }
+                sub{
+                    bottom: -.25em;
+                }
+                .ecom-type-hollow .text-content {
+                    text-shadow: var(--stroke) !important;
+                    background: transparent !important;
+                    -webkit-background-clip: unset !important;
+                    -webkit-text-fill-color: unset !important;
+                }
+                .ecom-type-text_3d .text-content {
+                    text-shadow: var(--text_3d) !important;
+                }
+                .ecom-type-gradient .text-content {
+                    animation: var(--animation);
+                }
+                @keyframes gradientMove {
+                    0% { background-position: 100% 100%; }
+                    100% { background-position: 0% 0%; }
+                }
+            
                     .ecom-base-image .ecom-container-image {
                         width: 100%;
                         height: 100% !important;
@@ -577,130 +656,6 @@
                         }
                     }
                 
-                .ecom__text--dropcap:first-letter {
-                    font-size: 40px;
-                    color: #2bcf19;
-                    display:inline-flex;
-                    border-style: solid;
-                    border-width: 1px;
-                    border-color: transparent;
-                    float:left;
-                    line-height:1;
-                }
-                .ecom__text--dropcap.has-drop-cap-view-default:first-letter {
-                    border:none;
-                }
-                body[ecom-loaded] .ecom-sections .element__text a {
-                    cursor: auto;
-                }
-                .text-content.ecom-html {
-                    overflow: hidden;
-                    position: relative;
-                }
-
-                .ecom-text--is-mark::after {
-                    position: absolute;
-                    content: '';
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    height: 150px;
-                    background: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
-                    pointer-events: none;
-                }
-
-                .ecom-text_view-more-btn,
-                .ecom-text_view-less-btn {
-                    display: flex;
-                    background: none;
-                    outline: none;
-                    border: none;
-                    align-items: center;
-                }
-
-                .ecom__element--button-icon {
-                    display: flex;
-                    align-items: center;
-                }
-
-                .ecom-text_view-more-btn svg, .ecom-text_view-less-btn svg {
-                    width: 16px;
-                    color: #fff;
-                }
-                sub, sup{
-                    position: relative;
-                    font-size: 75%;
-                    line-height: 0;
-                    vertical-align: baseline;
-                }
-                sup{
-                    top: -.5em;
-                }
-                sub{
-                    bottom: -.25em;
-                }
-                .ecom-type-hollow .text-content {
-                    text-shadow: var(--stroke) !important;
-                    background: transparent !important;
-                    -webkit-background-clip: unset !important;
-                    -webkit-text-fill-color: unset !important;
-                }
-                .ecom-type-text_3d .text-content {
-                    text-shadow: var(--text_3d) !important;
-                }
-                .ecom-type-gradient .text-content {
-                    animation: var(--animation);
-                }
-                @keyframes gradientMove {
-                    0% { background-position: 100% 100%; }
-                    100% { background-position: 0% 0%; }
-                }
-            
-                .ecom-element.element__counter {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .element__counter--wrapper {
-                    display: flex;
-                }
-                .element__counter--default {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: inherit;
-                }
-                .element__counter .element__counter--number {
-                    font-variant-numeric: tabular-nums;
-                    font-feature-settings: "tnum";
-                }
-                .element__counter .element__counter--prefix,
-                .element__counter .element__counter--suffix {
-                    flex-grow: 1;
-                    white-space: pre-wrap;
-                }
-                .element__counter .element__counter--prefix {
-                    text-align: right;
-                }
-                .element__counter .element__counter--suffix {
-                    text-align: left;
-                }
-                .ecom__element-counter--align{
-                    display: inline-flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    gap:12px 20px;
-                }
-                .element__counter--icon{
-                    display:inline-flex;
-                }
-                .element__counter--icon svg{
-                    fill:currentColor;
-                    width:24px;
-                    height:auto
-                }
-
-            
                 .element__featured .element__featured--box-icon{
                     display: flex;
                 }
@@ -759,6 +714,51 @@
                     width: 25px;
                     height: 25px;
                 }
+            
+                .ecom-element.element__counter {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .element__counter--wrapper {
+                    display: flex;
+                }
+                .element__counter--default {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: inherit;
+                }
+                .element__counter .element__counter--number {
+                    font-variant-numeric: tabular-nums;
+                    font-feature-settings: "tnum";
+                }
+                .element__counter .element__counter--prefix,
+                .element__counter .element__counter--suffix {
+                    flex-grow: 1;
+                    white-space: pre-wrap;
+                }
+                .element__counter .element__counter--prefix {
+                    text-align: right;
+                }
+                .element__counter .element__counter--suffix {
+                    text-align: left;
+                }
+                .ecom__element-counter--align{
+                    display: inline-flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap:12px 20px;
+                }
+                .element__counter--icon{
+                    display:inline-flex;
+                }
+                .element__counter--icon svg{
+                    fill:currentColor;
+                    width:24px;
+                    height:auto
+                }
+
             
                     .ecom-element-button.ecom-button-default{
                         display:flex;
