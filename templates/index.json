@@ -545,6 +545,7 @@
         "featured_collection_npMnMD",
         "featured_collection_B7RKqz"
       ],
+      "disabled": true,
       "custom_css": [
         ".collection-list-title {width: 100%; text-align: center;}"
       ],
@@ -572,7 +573,7 @@
         "wave_side": "0",
         "animation": false,
         "animation_duration": 5,
-        "background_color": "#121212",
+        "background_color": "#EBEDF1",
         "wave_color": "#ffffff",
         "margin_top": -52,
         "margin_bottom": -36,
