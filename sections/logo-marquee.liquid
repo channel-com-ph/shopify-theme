@@ -103,21 +103,9 @@
                   endif
                 -%}
                 <div class="logo-marquee__item" {{ block.shopify_attributes }}>
-                  {%- if block.settings.link != blank -%}
-                    <a
-                      href="{{ block.settings.link }}"
-                      {%- if i == 2 %}
-                        tabindex="-1"
-                        aria-hidden="true"
-                      {%- endif %}
-                    >
-                  {%- endif -%}
+                  {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}"{% if i == 2 %} tabindex="-1"{% endif %}>{%- endif -%}
                   {%- if block.settings.image -%}
-                    {{
-                      block.settings.image
-                      | image_url: width: 400
-                      | image_tag: loading: 'lazy', alt: logo_alt, tabindex: i == 2 ? '-1' : nil
-                    }}
+                    {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: logo_alt }}
                   {%- else -%}
                     {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                   {%- endif -%}
