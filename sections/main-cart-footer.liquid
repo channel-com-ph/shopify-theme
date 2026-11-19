@@ -68,6 +68,9 @@
           <p class="totals__total-value" id="custom-cart-total">{{ cart.total_price | money_with_currency }}</p>
         </div>
 
+      <small class="tax-note caption-large rte">
+        {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+      </small>
       </div>
     {%- else -%}
       <div class="cart__ctas" {{ block.shopify_attributes }}>
