@@ -183,8 +183,6 @@
   {%- endif -%}
 </div>
 
-            <span class="caption-large light">{{ block.settings.description | escape }}</span>
-
             {%- if show_rating and card_product.metafields.reviews.rating.value != blank -%}
               {% liquid
                 assign rating_decimal = 0
@@ -752,10 +750,7 @@
       <div class="card__content">
         <div class="card__information">
           <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
-            <a role="link" aria-disabled="true"
-              class="full-unstyled-link"
-              aria-label="View product">
-            </a>
+            <a role="link" aria-disabled="true" class="full-unstyled-link">
               {{ 'onboarding.product_title' | t }}
             </a>
           </h3>
@@ -772,6 +767,7 @@
   </div>
 {%- endif -%}
 
+{%- unless skip_styles -%}
 <style>
   .product-card-wrapper {
     position: relative;
@@ -814,6 +810,36 @@
   display: inline-block;
   line-height: 1;
   letter-spacing: 0.1rem;
+}
+
+/* === ACCESSIBILITY: COLOR CONTRAST (global, all product cards) ===
+   The theme dims secondary card text with opacity (.light { opacity: .7 }) and
+   tinted colors (struck-through regular price, volume pricing note), which falls
+   below 4.5:1. Here that text is rendered at full strength in the color scheme's
+   own text color. Hierarchy is kept through size/weight instead of transparency.
+   If a title or heading still fails after this, the color scheme itself has weak
+   text-vs-background contrast: fix it in Theme settings > Colors. */
+.card-wrapper .card-information .caption-with-letter-spacing,
+.card-wrapper .card-information .light,
+.card-wrapper .card-information .caption-large.light,
+.card-wrapper .card-information .home-caption {
+  opacity: 1;
+  color: rgb(var(--color-foreground));
+}
+
+.card-wrapper .price .price-item,
+.card-wrapper .price .price-item--regular,
+.card-wrapper .price .price-item--sale,
+.card-wrapper .price--on-sale .price-item--regular,
+.card-wrapper .card__information-volume-pricing-note,
+.card-wrapper .card__information-volume-pricing-note .caption {
+  opacity: 1;
+  color: rgb(var(--color-foreground));
+}
+
+/* Struck-through regular price stays secondary via size, not faded color */
+.card-wrapper .price--on-sale .price-item--regular {
+  font-size: 0.9em;
 }
 
 
@@ -917,3 +943,4 @@ modal-dialog,
   box-sizing: border-box;
 }
 </style>
+{%- endunless -%}
