@@ -46,17 +46,6 @@
             "custom_liquid": "{% comment %} \nRetrieves the connected unit Metaobject entry from the product's metafield.\nKey: custom.quantity_units\n{% endcomment %}\n{% assign unit_metaobject = product.metafields.custom.quantity_units %}\n\n{% comment %} \nDisplays the 'Name' of the Metaobject entry if one is connected.\n{% endcomment %}\n{% if unit_metaobject != blank %}\n  <p class=\"product-unit\">{{ unit_metaobject.name }}</p>\n{% endif %}"
           }
         },
-        "judge_me_reviews_preview_badge_nd3Acq": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
-        },
-        "klaviyo_reviews_average_rating_baUKHj": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -108,8 +97,6 @@
         "text_6hTpt6",
         "sku_9hFCft",
         "custom_liquid_LWhVDn",
-        "judge_me_reviews_preview_badge_nd3Acq",
-        "klaviyo_reviews_average_rating_baUKHj",
         "variant_picker",
         "boostly_benifit_boxes_bHKfLH",
         "quantity_selector",
@@ -145,21 +132,6 @@
     },
     "177943975510aab846": {
       "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_NMFkKt": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {
-            "review_data": "real_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_NMFkKt"
-      ],
       "disabled": true,
       "settings": {
         "include_margins": true
@@ -167,15 +139,6 @@
     },
     "17899791475c3bc467": {
       "type": "apps",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_4bGUUc": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_4bGUUc"
-      ],
       "settings": {
         "include_margins": true
       }
