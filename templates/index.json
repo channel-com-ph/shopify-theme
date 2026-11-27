@@ -12,25 +12,6 @@
     "slideshow_qkjELP": {
       "type": "slideshow",
       "blocks": {
-        "slide_PijR4H": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/FREE_OCULAR.png",
-            "image_link": "shopify://pages/quotation-form",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-3",
-            "text_alignment_mobile": "center"
-          }
-        },
         "slide_n3Hw89": {
           "type": "slide",
           "settings": {
@@ -47,6 +28,25 @@
             "text_alignment": "center",
             "image_overlay_opacity": 0,
             "color_scheme": "scheme-6",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_PijR4H": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/FREE_OCULAR.png",
+            "image_link": "shopify://pages/quotation-form",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-3",
             "text_alignment_mobile": "center"
           }
         },
@@ -109,8 +109,8 @@
         }
       },
       "block_order": [
-        "slide_PijR4H",
         "slide_n3Hw89",
+        "slide_PijR4H",
         "slide_MeYLzk",
         "slide_KdcxJn",
         "slide_a94Jkm"
@@ -573,7 +573,7 @@
         "wave_side": "0",
         "animation": false,
         "animation_duration": 5,
-        "background_color": "#EBEDF1",
+        "background_color": "#ebedf1",
         "wave_color": "#ffffff",
         "margin_top": -52,
         "margin_bottom": -36,
