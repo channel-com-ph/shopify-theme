@@ -210,6 +210,11 @@
         "type": "shopify://apps/marvyn-ai/blocks/marvin-chatbot-embed/0199a07e-9867-75e1-a339-602f277179b7",
         "disabled": false,
         "settings": {}
+      },
+      "9821119549312728669": {
+        "type": "shopify://apps/pavo-snowfall-effect/blocks/app-embed/60bb33b7-8405-4f41-b11b-232589b2becb",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
